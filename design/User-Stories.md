@@ -45,8 +45,6 @@
 * Mostrar nome, descrição, preço e fotos do produto;
 * Mostrar a disponibilidade de entrega (datas);
 * Permitir calcular o frete;
-* Mostrar a avaliação do produto.
-
 
 
 **Descrição 3:** Como visitante, quero inserir os dados necessários para finalizar a compra
@@ -77,12 +75,12 @@
 
 
 
-**Descrição 2:** Como comprador, quero acessar meus dados de compras anteriores
+**Descrição 2:** Como comprador, quero acessar meus dados de acessos anteriores
 
 **Critérios de aceitação:**
 
 * Permitir acessar o histórico de compras;
-* Permitir avaliar compras recebidas;
+* Permitir favoritar produtos;
 * Permitir o preenchimento automático dos dados para entrega.
 
 
