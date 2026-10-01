@@ -18,6 +18,7 @@ enum class StatusPagamento {
     AGUARDANDO_PAGAMENTO,
     PAGO
 };
+
 class Venda {
 private:
 int _idVenda;
@@ -50,11 +51,12 @@ int _idVenda;
     void atualizarSvenda(StatusVenda novoStatus);
     void atualizarSpagamento(StatusPagamento novoStatus);
     //recuperar e modificar
-    int getIdVenda() const;
-    std::string getCpfCliente() const;
-    double getValorTotal() const;
+    std::string getNomeDest();
+    int getIdVenda();
+    std::string getCpfCliente();
+    double getValorTotal();
     
-    const std::vector<ItemPedido>& getItens() const; //vetor com produtos
+    const std::vector<ItemPedido>& getItens(); //vetor com produtos
     
     std::string getDataEntrega();
     void setDataEntrega(const std::string& dataEntrega);
@@ -66,7 +68,7 @@ int _idVenda;
     void setEnderecoEntrega(const Endereco& endereco);
 
     StatusVenda getStatusVenda();
-    StatusPagamento getStatusPagamento() const;
+    StatusPagamento getStatusPagamento();
 };
 
 #endif
