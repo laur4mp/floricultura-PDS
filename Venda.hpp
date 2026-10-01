@@ -21,6 +21,7 @@ enum class StatusPagamento {
 class Venda {
 private:
 int _idVenda;
+    std::_nomeDestina;
     std::string _cpfCliente;
     std::vector<ItemPedido> _itens;
     double _valorTotal;
@@ -37,7 +38,7 @@ int _idVenda;
     public:
     // constutores
     Venda();
-    Venda(int idVenda, const std::string& cpfCliente, const Endereco& enderecoEntrega);
+    Venda(int idVenda, const std::string& cpfCliente, const Endereco& enderecoEntrega, const std::string& _nomeDestina);
     ~Venda();
 
    
