@@ -1,0 +1,66 @@
+\doxysection{Comprador.\+hpp}
+\hypertarget{_comprador_8hpp_source}{}\label{_comprador_8hpp_source}\index{include/Comprador.hpp@{include/Comprador.hpp}}
+\doxymbox{\hyperlink{_comprador_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ COMPRADOR\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ COMPRADOR\_HPP}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_pessoa_8hpp}{Pessoa.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_produto_8hpp}{Produto.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_venda_8hpp}{Venda.hpp}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_item_pedido_8hpp}{ItemPedido.hpp}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_comprador_a4bd4e2dc0860f1c58de2d61e7d13c19f}{Comprador}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}}\{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::vector<Produto>\ \_produtosFavoritos;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::vector<Venda>\ \_historicoPedidos;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ainda\ nao\ sei\ sobre\ avaliacao}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_comprador_a4bd4e2dc0860f1c58de2d61e7d13c19f}{Comprador}}(\textcolor{keywordtype}{int}\ idPessoa,\ \textcolor{keyword}{const}\ std::string\&\ nome,\ \textcolor{keyword}{const}\ std::string\&\ cpf,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ email,\ \textcolor{keyword}{const}\ std::string\&\ telefone,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ senha)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}}(idPessoa,\ nome,\ cpf,\ email,\ telefone,\ senha)\ \{\}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_comprador_a1531e2981ee8279bfc273d28a84c1e32}{\string~Comprador}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::vector<Produto>\ \doxymbox{\hyperlink{class_comprador_abf23ea1df8399a43b07687b21278d040}{pesquisarProdutos}}(}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Produto>\&\ produtos,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ nome}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::vector<Produto>\ \doxymbox{\hyperlink{class_comprador_aaddabcd3549f236aebfec8bd0ea54696}{filtrarProdutos}}(}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Produto>\&\ produtos,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ categoria}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_comprador_adc5e8fe7b3ee82e38ad26f7e37246073}{verDetalhesProduto}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_comprador_a9f8d60e2ffbe9187b82fd9002ce8974a}{favoritarProduto}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_comprador_a80217261e85b3a2183812223f5b7391e}{desfavoritarProduto}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_endereco}{Endereco}}\ \doxymbox{\hyperlink{class_comprador_ac230c108449bd9d9c750d36a93450bb9}{selecionarEndereco}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_venda}{Venda}}\ \doxymbox{\hyperlink{class_comprador_a5367a8eb6c20fb5ee4c4f93794cd5be4}{fazerPedido}}(\textcolor{keyword}{const}\ std::vector<ItemPedido>\&\ itens);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_comprador_a54f236f0c36d90faf7ff7956729656c3}{escolherMetodoPagamento}}(\doxymbox{\hyperlink{class_venda}{Venda}}\&\ venda);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ \doxymbox{\hyperlink{class_comprador_a667e15dd66df97555cba2b90d5340e0a}{acompanharPedido}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_venda}{Venda}}\&\ venda)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_comprador_ad7a23b98040071661104734bc03c3428}{cancelarPedido}}(\doxymbox{\hyperlink{class_venda}{Venda}}\&\ venda);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Venda>\&\ \doxymbox{\hyperlink{class_comprador_a8f94877d5c048698b70df9705122c569}{consultarHistoricoCompras}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//falta\ avaliar\ pedido}}
+\DoxyCodeLine{00144\ \};}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

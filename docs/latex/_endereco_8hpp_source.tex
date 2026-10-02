@@ -1,0 +1,37 @@
+\doxysection{Endereco.\+hpp}
+\hypertarget{_endereco_8hpp_source}{}\label{_endereco_8hpp_source}\doxymbox{\hyperlink{_endereco_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ ENDERECO\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ENDERECO\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Endereco\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ nomeDest,\ cep,\ rua,\ numero,\ complemento,\ bairro,\ cidade,\ estado;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ Endereco();}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{class_endereco_a58c9d01f7ff7dd6ee29e998def91eefa}{Endereco}}(\textcolor{keyword}{const}\ std::string\&\ nomeDest,\ \textcolor{keyword}{const}\ std::string\&\ cep,\ \textcolor{keyword}{const}\ std::string\&\ rua,\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ numero,\ \textcolor{keyword}{const}\ std::string\&\ bairro,\ \textcolor{keyword}{const}\ std::string\&\ complemento,\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ cidade,\ \textcolor{keyword}{const}\ std::string\&\ estado);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \string~Endereco();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_endereco_aa23fde85e490bd9d4d909f7d0d7f1a80}{formatarEndereco}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_endereco_ac377a6719f0254bfcd453a95ca98398b}{regiao}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ getNomeDest();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_endereco_a26c75e293df346739ea0209a0a4be547}{setCep}}(\textcolor{keyword}{const}\ std::string\&\ cep);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_endereco_a29e71a0f650bc0e52ea1a62c604b47a1}{setEstado}}(\textcolor{keyword}{const}\ std::string\&\ estado);}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,310 @@
+\doxysection{Comprador Class Reference}
+\hypertarget{class_comprador}{}\label{class_comprador}\index{Comprador@{Comprador}}
+
+
+Representa um comprador do sistema.  
+
+
+
+
+{\ttfamily \+\#include $<$Comprador.\+hpp$>$}
+
+Inheritance diagram for Comprador:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comprador}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_comprador_a4bd4e2dc0860f1c58de2d61e7d13c19f}{Comprador}} (int id\+Pessoa, const std::\+string \&nome, const std::\+string \&cpf, const std::\+string \&email, const std::\+string \&telefone, const std::\+string \&senha)
+\begin{DoxyCompactList}\small\item\em Constrói um comprador com seus dados pessoais. \end{DoxyCompactList}\item 
+\Hypertarget{class_comprador_a1531e2981ee8279bfc273d28a84c1e32}\label{class_comprador_a1531e2981ee8279bfc273d28a84c1e32} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Comprador} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da classe \doxylink{class_comprador}{Comprador}. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \doxymbox{\hyperlink{class_comprador_abf23ea1df8399a43b07687b21278d040}{pesquisar\+Produtos}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&produtos, const std::\+string \&nome) const
+\begin{DoxyCompactList}\small\item\em Pesquisa produtos pelo nome. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \doxymbox{\hyperlink{class_comprador_aaddabcd3549f236aebfec8bd0ea54696}{filtrar\+Produtos}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&produtos, const std::\+string \&categoria) const
+\begin{DoxyCompactList}\small\item\em Filtra produtos por categoria. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_comprador_adc5e8fe7b3ee82e38ad26f7e37246073}{ver\+Detalhes\+Produto}} (const \doxymbox{\hyperlink{class_produto}{Produto}} \&produto) const
+\begin{DoxyCompactList}\small\item\em Exibe os detalhes de um produto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_comprador_a9f8d60e2ffbe9187b82fd9002ce8974a}{favoritar\+Produto}} (const \doxymbox{\hyperlink{class_produto}{Produto}} \&produto)
+\begin{DoxyCompactList}\small\item\em Adiciona um produto à lista de favoritos. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_comprador_a80217261e85b3a2183812223f5b7391e}{desfavoritar\+Produto}} (const \doxymbox{\hyperlink{class_produto}{Produto}} \&produto)
+\begin{DoxyCompactList}\small\item\em Remove um produto da lista de favoritos. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_endereco}{Endereco}} \doxymbox{\hyperlink{class_comprador_ac230c108449bd9d9c750d36a93450bb9}{selecionar\+Endereco}} () const
+\begin{DoxyCompactList}\small\item\em Permite selecionar um endereço cadastrado para a entrega. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_venda}{Venda}} \doxymbox{\hyperlink{class_comprador_a5367a8eb6c20fb5ee4c4f93794cd5be4}{fazer\+Pedido}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_item_pedido}{Item\+Pedido}} $>$ \&itens)
+\begin{DoxyCompactList}\small\item\em Realiza um pedido com os itens selecionados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_comprador_a54f236f0c36d90faf7ff7956729656c3}{escolher\+Metodo\+Pagamento}} (\doxymbox{\hyperlink{class_venda}{Venda}} \&venda)
+\begin{DoxyCompactList}\small\item\em Permite escolher o método de pagamento de uma venda. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} \doxymbox{\hyperlink{class_comprador_a667e15dd66df97555cba2b90d5340e0a}{acompanhar\+Pedido}} (const \doxymbox{\hyperlink{class_venda}{Venda}} \&venda) const
+\begin{DoxyCompactList}\small\item\em Consulta o status de uma venda. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_comprador_ad7a23b98040071661104734bc03c3428}{cancelar\+Pedido}} (\doxymbox{\hyperlink{class_venda}{Venda}} \&venda)
+\begin{DoxyCompactList}\small\item\em Cancela uma venda. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \& \doxymbox{\hyperlink{class_comprador_a8f94877d5c048698b70df9705122c569}{consultar\+Historico\+Compras}} () const
+\begin{DoxyCompactList}\small\item\em Consulta o histórico de compras do comprador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_pessoa}{Pessoa}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_pessoa_a88d9b77dd703f4592839fe0b84694e2e}{Pessoa}} (int id\+Pessoa, const std::\+string \&nome, const std::\+string \&cpf, const std::\+string \&email, const std::\+string \&telefone, const std::\+string \&senha)
+\begin{DoxyCompactList}\small\item\em Constrói uma \doxylink{class_pessoa}{Pessoa} com todos os dados básicos. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_pessoa_a1ffb74538d4ca9015ed38ee1136e3117}{\texorpdfstring{$\sim$}{\string~}\+Pessoa}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_pessoa_af7a51cc7abbb9562d8b811c084920265}{get\+Id\+Pessoa}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o identificador da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
+\begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_ac539a6b2f010d5fd0d0f1330049fe1a4}{get\+Cpf}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o CPF da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a626351f5d3af197f875ffec7c06f2047}{set\+Nome}} (const std::\+strinf \&cpf)
+\begin{DoxyCompactList}\small\item\em Define o CPF da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_aa1870ca4f33348dcdc1cd05476e66905}{get\+Email}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o e-\/mail da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167}{set\+Nome}} (const std::\+strinf \&email)
+\begin{DoxyCompactList}\small\item\em Define o e-\/mail da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_ad3cd925510223717abbd3582a59cc7f8}{get\+Telefone}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o telefone da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_af0cf2deff1e50a19e5458c854c39e043}{set\+Nome}} (const std::\+strinf \&telefone)
+\begin{DoxyCompactList}\small\item\em Define o telefone da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a714a3939ba5eb36c28a27678245c1d39}{get\+Senha}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a senha da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b}{set\+Nome}} (const std::\+strinf \&senha)
+\begin{DoxyCompactList}\small\item\em Define a senha da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
+\begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_endereco}{Endereco}} $>$ \& \doxymbox{\hyperlink{class_pessoa_a719684df5976b05c2898ae4fb22b7716}{get\+Enderecos}} () const
+\begin{DoxyCompactList}\small\item\em Retorna os endereços cadastrados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a24aad9be3159558a681e64a524b773bb}{adicionar\+Endereco}} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco)
+\begin{DoxyCompactList}\small\item\em Adiciona um endereço à lista da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a9a5fad5f7f4daf89a9405ae446b8c860}{remover\+Endereco}} (std::\+size\+\_\+t indice)
+\begin{DoxyCompactList}\small\item\em Remove um endereço da lista da pessoa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa um comprador do sistema. 
+
+Classe derivada de \doxylink{class_pessoa}{Pessoa} que representa um usuário capaz de pesquisar e favroitar produtos, realizar pedidos, acompanhar suas compras e consultar seu historico de pedidos. 
+
+\label{class_comprador_doc-constructors}
+\Hypertarget{class_comprador_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_comprador_a4bd4e2dc0860f1c58de2d61e7d13c19f}\index{Comprador@{Comprador}!Comprador@{Comprador}}
+\index{Comprador@{Comprador}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{Comprador()}{Comprador()}}
+{\footnotesize\ttfamily \label{class_comprador_a4bd4e2dc0860f1c58de2d61e7d13c19f} 
+Comprador::\+\+Comprador (\begin{DoxyParamCaption}\item[{int}]{id\+Pessoa}{, }\item[{const std::\+string \&}]{nome}{, }\item[{const std::\+string \&}]{cpf}{, }\item[{const std::\+string \&}]{email}{, }\item[{const std::\+string \&}]{telefone}{, }\item[{const std::\+string \&}]{senha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constrói um comprador com seus dados pessoais. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Pessoa} & Identificador único da pessoa. \\
+\hline
+{\em nome} & Nome completo do comprador. \\
+\hline
+{\em cpf} & CPF do comprador. \\
+\hline
+{\em email} & E-\/mail do comprador. \\
+\hline
+{\em telefone} & Telefone de contato. \\
+\hline
+{\em senha} & Senha de acesso ao sistema. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_comprador_doc-func-members}
+\Hypertarget{class_comprador_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_comprador_a667e15dd66df97555cba2b90d5340e0a}\index{Comprador@{Comprador}!acompanharPedido@{acompanharPedido}}
+\index{acompanharPedido@{acompanharPedido}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{acompanharPedido()}{acompanharPedido()}}
+{\footnotesize\ttfamily \label{class_comprador_a667e15dd66df97555cba2b90d5340e0a} 
+\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} Comprador::\+acompanhar\+Pedido (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{}\end{DoxyParamCaption}) const}
+
+
+
+Consulta o status de uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} que será acompanhada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status atual da venda. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_ad7a23b98040071661104734bc03c3428}\index{Comprador@{Comprador}!cancelarPedido@{cancelarPedido}}
+\index{cancelarPedido@{cancelarPedido}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{cancelarPedido()}{cancelarPedido()}}
+{\footnotesize\ttfamily \label{class_comprador_ad7a23b98040071661104734bc03c3428} 
+void Comprador::\+cancelar\+Pedido (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{}\end{DoxyParamCaption})}
+
+
+
+Cancela uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} que será cancelada. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_comprador_a8f94877d5c048698b70df9705122c569}\index{Comprador@{Comprador}!consultarHistoricoCompras@{consultarHistoricoCompras}}
+\index{consultarHistoricoCompras@{consultarHistoricoCompras}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{consultarHistoricoCompras()}{consultarHistoricoCompras()}}
+{\footnotesize\ttfamily \label{class_comprador_a8f94877d5c048698b70df9705122c569} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \& Comprador::\+consultar\+Historico\+Compras (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Consulta o histórico de compras do comprador. 
+
+\begin{DoxyReturn}{Returns}
+Referência constante ao vetor de vendas realizadas. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_a80217261e85b3a2183812223f5b7391e}\index{Comprador@{Comprador}!desfavoritarProduto@{desfavoritarProduto}}
+\index{desfavoritarProduto@{desfavoritarProduto}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{desfavoritarProduto()}{desfavoritarProduto()}}
+{\footnotesize\ttfamily \label{class_comprador_a80217261e85b3a2183812223f5b7391e} 
+void Comprador::\+desfavoritar\+Produto (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{}\end{DoxyParamCaption})}
+
+
+
+Remove um produto da lista de favoritos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} que será removido dos favoritos. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_comprador_a54f236f0c36d90faf7ff7956729656c3}\index{Comprador@{Comprador}!escolherMetodoPagamento@{escolherMetodoPagamento}}
+\index{escolherMetodoPagamento@{escolherMetodoPagamento}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{escolherMetodoPagamento()}{escolherMetodoPagamento()}}
+{\footnotesize\ttfamily \label{class_comprador_a54f236f0c36d90faf7ff7956729656c3} 
+void Comprador::\+escolher\+Metodo\+Pagamento (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{}\end{DoxyParamCaption})}
+
+
+
+Permite escolher o método de pagamento de uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} à qual será associado o método de pagamento. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_comprador_a9f8d60e2ffbe9187b82fd9002ce8974a}\index{Comprador@{Comprador}!favoritarProduto@{favoritarProduto}}
+\index{favoritarProduto@{favoritarProduto}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{favoritarProduto()}{favoritarProduto()}}
+{\footnotesize\ttfamily \label{class_comprador_a9f8d60e2ffbe9187b82fd9002ce8974a} 
+void Comprador::\+favoritar\+Produto (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{}\end{DoxyParamCaption})}
+
+
+
+Adiciona um produto à lista de favoritos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} que será favoritado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_comprador_a5367a8eb6c20fb5ee4c4f93794cd5be4}\index{Comprador@{Comprador}!fazerPedido@{fazerPedido}}
+\index{fazerPedido@{fazerPedido}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{fazerPedido()}{fazerPedido()}}
+{\footnotesize\ttfamily \label{class_comprador_a5367a8eb6c20fb5ee4c4f93794cd5be4} 
+\doxymbox{\hyperlink{class_venda}{Venda}} Comprador::\+fazer\+Pedido (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_item_pedido}{Item\+Pedido}} $>$ \&}]{itens}{}\end{DoxyParamCaption})}
+
+
+
+Realiza um pedido com os itens selecionados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em itens} & Itens que farão parte do pedido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_venda}{Venda} correspondente ao pedido realizado. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_aaddabcd3549f236aebfec8bd0ea54696}\index{Comprador@{Comprador}!filtrarProdutos@{filtrarProdutos}}
+\index{filtrarProdutos@{filtrarProdutos}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{filtrarProdutos()}{filtrarProdutos()}}
+{\footnotesize\ttfamily \label{class_comprador_aaddabcd3549f236aebfec8bd0ea54696} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ Comprador::\+filtrar\+Produtos (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&}]{produtos}{, }\item[{const std::\+string \&}]{categoria}{}\end{DoxyParamCaption}) const}
+
+
+
+Filtra produtos por categoria. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produtos} & Catálogo de produtos a ser filtrado. \\
+\hline
+{\em categoria} & Categoria utilizada como filtro. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vetor contendo os produtos pertencentes à categoria. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_abf23ea1df8399a43b07687b21278d040}\index{Comprador@{Comprador}!pesquisarProdutos@{pesquisarProdutos}}
+\index{pesquisarProdutos@{pesquisarProdutos}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{pesquisarProdutos()}{pesquisarProdutos()}}
+{\footnotesize\ttfamily \label{class_comprador_abf23ea1df8399a43b07687b21278d040} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ Comprador::\+pesquisar\+Produtos (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&}]{produtos}{, }\item[{const std::\+string \&}]{nome}{}\end{DoxyParamCaption}) const}
+
+
+
+Pesquisa produtos pelo nome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produtos} & Catálogo de produtos a ser pesquisado. \\
+\hline
+{\em nome} & Nome ou termo utilizado na pesquisa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vetor contendo os produtos encontrados. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_ac230c108449bd9d9c750d36a93450bb9}\index{Comprador@{Comprador}!selecionarEndereco@{selecionarEndereco}}
+\index{selecionarEndereco@{selecionarEndereco}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{selecionarEndereco()}{selecionarEndereco()}}
+{\footnotesize\ttfamily \label{class_comprador_ac230c108449bd9d9c750d36a93450bb9} 
+\doxymbox{\hyperlink{class_endereco}{Endereco}} Comprador::\+selecionar\+Endereco (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Permite selecionar um endereço cadastrado para a entrega. 
+
+\begin{DoxyReturn}{Returns}
+Endereço escolhido pelo comprador. 
+\end{DoxyReturn}
+\Hypertarget{class_comprador_adc5e8fe7b3ee82e38ad26f7e37246073}\index{Comprador@{Comprador}!verDetalhesProduto@{verDetalhesProduto}}
+\index{verDetalhesProduto@{verDetalhesProduto}!Comprador@{Comprador}}
+\doxysubsubsection{\texorpdfstring{verDetalhesProduto()}{verDetalhesProduto()}}
+{\footnotesize\ttfamily \label{class_comprador_adc5e8fe7b3ee82e38ad26f7e37246073} 
+void Comprador::\+ver\+Detalhes\+Produto (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{}\end{DoxyParamCaption}) const}
+
+
+
+Exibe os detalhes de um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} cujos detalhes serão exibidos. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/\doxymbox{\hyperlink{_comprador_8hpp}{Comprador.\+hpp}}\end{DoxyCompactItemize}

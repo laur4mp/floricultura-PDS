@@ -1,0 +1,40 @@
+\doxysection{Endereco Class Reference}
+\hypertarget{class_endereco}{}\label{class_endereco}\index{Endereco@{Endereco}}
+
+
+Armazena e valida dados de localização e destinatário.  
+
+
+
+
+{\ttfamily \+\#include $<$Endereco.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_endereco_a58c9d01f7ff7dd6ee29e998def91eefa}\label{class_endereco_a58c9d01f7ff7dd6ee29e998def91eefa} 
+{\bfseries Endereco} (const std::\+string \&nome\+Dest, const std::\+string \&cep, const std::\+string \&rua, const std::\+string \&numero, const std::\+string \&bairro, const std::\+string \&complemento, const std::\+string \&cidade, const std::\+string \&estado)
+\begin{DoxyCompactList}\small\item\em Inicializa o endereço completo. \end{DoxyCompactList}\item 
+\Hypertarget{class_endereco_aa23fde85e490bd9d4d909f7d0d7f1a80}\label{class_endereco_aa23fde85e490bd9d4d909f7d0d7f1a80} 
+std::\+string {\bfseries formatar\+Endereco} () const
+\begin{DoxyCompactList}\small\item\em Retorna o endereço completo em formato de texto para exibição. \end{DoxyCompactList}\item 
+\Hypertarget{class_endereco_ac377a6719f0254bfcd453a95ca98398b}\label{class_endereco_ac377a6719f0254bfcd453a95ca98398b} 
+std::\+string {\bfseries regiao} () const
+\begin{DoxyCompactList}\small\item\em Identifica a região do Brasil com base no endereço. \end{DoxyCompactList}\item 
+\Hypertarget{class_endereco_a0bd9020d70b94e77b7803c61d69b82e6}\label{class_endereco_a0bd9020d70b94e77b7803c61d69b82e6} 
+std::\+string {\bfseries get\+Nome\+Dest} ()
+\item 
+\Hypertarget{class_endereco_a26c75e293df346739ea0209a0a4be547}\label{class_endereco_a26c75e293df346739ea0209a0a4be547} 
+bool {\bfseries set\+Cep} (const std::\+string \&cep)
+\begin{DoxyCompactList}\small\item\em Define o CEP (retorna true se o formato for válido). \end{DoxyCompactList}\item 
+\Hypertarget{class_endereco_a29e71a0f650bc0e52ea1a62c604b47a1}\label{class_endereco_a29e71a0f650bc0e52ea1a62c604b47a1} 
+bool {\bfseries set\+Estado} (const std::\+string \&estado)
+\begin{DoxyCompactList}\small\item\em Define o estado (retorna true se for válido). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Armazena e valida dados de localização e destinatário. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.\+hpp}}\end{DoxyCompactItemize}

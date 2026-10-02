@@ -1,0 +1,73 @@
+\doxysection{Pessoa.\+hpp}
+\hypertarget{_pessoa_8hpp_source}{}\label{_pessoa_8hpp_source}\doxymbox{\hyperlink{_pessoa_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PESSOA\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PESSOA\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_idPessoa;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::string\ \_nome;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::string\ \_cpf;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::string\ \_email;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::string\ \_telefone;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::string\ \_senha;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::vector<Endereco>\ \_enderecos;\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_pessoa_a88d9b77dd703f4592839fe0b84694e2e}{Pessoa}}(\textcolor{keywordtype}{int}\ idPessoa,\ \textcolor{keyword}{const}\ std::string\&\ nome,\ \textcolor{keyword}{const}\ std::string\&\ cpf,\ \textcolor{keyword}{const}\ std::string\&\ email,\ \textcolor{keyword}{const}\ std::string\&\ telefone,\ \textcolor{keyword}{const}\ std::string\&\ senha);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_pessoa_a1ffb74538d4ca9015ed38ee1136e3117}{\string~Pessoa}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//getters\ e\ setters}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_pessoa_af7a51cc7abbb9562d8b811c084920265}{getIdPessoa}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{getNome}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ nome);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_ac539a6b2f010d5fd0d0f1330049fe1a4}{getCpf}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_a626351f5d3af197f875ffec7c06f2047}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ cpf);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_aa1870ca4f33348dcdc1cd05476e66905}{getEmail}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ email);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_ad3cd925510223717abbd3582a59cc7f8}{getTelefone}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_af0cf2deff1e50a19e5458c854c39e043}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ telefone);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_a714a3939ba5eb36c28a27678245c1d39}{getSenha}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ senha);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{getNome}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{setNome}}(\textcolor{keyword}{const}\ std::strinf\&\ nome);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//endereços}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Endereco>\&\ \doxymbox{\hyperlink{class_pessoa_a719684df5976b05c2898ae4fb22b7716}{getEnderecos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_a24aad9be3159558a681e64a524b773bb}{adicionarEndereco}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_a9a5fad5f7f4daf89a9405ae446b8c860}{removerEndereco}}(std::size\_t\ indice);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

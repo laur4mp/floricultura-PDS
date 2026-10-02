@@ -1,0 +1,89 @@
+\doxysection{Item\+Pedido Class Reference}
+\hypertarget{class_item_pedido}{}\label{class_item_pedido}\index{ItemPedido@{ItemPedido}}
+
+
+Representa um produto e sua quantidade dentro de um pedido.  
+
+
+
+
+{\ttfamily \+\#include $<$Item\+Pedido.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}{Item\+Pedido}} (const \doxymbox{\hyperlink{class_produto}{Produto}} \&produto, int quantidade)
+\begin{DoxyCompactList}\small\item\em Construtor de um item de pedido. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_pedido_ac3a370851335a54cfcaa2119df41e8f4}\label{class_item_pedido_ac3a370851335a54cfcaa2119df41e8f4} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Item\+Pedido} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da classe \doxylink{class_item_pedido}{Item\+Pedido}. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_item_pedido_a7d105feea4757c7ebd8bb8dc2e5a3e6f}{calcular\+Preco\+Total}} () const
+\begin{DoxyCompactList}\small\item\em Calcula o preço total dos items pedidos. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_pedido_a8c42d31776eda9f97c11da6470c7d09a}\label{class_item_pedido_a8c42d31776eda9f97c11da6470c7d09a} 
+void {\bfseries informar\+Dados} () const
+\begin{DoxyCompactList}\small\item\em Informa os dados do item do pedido. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_item_pedido_a17949ef2c1cfce7749c3d3b4be6fb90c}{calcular\+Frete}} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco) const
+\begin{DoxyCompactList}\small\item\em Calcula o valor do frete dos itens. O valor do frete depende da região do Brasil correspondente ao endereço de entrega. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa um produto e sua quantidade dentro de um pedido. 
+
+A classe permite calcular o preço total do item e o frete de acordo com a região do endereço de entrega. 
+
+\label{class_item_pedido_doc-constructors}
+\Hypertarget{class_item_pedido_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}\index{ItemPedido@{ItemPedido}!ItemPedido@{ItemPedido}}
+\index{ItemPedido@{ItemPedido}!ItemPedido@{ItemPedido}}
+\doxysubsubsection{\texorpdfstring{ItemPedido()}{ItemPedido()}}
+{\footnotesize\ttfamily \label{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6} 
+Item\+Pedido::\+\+Item\+Pedido (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{, }\item[{int}]{quantidade}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor de um item de pedido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} que será incluído no pedido. \\
+\hline
+{\em quantidade} & Quantidade de unidades do produto. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_item_pedido_doc-func-members}
+\Hypertarget{class_item_pedido_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_item_pedido_a17949ef2c1cfce7749c3d3b4be6fb90c}\index{ItemPedido@{ItemPedido}!calcularFrete@{calcularFrete}}
+\index{calcularFrete@{calcularFrete}!ItemPedido@{ItemPedido}}
+\doxysubsubsection{\texorpdfstring{calcularFrete()}{calcularFrete()}}
+{\footnotesize\ttfamily \label{class_item_pedido_a17949ef2c1cfce7749c3d3b4be6fb90c} 
+double Item\+Pedido::\+calcular\+Frete (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&}]{endereco}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula o valor do frete dos itens. O valor do frete depende da região do Brasil correspondente ao endereço de entrega. 
+
+\begin{DoxyReturn}{Returns}
+Valor do frete. 
+\end{DoxyReturn}
+\Hypertarget{class_item_pedido_a7d105feea4757c7ebd8bb8dc2e5a3e6f}\index{ItemPedido@{ItemPedido}!calcularPrecoTotal@{calcularPrecoTotal}}
+\index{calcularPrecoTotal@{calcularPrecoTotal}!ItemPedido@{ItemPedido}}
+\doxysubsubsection{\texorpdfstring{calcularPrecoTotal()}{calcularPrecoTotal()}}
+{\footnotesize\ttfamily \label{class_item_pedido_a7d105feea4757c7ebd8bb8dc2e5a3e6f} 
+double Item\+Pedido::\+calcular\+Preco\+Total (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula o preço total dos items pedidos. 
+
+\begin{DoxyReturn}{Returns}
+Preço total do item. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/\doxymbox{\hyperlink{_item_pedido_8hpp}{Item\+Pedido.\+hpp}}\end{DoxyCompactItemize}

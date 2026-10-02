@@ -1,0 +1,53 @@
+\doxysection{Produto.\+hpp}
+\hypertarget{_produto_8hpp_source}{}\label{_produto_8hpp_source}\doxymbox{\hyperlink{_produto_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PRODUTO\ }}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PRODUTO\ }}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }Produto\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \_idProduto;}
+\DoxyCodeLine{00015\ \ \ \ \ std::string\ \_nome;}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ \_descricao;}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ \_categoria;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ \_preco;}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ enderecoImagem;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \_quantidadeEstoque;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \_quantidadeMinima;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//construtores}}
+\DoxyCodeLine{00026\ \ \ \ \ Produto();}
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{class_produto_adcb70f94e23edf68d87fdc560ddc8e72}{Produto}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ nome,\ \textcolor{keyword}{const}\ std::string\&\ descricao,\ \textcolor{keyword}{const}\ std::string\&\ categoria,\ \textcolor{keywordtype}{double}\ preco,\ \textcolor{keyword}{const}\ std::string\&\ enderecoImagem,\ \textcolor{keywordtype}{int}\ estoqueInicial,\ \textcolor{keywordtype}{int}\ estoqueMinimo);}
+\DoxyCodeLine{00029\ \ \ \ \ \string~Produto();}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ getIdProduto();}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ getNome();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setNome(\textcolor{keyword}{const}\ std::string\&\ nome);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ getDescricao();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ setDescricao(\textcolor{keyword}{const}\ std::string\&\ descricao);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ std::string\ getCategoria();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ setCategoria(\textcolor{keyword}{const}\ std::string\&\ categoria);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ getPreco();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setPreco(\textcolor{keywordtype}{double}\ preco);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ std::string\ getEnderecoImagem();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ setEnderecoImagem(\textcolor{keyword}{const}\ std::string\&\ enderecoImagem);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ getQuantidadeEstoque();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ getQuantidadeMinima();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ setQuantidadeMinima(\textcolor{keywordtype}{int}\ quantidade);}
+\DoxyCodeLine{00052\ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_produto_8hpp_a0370ba642be659aa11e45a1363b1ae4f}{adicionarEstoque}}(\textcolor{keywordtype}{int}\ quantidade);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{_produto_8hpp_a25056f557b9385c2eebadc3265cd82ac}{removerEstoque}}(\textcolor{keywordtype}{int}\ quantidade);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{_produto_8hpp_a1f14c23abe6170e6cf3722c1987264c3}{verificarEstoqueMinimo}}();}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

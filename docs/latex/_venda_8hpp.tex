@@ -1,0 +1,37 @@
+\doxysection{Venda.\+hpp File Reference}
+\hypertarget{_venda_8hpp}{}\label{_venda_8hpp}\index{Venda.hpp@{Venda.hpp}}
+
+
+Estruturas e gerenciamento do ciclo de vida de uma venda no sistema.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include "{}Item\+Pedido.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}Endereco.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}Desconto.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_venda}{Venda}}
+\begin{DoxyCompactList}\small\item\em Representa um pedido realizado, contendo itens, dados de entrega e pagamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_venda_8hpp_a1f4560af68947ad26030162b837acde4}\label{_venda_8hpp_a1f4560af68947ad26030162b837acde4} 
+enum class \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} \{ {\bfseries PROCESSAMENTO}
+, {\bfseries ENVIADO}
+, {\bfseries ENTREGUE}
+, {\bfseries CANCELADO}
+ \}
+\begin{DoxyCompactList}\small\item\em Define os estados possíveis do envio e processamento do pedido. \end{DoxyCompactList}\item 
+\Hypertarget{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}\label{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1} 
+enum class \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}} \{ {\bfseries AGUARDANDO\+\_\+\+PAGAMENTO}
+, {\bfseries PAGO}
+ \}
+\begin{DoxyCompactList}\small\item\em Define a situação financeira da venda. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estruturas e gerenciamento do ciclo de vida de uma venda no sistema. 
+

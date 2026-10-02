@@ -1,0 +1,317 @@
+\doxysection{Gerente Class Reference}
+\hypertarget{class_gerente}{}\label{class_gerente}\index{Gerente@{Gerente}}
+
+
+\doxylink{class_pessoa}{Pessoa} com permissão para administrar produtos, estoque, vendas e cupons.  
+
+
+
+
+{\ttfamily \+\#include $<$Gerente.\+hpp$>$}
+
+Inheritance diagram for Gerente:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_gerente}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_gerente_a02847f6297c4571cd954005d5dace25b}\label{class_gerente_a02847f6297c4571cd954005d5dace25b} 
+{\bfseries Gerente} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_gerente_ac047e7a84a7a373bb78072939e96a6d3}{Gerente}} (int id\+Pessoa, const std::\+string \&nome, const std::\+string \&cpf, const std::\+string \&email, const std::\+string \&telefone, const std::\+string \&senha)
+\begin{DoxyCompactList}\small\item\em Constrói um \doxylink{class_gerente}{Gerente} com seus dados básicos. \end{DoxyCompactList}\item 
+\Hypertarget{class_gerente_a25fd11471ce4338dea0bfacd1908fb83}\label{class_gerente_a25fd11471ce4338dea0bfacd1908fb83} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Gerente} () override
+\begin{DoxyCompactList}\small\item\em Destrutor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_adcae5427271ba532f97398a35af30ed2}{cadastrar\+Produto}} (\doxymbox{\hyperlink{class_produto}{Produto}} \&produto)
+\begin{DoxyCompactList}\small\item\em Cadastra um produto no sistema. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_a24ed8f5fd25d2005745cb6f9173d8afd}{editar\+Produto}} (\doxymbox{\hyperlink{class_produto}{Produto}} \&produto, const std::\+string \&nome, const std::\+string \&descricao, double preco, const std::\+string \&categoria)
+\begin{DoxyCompactList}\small\item\em Edita os dados de um produto existente. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_a8672b1b9d554e10f545d3c0241f37583}{adicionar\+Estoque\+Produto}} (\doxymbox{\hyperlink{class_produto}{Produto}} \&produto, int quantidade)
+\begin{DoxyCompactList}\small\item\em Adiciona unidades ao estoque de um produto. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_gerente_a15132547ffa9d8faa120187bff5aa729}{remover\+Estoque\+Produto}} (\doxymbox{\hyperlink{class_produto}{Produto}} \&produto, int quantidade)
+\begin{DoxyCompactList}\small\item\em Remove unidades do estoque de um produto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_a578fb52bd9c2ece0f99b7f7baefe8850}{definir\+Estoque\+Minimo\+Produto}} (\doxymbox{\hyperlink{class_produto}{Produto}} \&produto, int quantidade\+Minima)
+\begin{DoxyCompactList}\small\item\em Define o estoque mínimo de um produto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_a3d782906cbab98e3d816b5657df9105d}{atualizar\+Status\+Venda}} (\doxymbox{\hyperlink{class_venda}{Venda}} \&venda, \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} novo\+Status)
+\begin{DoxyCompactList}\small\item\em Atualiza o status de uma venda. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_ac88b64c353a03942ba22d5e6f6331469}{atualizar\+Status\+Pagamento}} (\doxymbox{\hyperlink{class_venda}{Venda}} \&venda, \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}} novo\+Status)
+\begin{DoxyCompactList}\small\item\em Atualiza o status de pagamento de uma venda. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_desconto}{Desconto}} \doxymbox{\hyperlink{class_gerente_a72461186724873c6c502ab45becf2071}{cadastrar\+Cupom}} (const std::\+string \&codigo, double porcentagem, const std::\+string \&data\+Validade)
+\begin{DoxyCompactList}\small\item\em Cadastra um novo cupom de desconto. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_gerente_a04b754d0139b0b52acb7235a43331419}{aplicar\+Cupom\+Venda}} (\doxymbox{\hyperlink{class_venda}{Venda}} \&venda, const \doxymbox{\hyperlink{class_desconto}{Desconto}} \&cupom)
+\begin{DoxyCompactList}\small\item\em Aplica um cupom de desconto a uma venda. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_pessoa}{Pessoa}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_pessoa_a22563fe1f53faa9b1d8d10d28ae0c650}{Pessoa}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_pessoa_a88d9b77dd703f4592839fe0b84694e2e}{Pessoa}} (int id\+Pessoa, const std::\+string \&nome, const std::\+string \&cpf, const std::\+string \&email, const std::\+string \&telefone, const std::\+string \&senha)
+\begin{DoxyCompactList}\small\item\em Constrói uma \doxylink{class_pessoa}{Pessoa} com todos os dados básicos. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_pessoa_a1ffb74538d4ca9015ed38ee1136e3117}{\texorpdfstring{$\sim$}{\string~}\+Pessoa}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor virtual. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_pessoa_af7a51cc7abbb9562d8b811c084920265}{get\+Id\+Pessoa}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o identificador da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
+\begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_ac539a6b2f010d5fd0d0f1330049fe1a4}{get\+Cpf}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o CPF da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a626351f5d3af197f875ffec7c06f2047}{set\+Nome}} (const std::\+strinf \&cpf)
+\begin{DoxyCompactList}\small\item\em Define o CPF da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_aa1870ca4f33348dcdc1cd05476e66905}{get\+Email}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o e-\/mail da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167}{set\+Nome}} (const std::\+strinf \&email)
+\begin{DoxyCompactList}\small\item\em Define o e-\/mail da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_ad3cd925510223717abbd3582a59cc7f8}{get\+Telefone}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o telefone da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_af0cf2deff1e50a19e5458c854c39e043}{set\+Nome}} (const std::\+strinf \&telefone)
+\begin{DoxyCompactList}\small\item\em Define o telefone da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a714a3939ba5eb36c28a27678245c1d39}{get\+Senha}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a senha da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b}{set\+Nome}} (const std::\+strinf \&senha)
+\begin{DoxyCompactList}\small\item\em Define a senha da pessoa. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
+\begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_endereco}{Endereco}} $>$ \& \doxymbox{\hyperlink{class_pessoa_a719684df5976b05c2898ae4fb22b7716}{get\+Enderecos}} () const
+\begin{DoxyCompactList}\small\item\em Retorna os endereços cadastrados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a24aad9be3159558a681e64a524b773bb}{adicionar\+Endereco}} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco)
+\begin{DoxyCompactList}\small\item\em Adiciona um endereço à lista da pessoa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_a9a5fad5f7f4daf89a9405ae446b8c860}{remover\+Endereco}} (std::\+size\+\_\+t indice)
+\begin{DoxyCompactList}\small\item\em Remove um endereço da lista da pessoa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_pessoa}{Pessoa} com permissão para administrar produtos, estoque, vendas e cupons. 
+
+Herda de \doxylink{class_pessoa}{Pessoa} e concentra as operações de gestão da loja: cadastro e edição de produtos, controle de estoque, atualização de status de vendas e pagamentos, e criação/\+aplicação de cupons de desconto.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_pessoa}{Pessoa} 
+
+\doxylink{class_produto}{Produto} 
+
+\doxylink{class_venda}{Venda} 
+
+\doxylink{class_desconto}{Desconto} 
+\end{DoxySeeAlso}
+
+
+\label{class_gerente_doc-constructors}
+\Hypertarget{class_gerente_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gerente_ac047e7a84a7a373bb78072939e96a6d3}\index{Gerente@{Gerente}!Gerente@{Gerente}}
+\index{Gerente@{Gerente}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{Gerente()}{Gerente()}}
+{\footnotesize\ttfamily \label{class_gerente_ac047e7a84a7a373bb78072939e96a6d3} 
+Gerente::\+\+Gerente (\begin{DoxyParamCaption}\item[{int}]{id\+Pessoa}{, }\item[{const std::\+string \&}]{nome}{, }\item[{const std::\+string \&}]{cpf}{, }\item[{const std::\+string \&}]{email}{, }\item[{const std::\+string \&}]{telefone}{, }\item[{const std::\+string \&}]{senha}{}\end{DoxyParamCaption})}
+
+
+
+Constrói um \doxylink{class_gerente}{Gerente} com seus dados básicos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Pessoa} & Identificador único. \\
+\hline
+{\em nome} & Nome completo. \\
+\hline
+{\em cpf} & CPF do gerente. \\
+\hline
+{\em email} & Endereço de e-\/mail. \\
+\hline
+{\em telefone} & Telefone de contato. \\
+\hline
+{\em senha} & Senha de acesso. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_gerente_doc-func-members}
+\Hypertarget{class_gerente_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gerente_a8672b1b9d554e10f545d3c0241f37583}\index{Gerente@{Gerente}!adicionarEstoqueProduto@{adicionarEstoqueProduto}}
+\index{adicionarEstoqueProduto@{adicionarEstoqueProduto}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{adicionarEstoqueProduto()}{adicionarEstoqueProduto()}}
+{\footnotesize\ttfamily \label{class_gerente_a8672b1b9d554e10f545d3c0241f37583} 
+void Gerente::\+adicionar\+Estoque\+Produto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{, }\item[{int}]{quantidade}{}\end{DoxyParamCaption})}
+
+
+
+Adiciona unidades ao estoque de um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} que receberá o estoque. \\
+\hline
+{\em quantidade} & Quantidade a adicionar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+quantidade \texorpdfstring{$>$}{>} 0 
+\end{DoxyPrecond}
+\Hypertarget{class_gerente_a04b754d0139b0b52acb7235a43331419}\index{Gerente@{Gerente}!aplicarCupomVenda@{aplicarCupomVenda}}
+\index{aplicarCupomVenda@{aplicarCupomVenda}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{aplicarCupomVenda()}{aplicarCupomVenda()}}
+{\footnotesize\ttfamily \label{class_gerente_a04b754d0139b0b52acb7235a43331419} 
+void Gerente::\+aplicar\+Cupom\+Venda (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{, }\item[{const \doxymbox{\hyperlink{class_desconto}{Desconto}} \&}]{cupom}{}\end{DoxyParamCaption})}
+
+
+
+Aplica um cupom de desconto a uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} que receberá o desconto. \\
+\hline
+{\em cupom} & Cupom a ser aplicado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerente_ac88b64c353a03942ba22d5e6f6331469}\index{Gerente@{Gerente}!atualizarStatusPagamento@{atualizarStatusPagamento}}
+\index{atualizarStatusPagamento@{atualizarStatusPagamento}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{atualizarStatusPagamento()}{atualizarStatusPagamento()}}
+{\footnotesize\ttfamily \label{class_gerente_ac88b64c353a03942ba22d5e6f6331469} 
+void Gerente::\+atualizar\+Status\+Pagamento (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{, }\item[{\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}}}]{novo\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza o status de pagamento de uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} a ser atualizada. \\
+\hline
+{\em novo\+Status} & Novo status do pagamento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento} 
+\end{DoxySeeAlso}
+\Hypertarget{class_gerente_a3d782906cbab98e3d816b5657df9105d}\index{Gerente@{Gerente}!atualizarStatusVenda@{atualizarStatusVenda}}
+\index{atualizarStatusVenda@{atualizarStatusVenda}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{atualizarStatusVenda()}{atualizarStatusVenda()}}
+{\footnotesize\ttfamily \label{class_gerente_a3d782906cbab98e3d816b5657df9105d} 
+void Gerente::\+atualizar\+Status\+Venda (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{, }\item[{\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}}}]{novo\+Status}{}\end{DoxyParamCaption})}
+
+
+
+Atualiza o status de uma venda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & \doxylink{class_venda}{Venda} a ser atualizada. \\
+\hline
+{\em novo\+Status} & Novo status da venda. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda} 
+\end{DoxySeeAlso}
+\Hypertarget{class_gerente_a72461186724873c6c502ab45becf2071}\index{Gerente@{Gerente}!cadastrarCupom@{cadastrarCupom}}
+\index{cadastrarCupom@{cadastrarCupom}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{cadastrarCupom()}{cadastrarCupom()}}
+{\footnotesize\ttfamily \label{class_gerente_a72461186724873c6c502ab45becf2071} 
+\doxymbox{\hyperlink{class_desconto}{Desconto}} Gerente::\+cadastrar\+Cupom (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{codigo}{, }\item[{double}]{porcentagem}{, }\item[{const std::\+string \&}]{data\+Validade}{}\end{DoxyParamCaption})}
+
+
+
+Cadastra um novo cupom de desconto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do cupom. \\
+\hline
+{\em porcentagem} & Porcentagem de desconto (ex.: 10.\+0 para 10\%). \\
+\hline
+{\em data\+Validade} & Data de validade do cupom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O cupom (\doxylink{class_desconto}{Desconto}) criado. 
+\end{DoxyReturn}
+\Hypertarget{class_gerente_adcae5427271ba532f97398a35af30ed2}\index{Gerente@{Gerente}!cadastrarProduto@{cadastrarProduto}}
+\index{cadastrarProduto@{cadastrarProduto}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{cadastrarProduto()}{cadastrarProduto()}}
+{\footnotesize\ttfamily \label{class_gerente_adcae5427271ba532f97398a35af30ed2} 
+void Gerente::\+cadastrar\+Produto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{}\end{DoxyParamCaption})}
+
+
+
+Cadastra um produto no sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} a ser cadastrado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerente_a578fb52bd9c2ece0f99b7f7baefe8850}\index{Gerente@{Gerente}!definirEstoqueMinimoProduto@{definirEstoqueMinimoProduto}}
+\index{definirEstoqueMinimoProduto@{definirEstoqueMinimoProduto}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{definirEstoqueMinimoProduto()}{definirEstoqueMinimoProduto()}}
+{\footnotesize\ttfamily \label{class_gerente_a578fb52bd9c2ece0f99b7f7baefe8850} 
+void Gerente::\+definir\+Estoque\+Minimo\+Produto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{, }\item[{int}]{quantidade\+Minima}{}\end{DoxyParamCaption})}
+
+
+
+Define o estoque mínimo de um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} a ser configurado. \\
+\hline
+{\em quantidade\+Minima} & Quantidade mínima desejada em estoque. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerente_a24ed8f5fd25d2005745cb6f9173d8afd}\index{Gerente@{Gerente}!editarProduto@{editarProduto}}
+\index{editarProduto@{editarProduto}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{editarProduto()}{editarProduto()}}
+{\footnotesize\ttfamily \label{class_gerente_a24ed8f5fd25d2005745cb6f9173d8afd} 
+void Gerente::\+editar\+Produto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{, }\item[{const std::\+string \&}]{nome}{, }\item[{const std::\+string \&}]{descricao}{, }\item[{double}]{preco}{, }\item[{const std::\+string \&}]{categoria}{}\end{DoxyParamCaption})}
+
+
+
+Edita os dados de um produto existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} a ser editado. \\
+\hline
+{\em nome} & Novo nome. \\
+\hline
+{\em descricao} & Nova descrição. \\
+\hline
+{\em preco} & Novo preço. \\
+\hline
+{\em categoria} & Nova categoria. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerente_a15132547ffa9d8faa120187bff5aa729}\index{Gerente@{Gerente}!removerEstoqueProduto@{removerEstoqueProduto}}
+\index{removerEstoqueProduto@{removerEstoqueProduto}!Gerente@{Gerente}}
+\doxysubsubsection{\texorpdfstring{removerEstoqueProduto()}{removerEstoqueProduto()}}
+{\footnotesize\ttfamily \label{class_gerente_a15132547ffa9d8faa120187bff5aa729} 
+bool Gerente::\+remover\+Estoque\+Produto (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{, }\item[{int}]{quantidade}{}\end{DoxyParamCaption})}
+
+
+
+Remove unidades do estoque de um produto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em produto} & \doxylink{class_produto}{Produto} que terá o estoque reduzido. \\
+\hline
+{\em quantidade} & Quantidade a remover. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se a remoção foi realizada; false caso contrário (por exemplo, estoque insuficiente). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_gerente_8hpp}{Gerente.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,72 @@
+\doxysection{Produto.\+hpp File Reference}
+\hypertarget{_produto_8hpp}{}\label{_produto_8hpp}\index{Produto.hpp@{Produto.hpp}}
+
+
+Representação e controle de estoque de produtos no sistema.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_produto}{Produto}}
+\begin{DoxyCompactList}\small\item\em Gerencia os dados de um item do catálogo e suas movimentações de estoque. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_produto_8hpp_a1ed07ed51f5960594d60fd3e1be51184}\label{_produto_8hpp_a1ed07ed51f5960594d60fd3e1be51184} 
+int {\bfseries get\+Id\+Produto} ()
+\item 
+\Hypertarget{_produto_8hpp_a132084d0baffc7356faff1546a6bd467}\label{_produto_8hpp_a132084d0baffc7356faff1546a6bd467} 
+std::\+string {\bfseries get\+Nome} ()
+\item 
+\Hypertarget{_produto_8hpp_afb93eefdd4a2fa423acf955a65429c21}\label{_produto_8hpp_afb93eefdd4a2fa423acf955a65429c21} 
+void {\bfseries set\+Nome} (const std::\+string \&nome)
+\item 
+\Hypertarget{_produto_8hpp_afad574c1dd6a66a51ff2266d278b53f8}\label{_produto_8hpp_afad574c1dd6a66a51ff2266d278b53f8} 
+std::\+string {\bfseries get\+Descricao} ()
+\item 
+\Hypertarget{_produto_8hpp_a0f92dc9374765d75c1db8b172a3228bb}\label{_produto_8hpp_a0f92dc9374765d75c1db8b172a3228bb} 
+void {\bfseries set\+Descricao} (const std::\+string \&descricao)
+\item 
+\Hypertarget{_produto_8hpp_a35098d76c64b66a847694180df27c327}\label{_produto_8hpp_a35098d76c64b66a847694180df27c327} 
+std::\+string {\bfseries get\+Categoria} ()
+\item 
+\Hypertarget{_produto_8hpp_a2aeabb4f709c2a3c31aa4467189d8a1b}\label{_produto_8hpp_a2aeabb4f709c2a3c31aa4467189d8a1b} 
+void {\bfseries set\+Categoria} (const std::\+string \&categoria)
+\item 
+\Hypertarget{_produto_8hpp_a52e5eb4d9954467b01673c227a57b774}\label{_produto_8hpp_a52e5eb4d9954467b01673c227a57b774} 
+double {\bfseries get\+Preco} ()
+\item 
+\Hypertarget{_produto_8hpp_a10cb229e297144fb7e85b5e19e323d43}\label{_produto_8hpp_a10cb229e297144fb7e85b5e19e323d43} 
+void {\bfseries set\+Preco} (double preco)
+\item 
+\Hypertarget{_produto_8hpp_adec412cc0a16de96108025c2fd2a8a3d}\label{_produto_8hpp_adec412cc0a16de96108025c2fd2a8a3d} 
+std::\+string {\bfseries get\+Endereco\+Imagem} ()
+\item 
+\Hypertarget{_produto_8hpp_a7980fcaee75f807b4441bc037f632753}\label{_produto_8hpp_a7980fcaee75f807b4441bc037f632753} 
+void {\bfseries set\+Endereco\+Imagem} (const std::\+string \&endereco\+Imagem)
+\item 
+\Hypertarget{_produto_8hpp_aff02eaad1343a4663982d287448a7458}\label{_produto_8hpp_aff02eaad1343a4663982d287448a7458} 
+int {\bfseries get\+Quantidade\+Estoque} ()
+\item 
+\Hypertarget{_produto_8hpp_aa0c67e614acc949ebba59f2452de2cce}\label{_produto_8hpp_aa0c67e614acc949ebba59f2452de2cce} 
+int {\bfseries get\+Quantidade\+Minima} ()
+\item 
+\Hypertarget{_produto_8hpp_a4ae03720d4ee0f2037cd6615cdf14aeb}\label{_produto_8hpp_a4ae03720d4ee0f2037cd6615cdf14aeb} 
+void {\bfseries set\+Quantidade\+Minima} (int quantidade)
+\item 
+\Hypertarget{_produto_8hpp_a0370ba642be659aa11e45a1363b1ae4f}\label{_produto_8hpp_a0370ba642be659aa11e45a1363b1ae4f} 
+void {\bfseries adicionar\+Estoque} (int quantidade)
+\begin{DoxyCompactList}\small\item\em Incrementa a quantidade atual de itens no estoque. \end{DoxyCompactList}\item 
+\Hypertarget{_produto_8hpp_a25056f557b9385c2eebadc3265cd82ac}\label{_produto_8hpp_a25056f557b9385c2eebadc3265cd82ac} 
+bool {\bfseries remover\+Estoque} (int quantidade)
+\begin{DoxyCompactList}\small\item\em Remove unidades do estoque se houver quantidade suficiente disponível. \end{DoxyCompactList}\item 
+\Hypertarget{_produto_8hpp_a1f14c23abe6170e6cf3722c1987264c3}\label{_produto_8hpp_a1f14c23abe6170e6cf3722c1987264c3} 
+bool {\bfseries verificar\+Estoque\+Minimo} ()
+\begin{DoxyCompactList}\small\item\em Checa se o estoque atual está abaixo ou igual ao nível mínimo configurado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representação e controle de estoque de produtos no sistema. 
+
