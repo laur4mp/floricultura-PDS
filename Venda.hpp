@@ -40,7 +40,7 @@ enum class StatusPagamento {
 class Venda {
 private:
 int _idVenda;
-    std::_nomeDestina;
+    std::string _nomeDestina;
     std::string _cpfCliente;
     std::vector<ItemPedido> _itens;
     double _valorTotal;
