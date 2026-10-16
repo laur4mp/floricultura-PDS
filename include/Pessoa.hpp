@@ -6,7 +6,8 @@
 #define PESSOA_HPP
 #include <string>
 #include <vector>
-#include <Endereco.hpp>
+#include <cstddef>
+#include "Endereco.hpp"
 
 /**
  * @class Pessoa
@@ -86,7 +87,7 @@ class Pessoa {
          * @brief Define o CPF da pessoa.
          * @param cpf Novo CPF.
          */
-        void setNome(const std::string& cpf);
+        void setCpf(const std::string& cpf);
 
         /**
          * @brief Retorna o e-mail da pessoa.
@@ -98,7 +99,7 @@ class Pessoa {
          * @brief Define o e-mail da pessoa.
          * @param email Novo e-mail.
          */
-        void setNome(const std::string& email);
+        void setEmail(const std::string& email);
 
         /**
          * @brief Retorna o telefone da pessoa.
@@ -110,7 +111,7 @@ class Pessoa {
          * @brief Define o telefone da pessoa.
          * @param telefone Novo telefone.
          */
-        void setNome(const std::string& telefone);
+        void setTelefone(const std::string& telefone);
 
         /**
          * @brief Retorna a senha da pessoa.
@@ -122,19 +123,12 @@ class Pessoa {
          * @brief Define a senha da pessoa.
          * @param senha Nova senha.
          */
-        void setNome(const std::string& senha);
+        void setSenha(const std::string& senha);
 
         /**
          * @brief Retorna o nome da pessoa.
          * @return Nome completo.
          */
-        std::string getNome() const;
-
-        /**
-         * @brief Define o nome da pessoa.
-         * @param nome Novo nome completo.
-         */
-        void setNome(const std::string& nome);
 
         //endereços
 
