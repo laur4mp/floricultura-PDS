@@ -27,7 +27,7 @@ public:
 /** @brief Inicializa um produto com todas as suas informações e limites de estoque. */
     Produto(int id, const std::string& nome, const std::string& descricao, const std::string& categoria, double preco, const std::string& enderecoImagem, int estoqueInicial, int estoqueMinimo);
     ~Produto();
-};
+
 
     int getIdProduto();
     
@@ -56,4 +56,6 @@ public:
     bool removerEstoque(int quantidade);
 /** @brief Checa se o estoque atual está abaixo ou igual ao nível mínimo configurado. */
     bool verificarEstoqueMinimo();
+
+    };
 #endif
