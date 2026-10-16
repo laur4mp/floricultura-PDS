@@ -38,6 +38,10 @@ class ItemPedido {
          * @brief Destrutor da classe ItemPedido. 
          */ 
         ~ItemPedido();
+        
+        //getters
+        const Produto& getProduto() const;
+        int getQuantidade() const;
 
         /**
          * @brief Calcula o preço total dos items pedidos.
@@ -56,6 +60,8 @@ class ItemPedido {
          * @return Valor do frete.
         */
         double calcularFrete(const Endereco& endereco) const;
+
+
 };
 
 #endif 

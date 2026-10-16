@@ -75,7 +75,7 @@ int _idVenda;
 
     //recuperar e modificar
     std::string getNomeDestina();
-    int getIdVenda();
+    int getIdVenda() const;
     std::string getCpfCliente();
     double getValorTotal();
 

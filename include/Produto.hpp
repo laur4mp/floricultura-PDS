@@ -31,7 +31,7 @@ public:
 
     int getIdProduto();
     
-    std::string getNome();
+    std::string getNome() const;
     void setNome(const std::string& nome);
 
     std::string getDescricao();

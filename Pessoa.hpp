@@ -74,7 +74,7 @@ class Pessoa {
          * @brief Define o nome da pessoa.
          * @param nome Novo nome completo.
          */
-        void setNome(const std::strinf& nome);
+        void setNome(const std::string& nome);
 
         /**
          * @brief Retorna o CPF da pessoa.
@@ -86,7 +86,7 @@ class Pessoa {
          * @brief Define o CPF da pessoa.
          * @param cpf Novo CPF.
          */
-        void setNome(const std::strinf& cpf);
+        void setNome(const std::string& cpf);
 
         /**
          * @brief Retorna o e-mail da pessoa.
@@ -98,7 +98,7 @@ class Pessoa {
          * @brief Define o e-mail da pessoa.
          * @param email Novo e-mail.
          */
-        void setNome(const std::strinf& email);
+        void setNome(const std::string& email);
 
         /**
          * @brief Retorna o telefone da pessoa.
@@ -110,7 +110,7 @@ class Pessoa {
          * @brief Define o telefone da pessoa.
          * @param telefone Novo telefone.
          */
-        void setNome(const std::strinf& telefone);
+        void setNome(const std::string& telefone);
 
         /**
          * @brief Retorna a senha da pessoa.
@@ -122,7 +122,7 @@ class Pessoa {
          * @brief Define a senha da pessoa.
          * @param senha Nova senha.
          */
-        void setNome(const std::strinf& senha);
+        void setNome(const std::string& senha);
 
         /**
          * @brief Retorna o nome da pessoa.
@@ -134,7 +134,7 @@ class Pessoa {
          * @brief Define o nome da pessoa.
          * @param nome Novo nome completo.
          */
-        void setNome(const std::strinf& nome);
+        void setNome(const std::string& nome);
 
         //endereços
 
