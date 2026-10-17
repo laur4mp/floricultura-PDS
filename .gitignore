@@ -1,0 +1,5 @@
+build/*
+!build/.gitkeep
+coverage/
+src/TEMP_*
+erros.txt
