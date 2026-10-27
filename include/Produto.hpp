@@ -29,9 +29,9 @@ public:
     ~Produto();
 
 
-    int getIdProduto();
+    int getIdProduto() const;
     
-    std::string getNome() const;
+    std::string getNome();
     void setNome(const std::string& nome);
 
     std::string getDescricao();

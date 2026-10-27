@@ -93,6 +93,7 @@ int _idVenda;
 
     StatusVenda getStatusVenda();
     StatusPagamento getStatusPagamento();
+
 };
 
 #endif
