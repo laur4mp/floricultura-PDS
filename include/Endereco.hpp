@@ -34,7 +34,7 @@ public:
     /** @brief Identifica a região do Brasil com base no endereço. */
     std::string regiao() const;
 
-    std::string getNomeDest();
+    std::string getNomeDest() const;
 
     /** @brief Define o CEP (retorna true se o formato for válido). */
     bool setCep(const std::string& cep);
