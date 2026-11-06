@@ -1,5 +1,27 @@
 #include "doctest.h"
 #include "Endereco.hpp"
+#include <stdexcept>
+
+TEST_CASE("Endereco com CEP invalido gera excecao"){
+    CHECK_THROWS_AS(
+        Endereco("Ana", "123", "Rua das Flores", "10", "Planalto", "", "Belo Horizonte", "MG"),
+        std::invalid_argument
+    );
+}
+
+TEST_CASE("Endereco com estado invalido gera excecao"){
+    CHECK_THROWS_AS(
+        Endereco("Ana", "31250000", "Rua das Flores", "10", "Planalto", "", "Belo Horizonte", "XX"),
+        std::invalid_argument
+    );
+}
+
+TEST_CASE("Endereco sem cidade gera excecao"){
+    CHECK_THROWS_AS(
+        Endereco("Ana", "31250000", "Rua das Flores", "10", "Planalto", "", "", "MG"),
+        std::invalid_argument
+    );
+}
 
 TEST_CASE("setCep valida 8 digitos"){
     Endereco e("Ana", "31250000", "Rua das Flores", "10", "Planalto", "", "Belo Horizonte", "MG");

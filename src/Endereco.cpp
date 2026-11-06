@@ -1,4 +1,5 @@
 #include "Endereco.hpp"
+#include <stdexcept>
 
 using namespace std;
 
@@ -6,7 +7,19 @@ Endereco::Endereco() {}
 
 Endereco::Endereco(const string& nomeDest, const string& cep, const string& rua, const string& numero, const string& bairro, const string& complemento,
                    const string& cidade, const string& estado)
-    : nomeDest(nomeDest), cep(cep), rua(rua), numero(numero), bairro(bairro), complemento(complemento), cidade(cidade), estado(estado) {}
+    : nomeDest(nomeDest), cep(""), rua(rua), numero(numero), bairro(bairro), complemento(complemento), cidade(cidade), estado(""){
+    if(nomeDest.empty() || rua.empty() || numero.empty() || bairro.empty() || cidade.empty()){
+        throw invalid_argument("Preencha todos os dados obrigatorios");
+    }
+
+    if(!setCep(cep)){
+        throw invalid_argument("CEP invalido!");
+    }
+
+    if(!setEstado(estado)){
+        throw invalid_argument("Estado invalido!");
+    }
+}
 
 Endereco::~Endereco() {}
 
