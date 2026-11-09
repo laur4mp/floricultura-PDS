@@ -68,13 +68,12 @@ void Venda::atualizarSvenda(StatusVenda novoStatus) {
     if (novoStatus == StatusVenda::ENTREGUE && _statusVenda != StatusVenda::ENVIADO) {
         throw std::logic_error("Venda: so e possivel entregar um pedido que foi enviado.");
     }
-    if (novoStatus == StatusVenda::ENVIADO && _statusPagamento != StatusPagamento::PAGO) {
-        throw std::logic_error("Venda: pedido so pode ser enviado depois de pago.");
-    }
     if (novoStatus == StatusVenda::ENVIADO && _itens.empty()) {
         throw std::logic_error("Venda: nao e possivel enviar pedido sem itens.");
     }
-    _statusVenda = novoStatus;
+    if (novoStatus == StatusVenda::ENTREGUE) {
+    _statusPagamento = StatusPagamento::PAGO;   // pagamento na entrega
+}
 }
 
 void Venda::atualizarSpagamento(StatusPagamento novoStatus) {
