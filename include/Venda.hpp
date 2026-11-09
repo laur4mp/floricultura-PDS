@@ -80,6 +80,8 @@ public:
     const std::string& getCpfCliente() const;
     const std::string& getNomeDestina() const;
     double getValorTotal() const;
+    /** @brief Retorna o desconto (cupom) aplicado ao pedido. */
+    const Desconto& getDescontoAplicado() const;
 
     /** @brief Retorna a lista de itens inclusos no pedido. */
     const std::vector<ItemPedido>& getItens() const;

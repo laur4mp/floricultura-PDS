@@ -117,6 +117,6 @@ const Endereco& Venda::getEnderecoEntrega() const { return _enderecoEntrega; }
 void Venda::setEnderecoEntrega(const Endereco& endereco) {
     _enderecoEntrega = endereco;
 }
-
+const Desconto& Venda::getDescontoAplicado() const { return _descontoAplicado; }
 StatusVenda Venda::getStatusVenda() const { return _statusVenda; }
 StatusPagamento Venda::getStatusPagamento() const { return _statusPagamento; }
