@@ -28,6 +28,7 @@ public:
 
     std::string getCupom() const;
     double getPercentual() const;
+    std::string getDataValidade() const;
 
     /** @brief Verifica se o cupom está dentro da validade e pode ser utilizado. */
     bool ehValido() const;

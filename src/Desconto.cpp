@@ -54,8 +54,12 @@ string Desconto::getCupom() const{
     return cupom;
 }
 
-double getPercentual() const {
+double Desconto::getPercentual() const {
     return percentual;
+}
+
+string Desconto::getDataValidade() const{
+    return dataValidade;
 }
 
 double Desconto::aplicar(double valorTotal) const{
