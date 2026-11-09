@@ -55,6 +55,38 @@ string Endereco::getNomeDest() const{
     return nomeDest;
 }
 
+const string& Endereco::getNomeDest() const {
+    return nomeDest;
+}
+
+const string& Endereco::getCep() const {
+    return cep;
+}
+
+const string& Endereco::getRua() const {
+    return rua;
+}
+
+const string& Endereco::getNumero() const {
+    return numero;
+}
+
+const string& Endereco::getComplemento() const {
+    return complemento;
+}
+
+const string& Endereco::getBairro() const {
+    return bairro;
+}
+
+const string& Endereco::getCidade() const {
+    return cidade;
+}
+
+const string& Endereco::getEstado() const {
+    return estado;
+}
+
 bool Endereco::setCep(const string& cep){
     if(cep.size() != 8){
         return false;

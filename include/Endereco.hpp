@@ -36,6 +36,15 @@ public:
 
     std::string getNomeDest() const;
 
+    const std::string& getNomeDest() const;
+    const std::string& getCep() const;
+    const std::string& getRua() const;
+    const std::string& getNumero() const;
+    const std::string& getComplemento() const;
+    const std::string& getBairro() const;
+    const std::string& getCidade() const;
+    const std::string& getEstado() const;
+
     /** @brief Define o CEP (retorna true se o formato for válido). */
     bool setCep(const std::string& cep);
 

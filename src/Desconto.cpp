@@ -54,6 +54,10 @@ string Desconto::getCupom() const{
     return cupom;
 }
 
+double getPercentual() const {
+    return percentual;
+}
+
 double Desconto::aplicar(double valorTotal) const{
     if(valorTotal < 0.0){
         throw invalid_argument("Valor total nao pode ser negativo!");
