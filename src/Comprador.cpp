@@ -20,9 +20,6 @@ std::vector<Produto> Comprador::pesquisarProdutos(
 std::vector<Produto> Comprador::filtrarProdutos(
     const std::vector<Produto>& produtos,
     const std::string& categoria
-<<<<<<< HEAD
-) const {}
-=======
 ) const {
     vector<Produto> resultado;
 
@@ -67,7 +64,7 @@ Venda Comprador::fazerPedido(
     const Endereco& enderecoEntrega) {
         Venda venda(
         idVenda,
-        getCpf(),
+        getIdPessoa(),
         enderecoEntrega,
         enderecoEntrega.getNomeDest()
         );
@@ -99,5 +96,14 @@ void Comprador::aplicarCupomVenda(Venda& venda, const Desconto& cupom) {
     venda.aplicarCupom(cupom);
 }
 
-//falta avaliar pedido
->>>>>>> e1ff298178733f3de75f5122d78f83b65a2a18af
+void Comprador::adicionarAoCarrinho(const ItemPedido& item) {
+    _carrinho.push_back(item);
+}
+
+const std::vector<ItemPedido>& Comprador::consultarCarrinho() const {
+    return _carrinho;
+}
+
+void Comprador::limparCarrinho() {
+    _carrinho.clear();
+}

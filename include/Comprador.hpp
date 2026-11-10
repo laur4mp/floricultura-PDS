@@ -27,7 +27,7 @@ class Comprador : public Pessoa{
     private:
         std::vector<Produto> _produtosFavoritos;
         std::vector<Venda> _historicoPedidos;
-        //ainda nao sei sobre avaliacao
+        std::vector<ItemPedido> _carrinho;
 
 
     public:
@@ -136,7 +136,11 @@ class Comprador : public Pessoa{
         */
         void aplicarCupomVenda(Venda& venda, const Desconto& cupom);
 
-        //falta avaliar pedido
+        void adicionarAoCarrinho(const ItemPedido& item);
+
+        const std::vector<ItemPedido>& consultarCarrinho() const;
+        
+        void limparCarrinho();
         
 };
 #endif 
