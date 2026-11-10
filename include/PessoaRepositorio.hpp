@@ -9,11 +9,10 @@
  * @class PessoaRepositorio
  * @brief Lê e grava a lista de pessoas em um arquivo TXT.
  *
- * Campos separados por '|'. Cada endereço de uma pessoa ocupa uma linha "E" e vem
- * ANTES da linha "P" da própria pessoa:
+ * Campos separados por '|'.
  *
- *   E|nomeDest|cep|rua|numero|bairro|complemento|cidade|estado
  *   P|id|nome|cpf|email|telefone|senha
+ *   E|idPessoa|nomeDest|cep|rua|numero|bairro|complemento|cidade|estado
  */
 class PessoaRepositorio {
 public:

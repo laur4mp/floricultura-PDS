@@ -12,6 +12,7 @@
 #include "Venda.hpp"
 #include "ItemPedido.hpp"
 #include "Endereco.hpp"
+#include "Desconto.hpp"
 
 /** 
  * @class Comprador 
@@ -47,11 +48,6 @@ class Comprador : public Pessoa{
             : Pessoa(idPessoa, nome, cpf, email, telefone, senha) {}
 
         /** 
-         * @brief Destrutor da classe Comprador. 
-         */
-        ~Comprador();
-
-        /** 
          * @brief Pesquisa produtos pelo nome. 
          * 
          * @param produtos Catálogo de produtos a ser pesquisado. 
@@ -76,13 +72,6 @@ class Comprador : public Pessoa{
         ) const;
 
         /** 
-         * @brief Exibe os detalhes de um produto. 
-         * 
-         * @param produto Produto cujos detalhes serão exibidos. 
-         */
-        void verDetalhesProduto(const Produto& produto) const;
-
-        /** 
          * @brief Adiciona um produto à lista de favoritos. 
          * 
          * @param produto Produto que será favoritado. 
@@ -96,27 +85,20 @@ class Comprador : public Pessoa{
          */
         void desfavoritarProduto(const Produto& produto);
 
-        /**
-         * @brief Permite selecionar um endereço cadastrado para a entrega. 
-         *
-          * @return Endereço escolhido pelo comprador. 
-         */
-        Endereco selecionarEndereco() const;
 
         /** 
          * @brief Realiza um pedido com os itens selecionados. 
          * 
          * @param itens Itens que farão parte do pedido. 
+         * @param idVenda id da venda que será criada.
+         * @param enderecoEntrega Endereço no qual o pedido será entregado.
          * @return Venda correspondente ao pedido realizado. 
          */
-        Venda fazerPedido(const std::vector<ItemPedido>& itens);
-
-        /** 
-         * @brief Permite escolher o método de pagamento de uma venda. 
-         * 
-         * @param venda Venda à qual será associado o método de pagamento. 
-         */
-        void escolherMetodoPagamento(Venda& venda);
+        Venda fazerPedido(
+            int idVenda,
+            const std::vector<ItemPedido>& itens,
+            const Endereco& enderecoEntrega
+        );
 
         /** 
          * @brief Consulta o status de uma venda. 
@@ -140,6 +122,21 @@ class Comprador : public Pessoa{
          */
         const std::vector<Venda>& consultarHistoricoCompras() const;
 
+        /**
+        * @brief Consulta os produtos favoritos do comprador.
+        *
+        * @return Referência constante ao vetor de produtos favoritos.
+        */
+        const std::vector<Produto>& consultarProdutosFavoritos() const;
+
+        /**
+        * @brief Aplica um cupom de desconto a uma venda.
+        * @param venda Venda que receberá o desconto.
+        * @param cupom Cupom a ser aplicado.
+        */
+        void aplicarCupomVenda(Venda& venda, const Desconto& cupom);
+
         //falta avaliar pedido
+        
 };
 #endif 

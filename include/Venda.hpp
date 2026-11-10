@@ -39,7 +39,7 @@ class Venda {
 private:
     int _idVenda;
     std::string _nomeDestina;
-    std::string _cpfCliente;
+    int _idPessoa;
     double _valorTotal;
     std::vector<ItemPedido> _itens;
     Endereco _enderecoEntrega;
@@ -56,8 +56,8 @@ public:
     // Construtores e Destrutor
     Venda();
 
-    /** @brief Inicializa uma venda com ID, CPF do cliente, endereço e destinatário. */
-    Venda(int idVenda, const std::string& cpfCliente, const Endereco& enderecoEntrega, const std::string& nomeDestina);
+    /** @brief Inicializa uma venda com ID, ID do cliente, endereço e destinatário. */
+    Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega, const std::string& nomeDestina);
 
     ~Venda();
 
@@ -77,7 +77,7 @@ public:
 
     // Getters
     int getIdVenda() const;
-    const std::string& getCpfCliente() const;
+    int getIdPessoa() const;
     const std::string& getNomeDestina() const;
     double getValorTotal() const;
     /** @brief Retorna o desconto (cupom) aplicado ao pedido. */
