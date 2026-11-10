@@ -294,17 +294,32 @@ void Interface::configurarTabelaCupons(){
     ui->tableCupons->horizontalHeaderItem(1)->setTextAlignment(Qt::AlignCenter);
 }
 
+void Interface::carregarProdutos(){
+    for(const Produto& produto : sistema.getProdutos()){
+
+    }
+}
+
 Interface::Interface(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Interface)
+    : QMainWindow(parent),
+    produtoRepositorio("data/produtos.txt"),
+    ui(new Ui::Interface)
 {
     ui->setupUi(this);
+
+    std::vector<Produto> produtos = produtoRepositorio.carregar();
+
+    for (const Produto& produto : produtos){
+        sistema.adicionarProduto(produto);
+    }
 
     configurarTabelaProdutos();
     configurarTabelaPedidos();
     configurarTabelaCupons();
 
-    aplicarEstiloBotaoTransparente(ui->btnFazerCadastro);
+    for (QPushButton *btn : {ui->btnFazerCadastro, ui->btnFavoritar1, ui->btnFavoritar2, ui->btnFavoritar3}) {
+        aplicarEstiloBotaoTransparente(btn);
+    }
 
     QFontDatabase::addApplicationFont(":/fonts/Montserrat-VariableFont_wght.ttf");
     QFont fonte("Montserrat");
@@ -316,7 +331,7 @@ Interface::Interface(QWidget *parent)
     }
 
     for (QPushButton *btn : {ui->btnFazerLogin, ui->btnChamada, ui->btnEntrar, ui->btnCriarConta, ui->btnPagPagamento,
-                             ui->btnFazerPedido, ui->btnCupom}) {
+                             ui->btnFazerPedido, ui->btnCupom, ui->btnBuscar}) {
         aplicarEstiloBotaoRosa(btn);
     }
 
@@ -334,7 +349,8 @@ Interface::Interface(QWidget *parent)
                           ui->descricaoSobreNos, ui->descricaoLogin, ui->descricaoCriarConta, ui->descricaoCadastro,
                           ui->descricaoVoltarLogin, ui->labelSubtotal, ui->valorSubtotal, ui->descricaoEntrega,
                           ui->descricaoInicial, ui->descricaoPagamento, ui->labelSubtotalFinal, ui->valorSubtotalFinal,
-                          ui->labelTotalFinal, ui->labelFrete, ui->valorFrete, ui->descricaoFinal}) {
+                          ui->labelTotalFinal, ui->labelFrete, ui->valorFrete, ui->descricaoFinal, ui->precoProduto1,
+                          ui->precoProduto2, ui->precoProduto3}) {
         aplicarFonteDescricao(label);
     }
 

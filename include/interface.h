@@ -2,6 +2,8 @@
 #define INTERFACE_H
 
 #include <QMainWindow>
+#include "Sistema.hpp"
+#include "ProdutoRepositorio.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,6 +21,10 @@ public:
 
 private:
     Ui::Interface *ui;
+    Sistema sistema;
+    ProdutoRepositorio produtoRepositorio;
+
+    void carregarProdutos();
     void configurarTabelaProdutos();
     void configurarTabelaPedidos();
     void configurarTabelaCupons();

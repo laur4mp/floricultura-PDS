@@ -104,7 +104,7 @@
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="resources.qrc">:/images/logo (1).png</pixmap>
+               <pixmap resource="../Resources/resources.qrc">:/images/logo (1).png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -438,8 +438,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1118</width>
-                 <height>1265</height>
+                 <width>405</width>
+                 <height>922</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -755,7 +755,7 @@ border-radius: 8px;</string>
           <property name="minimumSize">
            <size>
             <width>1440</width>
-            <height>140</height>
+            <height>220</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -767,75 +767,140 @@ border-radius: 8px;</string>
           <property name="styleSheet">
            <string notr="true">background-color: #FFFFFF;</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <property name="leftMargin">
-            <number>100</number>
-           </property>
-           <property name="rightMargin">
-            <number>100</number>
-           </property>
+          <layout class="QVBoxLayout" name="verticalLayout_46">
            <item>
-            <widget class="QLabel" name="logoLabel">
+            <widget class="QWidget" name="botoesPrincipais" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_28">
+              <item>
+               <widget class="QLabel" name="logoLabel">
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>88</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>22</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #24352C;
+background-color: transparent;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../Resources/resources.qrc">:/images/logo (1).png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnProdutos">
+                <property name="font">
+                 <font>
+                  <fontweight>Medium</fontweight>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Produtos</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnSobreNos">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Sobre Nós</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnCarrinho">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string> Carrinho</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="linhaBuscar" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
-               <height>88</height>
+               <width>16777215</width>
+               <height>16777215</height>
               </size>
              </property>
-             <property name="font">
-              <font>
-               <pointsize>22</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: #24352C;
-background-color: transparent;</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="resources.qrc">:/images/logo (1).png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnProdutos">
-             <property name="font">
-              <font>
-               <fontweight>Medium</fontweight>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Produtos</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnSobreNos">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>Sobre Nós</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnCarrinho">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string> Carrinho</string>
-             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QTextBrowser" name="barraDeBusca">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #9B5252</string>
+                </property>
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                </property>
+                <property name="tabChangesFocus">
+                 <bool>true</bool>
+                </property>
+                <property name="lineWrapMode">
+                 <enum>QTextEdit::LineWrapMode::WidgetWidth</enum>
+                </property>
+                <property name="cursorWidth">
+                 <number>1</number>
+                </property>
+                <property name="textInteractionFlags">
+                 <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Buscar na Loja</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnBuscar">
+                <property name="text">
+                 <string>Buscar</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -919,7 +984,7 @@ QScrollBar::sub-page:vertical {
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-1056</y>
+                 <y>-540</y>
                  <width>1424</width>
                  <height>2280</height>
                 </rect>
@@ -1170,7 +1235,7 @@ QScrollBar::sub-page:vertical {
                      </property>
                     </widget>
                    </item>
-                   <item>
+                   <item alignment="Qt::AlignmentFlag::AlignVCenter">
                     <widget class="QWidget" name="gridProdutos" native="true">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1179,11 +1244,14 @@ QScrollBar::sub-page:vertical {
                       </sizepolicy>
                      </property>
                      <layout class="QGridLayout" name="gridLayout">
-                      <property name="topMargin">
-                       <number>0</number>
-                      </property>
                       <item row="0" column="0">
                        <widget class="QWidget" name="cardProduto1" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
                         <property name="minimumSize">
                          <size>
                           <width>300</width>
@@ -1193,7 +1261,7 @@ QScrollBar::sub-page:vertical {
                         <property name="maximumSize">
                          <size>
                           <width>300</width>
-                          <height>450</height>
+                          <height>900</height>
                          </size>
                         </property>
                         <property name="layoutDirection">
@@ -1223,7 +1291,7 @@ QScrollBar::sub-page:vertical {
                           <number>0</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>0</number>
+                          <number>5</number>
                          </property>
                          <item>
                           <widget class="QLabel" name="foto1">
@@ -1249,7 +1317,7 @@ QScrollBar::sub-page:vertical {
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="resources.qrc">:/images/girassol.jpg</pixmap>
+                            <pixmap resource="../Resources/resources.qrc">:/images/girassol.jpg</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -1282,15 +1350,15 @@ QScrollBar::sub-page:vertical {
                            <property name="styleSheet">
                             <string notr="true">background-color: transparent</string>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_8">
+                           <layout class="QVBoxLayout" name="verticalLayout_50">
                             <property name="spacing">
-                             <number>5</number>
+                             <number>7</number>
                             </property>
                             <property name="leftMargin">
                              <number>15</number>
                             </property>
                             <property name="topMargin">
-                             <number>0</number>
+                             <number>15</number>
                             </property>
                             <property name="bottomMargin">
                              <number>11</number>
@@ -1313,6 +1381,19 @@ QScrollBar::sub-page:vertical {
                             </item>
                             <item>
                              <widget class="QLabel" name="descricaoProduto1">
+                              <property name="styleSheet">
+                               <string notr="true">color: #24352C</string>
+                              </property>
+                              <property name="text">
+                               <string>Descrição</string>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="precoProduto1">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                                 <horstretch>0</horstretch>
@@ -1327,22 +1408,37 @@ QScrollBar::sub-page:vertical {
                               </property>
                              </widget>
                             </item>
-                            <item>
-                             <widget class="QPushButton" name="btnAdicionar1">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>180</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton {
+                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                             <widget class="QWidget" name="linhaAdicionar1" native="true">
+                              <layout class="QHBoxLayout" name="horizontalLayout_32">
+                               <property name="leftMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item>
+                                <widget class="QPushButton" name="btnAdicionar1">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>180</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">QPushButton {
     background-color: #24352C;
     color: white;
     border: none;
@@ -1353,10 +1449,32 @@ QScrollBar::sub-page:vertical {
 QPushButton:hover {
     background-color: #3B5948;
 }</string>
-                              </property>
-                              <property name="text">
-                               <string>Adicionar ao carrinho</string>
-                              </property>
+                                 </property>
+                                 <property name="text">
+                                  <string>Adicionar ao carrinho</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="btnFavoritar1_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>60</width>
+                                   <height>16777215</height>
+                                  </size>
+                                 </property>
+                                 <property name="text">
+                                  <string>♡</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
                              </widget>
                             </item>
                            </layout>
@@ -1367,6 +1485,12 @@ QPushButton:hover {
                       </item>
                       <item row="0" column="1">
                        <widget class="QWidget" name="cardProduto2" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
                         <property name="minimumSize">
                          <size>
                           <width>300</width>
@@ -1376,20 +1500,20 @@ QPushButton:hover {
                         <property name="maximumSize">
                          <size>
                           <width>300</width>
-                          <height>450</height>
+                          <height>900</height>
                          </size>
                         </property>
                         <property name="layoutDirection">
                          <enum>Qt::LayoutDirection::LeftToRight</enum>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">#cardProduto2 {
+                         <string notr="true">#cardProduto1 {
     background-color: transparent;
     border: 1px solid #D8C9CE;
     border-radius: 8px;
 }</string>
                         </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_9">
+                        <layout class="QVBoxLayout" name="verticalLayout_51">
                          <property name="spacing">
                           <number>5</number>
                          </property>
@@ -1406,7 +1530,7 @@ QPushButton:hover {
                           <number>0</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>0</number>
+                          <number>5</number>
                          </property>
                          <item>
                           <widget class="QLabel" name="foto2">
@@ -1432,7 +1556,7 @@ QPushButton:hover {
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="resources.qrc">:/images/rosasBrancas.jpg</pixmap>
+                            <pixmap resource="../Resources/resources.qrc">:/images/rosasBrancas.jpg</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -1449,7 +1573,7 @@ QPushButton:hover {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QWidget" name="widget2" native="true">
+                          <widget class="QWidget" name="widget_5" native="true">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                              <horstretch>0</horstretch>
@@ -1465,15 +1589,15 @@ QPushButton:hover {
                            <property name="styleSheet">
                             <string notr="true">background-color: transparent</string>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_10">
+                           <layout class="QVBoxLayout" name="verticalLayout_52">
                             <property name="spacing">
-                             <number>5</number>
+                             <number>7</number>
                             </property>
                             <property name="leftMargin">
                              <number>15</number>
                             </property>
                             <property name="topMargin">
-                             <number>0</number>
+                             <number>15</number>
                             </property>
                             <property name="bottomMargin">
                              <number>11</number>
@@ -1496,6 +1620,19 @@ QPushButton:hover {
                             </item>
                             <item>
                              <widget class="QLabel" name="descricaoProduto2">
+                              <property name="styleSheet">
+                               <string notr="true">color: #24352C</string>
+                              </property>
+                              <property name="text">
+                               <string>Descrição</string>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="precoProduto2">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                                 <horstretch>0</horstretch>
@@ -1510,22 +1647,37 @@ QPushButton:hover {
                               </property>
                              </widget>
                             </item>
-                            <item>
-                             <widget class="QPushButton" name="btnAdicionar2">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>180</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton {
+                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                             <widget class="QWidget" name="linhaAdicionar2" native="true">
+                              <layout class="QHBoxLayout" name="horizontalLayout_33">
+                               <property name="leftMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item>
+                                <widget class="QPushButton" name="btnAdicionar2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>180</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">QPushButton {
     background-color: #24352C;
     color: white;
     border: none;
@@ -1536,10 +1688,32 @@ QPushButton:hover {
 QPushButton:hover {
     background-color: #3B5948;
 }</string>
-                              </property>
-                              <property name="text">
-                               <string>Adicionar ao carrinho</string>
-                              </property>
+                                 </property>
+                                 <property name="text">
+                                  <string>Adicionar ao carrinho</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="btnFavoritar2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>60</width>
+                                   <height>16777215</height>
+                                  </size>
+                                 </property>
+                                 <property name="text">
+                                  <string>♡</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
                              </widget>
                             </item>
                            </layout>
@@ -1550,6 +1724,12 @@ QPushButton:hover {
                       </item>
                       <item row="0" column="2">
                        <widget class="QWidget" name="cardProduto3" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
                         <property name="minimumSize">
                          <size>
                           <width>300</width>
@@ -1559,20 +1739,20 @@ QPushButton:hover {
                         <property name="maximumSize">
                          <size>
                           <width>300</width>
-                          <height>450</height>
+                          <height>900</height>
                          </size>
                         </property>
                         <property name="layoutDirection">
                          <enum>Qt::LayoutDirection::LeftToRight</enum>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">#cardProduto3 {
+                         <string notr="true">#cardProduto1 {
     background-color: transparent;
     border: 1px solid #D8C9CE;
     border-radius: 8px;
 }</string>
                         </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_11">
+                        <layout class="QVBoxLayout" name="verticalLayout_53">
                          <property name="spacing">
                           <number>5</number>
                          </property>
@@ -1589,7 +1769,7 @@ QPushButton:hover {
                           <number>0</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>0</number>
+                          <number>5</number>
                          </property>
                          <item>
                           <widget class="QLabel" name="foto3">
@@ -1615,7 +1795,7 @@ QPushButton:hover {
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="resources.qrc">:/images/jiboia-prata.jpg</pixmap>
+                            <pixmap resource="../Resources/resources.qrc">:/images/jiboia-prata.jpg</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -1632,7 +1812,7 @@ QPushButton:hover {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QWidget" name="widget3" native="true">
+                          <widget class="QWidget" name="widget_6" native="true">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                              <horstretch>0</horstretch>
@@ -1648,15 +1828,15 @@ QPushButton:hover {
                            <property name="styleSheet">
                             <string notr="true">background-color: transparent</string>
                            </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_12">
+                           <layout class="QVBoxLayout" name="verticalLayout_54">
                             <property name="spacing">
-                             <number>5</number>
+                             <number>7</number>
                             </property>
                             <property name="leftMargin">
                              <number>15</number>
                             </property>
                             <property name="topMargin">
-                             <number>0</number>
+                             <number>15</number>
                             </property>
                             <property name="bottomMargin">
                              <number>11</number>
@@ -1679,6 +1859,19 @@ QPushButton:hover {
                             </item>
                             <item>
                              <widget class="QLabel" name="descricaoProduto3">
+                              <property name="styleSheet">
+                               <string notr="true">color: #24352C</string>
+                              </property>
+                              <property name="text">
+                               <string>Descrição</string>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="precoProduto3">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                                 <horstretch>0</horstretch>
@@ -1693,22 +1886,37 @@ QPushButton:hover {
                               </property>
                              </widget>
                             </item>
-                            <item>
-                             <widget class="QPushButton" name="btnAdicionar3">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="minimumSize">
-                               <size>
-                                <width>180</width>
-                                <height>40</height>
-                               </size>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">QPushButton {
+                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                             <widget class="QWidget" name="linhaAdicionar3" native="true">
+                              <layout class="QHBoxLayout" name="horizontalLayout_34">
+                               <property name="leftMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item>
+                                <widget class="QPushButton" name="btnAdicionar3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>180</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">QPushButton {
     background-color: #24352C;
     color: white;
     border: none;
@@ -1719,10 +1927,32 @@ QPushButton:hover {
 QPushButton:hover {
     background-color: #3B5948;
 }</string>
-                              </property>
-                              <property name="text">
-                               <string>Adicionar ao carrinho</string>
-                              </property>
+                                 </property>
+                                 <property name="text">
+                                  <string>Adicionar ao carrinho</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="btnFavoritar3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>60</width>
+                                   <height>16777215</height>
+                                  </size>
+                                 </property>
+                                 <property name="text">
+                                  <string>♡</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
                              </widget>
                             </item>
                            </layout>
@@ -1833,7 +2063,7 @@ Acreditamos que flores são uma forma especial de demonstrar carinho, celebrar m
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="resources.qrc">:/images/watercolor-pink-blossom-branch.png</pixmap>
+                      <pixmap resource="../Resources/resources.qrc">:/images/watercolor-pink-blossom-branch.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1915,8 +2145,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1112</width>
-                 <height>442</height>
+                 <width>1432</width>
+                 <height>1159</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -2107,7 +2337,7 @@ QScrollBar::sub-page:vertical {
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="resources.qrc">:/images/jiboia-prata.jpg</pixmap>
+                            <pixmap resource="../Resources/resources.qrc">:/images/jiboia-prata.jpg</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -2857,7 +3087,7 @@ border-radius: 8px;</string>
                          <string/>
                         </property>
                         <property name="pixmap">
-                         <pixmap resource="resources.qrc">:/images/imgCaminhao1Branco.png</pixmap>
+                         <pixmap resource="../Resources/resources.qrc">:/images/imgCaminhao1Branco.png</pixmap>
                         </property>
                         <property name="scaledContents">
                          <bool>true</bool>
@@ -3152,7 +3382,7 @@ border-radius: 8px;
                    <string/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="resources.qrc">:/images/imgCaminhao2Branco.jpg</pixmap>
+                   <pixmap resource="../Resources/resources.qrc">:/images/imgCaminhao2Branco.jpg</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3233,7 +3463,7 @@ border-radius: 8px;
                    <string/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="resources.qrc">:/images/coracaofinal.jpg</pixmap>
+                   <pixmap resource="../Resources/resources.qrc">:/images/coracaofinal.jpg</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3283,7 +3513,7 @@ background-color: #ebcdae</string>
            <enum>QTabWidget::TabShape::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="elideMode">
            <enum>Qt::TextElideMode::ElideNone</enum>
@@ -4117,7 +4347,7 @@ QPushButton:hover {
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../Resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>
