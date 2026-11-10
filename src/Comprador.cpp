@@ -2,35 +2,98 @@
 
 using namespace std;
 
-Comprador::~Comprador() {}
-
 
 std::vector<Produto> Comprador::pesquisarProdutos(
     const std::vector<Produto>& produtos,
     const std::string& nome
-) const {}
+) const {
+    vector<Produto> resultado;
+
+    for (const Produto& produto : produtos){
+        if(produto.getNome().find(nome) != string::npos){
+            resultado.push_back(produto);
+        }
+    }
+    return resultado;
+}
 
 std::vector<Produto> Comprador::filtrarProdutos(
     const std::vector<Produto>& produtos,
     const std::string& categoria
-) const {}
+) const {
+    vector<Produto> resultado;
 
-void Comprador::verDetalhesProduto(const Produto& produto) const {}
+    for (const Produto& produto : produtos) {
+        if (produto.getCategoria() == categoria) {
+            resultado.push_back(produto);
+        }
+    }
 
-void Comprador::favoritarProduto(const Produto& produto) {}
+    return resultado;
+}
 
-void Comprador::desfavoritarProduto(const Produto& produto) {}
+void Comprador::favoritarProduto(const Produto& produto) {
+     for (const Produto& favorito : _produtosFavoritos) {
+        if (favorito.getIdProduto() == produto.getIdProduto()) {
+            return;
+        }
+    }
 
-const std::vector<Produto>& Comprador::consultarProdutosFavoritos() const {}
+    _produtosFavoritos.push_back(produto);
+}
 
-Endereco Comprador::selecionarEndereco() const {}
+void Comprador::desfavoritarProduto(const Produto& produto) {
+    for (auto it = _produtosFavoritos.begin();
+         it != _produtosFavoritos.end(); ++it) {
 
-Venda Comprador::fazerPedido(const std::vector<ItemPedido>& itens) {}
+        if (it->getIdProduto() == produto.getIdProduto()) {
+            _produtosFavoritos.erase(it);
+            return;
+        }
+    }
+}
 
-void Comprador::escolherMetodoPagamento(Venda& venda) {}
+const std::vector<Produto>& Comprador::consultarProdutosFavoritos() const {
+    return _produtosFavoritos;
+}
 
-StatusVenda Comprador::acompanharPedido(const Venda& venda) const {}
 
-void Comprador::cancelarPedido(Venda& venda) {}
+Venda Comprador::fazerPedido(
+    int idVenda,
+    const std::vector<ItemPedido>& itens,
+    const Endereco& enderecoEntrega) {
+        Venda venda(
+        idVenda,
+        getCpf(),
+        enderecoEntrega,
+        enderecoEntrega.getNomeDest()
+        );
 
-const std::vector<Venda>& Comprador::consultarHistoricoCompras() const {}
+        for (const ItemPedido& item : itens) {
+            venda.adicionarItem(item);
+        }
+
+        _historicoPedidos.push_back(venda);
+
+        return venda;
+    }
+
+StatusVenda Comprador::acompanharPedido(const Venda& venda) const {
+        return venda.getStatusVenda();
+    }
+
+void Comprador::cancelarPedido(Venda& venda) {
+    if (venda.getStatusVenda() == StatusVenda::PROCESSAMENTO){
+        venda.atualizarSvenda(StatusVenda::CANCELADO);
+    }
+}
+
+const std::vector<Venda>& Comprador::consultarHistoricoCompras() const {
+     return _historicoPedidos;
+}
+
+void Comprador::aplicarCupomVenda(Venda& venda, const Desconto& cupom) {
+    venda.aplicarCupom(cupom);
+}
+
+//falta avaliar pedido

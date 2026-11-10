@@ -34,8 +34,6 @@ public:
     /** @brief Identifica a região do Brasil com base no endereço. */
     std::string regiao() const;
 
-    std::string getNomeDest() const;
-
     const std::string& getNomeDest() const;
     const std::string& getCep() const;
     const std::string& getRua() const;
