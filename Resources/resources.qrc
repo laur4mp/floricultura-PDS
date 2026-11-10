@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>mulherRosas.jpg</file>
+        <file>logo.svg</file>
+        <file>login.svg</file>
+        <file>cart.svg</file>
+        <file>girassol.jpg</file>
+        <file>rosasBrancas.jpg</file>
+        <file>jiboia-prata.jpg</file>
+        <file>Luiza.png</file>
+        <file>Laura.png</file>
+        <file>fundoInicio.png</file>
+        <file>BgInicial.jpg</file>
+        <file>logo (1).png</file>
+        <file>imgCaminhao1.png</file>
+        <file>imgCaminhao1Branco.png</file>
+        <file>coracaofinal.jpg</file>
+        <file>Caminhao2.png</file>
+        <file>imgCaminhao2Branco.jpg</file>
+        <file>watercolor-pink-blossom-branch.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>Montserrat-VariableFont_wght.ttf</file>
+    </qresource>
+</RCC>
