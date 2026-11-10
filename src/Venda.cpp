@@ -6,14 +6,14 @@ Venda::Venda()
       _statusVenda(StatusVenda::PROCESSAMENTO),
       _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO) {}
 
-Venda::Venda(int idVenda, const std::string& cpfCliente, const Endereco& enderecoEntrega,
+Venda::Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega,
              const std::string& nomeDestina)
-    : _idVenda(idVenda), _nomeDestina(nomeDestina), _cpfCliente(cpfCliente), _valorTotal(0.0),
+    : _idVenda(idVenda), _idPessoa(idPessoa), _nomeDestina(nomeDestina), _valorTotal(0.0),
       _enderecoEntrega(enderecoEntrega),
       _statusVenda(StatusVenda::PROCESSAMENTO),
       _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO) {
     if (idVenda <= 0)          throw std::invalid_argument("Venda: id deve ser positivo.");
-    if (cpfCliente.empty())     throw std::invalid_argument("Venda: CPF do cliente nao pode ser vazio.");
+    if (idPessoa <= 0)         throw std::invalid_argument("Venda: id do cliente deve ser positivo.");
     if (nomeDestina.empty())    throw std::invalid_argument("Venda: nome do destinatario nao pode ser vazio.");
 }
 
@@ -93,7 +93,7 @@ void Venda::atualizarSpagamento(StatusPagamento novoStatus) {
 
 const std::string& Venda::getNomeDestina() const { return _nomeDestina; }
 int Venda::getIdVenda() const { return _idVenda; }
-const std::string& Venda::getCpfCliente() const { return _cpfCliente; }
+int Venda::getIdPessoa() const { return _idPessoa; }
 double Venda::getValorTotal() const { return _valorTotal; }
 const std::vector<ItemPedido>& Venda::getItens() const { return _itens; }
 

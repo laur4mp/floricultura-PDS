@@ -32,7 +32,7 @@ void VendaRepositorio::gravar(const std::vector<Venda>& vendas) const {
 
         const Endereco& e = v.getEnderecoEntrega();
         const Desconto& d = v.getDescontoAplicado();
-        out << "V|" << v.getIdVenda() << '|' << limpar(v.getCpfCliente()) << '|'
+        out << "V|" << v.getIdVenda() << '|' << v.getIdPessoa() << '|'
             << limpar(v.getNomeDestina()) << '|' << static_cast<int>(v.getStatusVenda()) << '|'  //converte o enum para int 
             << static_cast<int>(v.getStatusPagamento()) << '|' << limpar(v.getDataEntrega()) << '|' //converte o enum para int também
             << limpar(v.getHorarioEntregaPrevisao()) << '|' << limpar(e.getNomeDest()) << '|'
@@ -70,7 +70,7 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             Endereco endereco; // fica vazio se a venda não tinha endereço
             if (!c[8].empty()) endereco = Endereco(c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]);
 
-            Venda v(std::stoi(c[1]), c[2], endereco, c[3]);
+            Venda v(std::stoi(c[1]), std::stoi(c[2]), endereco, c[3]);
             if (!c[6].empty()) v.setDataEntrega(c[6]);
             if (!c[7].empty()) v.setHorarioEntregaPrevisao(c[7]);
 

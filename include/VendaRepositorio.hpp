@@ -13,8 +13,7 @@
  * ANTES da linha "V" da própria venda:
  *
  *   I|idProd|nome|descricao|categoria|preco|imagem|estoque|minimo|qtd
- *   V|id|cpf|destinatario|statusVenda|statusPagamento|data|horario
- *     |nomeDest|cep|rua|numero|bairro|complemento|cidade|estado|cupom|percentual
+ *   V|id|idPessoa|destinatario|statusVenda|statusPagamento|data|horario
  */
 class VendaRepositorio {
 public:
