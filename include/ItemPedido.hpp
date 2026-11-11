@@ -58,7 +58,7 @@ class ItemPedido {
         /**
          * @brief Informa os dados do item do pedido.
         */
-        void informarDados() const;
+        std::string informarDados() const;
 
         /**
          * @brief Calcula o valor do frete dos itens.
@@ -70,4 +70,4 @@ class ItemPedido {
 
 };
 
-#endif 
+#endif

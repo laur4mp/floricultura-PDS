@@ -40,6 +40,7 @@ enum class MetodoPagamento { DINHEIRO, CARTAO, PIX };
 class Venda {
 private:
     int _idVenda;
+    int _avaliacao;
     std::string _nomeDestina;
     int _idPessoa;
     double _valorTotal;
@@ -60,7 +61,7 @@ public:
     Venda();
 
     /** @brief Inicializa uma venda com ID, ID do cliente, endereço e destinatário. */
-    Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega, const std::string& nomeDestina);
+    Venda(int idVenda, int idPessoa, int avaliacao, const Endereco& enderecoEntrega, const std::string& nomeDestina);
 
     ~Venda();
 
@@ -77,6 +78,8 @@ public:
     // Gestão de Estados
     void atualizarSvenda(StatusVenda novoStatus);
     void atualizarSpagamento(StatusPagamento novoStatus);
+    void avaliar(int nota);
+    
 
     // Getters
     int getIdVenda() const;
@@ -89,6 +92,7 @@ public:
     /** @brief Retorna a lista de itens inclusos no pedido. */
     const std::vector<ItemPedido>& getItens() const;
 
+    int getAvaliacao() const;
     const std::string& getDataEntrega() const;
     const std::string& getHorarioEntregaPrevisao() const;
     const Endereco& getEnderecoEntrega() const;
