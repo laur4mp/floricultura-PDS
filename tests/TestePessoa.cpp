@@ -9,20 +9,20 @@
 
 namespace {
 
-Pessoa criarPessoa() {
-    return Pessoa(7, "Ana Souza", "529.982.247-25", "ana@email.com", "(31) 99999-0000", "senha123");
-}
+Pessoa criarPessoa() { 
+    return Pessoa(7, "Ana Souza", "529.982.247-26", "ana@email.com", "(31) 99999-0000", "senha123");
+} 
 
-Endereco criarEndereco(const std::string& rua) {
-    return Endereco("Maria Silva", "30130-000", rua, "100", "Centro", "Apto 2", "Belo Horizonte", "MG");
-}
-
-}  // namespace
-
-#include "doctest.h"
-
-
-TEST_CASE("Pessoa - construtor com dados armazena todos os atributos") {
+Endereco criarEndereco(const std::string& rua) { 
+    return Endereco("Maria Silva", "30130-000", rua, "100", "Centro", "Apto 2", "Belo Horizonte", "MG"); 
+} 
+ 
+}  // namespace 
+ 
+ 
+ 
+ 
+TEST_CASE("Pessoa - construtor com dados armazena todos os atributos") { 
     Pessoa p(7, "Ana Souza", "529.982.247-25", "ana@email.com", "(31) 99999-0000", "senha123");
 
     CHECK(p.getIdPessoa() == 7);
@@ -31,6 +31,13 @@ TEST_CASE("Pessoa - construtor com dados armazena todos os atributos") {
     CHECK(p.getEmail() == "ana@email.com");
     CHECK(p.getTelefone() == "(31) 99999-0000");
     CHECK(p.getSenha() == "senha123");
+}
+
+TEST_CASE("Pessoa - construtor rejeita nome, e-mail ou senha vazios") {
+    CHECK_THROWS_AS(Pessoa(1, "", "cpf", "ana@email.com", "tel", "senha"), std::invalid_argument);
+    CHECK_THROWS_AS(Pessoa(1, "Ana", "cpf", "", "tel", "senha"), std::invalid_argument);
+    CHECK_THROWS_AS(Pessoa(1, "Ana", "cpf", "ana@email.com", "tel", ""), std::invalid_argument);
+    CHECK_NOTHROW(Pessoa(1, "Ana", "", "ana@email.com", "", "senha"));  // cpf e telefone sao opcionais
 }
 
 TEST_CASE("Pessoa - construtor padrao inicia com valores vazios") {
@@ -160,4 +167,18 @@ TEST_CASE("Pessoa - removerEndereco com indice invalido lanca out_of_range") {
 
 TEST_CASE("Pessoa - possui destrutor virtual (uso polimorfico seguro)") {
     CHECK(std::has_virtual_destructor<Pessoa>::value);
+}
+
+
+TEST_CASE("Pessoa - possuiEndereco compara CEP, numero e complemento") {
+    Pessoa p = criarPessoa();
+    CHECK_FALSE(p.possuiEndereco(criarEndereco("Rua A")));  // lista vazia
+ 
+    p.adicionarEndereco(criarEndereco("Rua A"));
+ 
+    CHECK(p.possuiEndereco(criarEndereco("Outra Rua")));  // mesmo CEP, numero e complemento
+    CHECK_FALSE(p.possuiEndereco(Endereco("Maria Silva", "99999999", "Rua A", "100",
+                                          "Centro", "Apto 2", "Belo Horizonte", "MG")));  // outro CEP
+    CHECK_FALSE(p.possuiEndereco(Endereco("Maria Silva", "30130000", "Rua A", "200",
+                                          "Centro", "Apto 2", "Belo Horizonte", "MG")));  // outro numero
 }

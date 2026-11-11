@@ -22,9 +22,21 @@ Produto criarProduto() {
     return Produto(1, "Rosa Vermelha", "Buque com 12 rosas", "Buques", 50.0, "img/rosa.png", 10, 3);
 }
 
+Endereco criarEndereco() {
+    // CEP so com os 8 digitos (o Endereco nao aceita hifen)
+    return Endereco("Maria Silva", "30130000", "Rua das Flores", "100", "Centro", "Apto 2", "Belo Horizonte", "MG");
+}
+
+// venda sem itens: id 1, cliente 7
 Venda criarVenda() {
-    Endereco endereco("Maria Silva", "30130-000", "Rua das Flores", "100", "Centro", "Apto 2", "Belo Horizonte", "MG");
-    return Venda(1, "529.982.247-25", endereco, "Maria Silva");
+    return Venda(1, 7, 0, criarEndereco(), "Maria Silva");
+}
+
+// venda com 2 x Rosa Vermelha (subtotal 100.00)
+Venda criarVendaComItem() {
+    Venda venda = criarVenda();
+    venda.adicionarItem(ItemPedido(criarProduto(), 2));
+    return venda;
 }
 
 }  // namespace
@@ -43,11 +55,13 @@ TEST_CASE("Gerente - construtor com dados repassa os atributos para Pessoa") {
     CHECK(g.getEnderecos().empty());
 }
 
-TEST_CASE("Gerente - construtor padrao inicia com valores vazios") {
+TEST_CASE("Gerente - construtor padrao cria o administrador fixo") {
     Gerente g;
 
-    CHECK(g.getIdPessoa() == 0);
-    CHECK(g.getNome().empty());
+    CHECK(g.getIdPessoa() == 1);
+    CHECK(g.getNome() == "Gerente TELL");
+    CHECK(g.getEmail() == "admin@tell.com");
+    CHECK(g.getSenha() == "admin");
     CHECK(g.getEnderecos().empty());
 }
 
@@ -59,13 +73,30 @@ TEST_CASE("Gerente - e uma Pessoa via ponteiro da base") {
     CHECK_NOTHROW(delete p);  // destrutor virtual de Pessoa
 }
 
-TEST_CASE("Gerente - cadastrarProduto aceita um produto valido sem alterar seus dados") {
+TEST_CASE("Gerente - cadastrarProduto cria o produto com os dados informados") {
     Gerente g = criarGerente();
-    Produto produto = criarProduto();
+    Produto p = g.cadastrarProduto(1, "Rosa Vermelha", "Buque com 12 rosas", "Buques",
+                                   50.0, "img/rosa.png", 10, 3);
 
-    CHECK_NOTHROW(g.cadastrarProduto(produto));
-    CHECK(produto.getNome() == "Rosa Vermelha");
-    CHECK(produto.getQuantidadeEstoque() == 10);
+    CHECK(p.getIdProduto() == 1);
+    CHECK(p.getNome() == "Rosa Vermelha");
+    CHECK(p.getDescricao() == "Buque com 12 rosas");
+    CHECK(p.getCategoria() == "Buques");
+    CHECK(p.getPreco() == doctest::Approx(50.0));
+    CHECK(p.getEnderecoImagem() == "img/rosa.png");
+    CHECK(p.getQuantidadeEstoque() == 10);
+    CHECK(p.getQuantidadeMinima() == 3);
+}
+
+TEST_CASE("Gerente - cadastrarProduto com dados invalidos lanca invalid_argument") {
+    Gerente g = criarGerente();
+
+    CHECK_THROWS_AS(g.cadastrarProduto(0, "Rosa", "", "Buques", 50.0, "", 10, 3), std::invalid_argument);   // id
+    CHECK_THROWS_AS(g.cadastrarProduto(1, "", "", "Buques", 50.0, "", 10, 3), std::invalid_argument);       // nome
+    CHECK_THROWS_AS(g.cadastrarProduto(1, "Rosa", "", "", 50.0, "", 10, 3), std::invalid_argument);         // categoria
+    CHECK_THROWS_AS(g.cadastrarProduto(1, "Rosa", "", "Buques", -1.0, "", 10, 3), std::invalid_argument);   // preco
+    CHECK_THROWS_AS(g.cadastrarProduto(1, "Rosa", "", "Buques", 50.0, "", -1, 3), std::invalid_argument);   // estoque
+    CHECK_THROWS_AS(g.cadastrarProduto(1, "Rosa", "", "Buques", 50.0, "", 10, -1), std::invalid_argument);  // minimo
 }
 
 TEST_CASE("Gerente - editarProduto atualiza nome, descricao, preco e categoria") {
@@ -124,7 +155,7 @@ TEST_CASE("Gerente - adicionarEstoqueProduto com quantidade invalida lanca inval
     SUBCASE("negativa") {
         CHECK_THROWS_AS(g.adicionarEstoqueProduto(produto, -4), std::invalid_argument);
     }
-    CHECK(produto.getQuantidadeEstoque() == 10); // em qualquer caso o estoque permanece intacto
+    CHECK(produto.getQuantidadeEstoque() == 10);  // em qualquer caso o estoque permanece intacto
 }
 
 TEST_CASE("Gerente - removerEstoqueProduto") {
@@ -147,6 +178,11 @@ TEST_CASE("Gerente - removerEstoqueProduto") {
         REQUIRE(g.removerEstoqueProduto(produto, 10) == true);
         CHECK(g.removerEstoqueProduto(produto, 1) == false);
         CHECK(produto.getQuantidadeEstoque() == 0);
+    }
+    SUBCASE("quantidade zero ou negativa: retorna false") {
+        CHECK(g.removerEstoqueProduto(produto, 0) == false);
+        CHECK(g.removerEstoqueProduto(produto, -3) == false);
+        CHECK(produto.getQuantidadeEstoque() == 10);
     }
 }
 
@@ -171,92 +207,180 @@ TEST_CASE("Gerente - definirEstoqueMinimoProduto") {
         g.definirEstoqueMinimoProduto(produto, 12);
         CHECK(produto.verificarEstoqueMinimo());
     }
+    SUBCASE("minimo negativo lanca invalid_argument") {
+        CHECK_THROWS_AS(g.definirEstoqueMinimoProduto(produto, -1), std::invalid_argument);
+        CHECK(produto.getQuantidadeMinima() == 3);
+    }
 }
 
-TEST_CASE("Gerente - atualizarStatusVenda altera o status de processamento/entrega") {
+TEST_CASE("Gerente - ajustarEstoqueProduto define o estoque para o valor exato") {
     Gerente g = criarGerente();
-    Venda venda = criarVenda();
+    Produto produto = criarProduto();  // estoque 10
 
-    SUBCASE("ENVIADO") {
+    SUBCASE("aumentar") {
+        g.ajustarEstoqueProduto(produto, 25);
+        CHECK(produto.getQuantidadeEstoque() == 25);
+    }
+    SUBCASE("diminuir") {
+        g.ajustarEstoqueProduto(produto, 4);
+        CHECK(produto.getQuantidadeEstoque() == 4);
+    }
+    SUBCASE("zerar") {
+        g.ajustarEstoqueProduto(produto, 0);
+        CHECK(produto.getQuantidadeEstoque() == 0);
+    }
+    SUBCASE("mesmo valor nao muda nada") {
+        g.ajustarEstoqueProduto(produto, 10);
+        CHECK(produto.getQuantidadeEstoque() == 10);
+    }
+    SUBCASE("negativo lanca invalid_argument e nao altera o estoque") {
+        CHECK_THROWS_AS(g.ajustarEstoqueProduto(produto, -1), std::invalid_argument);
+        CHECK(produto.getQuantidadeEstoque() == 10);
+    }
+}
+
+TEST_CASE("Gerente - atualizarStatusVenda segue o fluxo do pedido") {
+    Gerente g = criarGerente();
+    Venda venda = criarVendaComItem();  // comeca em PROCESSAMENTO
+
+    SUBCASE("PROCESSAMENTO -> ENVIADO") {
         g.atualizarStatusVenda(venda, StatusVenda::ENVIADO);
         CHECK(venda.getStatusVenda() == StatusVenda::ENVIADO);
     }
-    SUBCASE("ENTREGUE") {
+    SUBCASE("ENVIADO -> ENTREGUE marca o pagamento como PAGO") {
+        g.atualizarStatusVenda(venda, StatusVenda::ENVIADO);
         g.atualizarStatusVenda(venda, StatusVenda::ENTREGUE);
         CHECK(venda.getStatusVenda() == StatusVenda::ENTREGUE);
+        CHECK(venda.getStatusPagamento() == StatusPagamento::PAGO);
     }
-    SUBCASE("CANCELADO") {
+    SUBCASE("PROCESSAMENTO -> CANCELADO") {
         g.atualizarStatusVenda(venda, StatusVenda::CANCELADO);
         CHECK(venda.getStatusVenda() == StatusVenda::CANCELADO);
     }
-    SUBCASE("PROCESSAMENTO (voltar ao estado inicial)") {
-        g.atualizarStatusVenda(venda, StatusVenda::ENVIADO);
-        g.atualizarStatusVenda(venda, StatusVenda::PROCESSAMENTO);
+    SUBCASE("repetir o status atual nao faz nada") {
+        CHECK_NOTHROW(g.atualizarStatusVenda(venda, StatusVenda::PROCESSAMENTO));
         CHECK(venda.getStatusVenda() == StatusVenda::PROCESSAMENTO);
     }
 }
 
+TEST_CASE("Gerente - atualizarStatusVenda rejeita transicoes invalidas") {
+    Gerente g = criarGerente();
+    Venda venda = criarVendaComItem();
+
+    SUBCASE("nao entrega sem enviar antes") {
+        CHECK_THROWS_AS(g.atualizarStatusVenda(venda, StatusVenda::ENTREGUE), std::logic_error);
+        CHECK(venda.getStatusVenda() == StatusVenda::PROCESSAMENTO);
+    }
+    SUBCASE("nao volta para PROCESSAMENTO") {
+        g.atualizarStatusVenda(venda, StatusVenda::ENVIADO);
+        CHECK_THROWS_AS(g.atualizarStatusVenda(venda, StatusVenda::PROCESSAMENTO), std::logic_error);
+        CHECK(venda.getStatusVenda() == StatusVenda::ENVIADO);
+    }
+    SUBCASE("pedido cancelado nao muda mais") {
+        g.atualizarStatusVenda(venda, StatusVenda::CANCELADO);
+        CHECK_THROWS_AS(g.atualizarStatusVenda(venda, StatusVenda::ENVIADO), std::logic_error);
+        CHECK(venda.getStatusVenda() == StatusVenda::CANCELADO);
+    }
+    SUBCASE("pedido entregue nao muda mais") {
+        g.atualizarStatusVenda(venda, StatusVenda::ENVIADO);
+        g.atualizarStatusVenda(venda, StatusVenda::ENTREGUE);
+        CHECK_THROWS_AS(g.atualizarStatusVenda(venda, StatusVenda::CANCELADO), std::logic_error);
+        CHECK(venda.getStatusVenda() == StatusVenda::ENTREGUE);
+    }
+}
+
+TEST_CASE("Gerente - atualizarStatusVenda nao envia pedido sem itens") {
+    Gerente g = criarGerente();
+    Venda vazia = criarVenda();
+
+    CHECK_THROWS_AS(g.atualizarStatusVenda(vazia, StatusVenda::ENVIADO), std::logic_error);
+    CHECK(vazia.getStatusVenda() == StatusVenda::PROCESSAMENTO);
+}
+
 TEST_CASE("Gerente - atualizarStatusPagamento altera apenas o pagamento") {
     Gerente g = criarGerente();
-    Venda venda = criarVenda();
+    Venda venda = criarVendaComItem();
     StatusVenda statusAntes = venda.getStatusVenda();
 
-    SUBCASE("PAGO") {
+    SUBCASE("AGUARDANDO_PAGAMENTO -> PAGO") {
+        CHECK(venda.getStatusPagamento() == StatusPagamento::AGUARDANDO_PAGAMENTO);
         g.atualizarStatusPagamento(venda, StatusPagamento::PAGO);
         CHECK(venda.getStatusPagamento() == StatusPagamento::PAGO);
     }
-    SUBCASE("AGUARDANDO_PAGAMENTO") {
+    SUBCASE("pagamento confirmado nao pode voltar") {
         g.atualizarStatusPagamento(venda, StatusPagamento::PAGO);
-        g.atualizarStatusPagamento(venda, StatusPagamento::AGUARDANDO_PAGAMENTO);
-        CHECK(venda.getStatusPagamento() == StatusPagamento::AGUARDANDO_PAGAMENTO);
+        CHECK_THROWS_AS(g.atualizarStatusPagamento(venda, StatusPagamento::AGUARDANDO_PAGAMENTO),
+                        std::logic_error);
+        CHECK(venda.getStatusPagamento() == StatusPagamento::PAGO);
     }
 
     CHECK(venda.getStatusVenda() == statusAntes);
 }
 
-TEST_CASE("Gerente - cadastrarCupom cria o cupom com codigo e percentual") {
+TEST_CASE("Gerente - atualizarStatusPagamento rejeita pedido cancelado ou sem itens") {
+    Gerente g = criarGerente();
+
+    SUBCASE("pedido cancelado") {
+        Venda venda = criarVendaComItem();
+        g.atualizarStatusVenda(venda, StatusVenda::CANCELADO);
+        CHECK_THROWS_AS(g.atualizarStatusPagamento(venda, StatusPagamento::PAGO), std::logic_error);
+        CHECK(venda.getStatusPagamento() == StatusPagamento::AGUARDANDO_PAGAMENTO);
+    }
+    SUBCASE("pedido sem itens") {
+        Venda vazia = criarVenda();
+        CHECK_THROWS_AS(g.atualizarStatusPagamento(vazia, StatusPagamento::PAGO), std::logic_error);
+    }
+}
+
+TEST_CASE("Gerente - cadastrarCupom cria o cupom com codigo, percentual e validade") {
     Gerente g = criarGerente();
 
     SUBCASE("caminho feliz") {
-        Desconto cupom = g.cadastrarCupom("PRIMAVERA10", 10.0, "01/01/2026");
+        Desconto cupom = g.cadastrarCupom("PRIMAVERA10", 10.0, "2099-12-31");
 
         CHECK(cupom.getCupom() == "PRIMAVERA10");
+        CHECK(cupom.getPercentual() == doctest::Approx(10.0));
+        CHECK(cupom.getDataValidade() == "2099-12-31");
         CHECK(cupom.aplicar(200.0) == doctest::Approx(180.0));
     }
     SUBCASE("limite inferior: 0% nao altera o valor") {
-        Desconto cupom = g.cadastrarCupom("SEM_DESCONTO", 0.0, "01/01/2026");
+        Desconto cupom = g.cadastrarCupom("SEM_DESCONTO", 0.0, "2099-12-31");
         CHECK(cupom.aplicar(100.0) == doctest::Approx(100.0));
     }
     SUBCASE("limite superior: 100% zera o valor") {
-        Desconto cupom = g.cadastrarCupom("GRATIS", 100.0, "01/01/2026");
+        Desconto cupom = g.cadastrarCupom("GRATIS", 100.0, "2099-12-31");
         CHECK(cupom.aplicar(100.0) == doctest::Approx(0.0));
     }
+    SUBCASE("cupom vencido nao concede desconto") {
+        Desconto cupom = g.cadastrarCupom("VELHO", 10.0, "2000-01-01");
+        CHECK_FALSE(cupom.ehValido());
+        CHECK(cupom.aplicar(100.0) == doctest::Approx(100.0));
+    }
 }
 
-TEST_CASE("Gerente - cadastrarCupom com percentual invalido nao concede desconto") {
+TEST_CASE("Gerente - cadastrarCupom com percentual invalido lanca invalid_argument") {
     Gerente g = criarGerente();
 
-    Desconto negativo = g.cadastrarCupom("NEGATIVO", -10.0, "01/01/2026");
-    Desconto absurdo = g.cadastrarCupom("ABSURDO", 150.0, "01/01/2026");
-
-    CHECK(negativo.getCupom() == "NEGATIVO");
-    CHECK(negativo.aplicar(100.0) == doctest::Approx(100.0));
-    CHECK(absurdo.getCupom() == "ABSURDO");
-    CHECK(absurdo.aplicar(100.0) == doctest::Approx(100.0));
+    CHECK_THROWS_AS(g.cadastrarCupom("NEGATIVO", -10.0, "2099-12-31"), std::invalid_argument);
+    CHECK_THROWS_AS(g.cadastrarCupom("ABSURDO", 150.0, "2099-12-31"), std::invalid_argument);
 }
 
-TEST_CASE("Gerente - aplicarCupomVenda reduz o valor total da venda") {
+TEST_CASE("Gerente - aplicarCupomVenda reduz o valor dos produtos (o frete nao tem desconto)") {
     Gerente g = criarGerente();
-    Venda venda = criarVenda();
-    venda.adicionarItem(ItemPedido(criarProduto(), 2));  // 2 x 50.00 = 100.00
-    venda.calcularValorTotal();
+    Venda venda = criarVendaComItem();               // produtos: 2 x 50.00 = 100.00
+    double frete = venda.getValorTotal() - 100.0;    // total = produtos + frete
 
     SUBCASE("cupom de 10%") {
-        g.aplicarCupomVenda(venda, Desconto("PRIMAVERA10", 10.0));
-        CHECK(venda.getValorTotal() == doctest::Approx(90.0));
+        g.aplicarCupomVenda(venda, Desconto("PRIMAVERA10", 10.0, "2099-12-31"));
+        CHECK(venda.getValorTotal() == doctest::Approx(90.0 + frete));
+        CHECK(venda.getDescontoAplicado().getCupom() == "PRIMAVERA10");
     }
     SUBCASE("cupom de 0% mantem o valor") {
-        g.aplicarCupomVenda(venda, Desconto("SEM_DESCONTO", 0.0));
-        CHECK(venda.getValorTotal() == doctest::Approx(100.0));
+        g.aplicarCupomVenda(venda, Desconto("SEM_DESCONTO", 0.0, "2099-12-31"));
+        CHECK(venda.getValorTotal() == doctest::Approx(100.0 + frete));
+    }
+    SUBCASE("cupom vencido mantem o valor") {
+        g.aplicarCupomVenda(venda, Desconto("VELHO", 10.0, "2000-01-01"));
+        CHECK(venda.getValorTotal() == doctest::Approx(100.0 + frete));
     }
 }

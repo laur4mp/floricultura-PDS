@@ -217,8 +217,9 @@ Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco,
     venda.setHorarioEntregaPrevisao("Entre 08:00 e 18:00");
 
     //desconto só se o cupom for valido
-    if (cupom != nullptr && cupom->ehValido())
-        venda.aplicarCupom(*cupom);
+    if(cupom != nullptr && cupom->ehValido()){
+      venda.aplicarCupom(*cupom);
+    }
 
     //guarda a venda no vector de _vendas
     _vendas.push_back(venda);
