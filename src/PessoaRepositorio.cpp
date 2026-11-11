@@ -52,24 +52,26 @@ std::vector<Pessoa> PessoaRepositorio::carregar() const {
 
         while (std::getline(ss, campo, '|')) c.push_back(campo);
         if (linha.back() == '|') c.push_back(""); //o getline descarta o último campo vazio
-        idsPessoas.push_back(std::stoi(c[1]));
+       
         if (c[0] == "E" && c.size() == 10) {
+             idsPessoas.push_back(std::stoi(c[1]));
             enderecos.push_back(Endereco(c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]));
 
         } else if (c[0] == "P" && c.size() == 7) {
             Pessoa p(std::stoi(c[1]), c[2], c[3], c[4], c[5], c[6]);
+        }
+            else{
+                throw std::runtime_error("PessoaRepositorio: linha corrompida: " + linha);
+            }
+        }
             for (size_t i = 0; i < enderecos.size(); i++) {
-                for (auto& p : pessoas) {
-                    if (p.getIdPessoa() == idsPessoas[i]) {
-                        p.adicionarEndereco(enderecos[i]);
+                for (Pessoa& pessoa : pessoas) {
+                    if (pessoa.getIdPessoa() == idsPessoas[i]) {
+                        pessoa.adicionarEndereco(enderecos[i]);
                         break; 
                     }
                 }          
             }
-        } 
-        else {
-            throw std::runtime_error("PessoaRepositorio: linha corrompida: " + linha);
-        }
-    }
+       
     return pessoas;
 }

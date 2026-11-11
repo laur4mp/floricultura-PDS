@@ -73,7 +73,8 @@ void Venda::atualizarSvenda(StatusVenda novoStatus) {
     }
     if (novoStatus == StatusVenda::ENTREGUE) {
     _statusPagamento = StatusPagamento::PAGO;   // pagamento na entrega
-}
+    }
+    _statusVenda = novoStatus; 
 }
 
 void Venda::atualizarSpagamento(StatusPagamento novoStatus) {
