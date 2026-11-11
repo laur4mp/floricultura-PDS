@@ -1,18 +1,24 @@
 #include "Sistema.hpp"
-#include <stdexcept>
+#include <stdexcept> 
+#include <algorithm>
+#include <ctime>
 
 Sistema::Sistema() {}
 
 Sistema::~Sistema() {
-    for(std::size_t i = 0; i < _usuarios.size(); i++){
+
+    for (std::size_t i = 0; i < _usuarios.size(); i++){
         delete _usuarios[i];
     }
+
 }
 
 Pessoa* Sistema::autenticar(const std::string& email, const std::string& senha) const {
     for (std::size_t i = 0; i < _usuarios.size(); i++){
         if(email == _usuarios[i]->getEmail() && senha == _usuarios[i]->getSenha()){
+
             return _usuarios[i];
+
         }
     }
     return nullptr;
@@ -30,8 +36,12 @@ void Sistema::adicionarUsuario(Pessoa* usuario){
         }
     }
     _usuarios.push_back(usuario);
-}
+} 
 
+
+const std::vector<Pessoa*>& Sistema::getUsuarios() const {
+    return _usuarios;
+}
 
 Produto* Sistema::buscarProduto(int idProduto){
     for(std::size_t i = 0; i < _produtos.size(); i++){
@@ -39,6 +49,7 @@ Produto* Sistema::buscarProduto(int idProduto){
             return &_produtos[i];
         }
     }
+
     return nullptr;
 }
 
@@ -49,12 +60,15 @@ void Sistema::adicionarProduto(const Produto& produto){
     _produtos.push_back(produto);
 }
 
-const Desconto* Sistema::buscarCupom(const std::string& codigo) const{
+const Desconto* Sistema::buscarCupom(const std::string& codigo) const {
     for(std::size_t i = 0; i < _cupons.size(); i++){
         if(codigo == _cupons[i].getCupom()){
+
             return &_cupons[i];
         }
+        
     }
+
     return nullptr;
 }
 
@@ -73,11 +87,11 @@ const std::vector<Produto>& Sistema::getProdutos() const {
     return _produtos;
 } 
 
-const std::vector<Desconto>& Sistema::getCupons() const{
+const std::vector<Desconto>& Sistema::getCupons() const {
     return _cupons;
 } 
 
-std::vector<Venda>& Sistema::getVendas() {
+const std::vector<Venda>& Sistema::getVendas() const {
     return _vendas;
 }
 
@@ -86,16 +100,27 @@ const std::vector<Venda>& Sistema::getVendas() const {
 }
 
 Venda* Sistema::buscarVenda(int idVenda) {
-    for (Venda& v : _vendas)
-        if (v.getIdVenda() == idVenda) return &v;
+
+    for (std::size_t i = 0; i < _vendas.size(); i++){
+
+        if (idVenda == _vendas[i].getIdVenda()){
+            return &_vendas[i];
+        }
+
+    }
+        
     return nullptr;
+
 }
 
-void Sistema::adicionarVenda(const Venda& v) {
-    _vendas.push_back(v);
+void Sistema::adicionarVenda(const Venda& venda) {
+    if(buscarVenda(venda.getIdVenda()) != nullptr){
+        throw std::invalid_argument("Ja existe uma Venda com esse id.");
+    }
+    _vendas.push_back(venda);
 }
 
-int Sistema::proximoIdVenda() const{
+int Sistema::proximoIdVenda() const {
     int maior = 0;
     for (const Venda& v : _vendas)
         if(v.getIdVenda() > maior){
@@ -104,30 +129,111 @@ int Sistema::proximoIdVenda() const{
     return maior + 1;
 }
 
-Venda Sistema::finalizarPedido(Comprador& c, const Endereco& end,
-                               MetodoPagamento metodo, const Desconto* cupom) {
-    
-    for (const ItemPedido& it : c.consultarCarrinho()) {
-        Produto* p = buscarProduto(it.getProduto().getIdProduto());
-        if (!p || p->getQuantidadeEstoque() < it.getQuantidade())
-            throw std::runtime_error("Estoque insuficiente: " + it.getProduto().getNome());
-    }
-    Venda v = c.fazerPedido(proximoIdVenda(), end, metodo);
-   
-    for (const ItemPedido& it : c.consultarCarrinho())
-        buscarProduto(it.getProduto().getIdProduto())->removerEstoque(it.getQuantidade());
-    if (cupom && cupom->ehValido()) v.aplicarCupom(*cupom);
-    _vendas.push_back(v);
-    c.limparCarrinho();
-    return v;
-}
+
 
 void Sistema::devolverEstoque(const Venda& venda) {
     if (venda.getStatusVenda() != StatusVenda::CANCELADO)
-        throw std::logic_error("So eh posivel devolver o estoque de pedidos cancelados");
+        throw std::logic_error("So eh possivel devolver o estoque de pedidos cancelados");
     
-    for(const ItemPedido& it : venda.getItens()){
-        Produto* p = buscarProduto(it.getProduto().getIdProduto());
-        if(p) p->adicionarEstoque(it.getQuantidade());
+    for (const ItemPedido& it : venda.getItens()){
+        Produto* produto = buscarProduto(it.getProduto().getIdProduto());
+        if(produto != nullptr){
+            produto->adicionarEstoque(it.getQuantidade()); 
+        }
     }
+}
+
+int Sistema::proximoIdUsusario() const {
+
+    int maior = 0;
+    for (const Pessoa* p : _usuarios){
+        maior = std::max(maior, p->getIdPessoa());
+    }
+
+    return maior + 1;
+
+}
+
+int Sistema::proximoIdProduto() const {
+
+    int maior = 0;
+    for (const Produto& p : _produtos){
+        maior = std::max(maior, p.getIdProduto());
+    }
+
+    return maior + 1;
+
+}
+
+int Sistema::proximoIdVenda() const {
+
+    int maior = 0;
+
+    for (const Venda& p : _vendas){
+        maior = std::max(maior, p.getIdVenda());
+    }
+
+    return maior + 1;
+
+}
+
+
+static std::string dataDaquiA(int dias) {
+
+    std::time_t t = std::time(nullptr) + static_cast<std::time_t>(dias) * 24 * 60 * 60;
+    char buffer[11];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d", std::localtime(&t));
+
+    return std::string(buffer);
+
+}
+
+Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco, 
+                               const Desconto& cupom, MetodoPagamento metodo){
+
+    const std::vector<ItemPedido>& carrinho = comprador.consultarCarrinho();
+
+    //aqui ta conferindo tudo antes de alterar alguma coisa
+    if(carrinho.empty()){
+        throw std::invalid_argument("O carrinho esta vazio.");
+    }
+
+    if(endereco.getNomeDest().empty()){
+        throw std::invalid_argument("Informe o endereco de entrega.");
+    }
+
+    //conferindo item por item
+    for(const ItemPedido& item : carrinho){
+
+        Produto* produto = buscarProduto(item.getProduto().getIdProduto());
+
+        if(produto == nullptr){
+            throw std::runtime_error("Produto nao encontrado: " + item.getProduto().getNome());
+        }
+
+        if(item.getQuantidade() > produto->getQuantidadeEstoque()){
+            throw std::runtime_error("Estoque insuficiente para " + produto->getNome());
+        }
+
+    }
+
+    //dar baixa nos produtos
+    for(const ItemPedido& item : carrinho){
+        buscarProduto(item.getProduto().getIdProduto())->removerEstoque(item.getQuantidade());
+    }
+
+
+    //monta a venda, reaproveitando a funcao do Comprador
+    Venda venda = comprador.fazerPedido(proximoIdVenda(), endereco, metodo);
+    if(cupom.ehValido()){
+        venda.setDataEntrega(dataDaquiA(2));
+        venda.setHorarioEntregaPrevisao("Entre 08:00 e 18:00");
+
+    }
+
+    //guarda a venda no vector de _vendas
+    _vendas.push_back(venda);
+    return venda;
+
+
 }

@@ -12,7 +12,8 @@
 #include "Desconto.hpp"
 #include "Venda.hpp"
 #include "Endereco.hpp"
-#include "Comprador.hpp"
+#include "Comprador.hpp" 
+
 
 
 /**
@@ -28,6 +29,7 @@ private:
     std::vector<Pessoa*> _usuarios; 
     std::vector<Produto> _produtos;
     std::vector<Desconto> _cupons;
+    std::vector<Venda> _vendas;
 
 public:
     Sistema();
@@ -45,6 +47,13 @@ public:
 
     /** @brief Confere e-mail e senha. @return o usuario, ou nullptr se nao conferir. */
     Pessoa* autenticar(const std::string& email, const std::string& senha) const;
+
+    /** 
+     * @brief Retorna a lista de usuários cadastrados no sistema.
+     * @return Referência constante ao vetor de ponteiros para Pessoa.
+     */
+    const std::vector<Pessoa*>& getUsuarios() const;
+
 
     // --- produtos ---
 
@@ -66,11 +75,78 @@ public:
 
     const std::vector<Desconto>& getCupons() const;
 
+    // --- vendas ---
+
+    /**
+     * @brief Adiciona uma nova venda ao histórico do sistema.
+     * @param venda Objeto Venda a ser inserido.
+     * @throw std::invalid_argument se já existir uma venda cadastrada com o mesmo ID.
+     */
+    void adicionarVenda(const Venda& venda);
+
+    /**
+     * @brief Busca uma venda cadastrada pelo seu ID.
+     * @param idVenda Identificador único da venda.
+     * @return Ponteiro para a Venda correspondente, ou nullptr se não for encontrada.
+     */
+    Venda* buscarVenda(int idVenda);
+
+    /**
+     * @brief Retorna o histórico de todas as vendas registradas no sistema.
+     * @return Referência constante ao vetor de Vendas.
+     */
+    const std::vector<Venda>& getVendas() const;
+
+
+    // --- geracao de ids ---
+
+    /**
+     * @brief Calcula o próximo ID disponível para um novo usuário.
+     * @return O maior ID de usuário atual acrescido de 1 (ou 1 se não houver usuários).
+     */
+    int proximoIdUsusario() const;
+
+    /**
+     * @brief Calcula o próximo ID disponível para um novo produto.
+     * @return O maior ID de produto atual acrescido de 1 (ou 1 se não houver produtos).
+     */
+    int proximoIdProduto() const;
+
+    /**
+     * @brief Calcula o próximo ID disponível para uma nova venda.
+     * @return O maior ID de venda atual acrescido de 1 (ou 1 se não houver vendas).
+     */ 
+    int proximoIdVenda() const;
+
+
+    // --- funcoes que envolvem varias classes ---
+    
+    /**
+     * @brief Processa e finaliza uma compra realizada por um comprador.
+     * @details Valida o carrinho e o endereço de entrega, garante a disponibilidade de estoque de cada item,
+     *          dá baixa no estoque dos produtos, calcula previsões de entrega (se houver cupom válido) e registra a venda.
+     * @param comprador Instância do Comprador que está realizando o pedido.
+     * @param endereco Endereço selecionado para a entrega.
+     * @param cupom Cupom de desconto aplicado (se for válido).
+     * @param metodo Método de pagamento escolhido (PIX, Cartão, Boleto, etc.).
+     * @return A Venda gerada e registrada no sistema.
+     * @throw std::invalid_argument se o carrinho estiver vazio ou o destinatário do endereço não estiver informado.
+     * @throw std::runtime_error se algum produto do carrinho não for encontrado ou se houver estoque insuficiente.
+     */
     Venda finalizarPedido(
-    Comprador& c,
-    const Endereco& end,
-    MetodoPagamento metodo,
-    const Desconto* cupom
-    );
+        Comprador & comprador, 
+        const Endereco& endereco,
+        const Desconto& cupom, 
+        MetodoPagamento metodo);
+
+    /**
+     * @brief Devolve ao estoque do sistema os itens de uma venda cancelada.
+     * @param venda Objeto Venda que foi cancelado.
+     * @throw std::logic_error se o status da venda for diferente de StatusVenda::CANCELADO.
+     */
+    void devolverEstoque(const Venda& venda);
+
+    
+
 };
 #endif
