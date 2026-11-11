@@ -1,5 +1,6 @@
 #ifndef CARDHISTORICO_H
 #define CARDHISTORICO_H
+#include "Venda.hpp"
 
 #include <QWidget>
 
@@ -12,11 +13,16 @@ class CardHistorico : public QWidget
     Q_OBJECT
 
 public:
-    explicit CardHistorico(QWidget *parent = nullptr);
+    explicit CardHistorico(const Venda& v, QWidget *parent = nullptr);
     ~CardHistorico();
+
+signals:
+    void avaliado(int idVenda, int nota);
+    void cancelarCompra(int idVenda);
 
 private:
     Ui::CardHistorico *ui;
+    int avaliacao = 0;
 };
 
 #endif // CARDHISTORICO_H

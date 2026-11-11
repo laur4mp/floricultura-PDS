@@ -1,9 +1,21 @@
-#include "cardproduto.h"
-#include "ui_cardproduto.h"
+#include "cardProduto.h"
+#include "ui_cardProduto.h"
+#include "Estilos.hpp"
+
+#include <QLocale>
+#include <QPixmap>
 
 CardProduto::CardProduto(const Produto& p, QWidget* parent) : QWidget(parent), ui(new Ui::CardProduto)
 {
     ui->setupUi(this);
+
+    aplicarFonteTitulo(ui->precoProduto);
+    aplicarFonteDescricao(ui->descricaoProduto);
+    aplicarFonteDestaque(ui->nomeProduto);
+    aplicarEstiloBotaoTransparente(ui->btnFavoritar);
+    aplicarEstiloBotaoVerde(ui->btnAdicionar);
+
+    aplicarEstiloCard(this);
 
     ui->nomeProduto->setText(QString::fromStdString(p.getNome()));
     ui->descricaoProduto->setText(QString::fromStdString(p.getDescricao()));

@@ -43,8 +43,12 @@ bool Desconto::ehValido() const{
 Desconto::Desconto() : cupom(""), percentual(0.0), dataValidade("") {}
 
 Desconto::Desconto(const string& cupom, double percentual, const string& dataValidade) : cupom(cupom), percentual(percentual), dataValidade(dataValidade){
-     if(percentual < 0.0 || percentual > 100.0){
+    if(percentual < 0.0 || percentual > 100.0){
         throw invalid_argument("Percentual de desconto invalido!");
+    }
+
+    if(!validarData(dataValidade)){
+        throw invalid_argument("Data de validade invalida! Use o formato AAAA-MM-DD.");
     }
 }
 

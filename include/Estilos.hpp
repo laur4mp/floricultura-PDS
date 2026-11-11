@@ -1,5 +1,6 @@
 #ifndef ESTILOS_HPP
 #define ESTILOS_HPP
+#include "Venda.hpp"
 
 #include <QLabel>
 #include <QPushButton>
@@ -15,12 +16,13 @@ void aplicarFonteBotaoConta(QPushButton *btn);
 void aplicarEstiloBotaoRosa(QPushButton *btn);
 void aplicarEstiloBotaoTransparente(QPushButton *btn);
 void aplicarEstiloBotaoVerde(QPushButton *btn);
-void aplicarEstiloCard(QFrame *card);
+void aplicarEstiloCard(QWidget *card);
 void aplicarEstiloInput(QLineEdit *input);
-void aplicarEstiloCardCarrinho(QFrame *card);
+void aplicarEstiloCardCarrinho(QWidget *card);
 void aplicarEstiloCardResumo(QWidget *card);
 void aplicarEstiloBotaoQuantidade(QPushButton *btn);
 void aplicarEstiloQuantidade(QLabel *label);
 void aplicarEstiloSeletor(QPushButton *diminuir, QLabel *quantidade, QPushButton *aumentar);
+void aplicarEstiloStatusProduto(QLabel *label, StatusVenda status);
 
 #endif

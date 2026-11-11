@@ -33,13 +33,13 @@ set(PROJECT_SOURCES
         src/interface.cpp
         src/main.cpp
         src/interface.ui
-        src/cardproduto.cpp
-        src/cardproduto.ui
+        src/cardProduto.cpp
+        src/cardProduto.ui
         src/Estilos.cpp
-        src/cardcarrinho.cpp
-        src/cardcarrinho.ui
-        src/cardhistorico.cpp
-        src/cardhistorico.ui
+        src/cardCarrinho.cpp
+        src/cardCarrinho.ui
+        src/cardHistorico.cpp
+        src/cardHistorico.ui
 
         include/Comprador.hpp
         include/Desconto.hpp
@@ -55,10 +55,10 @@ set(PROJECT_SOURCES
         include/Venda.hpp
         include/VendaRepositorio.hpp
         include/interface.h
-        include/cardproduto.h
+        include/cardProduto.h
         include/Estilos.hpp
-        src/cardcarrinho.h
-        src/cardhistorico.h
+        include/cardCarrinho.h
+        include/cardHistorico.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/Resources/resources.qrc
 )

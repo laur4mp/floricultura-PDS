@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>280</width>
-    <height>420</height>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,9 +48,6 @@
      </property>
      <property name="text">
       <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="resources.qrc">:/images/girassol.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -113,18 +110,12 @@
         <property name="styleSheet">
          <string notr="true">color: #24352C</string>
         </property>
-        <property name="text">
-         <string>Vaso de Girassóis</string>
-        </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="descricaoProduto">
         <property name="styleSheet">
          <string notr="true">color: #24352C</string>
-        </property>
-        <property name="text">
-         <string>Descrição</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -141,9 +132,6 @@
         </property>
         <property name="styleSheet">
          <string notr="true">color: #24352C</string>
-        </property>
-        <property name="text">
-         <string>R$189,90</string>
         </property>
        </widget>
       </item>
@@ -211,6 +199,9 @@ QPushButton:hover {
            <property name="text">
             <string>♡</string>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
@@ -221,8 +212,6 @@ QPushButton:hover {
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

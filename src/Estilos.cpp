@@ -136,7 +136,7 @@ void aplicarEstiloBotaoVerde(QPushButton *btn){
     )");
 }
 
-void aplicarEstiloCard(QFrame *card) {
+void aplicarEstiloCard(QWidget *card){
     card->setStyleSheet(R"(
         #cardWidget {
             background-color: #FFE7F0;
@@ -172,21 +172,21 @@ void aplicarEstiloInput(QLineEdit *input){
     )");
 }
 
-void aplicarEstiloCardCarrinho(QFrame *card) {
+void aplicarEstiloCardCarrinho(QWidget *card){
     card->setStyleSheet(R"(
-        QFrame#cardCarrinho {
+        QWidget#cardCarrinho {
             background-color: #FFFFFF;
             border: 1px solid #D8C9CE;
             border-radius: 8px;
         }
 
-        QFrame#cardCarrinho:hover {
+        QWidget#cardCarrinho:hover {
             border: 1px solid #9B5252;
         }
     )");
 }
 
-void aplicarEstiloCardResumo(QWidget *card) {
+void aplicarEstiloCardResumo(QWidget *card){
     card->setStyleSheet(R"(
         QWidget#resumoCompra {
             background-color: #FFFFFF;
@@ -196,7 +196,7 @@ void aplicarEstiloCardResumo(QWidget *card) {
     )");
 }
 
-void aplicarEstiloBotaoQuantidade(QPushButton *btn) {
+void aplicarEstiloBotaoQuantidade(QPushButton *btn){
     QFont fonte("Montserrat");
     fonte.setPointSize(14);
     fonte.setWeight(QFont::Medium);
@@ -219,7 +219,7 @@ void aplicarEstiloBotaoQuantidade(QPushButton *btn) {
     )");
 }
 
-void aplicarEstiloQuantidade(QLabel *label) {
+void aplicarEstiloQuantidade(QLabel *label){
     QFont fonte("Montserrat");
     fonte.setPointSize(11);
     fonte.setWeight(QFont::DemiBold);
@@ -237,8 +237,24 @@ void aplicarEstiloQuantidade(QLabel *label) {
     )");
 }
 
-void aplicarEstiloSeletor(QPushButton *diminuir, QLabel *quantidade, QPushButton *aumentar) {
+void aplicarEstiloSeletor(QPushButton *diminuir, QLabel *quantidade, QPushButton *aumentar){
     aplicarEstiloBotaoQuantidade(diminuir);
     aplicarEstiloQuantidade(quantidade);
     aplicarEstiloBotaoQuantidade(aumentar);
+}
+
+void aplicarEstiloStatusProduto(QLabel *label, StatusVenda status){
+    QString fundo, texto;
+    switch (status) {
+    case StatusVenda::PROCESSAMENTO: fundo = "#FFF4D6"; texto = "#8A6100"; break;
+    case StatusVenda::ENVIADO:       fundo = "#E3EEF9"; texto = "#2B5C8A"; break;
+    case StatusVenda::ENTREGUE:      fundo = "#E2EFE6"; texto = "#24352C"; break;
+    case StatusVenda::CANCELADO:     fundo = "#F6E1E1"; texto = "#9B5252"; break;
+    }
+    QFont fonte("Montserrat");
+    fonte.setPointSize(10);
+    fonte.setWeight(QFont::DemiBold);
+    label->setFont(fonte);
+    label->setStyleSheet(QString("QLabel { background-color: %1; color: %2; border-radius: 10px; padding: 4px 12px; }").arg(fundo, texto));
+    label->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
 }

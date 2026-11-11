@@ -147,21 +147,21 @@ Interface::Interface(QWidget *parent)
 
     aplicarEstiloBotaoVerde(ui->btnFinalizar);
 
-    for (QLabel *label : {ui->tituloCard, ui->tituloProdutos, ui->tituloSobreNos, ui->tituloLogin, ui->tituloCadastro,
-                          ui->tituloCarrinho, ui->precoProduto, ui->valorTotal, ui->tituloEntrega, ui->tituloPagamento,
-                          ui->valorTotalFinal, ui->tituloFinal, ui->tituloHistorico}) {
+    for (QLabel *label : {ui->tituloCardInicial, ui->tituloProdutos, ui->tituloSobreNos, ui->tituloLogin, ui->tituloCadastro,
+                          ui->tituloCarrinho, ui->tituloFinal, ui->tituloHistorico, ui->valorTotal, ui->valorTotalFinal,
+                          ui->tituloPagamento, ui->tituloEntrega}) {
         aplicarFonteTitulo(label);
     }
 
     for (QLabel *label : {ui->descricaoProdutos, ui->descricaoSobreNos, ui->descricaoLogin, ui->descricaoCriarConta,
                           ui->descricaoCadastro, ui->descricaoVoltarLogin, ui->labelSubtotal, ui->valorSubtotal, ui->descricaoEntrega,
                           ui->descricaoInicial, ui->descricaoPagamento, ui->labelSubtotalFinal, ui->valorSubtotalFinal,
-                          ui->labelTotalFinal, ui->labelFrete, ui->valorFrete, ui->descricaoFinal}) {
+                          ui->labelTotalFinal, ui->labelFrete, ui->valorFrete, ui->descricaoFinal, ui->descricaoCardInicial}) {
         aplicarFonteDescricao(label);
     }
 
     for (QLabel *label : {ui->destaqueEmail, ui->destaqueSenha, ui->destaqueNome, ui->destaqueCPF, ui->destaqueAdicionarEmail,
-                          ui->destaqueTelefone, ui->destaqueCriarSenha, ui->destaqueCarrinho, ui->nomeProduto, ui->labelTotal,
+                          ui->destaqueTelefone, ui->destaqueCriarSenha, ui->destaqueCarrinho, ui->labelTotal,
                           ui->labelResumo, ui->destaqueRua, ui->destaqueNumero, ui->destaqueNomeDest, ui->destaqueEstado,
                           ui->destaqueComplemento, ui->destaqueCidade, ui->destaqueCEP, ui->destaqueBairro, ui->labelResumoFinal,
                           ui->destaqueHistorico}) {
@@ -180,9 +180,6 @@ Interface::Interface(QWidget *parent)
                              ui->inputCupom, ui->inputBusca}) {
         aplicarEstiloInput(input);
     }
-
-    aplicarEstiloCardCarrinho(ui->cardCarrinho);
-    aplicarEstiloSeletor(ui->btnDiminuir, ui->labelQuantidade, ui->btnAumentar);
 
     aplicarEstiloCardResumo(ui->resumoCompra);
 
