@@ -66,7 +66,7 @@ const Desconto* Sistema::buscarCupom(const std::string& codigo) const {
 
             return &_cupons[i];
         }
-        
+
     }
 
     return nullptr;
@@ -95,9 +95,6 @@ const std::vector<Venda>& Sistema::getVendas() const {
     return _vendas;
 }
 
-const std::vector<Venda>& Sistema::getVendas() const {
-    return _vendas;
-}
 
 Venda* Sistema::buscarVenda(int idVenda) {
 
@@ -120,14 +117,7 @@ void Sistema::adicionarVenda(const Venda& venda) {
     _vendas.push_back(venda);
 }
 
-int Sistema::proximoIdVenda() const {
-    int maior = 0;
-    for (const Venda& v : _vendas)
-        if(v.getIdVenda() > maior){
-            maior = v.getIdVenda();
-        }
-    return maior + 1;
-}
+
 
 
 
