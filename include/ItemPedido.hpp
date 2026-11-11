@@ -8,6 +8,7 @@
 
 #include "Produto.hpp"
 #include "Endereco.hpp"
+#include <string>
 
 /**
  * @class ItemPedido
@@ -31,8 +32,7 @@ class ItemPedido {
          * @param quantidade Quantidade de unidades do produto. 
          */
 
-        ItemPedido(const Produto& produto, int quantidade)
-            : _produtoPedido(produto), _quantidadePedida(quantidade) {}
+        ItemPedido(const Produto& produto, int quantidade);
 
         /** 
          * @brief Destrutor da classe ItemPedido. 
@@ -70,4 +70,4 @@ class ItemPedido {
 
 };
 
-#endif
+#endif 

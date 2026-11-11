@@ -1,6 +1,7 @@
 #include "interface.h"
 #include "./ui_interface.h"
 #include "Estilos.hpp"
+#include <QMessageBox>
 
 #include <QIcon>
 #include <QFontDatabase>
@@ -59,17 +60,68 @@ void Interface::carregarProdutos(){
     }
 }
 
+void Interface::carregarDados() {
+
+    for(const Produto& p : produtoRepositorio.carregar()){
+        sistema.adicionarProduto(p);
+    }
+
+    std::vector<PessoaRepositorio::Favorito> favs;
+    for (const Pessoa& p : pessoaRepositorio.carregar(favs)) {
+        Comprador* c = new Comprador(p.getIdPessoa(), p.getNome(), p.getCpf(),
+                                     p.getEmail(), p.getTelefone(), p.getSenha());
+        for (const Endereco& e : p.getEnderecos()) c->adicionarEndereco(e);
+        sistema.adicionarUsuario(c);
+    }
+
+    for (const auto& f : favs) {
+        Comprador* c = dynamic_cast<Comprador*>(sistema.buscarUsuario(f.first));
+        Produto* prod = sistema.buscarProduto(f.second);
+        if (c && prod) c->favoritarProduto(*prod);
+    }
+
+    for (const Venda& v : vendaRepositorio.carregar())
+        sistema.adicionarVenda(v);
+    for (const Desconto& d : descontoRepositorio.carregar())
+        sistema.adicionarCupom(d);
+
+    sistema.adicionarUsuario(new Gerente(0, "Administrador", "00000000000",
+                                         "admin@tell.com", "00000000000", "admin"));
+
+}
+
+void Interface::salvarTudo() {
+    produtoRepositorio.gravar(sistema.getProdutos());
+
+    std::vector<Pessoa> pessoas;
+    std::vector<PessoaRepositorio::Favorito> favs;
+    for (Pessoa* p : sistema.getUsuarios()) {
+        if (auto* c = dynamic_cast<Comprador*>(p)) {
+            pessoas.push_back(*c);
+            for (const Produto& prod : c->getProdutosFavoritos())
+                favs.push_back({ c->getIdPessoa(), prod.getIdProduto() });
+        }
+    }
+    pessoaRepositorio.gravar(pessoas, favs);
+
+    vendaRepositorio.gravar(sistema.getVendas());
+    descontoRepositorio.gravar(sistema.getCupons());
+}
+
 Interface::Interface(QWidget *parent)
     : QMainWindow(parent),
     produtoRepositorio("data/produtos.txt"),
+    pessoaRepositorio("data/pessoas.txt"),
+    vendaRepositorio("data/vendas.txt"),
+    descontoRepositorio("data/cupons.txt"),
     ui(new Ui::Interface)
 {
     ui->setupUi(this);
 
-    std::vector<Produto> produtos = produtoRepositorio.carregar();
-
-    for (const Produto& produto : produtos){
-        sistema.adicionarProduto(produto);
+    try{
+        carregarDados();
+    }catch (const std::exception& e){
+        QMessageBox::warning(this, "Erro ao carregar dados", e.what());
     }
 
     configurarTabelaProdutos();

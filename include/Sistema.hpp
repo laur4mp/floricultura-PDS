@@ -12,7 +12,7 @@
 #include "Desconto.hpp"
 #include "Venda.hpp"
 #include "Endereco.hpp"
-#include "Comprador.hpp" 
+#include "Comprador.hpp"
 
 
 
@@ -54,6 +54,11 @@ public:
      */
     const std::vector<Pessoa*>& getUsuarios() const;
 
+    /**
+     * @brief acha um usuario pelo id.
+     * @return o usuario com esse id ou nullptr
+     */
+    Pessoa* buscarUsuario(int idPessoa) const;
 
     // --- produtos ---
 
@@ -75,7 +80,7 @@ public:
 
     const std::vector<Desconto>& getCupons() const;
 
-    // --- vendas ---
+    //vendas
 
     /**
      * @brief Adiciona uma nova venda ao histórico do sistema.
@@ -96,6 +101,7 @@ public:
      * @return Referência constante ao vetor de Vendas.
      */
     const std::vector<Venda>& getVendas() const;
+
 
 
     // --- geracao de ids ---
@@ -119,25 +125,27 @@ public:
     int proximoIdVenda() const;
 
 
-    // --- funcoes que envolvem varias classes ---
+   // --- funcoes que envolvem varias classes ---
     
     /**
      * @brief Processa e finaliza uma compra realizada por um comprador.
      * @details Valida o carrinho e o endereço de entrega, garante a disponibilidade de estoque de cada item,
-     *          dá baixa no estoque dos produtos, calcula previsões de entrega (se houver cupom válido) e registra a venda.
+     *          dá baixa no estoque dos produtos, calcula previsões de entrega, aplica o cupom, se
+     *          válido e registra a venda.
      * @param comprador Instância do Comprador que está realizando o pedido.
      * @param endereco Endereço selecionado para a entrega.
      * @param cupom Cupom de desconto aplicado (se for válido).
-     * @param metodo Método de pagamento escolhido (PIX, Cartão, Boleto, etc.).
+     * @param metodo Método de pagamento escolhido (PIX, Cartão, etc.).
      * @return A Venda gerada e registrada no sistema.
      * @throw std::invalid_argument se o carrinho estiver vazio ou o destinatário do endereço não estiver informado.
      * @throw std::runtime_error se algum produto do carrinho não for encontrado ou se houver estoque insuficiente.
-     */
+     */ 
     Venda finalizarPedido(
-        Comprador & comprador, 
+         Comprador & comprador, 
         const Endereco& endereco,
-        const Desconto& cupom, 
-        MetodoPagamento metodo);
+        const Desconto* cupom, 
+        MetodoPagamento metodo
+    );
 
     /**
      * @brief Devolve ao estoque do sistema os itens de uma venda cancelada.
@@ -145,8 +153,8 @@ public:
      * @throw std::logic_error se o status da venda for diferente de StatusVenda::CANCELADO.
      */
     void devolverEstoque(const Venda& venda);
-
     
+
 
 };
 #endif

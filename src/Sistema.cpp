@@ -66,7 +66,7 @@ const Desconto* Sistema::buscarCupom(const std::string& codigo) const {
 
             return &_cupons[i];
         }
-
+        
     }
 
     return nullptr;
@@ -116,9 +116,6 @@ void Sistema::adicionarVenda(const Venda& venda) {
     }
     _vendas.push_back(venda);
 }
-
-
-
 
 
 void Sistema::devolverEstoque(const Venda& venda) {
@@ -179,7 +176,7 @@ static std::string dataDaquiA(int dias) {
 }
 
 Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco, 
-                               const Desconto& cupom, MetodoPagamento metodo){
+                               const Desconto* cupom, MetodoPagamento metodo){
 
     const std::vector<ItemPedido>& carrinho = comprador.consultarCarrinho();
 
@@ -215,15 +212,25 @@ Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco,
 
     //monta a venda, reaproveitando a funcao do Comprador
     Venda venda = comprador.fazerPedido(proximoIdVenda(), endereco, metodo);
-    if(cupom.ehValido()){
-        venda.setDataEntrega(dataDaquiA(2));
-        venda.setHorarioEntregaPrevisao("Entre 08:00 e 18:00");
 
-    }
+    venda.setDataEntrega(dataDaquiA(2));
+    venda.setHorarioEntregaPrevisao("Entre 08:00 e 18:00");
+
+    //desconto só se o cupom for valido
+    if (cupom != nullptr && cupom->ehValido())
+        venda.aplicarCupom(*cupom);
 
     //guarda a venda no vector de _vendas
     _vendas.push_back(venda);
     return venda;
 
 
+}
+
+Pessoa* Sistema::buscarUsuario(int idPessoa) const {
+    for (Pessoa* p: _usuarios)
+        if(p->getIdPessoa() == idPessoa){
+            return p;
+        }
+    return nullptr;
 }

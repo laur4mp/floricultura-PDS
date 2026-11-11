@@ -3,9 +3,15 @@
 
 #include <QMainWindow>
 #include <QWidget>
+#include <vector>
 
 #include "Sistema.hpp"
 #include "ProdutoRepositorio.hpp"
+#include "PessoaRepositorio.hpp"
+#include "VendaRepositorio.hpp"
+#include "DescontoRepositorio.hpp"
+#include "Comprador.hpp"
+#include "Gerente.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,11 +31,16 @@ private:
     Ui::Interface *ui;
     Sistema sistema;
     ProdutoRepositorio produtoRepositorio;
+    PessoaRepositorio pessoaRepositorio;       
+    VendaRepositorio vendaRepositorio;         
+    DescontoRepositorio descontoRepositorio;
 
     void carregarProdutos();
     void configurarTabelaProdutos();
     void configurarTabelaPedidos();
     void configurarTabelaCupons();
+    void carregarDados();
+    void salvarTudo();
 
     QWidget* criarCardProduto(const Produto& p);
 };

@@ -60,11 +60,6 @@ void Comprador::desfavoritarProduto(const Produto& produto) {
     }
 }
 
-const std::vector<Produto>& Comprador::consultarProdutosFavoritos() const {
-    return _produtosFavoritos;
-}
-
-
 Venda Comprador::fazerPedido(
     int idVenda,
     const Endereco& enderecoEntrega,
@@ -77,7 +72,6 @@ Venda Comprador::fazerPedido(
         Venda v(
         idVenda,
         getIdPessoa(),
-        0,
         enderecoEntrega,
         enderecoEntrega.getNomeDest()
         );
@@ -156,4 +150,27 @@ void Comprador::avaliarPedido(Venda& venda, int nota){
     if(venda.getIdPessoa() != getIdPessoa())
         throw std::invalid_argument("Este pedido nao pertence a voce.");
     venda.avaliar(nota);
+}
+
+const std::vector<Produto>& Comprador::getProdutosFavoritos() const {
+    return _produtosFavoritos;
+}
+
+bool Comprador::ehFavorito(int idProduto) const{
+
+    for(const Produto& p : _produtosFavoritos){
+
+        if(p.getIdProduto() == idProduto){
+            return true;
+        }
+    }
+    return false;
+}
+
+double Comprador::subtotalCarrinho() const {
+    double subtotal = 0.0;
+    for (const ItemPedido& item : _carrinho) {
+        subtotal += item.calcularPrecoTotal();
+    }
+    return subtotal;
 }

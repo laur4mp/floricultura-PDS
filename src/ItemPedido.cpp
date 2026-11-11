@@ -5,6 +5,13 @@
 
 using namespace std;
 
+ItemPedido::ItemPedido(const Produto& produto, int quantidade)
+    : _produtoPedido(produto), _quantidadePedida(quantidade){
+        if (quantidade <= 0){
+            throw std::invalid_argument("Quantidade deve ser positiva.");
+        }
+    }
+
 ItemPedido::~ItemPedido() {}
 
 const Produto& ItemPedido::getProduto() const {
