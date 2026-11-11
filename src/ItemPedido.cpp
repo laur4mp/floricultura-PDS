@@ -1,4 +1,7 @@
 #include "ItemPedido.hpp"
+#include <stdexcept>
+#include <cstdio>
+#include <string>
 
 using namespace std;
 

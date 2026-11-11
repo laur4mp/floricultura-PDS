@@ -50,6 +50,12 @@ class ItemPedido {
         double calcularPrecoTotal() const;
 
         /**
+         * @brief Soma e retira itens pelo carrinho
+         * @param q nova quantidade de itens
+         */
+        void ItemPedido::setQuantidade(int q);
+
+        /**
          * @brief Informa os dados do item do pedido.
         */
         void informarDados() const;
