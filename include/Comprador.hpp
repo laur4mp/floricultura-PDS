@@ -95,7 +95,8 @@ class Comprador : public Pessoa{
          */
         Venda fazerPedido(
             int idVenda,
-            const Endereco& enderecoEntrega
+            const Endereco& enderecoEntrega,
+            MetodoPagamento metodo
         );
 
         /** 
@@ -153,6 +154,9 @@ class Comprador : public Pessoa{
         void alterarQuantidadeCarrinho(int idProduto, int novaQuantidade);
 
         double subtotalCarrinho() const;
+
+        void avaliarPedido(Venda& venda, int nota);
         
+        const std::vector<Produto>& getFavoritos() const;
 };
 #endif 

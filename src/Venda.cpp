@@ -44,13 +44,13 @@ bool Venda::removerItem(int idItem) {
 }
 
 void Venda::calcularValorTotal() {
-    double totalBruto = 0.0;
-    for (const auto& item : _itens) {
-        totalBruto += item.calcularPrecoTotal();
-    }
+    
+    double subtotal = 0.0;
+    for (const auto& item : _itens) subtotal += item.calcularPrecoTotal();
 
-    double total = _descontoAplicado.aplicar(totalBruto);
-    _valorTotal = (total < 0.0) ? 0.0 : total;
+    double frete = _itens.empty() ? 0.0 : _itens.front().calcularFrete(_enderecoEntrega);
+
+    _valorTotal = _descontoAplicado.aplicar(subtotal) + frete;
 }
 
 void Venda::aplicarCupom(const Desconto& desconto) {

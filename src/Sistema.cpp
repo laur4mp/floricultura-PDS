@@ -76,3 +76,58 @@ const std::vector<Produto>& Sistema::getProdutos() const {
 const std::vector<Desconto>& Sistema::getCupons() const{
     return _cupons;
 } 
+
+std::vector<Venda>& Sistema::getVendas() {
+    return _vendas;
+}
+
+const std::vector<Venda>& Sistema::getVendas() const {
+    return _vendas;
+}
+
+Venda* Sistema::buscarVenda(int idVenda) {
+    for (Venda& v : _vendas)
+        if (v.getIdVenda() == idVenda) return &v;
+    return nullptr;
+}
+
+void Sistema::adicionarVenda(const Venda& v) {
+    _vendas.push_back(v);
+}
+
+int Sistema::proximoIdVenda() const{
+    int maior = 0;
+    for (const Venda& v : _vendas)
+        if(v.getIdVenda() > maior){
+            maior = v.getIdVenda();
+        }
+    return maior + 1;
+}
+
+Venda Sistema::finalizarPedido(Comprador& c, const Endereco& end,
+                               MetodoPagamento metodo, const Desconto* cupom) {
+    
+    for (const ItemPedido& it : c.consultarCarrinho()) {
+        Produto* p = buscarProduto(it.getProduto().getIdProduto());
+        if (!p || p->getQuantidadeEstoque() < it.getQuantidade())
+            throw std::runtime_error("Estoque insuficiente: " + it.getProduto().getNome());
+    }
+    Venda v = c.fazerPedido(proximoIdVenda(), end, metodo);
+   
+    for (const ItemPedido& it : c.consultarCarrinho())
+        buscarProduto(it.getProduto().getIdProduto())->removerEstoque(it.getQuantidade());
+    if (cupom && cupom->ehValido()) v.aplicarCupom(*cupom);
+    _vendas.push_back(v);
+    c.limparCarrinho();
+    return v;
+}
+
+void Sistema::devolverEstoque(const Venda& venda) {
+    if (venda.getStatusVenda() != StatusVenda::CANCELADO)
+        throw std::logic_error("So eh posivel devolver o estoque de pedidos cancelados");
+    
+    for(const ItemPedido& it : venda.getItens()){
+        Produto* p = buscarProduto(it.getProduto().getIdProduto());
+        if(p) p->adicionarEstoque(it.getQuantidade());
+    }
+}

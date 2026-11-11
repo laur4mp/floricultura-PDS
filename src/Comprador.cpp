@@ -67,13 +67,14 @@ const std::vector<Produto>& Comprador::consultarProdutosFavoritos() const {
 
 Venda Comprador::fazerPedido(
     int idVenda,
-    const Endereco& enderecoEntrega) {
+    const Endereco& enderecoEntrega,
+    MetodoPagamento metodo) {
 
          if (_carrinho.empty()) {
             throw std::invalid_argument("Nao e possivel fazer um pedido com o carrinho vazio.");
         }
 
-        Venda venda(
+        Venda v(
         idVenda,
         getIdPessoa(),
         enderecoEntrega,
@@ -81,12 +82,13 @@ Venda Comprador::fazerPedido(
         );
 
         for (const ItemPedido& item : _carrinho) {
-            venda.adicionarItem(item);
+            v.adicionarItem(item);
         }
 
+        v.setMetodoPagamento(metodo);
         limparCarrinho();
 
-        return venda;
+        return v;
     }
 
 StatusVenda Comprador::acompanharPedido(const Venda& venda) const {
@@ -147,4 +149,10 @@ void Comprador::alterarQuantidadeCarrinho(int idProduto, int novaQuantidade){
             return;
         }
     }
+}
+
+void Comprador::avaliarPedido(Venda& venda, int nota){
+    if(venda.getIdPessoa() != getIdPessoa())
+        throw std::invalid_argument("Este pedido nao pertence a voce.");
+    venda.avaliar(nota);
 }

@@ -13,7 +13,8 @@ std::string PessoaRepositorio::limpar(std::string s) const {
     return s;
 }
 
-void PessoaRepositorio::gravar(const std::vector<Pessoa>& pessoas) const {
+void PessoaRepositorio::gravar (const std::vector<Pessoa>& pessoas,
+                                const std::vector<Favorito>& favoritos) const {
     std::ofstream out(_caminho, std::ios::trunc); //logica de apagar arquivo e escrever de novo
     if (!out.is_open()) {
         throw std::runtime_error("Não foi possível gravar o arquivo " + _caminho);
@@ -33,9 +34,13 @@ void PessoaRepositorio::gravar(const std::vector<Pessoa>& pessoas) const {
             << limpar(p.getCpf()) << '|' << limpar(p.getEmail()) << '|'
             << limpar(p.getTelefone()) << '|' << limpar(p.getSenha()) << '\n';
     }
+
+    for(const Favorito& f : favoritos)
+        out << "F|" << f.first << "|" << f.second << '\n';
+
 }
 
-std::vector<Pessoa> PessoaRepositorio::carregar() const {
+std::vector<Pessoa> PessoaRepositorio::carregar(std::vector<Favorito>& favoritos) const {
     std::vector<Pessoa> pessoas;
     std::vector<Endereco> enderecos; // endereços já lidos, esperando a linha da sua pessoa
     std::vector<int> idsPessoas;  //para associar o endereço à pessoa correta, armazenamos os ids das pessoas já lidas
@@ -58,12 +63,15 @@ std::vector<Pessoa> PessoaRepositorio::carregar() const {
             enderecos.push_back(Endereco(c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]));
 
         } else if (c[0] == "P" && c.size() == 7) {
-            Pessoa p(std::stoi(c[1]), c[2], c[3], c[4], c[5], c[6]);
-        }
-            else{
+            pessoas.push_back(Pessoa(std::stoi(c[1]), c[2], c[3], c[4], c[5], c[6]));
+        } else if(c[0] == "F" && c.size() == 3) {
+            favoritos.push_back({ std::stoi(c[1]), std::stoi(c[2]) });
+
+        }else{
                 throw std::runtime_error("PessoaRepositorio: linha corrompida: " + linha);
             }
         }
+
             for (size_t i = 0; i < enderecos.size(); i++) {
                 for (Pessoa& pessoa : pessoas) {
                     if (pessoa.getIdPessoa() == idsPessoas[i]) {

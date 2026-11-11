@@ -39,12 +39,14 @@ void VendaRepositorio::gravar(const std::vector<Venda>& vendas) const {
             << limpar(e.getCep()) << '|' << limpar(e.getRua()) << '|' << limpar(e.getNumero()) << '|'
             << limpar(e.getBairro()) << '|' << limpar(e.getComplemento()) << '|'
             << limpar(e.getCidade()) << '|' << limpar(e.getEstado()) << '|'
-            << limpar(d.getCupom()) << '|' << std::to_string(d.getPercentual()) << '\n';
+            << limpar(d.getCupom()) << '|' << std::to_string(d.getPercentual()) << '|'
+            << v.getAvaliacao() << '\n';
     }
 } 
 //como fica no arquivo o formato dos enums
 //processameto 0, enviado 1, entregue 2, cancelado 3
 //aguardando pagamento 0, pago 1
+//avaliacao: 0 eh sem avaliacao, 1 a 5 (ltimo campo da linha V)
 
 std::vector<Venda> VendaRepositorio::carregar() const {
     std::vector<Venda> vendas;
@@ -66,7 +68,7 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             Produto p(std::stoi(c[1]), c[2], c[3], c[4], std::stod(c[5]), c[6], std::stoi(c[7]), std::stoi(c[8]));
             itens.push_back(ItemPedido(p, std::stoi(c[9])));
 
-        } else if (c[0] == "V" && c.size() == 18) {
+        } else if (c[0] == "V" && (c.size() == 18 || c.size() == 19)) {
             Endereco endereco; // fica vazio se a venda não tinha endereço
             if (!c[8].empty()) endereco = Endereco(c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]);
 
@@ -87,6 +89,11 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             if (sv == StatusVenda::ENVIADO || sv == StatusVenda::ENTREGUE) v.atualizarSvenda(StatusVenda::ENVIADO);
             if (sv == StatusVenda::ENTREGUE) v.atualizarSvenda(StatusVenda::ENTREGUE);
             if (sv == StatusVenda::CANCELADO) v.atualizarSvenda(StatusVenda::CANCELADO);
+
+            //avaliacao, (precisa ser ENTREGuE)
+            int nota = (c.size() == 19) ? std::stoi(c[18]) : 0;
+            if(nota>0)
+                v.avaliar(nota);
 
             vendas.push_back(v);
 
