@@ -29,8 +29,8 @@ double ItemPedido::calcularPrecoTotal() const {
 void ItemPedido::setQuantidade(int q){
     if(q <= 0){
         throw std::invalid_argument("Quantidade deve ser positiva.");
-        _quantidadePedida = q;
     }
+    _quantidadePedida = q;
 }
 
 std::string ItemPedido::informarDados() const {
