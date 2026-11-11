@@ -26,7 +26,7 @@
 class Gerente : public Pessoa {
 public:
     /**
-     * @brief Construtor padrão.
+     * @brief Cria o gerente padrão do sistema (login fixo: admin@tell.com - admin)
      */
     Gerente();
 
@@ -50,10 +50,20 @@ public:
     // produtos e estoques
 
     /**
-     * @brief Cadastra um produto no sistema.
-     * @param produto Produto a ser cadastrado.
+     * @brief Instancia e cadastra um novo produto com os dados fornecidos.
+     * @param IdProduto Identificador único do produto.
+     * @param nome Nome do produto.
+     * @param descricao Descrição detalhada.
+     * @param categoria Categoria do produto.
+     * @param preco Preço unitário.
+     * @param imagem Caminho para a imagem do produto.
+     * @param estoqueInicial Quantidade inicial em estoque.
+     * @param estoqueMinimo Quantidade mínima para controle de alerta de estoque.
+     * @return Objeto Produto instanciado com os dados passados.
      */
-    void cadastrarProduto(Produto& produto);
+    Produto cadastrarProduto(int IdProduto, const std::string& nome, const std::string& descricao,
+                             const std::string& categoria, double preco, const std::string& imagem,
+                             int estoqueInicial, int estoqueMinino);
 
     /**
      * @brief Edita os dados de um produto existente.
@@ -88,6 +98,18 @@ public:
      * @param quantidadeMinima Quantidade mínima desejada em estoque.
      */
     void definirEstoqueMinimoProduto(Produto& produto, int quantidadeMinima);
+
+
+    /**
+     * @brief Ajusta o estoque de um produto para um novo valor absoluto.
+     * @details Calcula a diferença entre a nova quantidade e o estoque atual,
+     *          chamando adicionarEstoqueProduto ou removerEstoqueProduto conforme necessário.
+     * @param produto Produto que terá o estoque ajustado.
+     * @param novaQuantidade Nova quantidade total desejada para o estoque.
+     * @throw std::invalid_argument se novaQuantidade for menor que zero.
+     */
+    void ajustarEstoqueProduto(Produto& produto, int novaQuantidade);
+
 
     // vendas
 
