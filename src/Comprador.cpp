@@ -77,6 +77,7 @@ Venda Comprador::fazerPedido(
         Venda v(
         idVenda,
         getIdPessoa(),
+        0,
         enderecoEntrega,
         enderecoEntrega.getNomeDest()
         );

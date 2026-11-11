@@ -28,6 +28,7 @@ private:
     std::vector<Pessoa*> _usuarios; 
     std::vector<Produto> _produtos;
     std::vector<Desconto> _cupons;
+    std::vector<Venda> _vendas;
 
 public:
     Sistema();
@@ -65,6 +66,13 @@ public:
     const Desconto* buscarCupom(const std::string& codigo) const;
 
     const std::vector<Desconto>& getCupons() const;
+
+    std::vector<Venda>& getVendas();
+    const std::vector<Venda>& getVendas() const;
+    Venda* buscarVenda(int idVenda);
+    void adicionarVenda(const Venda& v);
+    int proximoIdVenda() const;
+    void devolverEstoque(const Venda& venda);
 
     Venda finalizarPedido(
     Comprador& c,

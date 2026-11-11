@@ -125,10 +125,7 @@ class Pessoa {
          */
         void setSenha(const std::string& senha);
 
-        /**
-         * @brief Retorna o nome da pessoa.
-         * @return Nome completo.
-         */
+      
 
         //endereços
 

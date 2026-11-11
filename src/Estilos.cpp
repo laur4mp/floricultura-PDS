@@ -1,4 +1,4 @@
-#include "estilos.hpp"
+#include "Estilos.hpp"
 
 void aplicarFonteTitulo(QLabel *label){
     QFont fonte("Montserrat");
