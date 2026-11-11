@@ -53,7 +53,7 @@ class ItemPedido {
          * @brief Soma e retira itens pelo carrinho
          * @param q nova quantidade de itens
          */
-        void ItemPedido::setQuantidade(int q);
+        void setQuantidade(int q);
 
         /**
          * @brief Informa os dados do item do pedido.

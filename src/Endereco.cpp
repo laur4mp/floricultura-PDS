@@ -51,10 +51,6 @@ string Endereco::regiao() const{
     }
 }
 
-string Endereco::getNomeDest() const{
-    return nomeDest;
-}
-
 const string& Endereco::getNomeDest() const {
     return nomeDest;
 }

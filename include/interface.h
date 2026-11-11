@@ -2,6 +2,8 @@
 #define INTERFACE_H
 
 #include <QMainWindow>
+#include <QWidget>
+
 #include "Sistema.hpp"
 #include "ProdutoRepositorio.hpp"
 
@@ -28,6 +30,8 @@ private:
     void configurarTabelaProdutos();
     void configurarTabelaPedidos();
     void configurarTabelaCupons();
+
+    QWidget* criarCardProduto(const Produto& p);
 };
 
 #endif // INTERFACE_H

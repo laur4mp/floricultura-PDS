@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -305,16 +305,53 @@ border-radius: 8px;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="inputSenha">
-                 <property name="styleSheet">
-                  <string notr="true"/>
+                <widget class="QWidget" name="linhaSenha" native="true">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Digite sua senha</string>
-                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_29">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLineEdit" name="inputSenha">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="echoMode">
+                     <enum>QLineEdit::EchoMode::Password</enum>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Digite sua senha</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnVerSenha">
+                    <property name="text">
+                     <string>👁</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
                <item>
@@ -438,8 +475,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>405</width>
-                 <height>922</height>
+                 <width>1118</width>
+                 <height>1265</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -642,16 +679,53 @@ border-radius: 8px;</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLineEdit" name="inputCriarSenha">
-                     <property name="styleSheet">
-                      <string notr="true"/>
+                    <widget class="QWidget" name="linhaVerCriarSenha" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
                      </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="placeholderText">
-                      <string>Crie uma senha</string>
-                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_28">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLineEdit" name="inputCriarSenha">
+                        <property name="styleSheet">
+                         <string notr="true"/>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="echoMode">
+                         <enum>QLineEdit::EchoMode::Password</enum>
+                        </property>
+                        <property name="placeholderText">
+                         <string>Crie uma senha</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btnVerCriarSenha">
+                        <property name="text">
+                         <string>👁</string>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                    <item>
@@ -708,6 +782,9 @@ border-radius: 8px;</string>
                         </property>
                         <property name="text">
                          <string>Entrar</string>
+                        </property>
+                        <property name="checkable">
+                         <bool>false</bool>
                         </property>
                        </widget>
                       </item>
@@ -767,10 +844,19 @@ border-radius: 8px;</string>
           <property name="styleSheet">
            <string notr="true">background-color: #FFFFFF;</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_46">
+          <layout class="QVBoxLayout" name="verticalLayout_46" stretch="80,20">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>100</number>
+           </property>
+           <property name="rightMargin">
+            <number>100</number>
+           </property>
            <item>
             <widget class="QWidget" name="botoesPrincipais" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_28">
+             <layout class="QHBoxLayout" name="horizontalLayout_26">
               <item>
                <widget class="QLabel" name="logoLabel">
                 <property name="maximumSize">
@@ -835,11 +921,18 @@ background-color: transparent;</string>
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="btnMinhasCompras">
+                <property name="text">
+                 <string>Minhas Compras</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="linhaBuscar" native="true">
+            <widget class="QWidget" name="linhaBusca" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -854,42 +947,15 @@ background-color: transparent;</string>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QTextBrowser" name="barraDeBusca">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
+               <widget class="QLineEdit" name="inputBusca">
                 <property name="styleSheet">
                  <string notr="true">color: #9B5252</string>
                 </property>
-                <property name="verticalScrollBarPolicy">
-                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                </property>
-                <property name="horizontalScrollBarPolicy">
-                 <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                </property>
-                <property name="tabChangesFocus">
-                 <bool>true</bool>
-                </property>
-                <property name="lineWrapMode">
-                 <enum>QTextEdit::LineWrapMode::WidgetWidth</enum>
-                </property>
-                <property name="cursorWidth">
-                 <number>1</number>
-                </property>
-                <property name="textInteractionFlags">
-                 <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-                </property>
                 <property name="placeholderText">
-                 <string>Buscar na Loja</string>
+                 <string>Pesquisar na Loja</string>
+                </property>
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -915,7 +981,7 @@ background-color: transparent;</string>
            </sizepolicy>
           </property>
           <property name="frameShape">
-           <enum>QFrame::Shape::HLine</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="lineWidth">
            <number>3</number>
@@ -984,8 +1050,8 @@ QScrollBar::sub-page:vertical {
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-540</y>
-                 <width>1424</width>
+                 <y>-840</y>
+                 <width>1430</width>
                  <height>2280</height>
                 </rect>
                </property>
@@ -1235,7 +1301,7 @@ QScrollBar::sub-page:vertical {
                      </property>
                     </widget>
                    </item>
-                   <item alignment="Qt::AlignmentFlag::AlignVCenter">
+                   <item>
                     <widget class="QWidget" name="gridProdutos" native="true">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1243,725 +1309,7 @@ QScrollBar::sub-page:vertical {
                        <verstretch>0</verstretch>
                       </sizepolicy>
                      </property>
-                     <layout class="QGridLayout" name="gridLayout">
-                      <item row="0" column="0">
-                       <widget class="QWidget" name="cardProduto1" native="true">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>300</width>
-                          <height>400</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>300</width>
-                          <height>900</height>
-                         </size>
-                        </property>
-                        <property name="layoutDirection">
-                         <enum>Qt::LayoutDirection::LeftToRight</enum>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">#cardProduto1 {
-    background-color: transparent;
-    border: 1px solid #D8C9CE;
-    border-radius: 8px;
-}</string>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_7">
-                         <property name="spacing">
-                          <number>5</number>
-                         </property>
-                         <property name="sizeConstraint">
-                          <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
-                         </property>
-                         <property name="leftMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>5</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="foto1">
-                           <property name="minimumSize">
-                            <size>
-                             <width>200</width>
-                             <height>250</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>300</width>
-                             <height>300</height>
-                            </size>
-                           </property>
-                           <property name="layoutDirection">
-                            <enum>Qt::LayoutDirection::LeftToRight</enum>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">border-radius: 12px;</string>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="../Resources/resources.qrc">:/images/girassol.jpg</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
-                           </property>
-                           <property name="margin">
-                            <number>0</number>
-                           </property>
-                           <property name="indent">
-                            <number>-1</number>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QWidget" name="widget" native="true">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>296</width>
-                             <height>144</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">background-color: transparent</string>
-                           </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_50">
-                            <property name="spacing">
-                             <number>7</number>
-                            </property>
-                            <property name="leftMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="topMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="bottomMargin">
-                             <number>11</number>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="destaqueProduto1">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Vaso de Girassóis</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="descricaoProduto1">
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Descrição</string>
-                              </property>
-                              <property name="wordWrap">
-                               <bool>true</bool>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="precoProduto1">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>R$189,90</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                             <widget class="QWidget" name="linhaAdicionar1" native="true">
-                              <layout class="QHBoxLayout" name="horizontalLayout_32">
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QPushButton" name="btnAdicionar1">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>180</width>
-                                   <height>40</height>
-                                  </size>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QPushButton {
-    background-color: #24352C;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px;
-}
-
-QPushButton:hover {
-    background-color: #3B5948;
-}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string>Adicionar ao carrinho</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QPushButton" name="btnFavoritar1_4">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>60</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="text">
-                                  <string>♡</string>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QWidget" name="cardProduto2" native="true">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>300</width>
-                          <height>400</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>300</width>
-                          <height>900</height>
-                         </size>
-                        </property>
-                        <property name="layoutDirection">
-                         <enum>Qt::LayoutDirection::LeftToRight</enum>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">#cardProduto1 {
-    background-color: transparent;
-    border: 1px solid #D8C9CE;
-    border-radius: 8px;
-}</string>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_51">
-                         <property name="spacing">
-                          <number>5</number>
-                         </property>
-                         <property name="sizeConstraint">
-                          <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
-                         </property>
-                         <property name="leftMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>5</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="foto2">
-                           <property name="minimumSize">
-                            <size>
-                             <width>200</width>
-                             <height>250</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>300</width>
-                             <height>300</height>
-                            </size>
-                           </property>
-                           <property name="layoutDirection">
-                            <enum>Qt::LayoutDirection::LeftToRight</enum>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">border-radius: 12px;</string>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="../Resources/resources.qrc">:/images/rosasBrancas.jpg</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
-                           </property>
-                           <property name="margin">
-                            <number>0</number>
-                           </property>
-                           <property name="indent">
-                            <number>-1</number>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QWidget" name="widget_5" native="true">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>296</width>
-                             <height>144</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">background-color: transparent</string>
-                           </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_52">
-                            <property name="spacing">
-                             <number>7</number>
-                            </property>
-                            <property name="leftMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="topMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="bottomMargin">
-                             <number>11</number>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="destaqueProduto2">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Buquê de Rosas Brancas</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="descricaoProduto2">
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Descrição</string>
-                              </property>
-                              <property name="wordWrap">
-                               <bool>true</bool>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="precoProduto2">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>R$169,90</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                             <widget class="QWidget" name="linhaAdicionar2" native="true">
-                              <layout class="QHBoxLayout" name="horizontalLayout_33">
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QPushButton" name="btnAdicionar2">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>180</width>
-                                   <height>40</height>
-                                  </size>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QPushButton {
-    background-color: #24352C;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px;
-}
-
-QPushButton:hover {
-    background-color: #3B5948;
-}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string>Adicionar ao carrinho</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QPushButton" name="btnFavoritar2">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>60</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="text">
-                                  <string>♡</string>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item row="0" column="2">
-                       <widget class="QWidget" name="cardProduto3" native="true">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>300</width>
-                          <height>400</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>300</width>
-                          <height>900</height>
-                         </size>
-                        </property>
-                        <property name="layoutDirection">
-                         <enum>Qt::LayoutDirection::LeftToRight</enum>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">#cardProduto1 {
-    background-color: transparent;
-    border: 1px solid #D8C9CE;
-    border-radius: 8px;
-}</string>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_53">
-                         <property name="spacing">
-                          <number>5</number>
-                         </property>
-                         <property name="sizeConstraint">
-                          <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
-                         </property>
-                         <property name="leftMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>5</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="foto3">
-                           <property name="minimumSize">
-                            <size>
-                             <width>200</width>
-                             <height>250</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>300</width>
-                             <height>300</height>
-                            </size>
-                           </property>
-                           <property name="layoutDirection">
-                            <enum>Qt::LayoutDirection::LeftToRight</enum>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">border-radius: 12px;</string>
-                           </property>
-                           <property name="text">
-                            <string/>
-                           </property>
-                           <property name="pixmap">
-                            <pixmap resource="../Resources/resources.qrc">:/images/jiboia-prata.jpg</pixmap>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
-                           </property>
-                           <property name="margin">
-                            <number>0</number>
-                           </property>
-                           <property name="indent">
-                            <number>-1</number>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QWidget" name="widget_6" native="true">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>296</width>
-                             <height>144</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">background-color: transparent</string>
-                           </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_54">
-                            <property name="spacing">
-                             <number>7</number>
-                            </property>
-                            <property name="leftMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="topMargin">
-                             <number>15</number>
-                            </property>
-                            <property name="bottomMargin">
-                             <number>11</number>
-                            </property>
-                            <item>
-                             <widget class="QLabel" name="destaqueProduto3">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Jiboia-prata em Cachepot</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="descricaoProduto3">
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>Descrição</string>
-                              </property>
-                              <property name="wordWrap">
-                               <bool>true</bool>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLabel" name="precoProduto3">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="styleSheet">
-                               <string notr="true">color: #24352C</string>
-                              </property>
-                              <property name="text">
-                               <string>R$180,00</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                             <widget class="QWidget" name="linhaAdicionar3" native="true">
-                              <layout class="QHBoxLayout" name="horizontalLayout_34">
-                               <property name="leftMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="topMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="rightMargin">
-                                <number>0</number>
-                               </property>
-                               <property name="bottomMargin">
-                                <number>0</number>
-                               </property>
-                               <item>
-                                <widget class="QPushButton" name="btnAdicionar3">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>180</width>
-                                   <height>40</height>
-                                  </size>
-                                 </property>
-                                 <property name="styleSheet">
-                                  <string notr="true">QPushButton {
-    background-color: #24352C;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px;
-}
-
-QPushButton:hover {
-    background-color: #3B5948;
-}</string>
-                                 </property>
-                                 <property name="text">
-                                  <string>Adicionar ao carrinho</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item>
-                                <widget class="QPushButton" name="btnFavoritar3">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>60</width>
-                                   <height>16777215</height>
-                                  </size>
-                                 </property>
-                                 <property name="text">
-                                  <string>♡</string>
-                                 </property>
-                                </widget>
-                               </item>
-                              </layout>
-                             </widget>
-                            </item>
-                           </layout>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
+                     <layout class="QGridLayout" name="gridLayout"/>
                     </widget>
                    </item>
                   </layout>
@@ -1981,7 +1329,7 @@ QPushButton:hover {
                     <height>700</height>
                    </size>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="34,34,32">
+                  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="50,30,20">
                    <property name="spacing">
                     <number>0</number>
                    </property>
@@ -1989,7 +1337,7 @@ QPushButton:hover {
                     <number>100</number>
                    </property>
                    <property name="topMargin">
-                    <number>100</number>
+                    <number>50</number>
                    </property>
                    <property name="rightMargin">
                     <number>100</number>
@@ -2000,10 +1348,16 @@ QPushButton:hover {
                    <item>
                     <widget class="QLabel" name="tituloSobreNos">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>70</height>
+                      </size>
                      </property>
                      <property name="styleSheet">
                       <string notr="true">color: #24352C;</string>
@@ -2145,8 +1499,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1432</width>
-                 <height>1159</height>
+                 <width>1438</width>
+                 <height>1165</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -2170,6 +1524,12 @@ QScrollBar::sub-page:vertical {
                 </property>
                 <item>
                  <widget class="QWidget" name="headerCarrinho" native="true">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>220</height>
+                   </size>
+                  </property>
                   <property name="focusPolicy">
                    <enum>Qt::FocusPolicy::NoFocus</enum>
                   </property>
@@ -2627,6 +1987,215 @@ background-color: transparent</string>
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="paginaHistorico">
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QScrollArea" name="scrollAreaHistorico">
+              <property name="styleSheet">
+               <string notr="true">QScrollArea {
+    border-top: 1px solid #9B5252;
+}
+
+QScrollBar:vertical {
+    background-color: #FFE7F0;
+    width: 10px;
+    border: none;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #C98F9F;
+    min-height: 30px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #9B5252;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    border: none;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Shape::NoFrame</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_4">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>1438</width>
+                 <height>1165</height>
+                </rect>
+               </property>
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_47" stretch="25,75">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QWidget" name="headerHistorico" native="true">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>220</height>
+                   </size>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: #FFFFFF;
+</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_27">
+                   <property name="leftMargin">
+                    <number>100</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>100</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="textosHistorico" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_48">
+                      <item>
+                       <widget class="QLabel" name="tituloHistorico">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #9B5252</string>
+                        </property>
+                        <property name="text">
+                         <string>Minhas Compras</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="destaqueHistorico">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #24352C</string>
+                        </property>
+                        <property name="text">
+                         <string>Acompanhe o histórico dos seus pedidos</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="bodyHistorico" native="true">
+                  <layout class="QHBoxLayout" name="horizontalLayout_32" stretch="70">
+                   <property name="leftMargin">
+                    <number>100</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>60</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>100</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>60</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="listaHistorico" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_49">
+                      <property name="spacing">
+                       <number>10</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
           <widget class="QWidget" name="paginaEntrega">
            <layout class="QVBoxLayout" name="verticalLayout_28">
             <property name="leftMargin">
@@ -3022,7 +2591,7 @@ border-radius: 8px;</string>
             <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
              <widget class="QStackedWidget" name="stackPagamento">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="paginaResumoFinal">
                <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -3372,7 +2941,7 @@ border-radius: 8px;
                   <property name="maximumSize">
                    <size>
                     <width>500</width>
-                    <height>300</height>
+                    <height>320</height>
                    </size>
                   </property>
                   <property name="layoutDirection">
@@ -3513,7 +3082,7 @@ background-color: #ebcdae</string>
            <enum>QTabWidget::TabShape::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="elideMode">
            <enum>Qt::TextElideMode::ElideNone</enum>
@@ -3560,9 +3129,9 @@ background-color: #ebcdae</string>
                 <widget class="QTableWidget" name="tableProdutos">
                  <property name="styleSheet">
                   <string notr="true">#tableProdutos{
-	color: #24352C;
-	border: 1px solid #24352C;
-	background-color: #ffffff
+        color: #24352C;
+        border: 1px solid #24352C;
+        background-color: #ffffff
 }</string>
                  </property>
                  <property name="frameShape">
@@ -3574,8 +3143,14 @@ background-color: #ebcdae</string>
                  <property name="verticalScrollBarPolicy">
                   <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
                  </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                 </property>
                  <property name="selectionMode">
-                  <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+                  <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
                  </property>
                  <property name="showGrid">
                   <bool>false</bool>
@@ -3767,6 +3342,80 @@ border: 1px solid #24352C;
                    </widget>
                   </item>
                   <item>
+                   <widget class="QWidget" name="linhaEstoqueMinimo" native="true">
+                    <layout class="QHBoxLayout" name="horizontalLayout_31">
+                     <item>
+                      <widget class="QWidget" name="botaoEstoqueMinimo" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_30">
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="labelEstoqueMinimo">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>Estoque mínimo:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSpinBox" name="spinBoxEstoqueMinimo">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>true</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">b</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
+                          </property>
+                          <property name="buttonSymbols">
+                           <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
+                          </property>
+                          <property name="maximum">
+                           <number>999</number>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QWidget" name="botaoEstoque" native="true">
                     <layout class="QHBoxLayout" name="horizontalLayout_21">
                      <item>
@@ -3779,7 +3428,7 @@ border: 1px solid #24352C;
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>68</width>
+                         <width>16777215</width>
                          <height>16777215</height>
                         </size>
                        </property>
@@ -3789,7 +3438,7 @@ border: 1px solid #24352C;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox">
+                      <widget class="QSpinBox" name="spinBoxEstoque">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -3809,7 +3458,7 @@ border: 1px solid #24352C;
                         <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                        </property>
                        <property name="maximum">
-                        <number>99999</number>
+                        <number>999</number>
                        </property>
                       </widget>
                      </item>
@@ -3907,9 +3556,9 @@ QPushButton:hover {
                 <widget class="QTableWidget" name="tablePedidos">
                  <property name="styleSheet">
                   <string notr="true">#tablePedidos{
-	color: #24352C;
-	border: 1px solid #24352C;
-	background-color: #ffffff
+        color: #24352C;
+        border: 1px solid #24352C;
+        background-color: #ffffff
 }</string>
                  </property>
                  <property name="frameShape">
@@ -3921,8 +3570,14 @@ QPushButton:hover {
                  <property name="verticalScrollBarPolicy">
                   <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
                  </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                 </property>
                  <property name="selectionMode">
-                  <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+                  <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior">
+                  <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
                  </property>
                  <property name="showGrid">
                   <bool>false</bool>
@@ -4063,17 +3718,22 @@ border: 1px solid;
                     </property>
                     <item>
                      <property name="text">
-                      <string>Recebido</string>
+                      <string>Em Processamento</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>Em Preparo</string>
+                      <string>Enviado</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
                       <string>Entregue</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Cancelado</string>
                      </property>
                     </item>
                    </widget>
@@ -4173,6 +3833,35 @@ border: 1px solid #24352C;
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <widget class="QLabel" name="labelDataValidade">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>90</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Validade:</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QDateEdit" name="dataValidade">
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -4261,9 +3950,9 @@ QPushButton:hover {
                    <widget class="QTableWidget" name="tableCupons">
                     <property name="styleSheet">
                      <string notr="true">#tableCupons{
-	color: #24352C;
-	border: 1px solid #24352C;
-	background-color: #ffffff
+        color: #24352C;
+        border: 1px solid #24352C;
+        background-color: #ffffff
 }</string>
                     </property>
                     <property name="frameShape">
@@ -4275,8 +3964,14 @@ QPushButton:hover {
                     <property name="verticalScrollBarPolicy">
                      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
                     </property>
+                    <property name="editTriggers">
+                     <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                    </property>
                     <property name="selectionMode">
-                     <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+                     <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                    </property>
+                    <property name="selectionBehavior">
+                     <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
                     </property>
                     <property name="showGrid">
                      <bool>false</bool>

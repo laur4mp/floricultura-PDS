@@ -33,6 +33,9 @@ set(PROJECT_SOURCES
         src/interface.cpp
         src/main.cpp
         src/interface.ui
+        src/cardproduto.cpp
+        src/cardproduto.ui
+	src/Estilos.cpp
 
         include/Comprador.hpp
         include/Desconto.hpp
@@ -48,6 +51,8 @@ set(PROJECT_SOURCES
         include/Venda.hpp
         include/VendaRepositorio.hpp
         include/interface.h
+        include/cardproduto.h
+	include/Estilos.hpp
 
         resources/resources.qrc
 )
@@ -56,6 +61,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(TELL_FloresFinal
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        src/cardcarrinho.h src/cardcarrinho.cpp src/cardcarrinho.ui
+        src/cardhistorico.h src/cardhistorico.cpp src/cardhistorico.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET TELL_Flores APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
