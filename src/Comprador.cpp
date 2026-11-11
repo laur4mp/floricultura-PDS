@@ -1,4 +1,5 @@
 #include "Comprador.hpp"
+#include <stdexcept>
 
 using namespace std;
 
@@ -60,8 +61,12 @@ const std::vector<Produto>& Comprador::consultarProdutosFavoritos() const {
 
 Venda Comprador::fazerPedido(
     int idVenda,
-    const std::vector<ItemPedido>& itens,
     const Endereco& enderecoEntrega) {
+
+         if (_carrinho.empty()) {
+            throw std::invalid_argument("Nao e possivel fazer um pedido com o carrinho vazio.");
+        }
+
         Venda venda(
         idVenda,
         getIdPessoa(),
@@ -69,11 +74,13 @@ Venda Comprador::fazerPedido(
         enderecoEntrega.getNomeDest()
         );
 
-        for (const ItemPedido& item : itens) {
+        for (const ItemPedido& item : _carrinho) {
             venda.adicionarItem(item);
         }
 
         _historicoPedidos.push_back(venda);
+
+        limparCarrinho();
 
         return venda;
     }

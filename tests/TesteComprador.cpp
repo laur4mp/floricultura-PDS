@@ -288,3 +288,203 @@ TEST_CASE("Comprador pode favoritar novamente um produto depois de desfavoritar"
     REQUIRE(favoritos.size() == 1);
     CHECK(favoritos[0].getNome() == "Rosa");
 }
+
+//consultarHistorico compras
+
+TEST_CASE("Comprador inicia com historico de compras vazio") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    auto historico = comprador.consultarHistoricoCompras();
+
+    CHECK(historico.empty());
+}
+
+TEST_CASE("Historico registra uma compra realizada") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos fodoes",
+                      "123", "taylor", "Apt 101",
+                      "Belo Horizonte", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+
+    auto historico = comprador.consultarHistoricoCompras();
+
+    REQUIRE(historico.size() == 1);
+    CHECK(historico[0].getIdVenda() == venda.getIdVenda());
+}
+
+TEST_CASE("Historico registra varias compras realizadas") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos fodoes",
+                      "123", "taylor", "Apt 101",
+                      "Belo Horizonte", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+    Venda venda1 = comprador.fazerPedido(1, endereco);
+
+    comprador.adicionarAoCarrinho(item);
+    Venda venda2 = comprador.fazerPedido(2, endereco);
+
+    auto historico = comprador.consultarHistoricoCompras();
+
+    REQUIRE(historico.size() == 2);
+    CHECK(historico[0].getIdVenda() == venda1.getIdVenda());
+    CHECK(historico[1].getIdVenda() == venda2.getIdVenda());
+}
+
+//acompanhar pedido
+
+TEST_CASE("Comprador acompanha pedido enviado") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+   Endereco endereco("Tomas", "30100-000", "rua dos fodoes",
+                      "123", "taylor", "Apt 101",
+                      "Belo Horizonte", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+    venda.atualizarSvenda(StatusVenda::ENVIADO);
+
+    CHECK(comprador.acompanharPedido(venda) == StatusVenda::ENVIADO);
+}
+
+TEST_CASE("Comprador acompanha pedido em processamento") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+   Endereco endereco("Tomas", "30100-000", "rua dos fodoes",
+                      "123", "taylor", "Apt 101",
+                      "Belo Horizonte", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+    venda.atualizarSvenda(StatusVenda::PROCESSAMENTO);
+
+    CHECK(comprador.acompanharPedido(venda) == StatusVenda::PROCESSAMENTO);
+}
+
+TEST_CASE("Comprador acompanha pedido entregue") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+   Endereco endereco("Tomas", "30100-000", "rua dos fodoes",
+                      "123", "taylor", "Apt 101",
+                      "Belo Horizonte", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+    venda.atualizarSvenda(StatusVenda::ENTREGUE);
+
+    CHECK(comprador.acompanharPedido(venda) == StatusVenda::ENTREGUE);
+}
+
+//fazerpedido
+TEST_CASE("Comprador faz pedido com itens validos") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "asdashdajf");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos swifties",
+                      "123", "aaaaaaa", "Apt 666",
+                      "Governador Valadares", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+
+    CHECK(venda.getIdVenda() == 1);
+    CHECK(venda.getItens().size() == 1);
+}
+
+TEST_CASE("Fazer pedido sem itens") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos swifties",
+                      "123", "aaaaaaa", "Apt 666",
+                      "Governador Valadares", "MG");
+
+    CHECK_THROWS(comprador.fazerPedido(1, endereco));
+}
+
+TEST_CASE("Fazer pedido registra venda no historico") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos swifties",
+                      "123", "aaaaaaa", "Apt 666",
+                      "Governador Valadares", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+
+    Venda venda = comprador.fazerPedido(1, endereco);
+
+    REQUIRE(comprador.consultarHistoricoCompras().size() == 1);
+
+    CHECK(comprador.consultarHistoricoCompras()[0].getIdVenda()
+          == venda.getIdVenda());
+}
+
+TEST_CASE("Fazer pedido limpa o carrinho apos a compra") {
+    Comprador comprador(1, "Tomas", "12345678900",
+                        "tomas@email.com", "11999999999", "senha");
+
+    Endereco endereco("Tomas", "30100-000", "rua dos swifties",
+                      "123", "aaaaaaa", "Apt 666",
+                      "Governador Valadares", "MG");
+
+    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
+                 5.0, "rosa.jpg", 100, 10);
+
+    ItemPedido item(rosa, 2);
+
+    comprador.adicionarAoCarrinho(item);
+    comprador.fazerPedido(1, endereco);
+
+    CHECK(comprador.consultarCarrinho().empty());
+}

@@ -96,7 +96,6 @@ class Comprador : public Pessoa{
          */
         Venda fazerPedido(
             int idVenda,
-            const std::vector<ItemPedido>& itens,
             const Endereco& enderecoEntrega
         );
 
