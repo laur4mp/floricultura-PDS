@@ -2,16 +2,18 @@
 #include <stdexcept>
 
 Venda::Venda()
-    : _idVenda(0), _valorTotal(0.0),
+    : _idVenda(0), _valorTotal(0.0), _avaliacao(0),
       _statusVenda(StatusVenda::PROCESSAMENTO),
-      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO) {}
+      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
+      _metodoPagamento(MetodoPagamento::DINHEIRO) {}
 
 Venda::Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega,
              const std::string& nomeDestina)
-    : _idVenda(idVenda), _idPessoa(idPessoa), _nomeDestina(nomeDestina), _valorTotal(0.0),
+    : _idVenda(idVenda), _idPessoa(idPessoa), _nomeDestina(nomeDestina), _valorTotal(0.0), _avaliacao(0),
       _enderecoEntrega(enderecoEntrega),
       _statusVenda(StatusVenda::PROCESSAMENTO),
-      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO) {
+      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
+      _metodoPagamento(MetodoPagamento::DINHEIRO) {
     if (idVenda <= 0)          throw std::invalid_argument("Venda: id deve ser positivo.");
     if (idPessoa <= 0)         throw std::invalid_argument("Venda: id do cliente deve ser positivo.");
     if (nomeDestina.empty())    throw std::invalid_argument("Venda: nome do destinatario nao pode ser vazio.");
@@ -97,6 +99,7 @@ int Venda::getIdVenda() const { return _idVenda; }
 int Venda::getIdPessoa() const { return _idPessoa; }
 double Venda::getValorTotal() const { return _valorTotal; }
 const std::vector<ItemPedido>& Venda::getItens() const { return _itens; }
+int Venda::getAvaliacao() const { return _avaliacao; }
 
 const std::string& Venda::getDataEntrega() const { return _dataEntrega; }
 
@@ -120,3 +123,20 @@ void Venda::setEnderecoEntrega(const Endereco& endereco) {
 const Desconto& Venda::getDescontoAplicado() const { return _descontoAplicado; }
 StatusVenda Venda::getStatusVenda() const { return _statusVenda; }
 StatusPagamento Venda::getStatusPagamento() const { return _statusPagamento; }
+
+void Venda::setMetodoPagamento(MetodoPagamento m){
+    _metodoPagamento = m;
+}
+
+MetodoPagamento Venda::getMetodoPagamento() const {
+    return _metodoPagamento;
+}
+
+void Venda::avaliar(int nota){
+    if(_statusVenda != StatusVenda::ENTREGUE)
+        throw std::logic_error("So eh possivel avaliar pedidos entregues.");
+    if(nota < 1 || nota > 5)
+        throw std::invalid_argument("A nota deve ser de 1 a 5.");
+    _avaliacao = nota;
+}
+

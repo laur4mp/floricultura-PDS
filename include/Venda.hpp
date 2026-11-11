@@ -31,6 +31,8 @@ enum class StatusPagamento {
     PAGO
 };
 
+enum class MetodoPagamento { DINHEIRO, CARTAO, PIX };
+
 /**
  * @class Venda
  * @brief Representa um pedido realizado, contendo itens, dados de entrega e pagamento.
@@ -48,6 +50,7 @@ private:
     Desconto _descontoAplicado;
     std::string _dataEntrega;
     std::string _horarioEntregaPrevisao;
+    MetodoPagamento _metodoPagamento;
 
     /** @brief Recalcula o valor total da venda considerando os itens e descontos. */
     void calcularValorTotal();
@@ -92,11 +95,14 @@ public:
 
     StatusVenda getStatusVenda() const;
     StatusPagamento getStatusPagamento() const;
+    MetodoPagamento getMetodoPagamento() const;
 
     // Setters
     void setDataEntrega(const std::string& dataEntrega);
     void setHorarioEntregaPrevisao(const std::string& horarioPrevisao);
     void setEnderecoEntrega(const Endereco& endereco);
+    void setMetodoPagamento(MetodoPagamento m);
 };
+
 
 #endif

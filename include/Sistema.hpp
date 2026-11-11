@@ -10,6 +10,10 @@
 #include "Pessoa.hpp"
 #include "Produto.hpp"
 #include "Desconto.hpp"
+#include "Venda.hpp"
+#include "Endereco.hpp"
+#include "Comprador.hpp"
+
 
 /**
  * @class Sistema
@@ -61,6 +65,12 @@ public:
     const Desconto* buscarCupom(const std::string& codigo) const;
 
     const std::vector<Desconto>& getCupons() const;
-};
 
+    Venda finalizarPedido(
+    Comprador& c,
+    const Endereco& end,
+    MetodoPagamento metodo,
+    const Desconto* cupom
+    );
+};
 #endif
