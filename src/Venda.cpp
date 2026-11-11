@@ -7,9 +7,10 @@ Venda::Venda()
       _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
       _metodoPagamento(MetodoPagamento::DINHEIRO) {}
 
-Venda::Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega,
+Venda::Venda(int idVenda, int idPessoa, int avaliacao, const Endereco& enderecoEntrega,
              const std::string& nomeDestina)
-    : _idVenda(idVenda), _idPessoa(idPessoa), _nomeDestina(nomeDestina), _valorTotal(0.0), _avaliacao(0),
+
+    : _idVenda(idVenda), _idPessoa(idPessoa), _avaliacao(avaliacao),_nomeDestina(nomeDestina), _valorTotal(0.0),
       _enderecoEntrega(enderecoEntrega),
       _statusVenda(StatusVenda::PROCESSAMENTO),
       _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
@@ -17,6 +18,7 @@ Venda::Venda(int idVenda, int idPessoa, const Endereco& enderecoEntrega,
     if (idVenda <= 0)          throw std::invalid_argument("Venda: id deve ser positivo.");
     if (idPessoa <= 0)         throw std::invalid_argument("Venda: id do cliente deve ser positivo.");
     if (nomeDestina.empty())    throw std::invalid_argument("Venda: nome do destinatario nao pode ser vazio.");
+    if (avaliacao < 0 || avaliacao > 5) throw std::invalid_argument("Venda: avaliacao invalida.");
 }
 
 Venda::~Venda() {}

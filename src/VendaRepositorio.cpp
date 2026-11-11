@@ -72,7 +72,9 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             Endereco endereco; // fica vazio se a venda não tinha endereço
             if (!c[8].empty()) endereco = Endereco(c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]);
 
-            Venda v(std::stoi(c[1]), std::stoi(c[2]), endereco, c[3]);
+            int nota = (c.size() == 19) ? std::stoi(c[18]) : 0;
+
+            Venda v(std::stoi(c[1]), std::stoi(c[2]), nota, endereco, c[3]);
             if (!c[6].empty()) v.setDataEntrega(c[6]);
             if (!c[7].empty()) v.setHorarioEntregaPrevisao(c[7]);
 
@@ -91,9 +93,9 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             if (sv == StatusVenda::CANCELADO) v.atualizarSvenda(StatusVenda::CANCELADO);
 
             //avaliacao, (precisa ser ENTREGuE)
-            int nota = (c.size() == 19) ? std::stoi(c[18]) : 0;
-            if(nota>0)
-                v.avaliar(nota);
+          if(nota > 0 && sv == StatusVenda::ENTREGUE) {
+            
+          }
 
             vendas.push_back(v);
 
