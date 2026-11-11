@@ -6,7 +6,17 @@ Pessoa::Pessoa()
 
 Pessoa::Pessoa(int idPessoa, const std::string& nome, const std::string& cpf, 
                const std::string& email, const std::string& telefone, const std::string& senha)
-    : _idPessoa(idPessoa), _nome(nome), _cpf(cpf), _email(email), _telefone(telefone), _senha(senha) {}
+    : _idPessoa(idPessoa), _nome(nome), _cpf(cpf), _email(email), _telefone(telefone), _senha(senha) {
+
+
+    if (nome.empty()) throw std::invalid_argument("Informe o nome.");
+
+    if (email.empty()) throw std::invalid_argument("Email invalido.");
+
+    if (senha.empty()) throw std::invalid_argument("Informe uma senha.");
+
+
+}
 
 Pessoa::~Pessoa() {}
 
@@ -67,4 +77,19 @@ void Pessoa::removerEndereco(std::size_t indice) {
         throw std::out_of_range("Indice de endereco invalido.");
     }
     _enderecos.erase(_enderecos.begin() + indice);
+}
+
+bool Pessoa::possuiEndereco(const Endereco& endereco) const {
+
+    for (const Endereco& e : _enderecos) {
+
+        if (e.getCep() == endereco.getCep() &&
+            e.getNumero() == endereco.getNumero() &&
+            e.getComplemento() == endereco.getComplemento())
+            return true;
+
+    }
+
+    return false;
+
 }

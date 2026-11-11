@@ -125,10 +125,8 @@ class Pessoa {
          */
         void setSenha(const std::string& senha);
 
-        /**
-         * @brief Retorna o nome da pessoa.
-         * @return Nome completo.
-         */
+
+
 
         //endereços
 
@@ -151,9 +149,18 @@ class Pessoa {
          */
         void removerEndereco(std::size_t indice);
 
+        /**
+         * @brief Verifica se a pessoa já possui um determinado endereço cadastrado.
+         * @details Compara o CEP, número e complemento do endereço fornecido com 
+         *          os endereços contidos no vetor de endereços da pessoa.
+         * @param endereco Objeto Endereco a ser verificado.
+         * @return true se o endereço já existir na lista da pessoa; false caso contrário.
+         */
+        bool possuiEndereco(const Endereco& endereco) const;
 
-
-
+ 
+ 
+ 
 };
 
 #endif
