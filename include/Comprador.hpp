@@ -26,7 +26,6 @@
 class Comprador : public Pessoa{
     private:
         std::vector<Produto> _produtosFavoritos;
-        std::vector<Venda> _historicoPedidos;
         std::vector<ItemPedido> _carrinho;
 
 
@@ -119,7 +118,7 @@ class Comprador : public Pessoa{
          * 
          * @return Referência constante ao vetor de vendas realizadas. 
          */
-        const std::vector<Venda>& consultarHistoricoCompras() const;
+        std::vector<Venda> consultarHistoricoCompras(const std::vector<Venda>& vendas) const;
 
         /**
         * @brief Consulta os produtos favoritos do comprador.
@@ -135,11 +134,25 @@ class Comprador : public Pessoa{
         */
         void aplicarCupomVenda(Venda& venda, const Desconto& cupom);
 
+        /**
+         * @brief adiciona um item ao carrinho de compras do comprador.
+         * @param item item a ser adicionado
+         */
         void adicionarAoCarrinho(const ItemPedido& item);
 
+        /**
+         * @brief Consulta o carrinho de compras do Comprador.
+         */
         const std::vector<ItemPedido>& consultarCarrinho() const;
-        
+
+        /**
+         * @brief esvazia o carrinho.
+         */
         void limparCarrinho();
+
+        void alterarQuantidadeCarrinho(int idProduto, int novaQuantidade);
+
+        double subtotalCarrinho() const;
         
 };
 #endif 

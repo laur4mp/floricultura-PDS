@@ -1,8 +1,14 @@
 #include "Comprador.hpp"
 #include <stdexcept>
+#include <cctype>
 
 using namespace std;
 
+static std::string minusculo(std::string s){
+    for (char& ch : s)
+        ch = std::tolower(static_cast<unsigned char>(ch));
+    return s;
+}
 
 std::vector<Produto> Comprador::pesquisarProdutos(
     const std::vector<Produto>& produtos,
@@ -11,7 +17,7 @@ std::vector<Produto> Comprador::pesquisarProdutos(
     vector<Produto> resultado;
 
     for (const Produto& produto : produtos){
-        if(produto.getNome().find(nome) != string::npos){
+        if (minusculo(produto.getNome()).find(minusculo(nome)) != string::npos){
             resultado.push_back(produto);
         }
     }
@@ -78,8 +84,6 @@ Venda Comprador::fazerPedido(
             venda.adicionarItem(item);
         }
 
-        _historicoPedidos.push_back(venda);
-
         limparCarrinho();
 
         return venda;
@@ -90,13 +94,20 @@ StatusVenda Comprador::acompanharPedido(const Venda& venda) const {
     }
 
 void Comprador::cancelarPedido(Venda& venda) {
-    if (venda.getStatusVenda() == StatusVenda::PROCESSAMENTO){
-        venda.atualizarSvenda(StatusVenda::CANCELADO);
-    }
+    if(venda.getIdPessoa() != getIdPessoa())
+        throw std::invalid_argument("Este pedido nao pertence a voce!");
+    if(venda.getStatusVenda() != StatusVenda::PROCESSAMENTO)
+        throw std::logic_error("So eh possivel cancelar pedidos ainda em processamento!");
+    venda.atualizarSvenda(StatusVenda::CANCELADO);
 }
 
-const std::vector<Venda>& Comprador::consultarHistoricoCompras() const {
-     return _historicoPedidos;
+std::vector<Venda> Comprador::consultarHistoricoCompras(const std::vector<Venda>& vendas) const {
+    std::vector<Venda> meus;
+    for(const Venda& v : vendas)
+        if(v.getIdPessoa() == getIdPessoa() ){
+            meus.push_back(v);
+        }
+    return meus;
 }
 
 void Comprador::aplicarCupomVenda(Venda& venda, const Desconto& cupom) {
@@ -104,6 +115,14 @@ void Comprador::aplicarCupomVenda(Venda& venda, const Desconto& cupom) {
 }
 
 void Comprador::adicionarAoCarrinho(const ItemPedido& item) {
+
+    for (ItemPedido& it : _carrinho){
+        if(it.getProduto().getIdProduto() == item.getProduto().getIdProduto()){
+            it.setQuantidade(it.getQuantidade() + item.getQuantidade());
+            return;
+        }
+    }
+
     _carrinho.push_back(item);
 }
 
@@ -113,4 +132,19 @@ const std::vector<ItemPedido>& Comprador::consultarCarrinho() const {
 
 void Comprador::limparCarrinho() {
     _carrinho.clear();
+}
+
+void Comprador::alterarQuantidadeCarrinho(int idProduto, int novaQuantidade){
+
+    for(auto it = _carrinho.begin(); it != _carrinho.end(); it++){
+
+        if (it->getProduto().getIdProduto() == idProduto){
+            if (novaQuantidade <= 0){
+                _carrinho.erase(it);
+            }else{
+                it->setQuantidade(novaQuantidade);
+            }
+            return;
+        }
+    }
 }
