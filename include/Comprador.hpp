@@ -158,5 +158,7 @@ class Comprador : public Pessoa{
         void avaliarPedido(Venda& venda, int nota);
         
         const std::vector<Produto>& getFavoritos() const;
+        const std::vector<Produto>& getProdutosFavoritos() const;
+    bool ehFavorito(int idProduto) const;
 };
 #endif 

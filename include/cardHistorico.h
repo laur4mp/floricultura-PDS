@@ -22,7 +22,6 @@ signals:
 
 private:
     Ui::CardHistorico *ui;
-    int avaliacao = 0;
 };
 
 #endif // CARDHISTORICO_H
