@@ -135,7 +135,6 @@ public:
      * @param comprador Instância do Comprador que está realizando o pedido.
      * @param endereco Endereço selecionado para a entrega.
      * @param cupom Cupom de desconto aplicado (se for válido).
-     * @param metodo Método de pagamento escolhido (PIX, Cartão, etc.).
      * @return A Venda gerada e registrada no sistema.
      * @throw std::invalid_argument se o carrinho estiver vazio ou o destinatário do endereço não estiver informado.
      * @throw std::runtime_error se algum produto do carrinho não for encontrado ou se houver estoque insuficiente.

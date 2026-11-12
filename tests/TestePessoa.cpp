@@ -10,11 +10,11 @@
 namespace {
 
 Pessoa criarPessoa() { 
-    return Pessoa(7, "Ana Souza", "529.982.247-26", "ana@email.com", "(31) 99999-0000", "senha123");
+    return Pessoa(7, "Ana Souza", "529.982.247-25", "ana@email.com", "(31) 99999-0000", "senha123");
 } 
 
 Endereco criarEndereco(const std::string& rua) { 
-    return Endereco("Maria Silva", "30130-000", rua, "100", "Centro", "Apto 2", "Belo Horizonte", "MG"); 
+    return Endereco("Maria Silva", "30130000", rua, "100", "Centro", "Apto 2", "Belo Horizonte", "MG"); 
 } 
  
 }  // namespace 
@@ -181,4 +181,17 @@ TEST_CASE("Pessoa - possuiEndereco compara CEP, numero e complemento") {
                                           "Centro", "Apto 2", "Belo Horizonte", "MG")));  // outro CEP
     CHECK_FALSE(p.possuiEndereco(Endereco("Maria Silva", "30130000", "Rua A", "200",
                                           "Centro", "Apto 2", "Belo Horizonte", "MG")));  // outro numero
+    CHECK_FALSE(p.possuiEndereco(Endereco("Maria Silva", "30130000", "Rua A", "100",
+                                          "Centro", "Casa", "Belo Horizonte", "MG")));  // outro complemento
+}
+
+TEST_CASE("Pessoa - possuiEndereco procura em toda a lista") {
+    Pessoa p = criarPessoa();
+    Endereco outro("Maria Silva", "99999999", "Rua B", "5", "Centro", "", "Belo Horizonte", "MG");
+    p.adicionarEndereco(criarEndereco("Rua A"));
+    p.adicionarEndereco(outro);
+
+    CHECK(p.possuiEndereco(outro));  // segundo da lista
+    p.removerEndereco(1);
+    CHECK_FALSE(p.possuiEndereco(outro));
 }

@@ -15,9 +15,12 @@ class CardProduto : public QWidget
 public:
     explicit CardProduto(const Produto& p, QWidget* parent = nullptr);
     ~CardProduto();
+    void setFavorito(bool favoritado);
+    void setDestaque(bool destacado);
 
 signals:
     void adicionarAoCarrinho(int idProduto);
+    void favoritoAlterado(int idProduto, bool favoritado);
 
 private:
     Ui::CardProduto *ui;

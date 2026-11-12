@@ -79,3 +79,49 @@ TEST_CASE("formatarEndereco com complemento") {
     Endereco f("Ana", "31250000", "Rua das Flores", "10", "Planalto", "Casa", "Belo Horizonte", "MG");
     CHECK(f.formatarEndereco() == "Rua das Flores, 10 - Casa - Planalto, Belo Horizonte - MG, CEP 31250000");
 }
+
+TEST_CASE("Construtor valido preenche todos os getters"){
+    Endereco e("Taylor Swift", "31250000", "Rua das Flores", "10", "Planalto", "Casa", "Belo Horizonte", "MG");
+    CHECK(e.getNomeDest() == "Taylor Swift");
+    CHECK(e.getCep() == "31250000");
+    CHECK(e.getRua() == "Rua das Flores");
+    CHECK(e.getNumero() == "10");
+    CHECK(e.getBairro() == "Planalto");
+    CHECK(e.getComplemento() == "Casa");
+    CHECK(e.getCidade() == "Belo Horizonte");
+    CHECK(e.getEstado() == "MG");
+}
+
+TEST_CASE("Campos obrigatorios vazios geram excecao"){
+    CHECK_THROWS_AS(Endereco("", "31250000", "Rua", "10", "Bairro", "", "BH", "MG"), std::invalid_argument);
+    CHECK_THROWS_AS(Endereco("Taylor", "31250000", "", "10", "Bairro", "", "BH", "MG"), std::invalid_argument);
+    CHECK_THROWS_AS(Endereco("Taylor", "31250000", "Rua", "", "Bairro", "", "BH", "MG"), std::invalid_argument);
+    CHECK_THROWS_AS(Endereco("Taylor", "31250000", "Rua", "10", "", "", "BH", "MG"), std::invalid_argument);
+    CHECK_NOTHROW(Endereco("Taylor", "31250000", "Rua", "10", "Bairro", "", "BH", "MG"));  
+}
+
+TEST_CASE("CEP com hifen e estado em minusculas sao rejeitados"){
+    CHECK_THROWS_AS(Endereco("Taylor Swift", "31250-000", "Rua", "10", "Bairro", "", "BH", "MG"), std::invalid_argument);
+    CHECK_THROWS_AS(Endereco("Taylor Swift", "31250000", "Rua", "10", "Bairro", "", "BH", "mg"), std::invalid_argument);
+    CHECK_THROWS_AS(Endereco("Taylor Swift", "31250000", "Rua", "10", "Bairro", "", "BH", ""), std::invalid_argument);
+}
+
+TEST_CASE("Setter que falha mantem o valor anterior"){
+    Endereco e("Taylor Swift", "31250000", "Rua das Flores", "10", "Planalto", "", "Belo Horizonte", "MG");
+    CHECK(e.setCep("123") == false);
+    CHECK(e.getCep() == "31250000");
+    CHECK(e.setEstado("XX") == false);
+    CHECK(e.getEstado() == "MG");
+
+    CHECK(e.setCep("01310100") == true);
+    CHECK(e.getCep() == "01310100");
+    CHECK(e.setEstado("SP") == true);
+    CHECK(e.getEstado() == "SP");
+}
+
+TEST_CASE("Construtor padrao cria endereco vazio"){
+    Endereco e;
+    CHECK(e.getCep().empty());
+    CHECK(e.getEstado().empty());
+    CHECK(e.regiao() == "Estado invalido");
+}

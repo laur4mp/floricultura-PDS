@@ -4,6 +4,9 @@
 
 #include <QLocale>
 #include <QPixmap>
+#include <QGraphicsDropShadowEffect>
+#include <QSignalBlocker>
+#include <QColor>
 
 CardProduto::CardProduto(const Produto& p, QWidget* parent) : QWidget(parent), ui(new Ui::CardProduto)
 {
@@ -33,12 +36,32 @@ CardProduto::CardProduto(const Produto& p, QWidget* parent) : QWidget(parent), u
         emit adicionarAoCarrinho(id);
     });
 
-    connect(ui->btnFavoritar, &QPushButton::toggled, this, [this](bool marcado) {
-            marcado ? ui->btnFavoritar->setText("❤") : ui->btnFavoritar->setText("♡");
+    connect(ui->btnFavoritar, &QPushButton::toggled, this, [this, id](bool marcado) {
+    ui->btnFavoritar->setText(marcado ? "❤" : "♡");
+    emit favoritoAlterado(id, marcado);
     });
+
 }
 
 CardProduto::~CardProduto()
 {
     delete ui;
+}
+
+void CardProduto::setFavorito(bool favoritado) {
+    QSignalBlocker bloqueio(ui->btnFavoritar);   
+    ui->btnFavoritar->setChecked(favoritado);
+    ui->btnFavoritar->setText(favoritado ? "❤" : "♡");
+}
+
+void CardProduto::setDestaque(bool destacado) {
+    if (destacado) {
+        auto* brilho = new QGraphicsDropShadowEffect(this);
+        brilho->setColor(QColor("#D62828"));   
+        brilho->setBlurRadius(30);
+        brilho->setOffset(0, 0);
+        setGraphicsEffect(brilho);
+    } else {
+        setGraphicsEffect(nullptr);            
+    }
 }
