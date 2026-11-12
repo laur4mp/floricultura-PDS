@@ -61,7 +61,7 @@
         </sizepolicy>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_38">
-        <item>
+        <item alignment="Qt::AlignmentFlag::AlignVCenter">
          <widget class="QStackedWidget" name="stackAcesso">
           <widget class="QWidget" name="paginaBoasVindas">
            <layout class="QVBoxLayout" name="verticalLayout_39">
@@ -69,16 +69,16 @@
              <number>20</number>
             </property>
             <property name="leftMargin">
-             <number>200</number>
+             <number>100</number>
             </property>
             <property name="topMargin">
-             <number>200</number>
+             <number>100</number>
             </property>
             <property name="rightMargin">
-             <number>200</number>
+             <number>100</number>
             </property>
             <property name="bottomMargin">
-             <number>200</number>
+             <number>100</number>
             </property>
             <item>
              <widget class="QLabel" name="label">
@@ -474,8 +474,8 @@ QScrollBar::sub-page:vertical {
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>0</y>
-                 <width>405</width>
+                 <y>-300</y>
+                 <width>1108</width>
                  <height>922</height>
                 </rect>
                </property>
@@ -594,7 +594,7 @@ border-radius: 8px;</string>
                       <string/>
                      </property>
                      <property name="placeholderText">
-                      <string>000.000.000-00</string>
+                      <string>00000000000</string>
                      </property>
                     </widget>
                    </item>
@@ -928,6 +928,25 @@ background-color: transparent;</string>
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="btnSairLoja">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>90</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Sair</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -1051,7 +1070,7 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1400</width>
+                 <width>1430</width>
                  <height>2280</height>
                 </rect>
                </property>
@@ -1488,6 +1507,9 @@ QScrollBar::sub-page:vertical {
               <property name="frameShape">
                <enum>QFrame::Shape::NoFrame</enum>
               </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+              </property>
               <property name="horizontalScrollBarPolicy">
                <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
               </property>
@@ -1499,8 +1521,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>514</width>
-                 <height>442</height>
+                 <width>1428</width>
+                 <height>1165</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -1843,6 +1865,9 @@ QScrollBar::sub-page:vertical {
               <property name="frameShape">
                <enum>QFrame::Shape::NoFrame</enum>
               </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+              </property>
               <property name="horizontalScrollBarPolicy">
                <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
               </property>
@@ -1854,8 +1879,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>494</width>
-                 <height>218</height>
+                 <width>1428</width>
+                 <height>1165</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -2053,8 +2078,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>484</width>
-                 <height>922</height>
+                 <width>1240</width>
+                 <height>1087</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_26">
@@ -2883,7 +2908,7 @@ background-color: #ebcdae</string>
            <enum>QTabWidget::TabShape::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="elideMode">
            <enum>Qt::TextElideMode::ElideNone</enum>

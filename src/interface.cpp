@@ -761,7 +761,9 @@ Interface::Interface(QWidget *parent)
     ui->paginaLoja->setFont(fonte);
     ui->paginaAcesso->setFont(fonte);
 
-    aplicarEstiloBotaoTransparente(ui->btnFazerCadastro);
+    for (QPushButton *btn : {ui->btnFazerCadastro, ui->btnSairLoja}) {
+        aplicarEstiloBotaoTransparente(btn);
+    }
 
     for (QPushButton *btn : {ui->btnProdutos, ui->btnSobreNos, ui->btnCarrinho, ui->btnMinhasCompras,
                              ui->btnContinuarComprando}) {
@@ -825,6 +827,12 @@ Interface::Interface(QWidget *parent)
         usuarioLogado = nullptr;
         ui->stackDivisao->setCurrentWidget(ui->paginaAcesso);
          ui->stackAcesso->setCurrentWidget(ui->paginaEntrar);
+    });
+
+    connect(ui->btnSairLoja, &QPushButton::clicked, this, [this]() {
+        usuarioLogado = nullptr;
+        ui->stackDivisao->setCurrentWidget(ui->paginaAcesso);
+        ui->stackAcesso->setCurrentWidget(ui->paginaEntrar);
     });
 
     connect(ui->btnVerCriarSenha, &QPushButton::toggled, this, [this](bool marcado) {
