@@ -25,6 +25,7 @@ std::vector<Produto> Comprador::pesquisarProdutos(
 }
 
 
+
 void Comprador::favoritarProduto(const Produto& produto) {
      for (const Produto& favorito : _produtosFavoritos) {
         if (favorito.getIdProduto() == produto.getIdProduto()) {
@@ -46,26 +47,21 @@ void Comprador::desfavoritarProduto(const Produto& produto) {
     }
 }
 
-Venda Comprador::fazerPedido(
-    int idVenda,
-    const Endereco& enderecoEntrega) {
+Venda Comprador::fazerPedido(int idVenda, const Endereco& enderecoEntrega) {
 
          if (_carrinho.empty()) {
             throw std::invalid_argument("Nao e possivel fazer um pedido com o carrinho vazio.");
         }
 
         Venda v(
-        idVenda,
-        getIdPessoa(),
-        0,
-        enderecoEntrega,
-        enderecoEntrega.getNomeDest()
+        idVenda, getIdPessoa(), 0, enderecoEntrega
         );
 
         for (const ItemPedido& item : _carrinho) {
             v.adicionarItem(item);
         }
 
+      
         limparCarrinho();
 
         return v;

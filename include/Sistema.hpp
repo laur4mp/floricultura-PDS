@@ -140,10 +140,9 @@ public:
      * @throw std::runtime_error se algum produto do carrinho não for encontrado ou se houver estoque insuficiente.
      */ 
     Venda finalizarPedido(
-         Comprador & comprador, 
+        Comprador& comprador,
         const Endereco& endereco,
-        const Desconto* cupom 
-        
+        const Desconto* cupom
     );
 
     /**

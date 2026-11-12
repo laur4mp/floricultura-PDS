@@ -175,7 +175,7 @@ static std::string dataDaquiA(int dias) {
 
 }
 
-Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco, 
+Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco,
                                const Desconto* cupom){
 
     const std::vector<ItemPedido>& carrinho = comprador.consultarCarrinho();
@@ -212,7 +212,6 @@ Venda Sistema::finalizarPedido(Comprador& comprador, const Endereco& endereco,
 
     //monta a venda, reaproveitando a funcao do Comprador
     Venda venda = comprador.fazerPedido(proximoIdVenda(), endereco);
-
     venda.setDataEntrega(dataDaquiA(2));
     venda.setHorarioEntregaPrevisao("Entre 08:00 e 18:00");
 

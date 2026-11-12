@@ -2857,7 +2857,7 @@ border-radius: 8px;
        <property name="styleSheet">
         <string notr="true">background-color: #9a8e77;</string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_32">
+       <layout class="QVBoxLayout" name="verticalLayout_8">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -3846,6 +3846,19 @@ QPushButton:hover {
             </item>
            </layout>
           </widget>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignmentFlag::AlignRight">
+         <widget class="QWidget" name="widgetBotaoSair" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QPushButton" name="btnSairAdm">
+             <property name="text">
+              <string>Sair</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
