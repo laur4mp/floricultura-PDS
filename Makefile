@@ -79,7 +79,7 @@ ${BUILD_DIR}/TesteItemPedido.o: ${TESTS_DIR}/TesteItemPedido.cpp ${INCLUDE_DIR}/
 	@mkdir -p ${BUILD_DIR}
 	${CC} ${CFLAGS} -c ${TESTS_DIR}/TesteItemPedido.cpp -o ${BUILD_DIR}/TesteItemPedido.o
 
-{BUILD_DIR}/TesteSistema.o: ${TESTS_DIR}/TesteSistema.cpp ${INCLUDE_DIR}/Sistema.hpp
+${BUILD_DIR}/TesteSistema.o: ${TESTS_DIR}/TesteSistema.cpp ${INCLUDE_DIR}/Sistema.hpp
 	@mkdir -p ${BUILD_DIR}
 	${CC} ${CFLAGS} -c ${TESTS_DIR}/TesteSistema.cpp -o ${BUILD_DIR}/TesteSistema.o
  
@@ -166,6 +166,6 @@ coverage: test
 	gcovr -r . --object-directory ${BUILD_DIR} --exclude tests/ --print-summary --fail-under-line 60
 
 clean:
-	rm -rf ${BUILD_DIR}/*.o ${BUILD_DIR}/*.gcda ${BUILD_DIR}/*.gcno ${TARGET_TEST} ${TARGET_APP} coverage
+	rm -rf ${BUILD_DIR}/*.o ${BUILD_DIR}/*.gcda ${BUILD_DIR}/*.gcno ${TARGET_TEST} ${TARGET_TEST} coverage
 
 .PHONY: test coverage clean
