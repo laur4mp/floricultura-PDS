@@ -851,7 +851,7 @@ void Interface::criarConta() {
 
     try {
 
-        Comprador* novo = new Comprador(sistema.proximoIdUsusario(),
+        Comprador* novo = new Comprador(sistema.proximoIdUsuario(),
             ui->inputNome->text().trimmed().toStdString(),
             ui->inputCPF->text().trimmed().toStdString(),
             ui->inputAdicionarEmail->text().trimmed().toStdString(),
