@@ -118,12 +118,12 @@ TEST_CASE("Sistema - vendas: adicionar, buscar e rejeitar id repetido") {
     Sistema s;
     CHECK(s.getVendas().empty());
  
-    s.adicionarVenda(Venda(1, 7, 0, criarEndereco(), "Maria Silva"));
+    s.adicionarVenda(Venda(1, 7, 0, criarEndereco()));
  
     REQUIRE(s.buscarVenda(1) != nullptr);
     CHECK(s.buscarVenda(1)->getIdPessoa() == 7);
     CHECK(s.buscarVenda(2) == nullptr);
-    CHECK_THROWS_AS(s.adicionarVenda(Venda(1, 8, 0, criarEndereco(), "Joao")), std::invalid_argument);
+    CHECK_THROWS_AS(s.adicionarVenda(Venda(1, 8, 0, criarEndereco())), std::invalid_argument);
     CHECK(s.getVendas().size() == 1);
     CHECK(s.proximoIdVenda() == 2);
 }
@@ -131,7 +131,7 @@ TEST_CASE("Sistema - vendas: adicionar, buscar e rejeitar id repetido") {
 TEST_CASE("Sistema - devolverEstoque") {
     Sistema s;
     s.adicionarProduto(criarProduto(1));  // estoque 10
-    Venda v(1, 7, 0, criarEndereco(), "Maria Silva");
+    Venda v(1, 7, 0, criarEndereco());
     v.adicionarItem(ItemPedido(*s.buscarProduto(1), 3));
  
     SUBCASE("venda nao cancelada lanca logic_error e nao mexe no estoque") {
@@ -185,7 +185,7 @@ TEST_CASE("Sistema - finalizarPedido registra a venda e da baixa no estoque") {
     c.adicionarAoCarrinho(ItemPedido(*s.buscarProduto(1), 2));  // 100.00 em produtos
  
     // mesma venda montada a mao, sem cupom, para descobrir o total com frete
-    Venda referencia(99, 2, 0, criarEndereco(), "Maria Silva");
+    Venda referencia(99, 2, 0, criarEndereco());
     referencia.adicionarItem(ItemPedido(*s.buscarProduto(1), 2));
  
     SUBCASE("sem cupom") {
@@ -193,8 +193,8 @@ TEST_CASE("Sistema - finalizarPedido registra a venda e da baixa no estoque") {
  
         CHECK(v.getIdVenda() == 1);
         CHECK(v.getIdPessoa() == 2);
-        CHECK(v.getNomeDestina() == "Maria Silva");
-        CHECK(v.getMetodoPagamento() == MetodoPagamento::PIX);
+        CHECK(v.getEnderecoEntrega().getNomeDest() == "Maria Silva");
+        
         CHECK(v.getValorTotal() == doctest::Approx(referencia.getValorTotal()));
         CHECK(s.buscarProduto(1)->getQuantidadeEstoque() == 8);
         CHECK(s.getVendas().size() == 1);
@@ -204,8 +204,7 @@ TEST_CASE("Sistema - finalizarPedido registra a venda e da baixa no estoque") {
     }
     SUBCASE("com cupom valido de 10%") {
         Desconto cupom("DEZ", 10.0, "2099-12-31");
-        Venda v = s.finalizarPedido(c, criarEndereco(), &cupom,
-                                    );
+        Venda v = s.finalizarPedido(c, criarEndereco(), &cupom);
  
         CHECK(v.getDescontoAplicado().getCupom() == "DEZ");
         CHECK(v.getValorTotal() == doctest::Approx(referencia.getValorTotal() - 10.0));

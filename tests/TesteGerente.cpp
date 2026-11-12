@@ -29,7 +29,7 @@ Endereco criarEndereco() {
 
 // venda sem itens: id 1, cliente 7
 Venda criarVenda() {
-    return Venda(1, 7, 0, criarEndereco(), "Maria Silva");
+    return Venda(1, 7, 0, criarEndereco());
 }
 
 // venda com 2 x Rosa Vermelha (subtotal 100.00)
