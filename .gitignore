@@ -3,3 +3,4 @@ build/*
 coverage/
 src/TEMP_*
 erros.txt
+*.autosave
