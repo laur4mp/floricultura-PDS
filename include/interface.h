@@ -93,6 +93,11 @@ private:
     void atualizarCarrinho();
     void irParaEntrega();
     void irParaPagamento();
+    QString cupomAtual;             
+    void atualizarResumo();
+    void aplicarCupom();
+    void fazerPedido();
+    void atualizarHistorico();
 };
 
 #endif // INTERFACE_H

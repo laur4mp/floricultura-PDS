@@ -19,6 +19,23 @@ CardHistorico::CardHistorico(const Venda& v, QWidget *parent)
 
     aplicarEstiloCard(this);
 
+        ui->nomeProdutoHistorico->setText(QString("Pedido #%1").arg(v.getIdVenda()));
+
+    QStringList itens;
+    for (const ItemPedido& item : v.getItens())
+        itens << QString::fromStdString(item.informarDados());
+    if (!v.getDataEntrega().empty())
+        itens << "Previsão de entrega: " + QString::fromStdString(v.getDataEntrega());
+    ui->descricaoProdutoHistorico->setText(itens.join("\n"));
+
+    ui->totalProdutoHistorico->setText(
+        QLocale(QLocale::Portuguese, QLocale::Brazil).toCurrencyString(v.getValorTotal()));
+
+    if (!v.getItens().empty())
+        ui->fotoProdutoHistorico->setPixmap(
+            QPixmap(QString::fromStdString(v.getItens().front().getProduto().getEnderecoImagem()))
+                .scaled(120, 120, Qt::KeepAspectRatio));
+
     switch (v.getStatusVenda()) {
     case StatusVenda::PROCESSAMENTO:
         ui->statusProdutoHistorico->setText("Em preparação");

@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QDir>
 #include <QPixmap>
+#include <QTimer>
 
 //função para ler um número do qt, pega vigula ou . como decimal
 static bool lerNumero(const QString& texto, double& valor){
@@ -391,6 +392,16 @@ void Interface::carregarProdutos() {
             Produto* prod = sistema.buscarProduto(id);
             if (!comprador() || !prod) return;
             try {
+
+            int noCarrinho = 0;
+            for (const ItemPedido& it : comprador()->consultarCarrinho())
+                if (it.getProduto().getIdProduto() == id) noCarrinho = it.getQuantidade();
+
+            if (noCarrinho + 1 > prod->getQuantidadeEstoque()) {
+                QMessageBox::information(this, "Carrinho", "Quantidade maxima em estoque.");
+                return;
+            }
+
                 comprador()->adicionarAoCarrinho(ItemPedido(*prod, 1));
                 atualizarCarrinho();
 
@@ -499,15 +510,120 @@ void Interface::irParaPagamento() {
         return;
     }
 
-    double subtotal = comprador()->subtotalCarrinho();
-    double frete = comprador()->consultarCarrinho().front().calcularFrete(enderecoAtual);
-
-    ui->valorSubtotalFinal->setText(localeBR().toCurrencyString(subtotal));
-    ui->valorFrete->setText(localeBR().toCurrencyString(frete));
-    ui->valorTotalFinal->setText(localeBR().toCurrencyString(subtotal + frete));
+     cupomAtual.clear();
+    ui->inputCupom->clear();
+    atualizarResumo();
 
     ui->mainContent->setCurrentWidget(ui->paginaPagamento);
     ui->stackPagamento->setCurrentWidget(ui->paginaResumoFinal);
+}
+
+void Interface::atualizarResumo() {
+    if (!comprador() || comprador()->consultarCarrinho().empty()) return;
+
+    double subtotal = comprador()->subtotalCarrinho();
+    double frete = comprador()->consultarCarrinho().front().calcularFrete(enderecoAtual);
+
+    const Desconto* cupom = cupomAtual.isEmpty() ? nullptr
+                          : sistema.buscarCupom(cupomAtual.toStdString());
+    double comDesconto = (cupom && cupom->ehValido()) ? cupom->aplicar(subtotal) : subtotal;
+
+    ui->valorSubtotalFinal->setText(localeBR().toCurrencyString(comDesconto));
+    ui->valorFrete->setText(localeBR().toCurrencyString(frete));
+    ui->valorTotalFinal->setText(localeBR().toCurrencyString(comDesconto + frete));
+}
+
+void Interface::aplicarCupom() {
+    QString codigo = ui->inputCupom->text().trimmed().toUpper();
+    if (codigo.isEmpty()) {
+        cupomAtual.clear();
+        atualizarResumo();
+        return;
+    }
+    const Desconto* cupom = sistema.buscarCupom(codigo.toStdString());
+    if (!cupom) {
+        QMessageBox::warning(this, "Cupom", "Cupom nao encontrado.");
+        return;
+    }
+    if (!cupom->ehValido()) {
+        QMessageBox::warning(this, "Cupom", "Este cupom esta expirado.");
+        return;
+    }
+    cupomAtual = codigo;
+    atualizarResumo();
+    QMessageBox::information(this, "Cupom",
+        QString("Cupom aplicado: %1% de desconto.").arg(localeBR().toString(cupom->getPercentual(), 'g', 4)));
+}
+
+void Interface::fazerPedido() {
+    if (!comprador()) return;
+
+    const Desconto* cupom = cupomAtual.isEmpty() ? nullptr
+                          : sistema.buscarCupom(cupomAtual.toStdString());
+    try {
+        sistema.finalizarPedido(*comprador(), enderecoAtual, cupom);
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Pedido", e.what());
+        return;
+    }
+
+    salvarComAviso();
+    cupomAtual.clear();
+    ui->inputCupom->clear();
+    carregarProdutos();      // o estoque mudou: um produto pode ter esgotado
+    atualizarCarrinho();     // o carrinho foi esvaziado
+    ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
+}
+
+void Interface::atualizarHistorico() {
+    QLayout* lista = ui->listaHistorico->layout();
+    limparLayout(lista);
+    if (!comprador()) return;
+
+    std::vector<Venda> minhas = comprador()->consultarHistoricoCompras(sistema.getVendas());
+
+    for (auto it = minhas.rbegin(); it != minhas.rend(); ++it) {   // mais recente primeiro
+        CardHistorico* card = new CardHistorico(*it, ui->listaHistorico);
+
+        connect(card, &CardHistorico::cancelarCompra, this, [this](int idVenda) {
+            Venda* v = sistema.buscarVenda(idVenda);
+            if (!v) return;
+            if (QMessageBox::question(this, "Cancelar pedido",
+                    QString("Cancelar o pedido #%1?").arg(idVenda)) != QMessageBox::Yes)
+                return;
+            try {
+                comprador()->cancelarPedido(*v);
+                sistema.devolverEstoque(*v);
+            } catch (const std::exception& e) {
+                QMessageBox::warning(this, "Cancelar pedido", e.what());
+                return;
+            }
+            salvarComAviso();
+            carregarProdutos();      // o estoque voltou
+            atualizarHistorico();
+        });
+
+        connect(card, &CardHistorico::avaliado, this, [this](int idVenda, int nota) {
+            Venda* v = sistema.buscarVenda(idVenda);
+            if (!v) return;
+            try {
+                comprador()->avaliarPedido(*v, nota);
+            } catch (const std::exception& e) {
+                QMessageBox::warning(this, "Avaliar pedido", e.what());
+                atualizarHistorico();   // volta as estrelas para a nota salva
+                return;
+            }
+            salvarComAviso();
+        });
+
+        lista->addWidget(card);
+    }
+
+    if (minhas.empty()) {
+        QLabel* vazio = new QLabel("Voce ainda nao fez nenhum pedido.", ui->listaHistorico);
+        aplicarFonteDescricao(vazio);
+        lista->addWidget(vazio);
+    }
 }
 
 void Interface::carregarDados() {
@@ -669,7 +785,9 @@ Interface::Interface(QWidget *parent)
     ui->btnContinuarComprando->setFont(underline);
 
     connect(ui->btnSairAdm, &QPushButton::clicked, this, [this]() {
-        ui->stackAcesso->setCurrentWidget(ui->paginaEntrar);
+        usuarioLogado = nullptr;
+        ui->stackDivisao->setCurrentWidget(ui->paginaAcesso);
+         ui->stackAcesso->setCurrentWidget(ui->paginaEntrar);
     });
 
     connect(ui->btnVerCriarSenha, &QPushButton::toggled, this, [this](bool marcado) {
@@ -702,7 +820,9 @@ Interface::Interface(QWidget *parent)
 
     connect(ui->btnProdutos, &QPushButton::clicked, this, [this]() {
         ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
-        ui->scrollAreaPrincipal->ensureWidgetVisible(ui->secaoProdutos);
+        QTimer::singleShot(0, this, [this]() {
+            ui->scrollAreaPrincipal->ensureWidgetVisible(ui->secaoProdutos);
+        });
     });
 
     connect(ui->btnSobreNos, &QPushButton::clicked, this, [this]() {
@@ -716,6 +836,7 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnMinhasCompras, &QPushButton::clicked, this, [this]() {
+        atualizarHistorico();
         ui->mainContent->setCurrentWidget(ui->paginaHistorico);
     });
 
@@ -746,8 +867,13 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnFazerPedido, &QPushButton::clicked, this, [this]() {
-        ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
+        fazerPedido();
     });
+
+    connect(ui->btnCupom, &QPushButton::clicked, this, [this]() { aplicarCupom(); });
+
+
+    connect(ui->inputCupom, &QLineEdit::returnPressed, this, [this]() { aplicarCupom(); });
 
     connect(ui->tableProdutos, &QTableWidget::cellClicked, this, [this](int linha, int) { 
         preencherFormularioProduto(linha); 
