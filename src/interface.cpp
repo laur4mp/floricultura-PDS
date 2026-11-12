@@ -592,7 +592,9 @@ Interface::Interface(QWidget *parent)
     ui->paginaLoja->setFont(fonte);
     ui->paginaAcesso->setFont(fonte);
 
-    aplicarEstiloBotaoTransparente(ui->btnFazerCadastro);
+    for (QPushButton *btn : {ui->btnFazerCadastro, ui->btnSairAdm}) {
+        aplicarEstiloBotaoTransparente(btn);
+    }
 
     for (QPushButton *btn : {ui->btnProdutos, ui->btnSobreNos, ui->btnCarrinho, ui->btnMinhasCompras,
                              ui->btnContinuarComprando}) {
