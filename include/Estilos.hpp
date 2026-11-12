@@ -19,6 +19,7 @@ void aplicarEstiloBotaoVerde(QPushButton *btn);
 void aplicarEstiloCard(QWidget *card);
 void aplicarEstiloInput(QLineEdit *input);
 void aplicarEstiloCardCarrinho(QWidget *card);
+void aplicarEstiloCardHistorico(QWidget *card);
 void aplicarEstiloCardResumo(QWidget *card);
 void aplicarEstiloBotaoQuantidade(QPushButton *btn);
 void aplicarEstiloQuantidade(QLabel *label);

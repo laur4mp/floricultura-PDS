@@ -8,13 +8,12 @@
 cardCarrinho::cardCarrinho(const ItemPedido& item, QWidget* parent) : QWidget(parent), ui(new Ui::cardCarrinho)
 {
     ui->setupUi(this);
+    aplicarEstiloCardCarrinho(this);
 
     aplicarFonteTitulo(ui->precoProdutoCarrinho);
     aplicarFonteDescricao(ui->descricaoProdutoCarrinho);
     aplicarFonteDestaque(ui->nomeProdutoCarrinho);
     aplicarEstiloSeletor(ui->btnDiminuirCarrinho, ui->labelQuantidadeCarrinho, ui->btnAumentarCarrinho);
-
-    aplicarEstiloCardCarrinho(this);
 
     const Produto& produto = item.getProduto();
 

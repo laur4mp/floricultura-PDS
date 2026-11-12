@@ -17,7 +17,7 @@ CardHistorico::CardHistorico(const Venda& v, QWidget *parent)
     aplicarFonteDestaque(ui->totalProdutoHistorico);
     aplicarEstiloBotaoTransparente(ui->btnCancelar);
 
-    aplicarEstiloCard(this);
+    aplicarEstiloCardHistorico(this);
 
         ui->nomeProdutoHistorico->setText(QString("Pedido #%1").arg(v.getIdVenda()));
 

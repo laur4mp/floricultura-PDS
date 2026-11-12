@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="widgetProdutoHistorico" native="true">
@@ -77,17 +80,17 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignmentFlag::AlignLeft">
           <widget class="QWidget" name="linhaTotalProdutoHistorico" native="true">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="maximumSize">
             <size>
-             <width>109</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -122,6 +125,12 @@
             </item>
             <item>
              <widget class="QLabel" name="totalProdutoHistorico">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: #9B5252;</string>
               </property>

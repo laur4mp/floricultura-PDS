@@ -137,8 +137,9 @@ void aplicarEstiloBotaoVerde(QPushButton *btn){
 }
 
 void aplicarEstiloCard(QWidget *card){
+    card->setAttribute(Qt::WA_StyledBackground, true);
     card->setStyleSheet(R"(
-        #cardWidget {
+        QWidget {
             background-color: #FFE7F0;
             border-radius: 8px;
         }
@@ -173,6 +174,7 @@ void aplicarEstiloInput(QLineEdit *input){
 }
 
 void aplicarEstiloCardCarrinho(QWidget *card){
+    card->setAttribute(Qt::WA_StyledBackground, true);
     card->setStyleSheet(R"(
         QWidget#cardCarrinho {
             background-color: #FFFFFF;
@@ -182,6 +184,17 @@ void aplicarEstiloCardCarrinho(QWidget *card){
 
         QWidget#cardCarrinho:hover {
             border: 1px solid #9B5252;
+        }
+    )");
+}
+
+void aplicarEstiloCardHistorico(QWidget *card){
+    card->setAttribute(Qt::WA_StyledBackground, true);
+    card->setStyleSheet(R"(
+        QWidget#cardHistorico {
+            background-color: #FFFFFF;
+            border: 1px solid #D8C9CE;
+            border-radius: 8px;
         }
     )");
 }
