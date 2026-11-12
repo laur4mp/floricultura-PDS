@@ -33,6 +33,13 @@ static const QLocale& localeBR(){
     return br;
 }
 
+static void limparLayout(QLayout* layout) {
+    while (QLayoutItem* item = layout->takeAt(0)) {
+        if (QWidget* w = item->widget()) w->deleteLater();
+        delete item;
+    }
+}
+
 void Interface::configurarTabelaProdutos(){
     ui->tableProdutos->setWordWrap(true);
 
@@ -79,10 +86,126 @@ void Interface::configurarTabelaCupons(){
     ui->tableCupons->horizontalHeaderItem(1)->setTextAlignment(Qt::AlignCenter);
 }
 
-void Interface::carregarProdutos(){
-    for(const Produto& produto : sistema.getProdutos()){
+Comprador* Interface::comprador() const {
+    return dynamic_cast<Comprador*>(usuarioLogado);   // nullptr sem login ou se for o gerente
+}
 
+void Interface::carregarProdutos() {
+    limparLayout(ui->gridProdutos->layout());
+    cardsProdutos.clear();
+    QGridLayout* grid = static_cast<QGridLayout*>(ui->gridProdutos->layout());
+
+    int i = 0;
+    for (const Produto& p : sistema.getProdutos()) {
+        CardProduto* card = new CardProduto(p, ui->gridProdutos);
+        if (comprador()) card->setFavorito(comprador()->ehFavorito(p.getIdProduto()));
+
+        connect(card, &CardProduto::adicionarAoCarrinho, this, [this](int id) {
+            Produto* prod = sistema.buscarProduto(id);
+            if (!comprador() || !prod) return;
+            try {
+                comprador()->adicionarAoCarrinho(ItemPedido(*prod, 1));
+                atualizarCarrinho();
+            } catch (const std::exception& e) {
+                QMessageBox::warning(this, "Carrinho", e.what());
+            }
+        });
+
+        connect(card, &CardProduto::favoritoAlterado, this, [this](int id, bool favoritado) {
+            Produto* prod = sistema.buscarProduto(id);
+            if (!comprador() || !prod) return;
+            if (favoritado) comprador()->favoritarProduto(*prod);
+            else            comprador()->desfavoritarProduto(*prod);
+            salvarComAviso();
+        });
+
+        grid->addWidget(card, i / 3, i % 3);   // 3 cards por linha
+        cardsProdutos[p.getIdProduto()] = card;
+        i++;
     }
+}
+
+void Interface::buscar() {
+    for (auto& [id, card] : cardsProdutos) card->setDestaque(false);   // apaga a busca anterior
+
+    std::string termo = ui->inputBusca->text().trimmed().toStdString();
+    if (termo.empty() || !comprador()) return;
+
+    std::vector<Produto> achados = comprador()->pesquisarProdutos(sistema.getProdutos(), termo);
+    if (achados.empty()) {
+        QMessageBox::information(this, "Busca", "Nenhum produto encontrado.");
+        return;
+    }
+
+    for (const Produto& p : achados)
+        cardsProdutos[p.getIdProduto()]->setDestaque(true);
+
+    ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
+    ui->scrollAreaPrincipal->ensureWidgetVisible(cardsProdutos[achados.front().getIdProduto()]);
+}
+
+void Interface::atualizarCarrinho() {
+    QLayout* lista = ui->listaProdutos->layout();
+    limparLayout(lista);
+
+    double subtotal = 0.0;
+    if (comprador()) {
+        for (const ItemPedido& item : comprador()->consultarCarrinho()) {
+            int id = item.getProduto().getIdProduto();
+            int qtd = item.getQuantidade();
+            cardCarrinho* card = new cardCarrinho(item, ui->listaProdutos);
+
+            connect(card, &cardCarrinho::quantidadeAumentada, this, [this, id, qtd] {
+                Produto* prod = sistema.buscarProduto(id);
+                if (prod && qtd + 1 > prod->getQuantidadeEstoque()) {
+                    QMessageBox::information(this, "Carrinho", "Quantidade maxima em estoque.");
+                    return;
+                }
+                comprador()->alterarQuantidadeCarrinho(id, qtd + 1);
+                atualizarCarrinho();
+            });
+            connect(card, &cardCarrinho::quantidadeDiminuida, this, [this, id, qtd] {
+                comprador()->alterarQuantidadeCarrinho(id, qtd - 1);   // em 0, o item sai
+                atualizarCarrinho();
+            });
+            lista->addWidget(card);
+        }
+        subtotal = comprador()->subtotalCarrinho();
+    }
+    ui->valorSubtotal->setText(localeBR().toCurrencyString(subtotal));
+    ui->valorTotal->setText(localeBR().toCurrencyString(subtotal));
+}
+
+void Interface::irParaEntrega() {
+    if (!comprador() || comprador()->consultarCarrinho().empty()) {
+        QMessageBox::information(this, "Carrinho", "Seu carrinho esta vazio.");
+        return;
+    }
+    ui->mainContent->setCurrentWidget(ui->paginaEntrega);
+}
+
+void Interface::irParaPagamento() {
+    try {
+        enderecoAtual = Endereco(
+            ui->inputNomeDest->text().toStdString(), ui->inputCEP->text().toStdString(),
+            ui->inputRua->text().toStdString(),      ui->inputNumero->text().toStdString(),
+            ui->inputBairro->text().toStdString(),   ui->inputComplemento->text().toStdString(),
+            ui->inputCidade->text().toStdString(),
+            ui->inputEstado->text().trimmed().toUpper().toStdString());
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Endereco", e.what());
+        return;
+    }
+
+    double subtotal = comprador()->subtotalCarrinho();
+    double frete = comprador()->consultarCarrinho().front().calcularFrete(enderecoAtual);
+
+    ui->valorSubtotalFinal->setText(localeBR().toCurrencyString(subtotal));
+    ui->valorFrete->setText(localeBR().toCurrencyString(frete));
+    ui->valorTotalFinal->setText(localeBR().toCurrencyString(subtotal + frete));
+
+    ui->mainContent->setCurrentWidget(ui->paginaPagamento);
+    ui->stackPagamento->setCurrentWidget(ui->paginaResumoFinal);
 }
 
 void Interface::carregarDados() {
@@ -160,6 +283,7 @@ Interface::Interface(QWidget *parent)
     }catch (const std::exception& e){
         QMessageBox::warning(this, "Erro ao carregar dados", e.what());
     }
+    carregarProdutos();
 
     configurarTabelaProdutos();
     configurarTabelaPedidos();
@@ -269,6 +393,7 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnCarrinho, &QPushButton::clicked, this, [this]() {
+        atualizarCarrinho();
         ui->mainContent->setCurrentWidget(ui->paginaCarrinho);
     });
 
@@ -287,7 +412,7 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnFinalizar, &QPushButton::clicked, this, [this]() {
-        ui->mainContent->setCurrentWidget(ui->paginaEntrega);
+        irParaEntrega();
     });
 
     connect(ui->btnCriarConta, &QPushButton::clicked, this, [this]() {
@@ -301,13 +426,16 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnPagPagamento, &QPushButton::clicked, this, [this]() {
-        ui->mainContent->setCurrentWidget(ui->paginaPagamento);
-        ui->stackPagamento->setCurrentWidget(ui->paginaResumoFinal);
+        irParaPagamento();
     });
 
     connect(ui->btnFazerPedido, &QPushButton::clicked, this, [this]() {
         ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
     });
+
+    connect(ui->btnBuscar, &QPushButton::clicked, this, [this]() { buscar(); });
+    connect(ui->inputBusca, &QLineEdit::returnPressed, this, [this]() { buscar(); });
+
 }
 
 Interface::~Interface()

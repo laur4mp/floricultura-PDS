@@ -11,6 +11,10 @@
 #include "DescontoRepositorio.hpp"
 #include "Comprador.hpp"
 #include "Gerente.hpp"
+#include <map>
+#include "cardProduto.h"
+#include "cardCarrinho.h"
+#include "cardHistorico.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -66,6 +70,15 @@ private:
     void criarCupom();
 
     static QString textoStatus(StatusVenda s); //função que pertence a classe
+
+    // ---- loja ----
+    std::map<int, CardProduto*> cardsProdutos;
+    Endereco enderecoAtual;
+    Comprador* comprador() const; 
+    void buscar();
+    void atualizarCarrinho();
+    void irParaEntrega();
+    void irParaPagamento();
 };
 
 #endif // INTERFACE_H
