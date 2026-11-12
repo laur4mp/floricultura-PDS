@@ -89,6 +89,7 @@ private:
     Endereco enderecoAtual;
     Comprador* comprador() const; 
     void buscar();
+    void limparDestaques();
     void atualizarCarrinho();
     void irParaEntrega();
     void irParaPagamento();

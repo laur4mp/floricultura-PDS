@@ -393,6 +393,15 @@ void Interface::carregarProdutos() {
             try {
                 comprador()->adicionarAoCarrinho(ItemPedido(*prod, 1));
                 atualizarCarrinho();
+
+                QMessageBox mensagem(this);
+
+                mensagem.setWindowTitle("Sucesso");
+                mensagem.setText("O produto foi adicionado ao carrinho!");
+                mensagem.setIcon(QMessageBox::Information);
+                mensagem.setStandardButtons(QMessageBox::Ok);
+
+                mensagem.exec();
             } catch (const std::exception& e) {
                 QMessageBox::warning(this, "Carrinho", e.what());
             }
@@ -429,6 +438,12 @@ void Interface::buscar() {
 
     ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
     ui->scrollAreaPrincipal->ensureWidgetVisible(cardsProdutos[achados.front().getIdProduto()]);
+}
+
+void Interface::limparDestaques(){
+    for (auto& [id, card] : cardsProdutos){
+        card->setDestaque(false);
+    }
 }
 
 void Interface::atualizarCarrinho() {
@@ -593,9 +608,7 @@ Interface::Interface(QWidget *parent)
     ui->paginaLoja->setFont(fonte);
     ui->paginaAcesso->setFont(fonte);
 
-     for (QPushButton *btn : {ui->btnFazerCadastro, ui->btnSairAdm}) {
-        aplicarEstiloBotaoTransparente(btn);
-    }
+    aplicarEstiloBotaoTransparente(ui->btnFazerCadastro);
 
     for (QPushButton *btn : {ui->btnProdutos, ui->btnSobreNos, ui->btnCarrinho, ui->btnMinhasCompras,
                              ui->btnContinuarComprando}) {
@@ -654,6 +667,10 @@ Interface::Interface(QWidget *parent)
     QFont underline = ui->btnContinuarComprando->font();
     underline.setUnderline(true);
     ui->btnContinuarComprando->setFont(underline);
+
+    connect(ui->btnSairAdm, &QPushButton::clicked, this, [this]() {
+        ui->stackAcesso->setCurrentWidget(ui->paginaEntrar);
+    });
 
     connect(ui->btnVerCriarSenha, &QPushButton::toggled, this, [this](bool marcado) {
         ui->inputCriarSenha->setEchoMode(
@@ -763,6 +780,12 @@ ui->dataValidade->setDate(QDate::currentDate().addMonths(1));
 
     connect(ui->btnBuscar, &QPushButton::clicked, this, [this]() { buscar(); });
     connect(ui->inputBusca, &QLineEdit::returnPressed, this, [this]() { buscar(); });
+
+    connect(ui->inputBusca, &QLineEdit::textChanged, this, [this](const QString& texto){
+        if (texto.trimmed().isEmpty()) {
+            limparDestaques();
+        }
+    });
 
 }
 
