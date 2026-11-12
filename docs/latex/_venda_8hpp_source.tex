@@ -1,5 +1,6 @@
 \doxysection{Venda.\+hpp}
-\hypertarget{_venda_8hpp_source}{}\label{_venda_8hpp_source}\doxymbox{\hyperlink{_venda_8hpp}{Go to the documentation of this file.}}
+\hypertarget{_venda_8hpp_source}{}\label{_venda_8hpp_source}\index{include/Venda.hpp@{include/Venda.hpp}}
+\doxymbox{\hyperlink{_venda_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ VENDA\_HPP}}
@@ -7,79 +8,85 @@
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_item_pedido_8hpp}{ItemPedido.hpp}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_item_pedido_8hpp}{ItemPedido.hpp}}"{}}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_desconto_8hpp}{Desconto.hpp}}"{}}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ PROCESSAMENTO,}
-\DoxyCodeLine{00021\ \ \ \ \ ENVIADO,}
-\DoxyCodeLine{00022\ \ \ \ \ ENTREGUE,}
-\DoxyCodeLine{00023\ \ \ \ \ CANCELADO}
-\DoxyCodeLine{00024\ \};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ AGUARDANDO\_PAGAMENTO,}
-\DoxyCodeLine{00033\ \ \ \ \ PAGO}
-\DoxyCodeLine{00034\ \};}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }Venda\ \{}
-\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ \_idVenda;}
-\DoxyCodeLine{00043\ \ \ \ \ std::\_nomeDestina;}
-\DoxyCodeLine{00044\ \ \ \ \ std::string\ \_cpfCliente;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ PROCESSAMENTO,}
+\DoxyCodeLine{00020\ \ \ \ \ ENVIADO,}
+\DoxyCodeLine{00021\ \ \ \ \ ENTREGUE,}
+\DoxyCodeLine{00022\ \ \ \ \ CANCELADO}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ AGUARDANDO\_PAGAMENTO,}
+\DoxyCodeLine{00031\ \ \ \ \ PAGO}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }Venda\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \_idVenda;}
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ \_nomeDestina;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ \_idPessoa;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ \_valorTotal;}
 \DoxyCodeLine{00045\ \ \ \ \ std::vector<ItemPedido>\ \_itens;}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ \_valorTotal;}
-\DoxyCodeLine{00047\ \ \ \ \ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//entrega}}
-\DoxyCodeLine{00049\ \ \ \ \ std::string\ \_dataEntrega;}
-\DoxyCodeLine{00050\ \ \ \ \ std::string\ \_horarioEntregaPrevisao;}
-\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{class_endereco}{Endereco}}\ \_enderecoEntrega;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ \_statusVenda;}
-\DoxyCodeLine{00054\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ \_statusPagamento;}
-\DoxyCodeLine{00055\ \ \ \ \ \doxymbox{\hyperlink{class_desconto}{Desconto}}\ \_descontoAplicado;}
+\DoxyCodeLine{00046\ \ \ \ \ \doxymbox{\hyperlink{class_endereco}{Endereco}}\ \_enderecoEntrega;}
+\DoxyCodeLine{00047\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ \_statusVenda;}
+\DoxyCodeLine{00048\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ \_statusPagamento;}
+\DoxyCodeLine{00049\ \ \ \ \ \doxymbox{\hyperlink{class_desconto}{Desconto}}\ \_descontoAplicado;}
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \_dataEntrega;}
+\DoxyCodeLine{00051\ \ \ \ \ std::string\ \_horarioEntregaPrevisao;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \_avaliacao;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ calcularValorTotal();}
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ constutores}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Construtores\ e\ Destrutor}}
 \DoxyCodeLine{00059\ \ \ \ \ Venda();}
-\DoxyCodeLine{00061\ \ \ \ \ \doxymbox{\hyperlink{class_venda_aba8eb9099a83921a3bfc7b2d68ddaf87}{Venda}}(\textcolor{keywordtype}{int}\ idVenda,\ \textcolor{keyword}{const}\ std::string\&\ cpfCliente,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ enderecoEntrega,\ \textcolor{keyword}{const}\ std::string\&\ \_nomeDestina);}
-\DoxyCodeLine{00062\ \ \ \ \ \string~Venda();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00062\ \ \ \ \ \doxymbox{\hyperlink{class_venda_a21828237d012a2d6e515500531342685}{Venda}}(\textcolor{keywordtype}{int}\ idVenda,\ \textcolor{keywordtype}{int}\ idPessoa,\ \textcolor{keywordtype}{int}\ avaliacao,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ enderecoEntrega);}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_aaccf613bc55bafa77d641c13637ec3a7}{adicionarItem}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_item_pedido}{ItemPedido}}\&\ item);}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_venda_a910a6b3b539d0fbb242e09c822fe6e01}{removerItem}}(\textcolor{keywordtype}{int}\ idItem);}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_a75733c8b73553e5b2ce09528a501f5e3}{calcularValorTotal}}();}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_a52ce02acc4fd753255f5709bc7261156}{aplicarCupom}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}\&\ desconto);}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//status}}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarSvenda(\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ novoStatus);}
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarSpagamento(\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ novoStatus);}
+\DoxyCodeLine{00064\ \ \ \ \ \string~Venda();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Operações\ de\ Itens\ e\ Descontos}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_aaccf613bc55bafa77d641c13637ec3a7}{adicionarItem}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_item_pedido}{ItemPedido}}\&\ item);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_venda_a910a6b3b539d0fbb242e09c822fe6e01}{removerItem}}(\textcolor{keywordtype}{int}\ idItem);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_a52ce02acc4fd753255f5709bc7261156}{aplicarCupom}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}\&\ desconto);}
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//recuperar\ e\ modificar}}
-\DoxyCodeLine{00077\ \ \ \ \ std::string\ getNomeDestina();}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ getIdVenda();}
-\DoxyCodeLine{00079\ \ \ \ \ std::string\ getCpfCliente();}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ getValorTotal();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Gestão\ de\ Estados}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarSvenda(\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ novoStatus);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarSpagamento(\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ novoStatus);}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ avaliar(\textcolor{keywordtype}{int}\ nota);}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ItemPedido>\&\ \doxymbox{\hyperlink{class_venda_ad0ca739a8fff7036bee22e20a4c35071}{getItens}}();\ \textcolor{comment}{//vetor\ com\ produtos}}
-\DoxyCodeLine{00084\ \ \ \ \ }
-\DoxyCodeLine{00085\ \ \ \ \ std::string\ getDataEntrega();}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ setDataEntrega(\textcolor{keyword}{const}\ std::string\&\ dataEntrega);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ std::string\ getHorarioEntregaPrevisao();}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ setHorarioEntregaPrevisao(\textcolor{keyword}{const}\ std::string\&\ horarioPrevisao);}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \doxymbox{\hyperlink{class_endereco}{Endereco}}\ getEnderecoEntrega();}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ setEnderecoEntrega(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ getStatusVenda();}
-\DoxyCodeLine{00095\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ getStatusPagamento();}
-\DoxyCodeLine{00096\ \};}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ getIdVenda()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ getIdPessoa()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{double}\ getValorTotal()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}\&\ \doxymbox{\hyperlink{class_venda_ab1c23a916c7b66de3df18fcfa777a159}{getDescontoAplicado}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ItemPedido>\&\ \doxymbox{\hyperlink{class_venda_ad61e786a8a63c7e9d2e61d4851223bb2}{getItens}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ getDataEntrega()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ getHorarioEntregaPrevisao()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ getEnderecoEntrega()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{StatusVenda}}\ getStatusVenda()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ \ \ \ \ \doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{StatusPagamento}}\ getStatusPagamento()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ getAvaliacao()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Setters}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ setDataEntrega(\textcolor{keyword}{const}\ std::string\&\ dataEntrega);}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ setHorarioEntregaPrevisao(\textcolor{keyword}{const}\ std::string\&\ horarioPrevisao);}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ setEnderecoEntrega(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

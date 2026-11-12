@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Floricultura PDS: Produto.hpp Source File</title>
+<title>Floricultura PDS: include/Produto.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -112,66 +112,70 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('_produto_8hpp_
 </div><!--header-->
 <div class="contents">
 <a href="_produto_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef PRODUTO </span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define PRODUTO </span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_produto.html">   12</a></span><span class="keyword">class </span>Produto {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> _idProduto;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::string _nome;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::string _descricao;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::string _categoria;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">double</span> _preco;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string enderecoImagem;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">int</span> _quantidadeEstoque;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> _quantidadeMinima;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef PRODUTO_HPP</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define PRODUTO_HPP</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_produto.html">   14</a></span><span class="keyword">class </span>Produto {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">int</span> _idProduto;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::string _nome;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::string _descricao;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string _categoria;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">double</span> _preco;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::string enderecoImagem;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span> _quantidadeEstoque;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">int</span> _quantidadeMinima;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//construtores</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    Produto();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72">   28</a></span>    <a class="code hl_function" href="class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72">Produto</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> std::string&amp; nome, <span class="keyword">const</span> std::string&amp; descricao, <span class="keyword">const</span> std::string&amp; categoria, <span class="keywordtype">double</span> preco, <span class="keyword">const</span> std::string&amp; enderecoImagem, <span class="keywordtype">int</span> estoqueInicial, <span class="keywordtype">int</span> estoqueMinimo);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ~Produto();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">int</span> getIdProduto();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Construtores e Destrutor</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    Produto();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72">   30</a></span>    <a class="code hl_function" href="class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72">Produto</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> std::string&amp; nome, <span class="keyword">const</span> std::string&amp; descricao, </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keyword">const</span> std::string&amp; categoria, <span class="keywordtype">double</span> preco, </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">const</span> std::string&amp; enderecoImagem, <span class="keywordtype">int</span> estoqueInicial, <span class="keywordtype">int</span> estoqueMinimo);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string getNome();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> setNome(<span class="keyword">const</span> std::string&amp; nome);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string getDescricao();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> setDescricao(<span class="keyword">const</span> std::string&amp; descricao);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::string getCategoria();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> setCategoria(<span class="keyword">const</span> std::string&amp; categoria);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">double</span> getPreco();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> setPreco(<span class="keywordtype">double</span> preco);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::string getEnderecoImagem();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> setEnderecoImagem(<span class="keyword">const</span> std::string&amp; enderecoImagem);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">int</span> getQuantidadeEstoque();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">int</span> getQuantidadeMinima();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ~Produto();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">//getter</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">int</span> getIdProduto() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">const</span> std::string&amp; getNome() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">const</span> std::string&amp; getDescricao() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">const</span> std::string&amp; getCategoria() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">double</span> getPreco() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">const</span> std::string&amp; getEnderecoImagem() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">int</span> getQuantidadeEstoque() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">int</span> getQuantidadeMinima() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Setters</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> setNome(<span class="keyword">const</span> std::string&amp; nome);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> setDescricao(<span class="keyword">const</span> std::string&amp; descricao);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> setCategoria(<span class="keyword">const</span> std::string&amp; categoria);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> setPreco(<span class="keywordtype">double</span> preco);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> setEnderecoImagem(<span class="keyword">const</span> std::string&amp; enderecoImagem);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> setQuantidadeMinima(<span class="keywordtype">int</span> quantidade);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="_produto_8hpp.html#a0370ba642be659aa11e45a1363b1ae4f">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="_produto_8hpp.html#a0370ba642be659aa11e45a1363b1ae4f">adicionarEstoque</a>(<span class="keywordtype">int</span> quantidade);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="_produto_8hpp.html#a25056f557b9385c2eebadc3265cd82ac">   56</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="_produto_8hpp.html#a25056f557b9385c2eebadc3265cd82ac">removerEstoque</a>(<span class="keywordtype">int</span> quantidade);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="_produto_8hpp.html#a1f14c23abe6170e6cf3722c1987264c3">   58</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="_produto_8hpp.html#a1f14c23abe6170e6cf3722c1987264c3">verificarEstoqueMinimo</a>();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_produto_8hpp_html_a0370ba642be659aa11e45a1363b1ae4f"><div class="ttname"><a href="_produto_8hpp.html#a0370ba642be659aa11e45a1363b1ae4f">adicionarEstoque</a></div><div class="ttdeci">void adicionarEstoque(int quantidade)</div><div class="ttdoc">Incrementa a quantidade atual de itens no estoque.</div></div>
-<div class="ttc" id="a_produto_8hpp_html_a1f14c23abe6170e6cf3722c1987264c3"><div class="ttname"><a href="_produto_8hpp.html#a1f14c23abe6170e6cf3722c1987264c3">verificarEstoqueMinimo</a></div><div class="ttdeci">bool verificarEstoqueMinimo()</div><div class="ttdoc">Checa se o estoque atual está abaixo ou igual ao nível mínimo configurado.</div></div>
-<div class="ttc" id="a_produto_8hpp_html_a25056f557b9385c2eebadc3265cd82ac"><div class="ttname"><a href="_produto_8hpp.html#a25056f557b9385c2eebadc3265cd82ac">removerEstoque</a></div><div class="ttdeci">bool removerEstoque(int quantidade)</div><div class="ttdoc">Remove unidades do estoque se houver quantidade suficiente disponível.</div></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_produto.html#a249aa06f855c0c3950d8aa88eaf9e954">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_produto.html#a249aa06f855c0c3950d8aa88eaf9e954">adicionarEstoque</a>(<span class="keywordtype">int</span> quantidade);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_produto.html#af14eefc078da6e092b4464ecf683f5bd">   57</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_produto.html#af14eefc078da6e092b4464ecf683f5bd">removerEstoque</a>(<span class="keywordtype">int</span> quantidade);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_produto.html#ae985edc2b3ef178c86540d173140b309">   60</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_produto.html#ae985edc2b3ef178c86540d173140b309">verificarEstoqueMinimo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_produto_html_a249aa06f855c0c3950d8aa88eaf9e954"><div class="ttname"><a href="class_produto.html#a249aa06f855c0c3950d8aa88eaf9e954">Produto::adicionarEstoque</a></div><div class="ttdeci">void adicionarEstoque(int quantidade)</div><div class="ttdoc">Incrementa a quantidade atual de itens no estoque.</div></div>
 <div class="ttc" id="aclass_produto_html_adcb70f94e23edf68d87fdc560ddc8e72"><div class="ttname"><a href="class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72">Produto::Produto</a></div><div class="ttdeci">Produto(int id, const std::string &amp;nome, const std::string &amp;descricao, const std::string &amp;categoria, double preco, const std::string &amp;enderecoImagem, int estoqueInicial, int estoqueMinimo)</div><div class="ttdoc">Inicializa um produto com todas as suas informações e limites de estoque.</div></div>
+<div class="ttc" id="aclass_produto_html_ae985edc2b3ef178c86540d173140b309"><div class="ttname"><a href="class_produto.html#ae985edc2b3ef178c86540d173140b309">Produto::verificarEstoqueMinimo</a></div><div class="ttdeci">bool verificarEstoqueMinimo() const</div><div class="ttdoc">Checa se o estoque atual está abaixo ou igual ao nível mínimo configurado.</div></div>
+<div class="ttc" id="aclass_produto_html_af14eefc078da6e092b4464ecf683f5bd"><div class="ttname"><a href="class_produto.html#af14eefc078da6e092b4464ecf683f5bd">Produto::removerEstoque</a></div><div class="ttdeci">bool removerEstoque(int quantidade)</div><div class="ttdoc">Remove unidades do estoque se houver quantidade suficiente disponível.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="_produto_8hpp.html">Produto.hpp</a></li>
+    <li class="navelem"><b>include</b></li><li class="navelem"><a href="_produto_8hpp.html">Produto.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
   </ul>
 </div>

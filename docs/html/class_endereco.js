@@ -4,5 +4,6 @@ var class_endereco =
     [ "formatarEndereco", "class_endereco.html#aa23fde85e490bd9d4d909f7d0d7f1a80", null ],
     [ "regiao", "class_endereco.html#ac377a6719f0254bfcd453a95ca98398b", null ],
     [ "setCep", "class_endereco.html#a26c75e293df346739ea0209a0a4be547", null ],
-    [ "setEstado", "class_endereco.html#a29e71a0f650bc0e52ea1a62c604b47a1", null ]
+    [ "setEstado", "class_endereco.html#a29e71a0f650bc0e52ea1a62c604b47a1", null ],
+    [ "setNumero", "class_endereco.html#a453dda1931d4a02614d3813ebf545c63", null ]
 ];

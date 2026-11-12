@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['venda_0',['Venda',['../class_venda.html#aba8eb9099a83921a3bfc7b2d68ddaf87',1,'Venda']]],
-  ['verdetalhesproduto_1',['verDetalhesProduto',['../class_comprador.html#adc5e8fe7b3ee82e38ad26f7e37246073',1,'Comprador']]],
-  ['verificarestoqueminimo_2',['verificarEstoqueMinimo',['../_produto_8hpp.html#a1f14c23abe6170e6cf3722c1987264c3',1,'Produto.hpp']]]
+  ['regiao_0',['regiao',['../class_endereco.html#ac377a6719f0254bfcd453a95ca98398b',1,'Endereco']]],
+  ['removerendereco_1',['removerEndereco',['../class_pessoa.html#a9a5fad5f7f4daf89a9405ae446b8c860',1,'Pessoa']]],
+  ['removerestoque_2',['removerEstoque',['../class_produto.html#af14eefc078da6e092b4464ecf683f5bd',1,'Produto']]],
+  ['removerestoqueproduto_3',['removerEstoqueProduto',['../class_gerente.html#a15132547ffa9d8faa120187bff5aa729',1,'Gerente']]],
+  ['removeritem_4',['removerItem',['../class_venda.html#a910a6b3b539d0fbb242e09c822fe6e01',1,'Venda']]]
 ];

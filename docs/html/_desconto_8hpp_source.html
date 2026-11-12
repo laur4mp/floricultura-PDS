@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Floricultura PDS: Desconto.hpp Source File</title>
+<title>Floricultura PDS: include/Desconto.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -123,30 +123,36 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('_desconto_8hpp
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::string cupom;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">double</span> percentual;   <span class="comment">// de 0 a 100</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Desconto();                                          <span class="comment">// sem desconto</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_desconto.html#aadf822138e14ad98ad42ac90babd9d09">   24</a></span>    <a class="code hl_function" href="class_desconto.html#aadf822138e14ad98ad42ac90babd9d09">Desconto</a>(<span class="keyword">const</span> std::string&amp; cupom, <span class="keywordtype">double</span> percentual);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    ~Desconto();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::string getCupom() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">   31</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">aplicar</a>(<span class="keywordtype">double</span> valorTotal) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string dataValidade;    <span class="comment">// formato AAAA-MM-DD</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    Desconto();    <span class="comment">// compra sem desconto</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_desconto.html#a12bdbf93c9e374cce95ea1061153745b">   25</a></span>    <a class="code hl_function" href="class_desconto.html#a12bdbf93c9e374cce95ea1061153745b">Desconto</a>(<span class="keyword">const</span> std::string&amp; cupom, <span class="keywordtype">double</span> percentual, <span class="keyword">const</span> std::string&amp; dataValidade);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    ~Desconto();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::string getCupom() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">double</span> getPercentual() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::string getDataValidade() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_desconto.html#ac8a0cba0ad910892d7e58eecfd24015f">   34</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_desconto.html#ac8a0cba0ad910892d7e58eecfd24015f">ehValido</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">   37</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">aplicar</a>(<span class="keywordtype">double</span> valorTotal) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_desconto_html_a63ea32957b2cb5fe9d2f421f93fb578f"><div class="ttname"><a href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">Desconto::aplicar</a></div><div class="ttdeci">double aplicar(double valorTotal) const</div><div class="ttdoc">Aplica o desconto sobre o valor e devolve o total final.</div></div>
-<div class="ttc" id="aclass_desconto_html_aadf822138e14ad98ad42ac90babd9d09"><div class="ttname"><a href="class_desconto.html#aadf822138e14ad98ad42ac90babd9d09">Desconto::Desconto</a></div><div class="ttdeci">Desconto(const std::string &amp;cupom, double percentual)</div><div class="ttdoc">Inicializa o desconto com código de cupom e porcentagem (0 a 100).</div></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_desconto_html_a12bdbf93c9e374cce95ea1061153745b"><div class="ttname"><a href="class_desconto.html#a12bdbf93c9e374cce95ea1061153745b">Desconto::Desconto</a></div><div class="ttdeci">Desconto(const std::string &amp;cupom, double percentual, const std::string &amp;dataValidade)</div><div class="ttdoc">Inicializa o desconto com código de cupom, porcentagem (0 a 100) e validade (AAAA-MM-DD).</div></div>
+<div class="ttc" id="aclass_desconto_html_a63ea32957b2cb5fe9d2f421f93fb578f"><div class="ttname"><a href="class_desconto.html#a63ea32957b2cb5fe9d2f421f93fb578f">Desconto::aplicar</a></div><div class="ttdeci">double aplicar(double valorTotal) const</div><div class="ttdoc">Aplica o desconto sobre o valor e devolve o total final se o cupom for válido.</div></div>
+<div class="ttc" id="aclass_desconto_html_ac8a0cba0ad910892d7e58eecfd24015f"><div class="ttname"><a href="class_desconto.html#ac8a0cba0ad910892d7e58eecfd24015f">Desconto::ehValido</a></div><div class="ttdeci">bool ehValido() const</div><div class="ttdoc">Verifica se o cupom está dentro da validade e pode ser utilizado.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="_desconto_8hpp.html">Desconto.hpp</a></li>
+    <li class="navelem"><b>include</b></li><li class="navelem"><a href="_desconto_8hpp.html">Desconto.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
   </ul>
 </div>

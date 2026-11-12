@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['desconto_0',['Desconto',['../class_desconto.html',1,'']]]
+  ['desconto_0',['Desconto',['../class_desconto.html',1,'']]],
+  ['descontorepositorio_1',['DescontoRepositorio',['../class_desconto_repositorio.html',1,'']]]
 ];

@@ -1,0 +1,48 @@
+\doxysection{Produto\+Repositorio Class Reference}
+\hypertarget{class_produto_repositorio}{}\label{class_produto_repositorio}\index{ProdutoRepositorio@{ProdutoRepositorio}}
+
+
+Le e grava a lista de produtos em um arquivo TXT (um produto por linha).  
+
+
+
+
+{\ttfamily \+\#include $<$Produto\+Repositorio.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_produto_repositorio_a0d0b07fdf444f2706f60a48a9c02b030}\label{class_produto_repositorio_a0d0b07fdf444f2706f60a48a9c02b030} 
+{\bfseries Produto\+Repositorio} (const std::\+string \&caminho)
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \doxymbox{\hyperlink{class_produto_repositorio_a12a56caf58bac89ec851d3e4b1599b3a}{carregar}} () const
+\item 
+void \doxymbox{\hyperlink{class_produto_repositorio_a32692fc5bdb77744fd765ac290a7140d}{gravar}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&produtos) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Le e grava a lista de produtos em um arquivo TXT (um produto por linha). 
+
+Formato: id\texorpdfstring{$\vert$}{|}nome\texorpdfstring{$\vert$}{|}descricao\texorpdfstring{$\vert$}{|}categoria\texorpdfstring{$\vert$}{|}preco\texorpdfstring{$\vert$}{|}imagem\texorpdfstring{$\vert$}{|}estoque\texorpdfstring{$\vert$}{|}estoque\+Minimo 
+
+\label{class_produto_repositorio_doc-func-members}
+\Hypertarget{class_produto_repositorio_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_produto_repositorio_a12a56caf58bac89ec851d3e4b1599b3a}\index{ProdutoRepositorio@{ProdutoRepositorio}!carregar@{carregar}}
+\index{carregar@{carregar}!ProdutoRepositorio@{ProdutoRepositorio}}
+\doxysubsubsection{\texorpdfstring{carregar()}{carregar()}}
+{\footnotesize\ttfamily \label{class_produto_repositorio_a12a56caf58bac89ec851d3e4b1599b3a} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ Produto\+Repositorio::\+carregar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Le todos os produtos do arquivo (arquivo inexistente = lista vazia). \Hypertarget{class_produto_repositorio_a32692fc5bdb77744fd765ac290a7140d}\index{ProdutoRepositorio@{ProdutoRepositorio}!gravar@{gravar}}
+\index{gravar@{gravar}!ProdutoRepositorio@{ProdutoRepositorio}}
+\doxysubsubsection{\texorpdfstring{gravar()}{gravar()}}
+{\footnotesize\ttfamily \label{class_produto_repositorio_a32692fc5bdb77744fd765ac290a7140d} 
+void Produto\+Repositorio::\+gravar (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \&}]{produtos}{}\end{DoxyParamCaption}) const}
+
+Reescreve o arquivo com a lista recebida. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Produto\+Repositorio.\+hpp\end{DoxyCompactItemize}

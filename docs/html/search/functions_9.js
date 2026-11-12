@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['selecionarendereco_0',['selecionarEndereco',['../class_comprador.html#ac230c108449bd9d9c750d36a93450bb9',1,'Comprador']]],
-  ['setcep_1',['setCep',['../class_endereco.html#a26c75e293df346739ea0209a0a4be547',1,'Endereco']]],
-  ['setestado_2',['setEstado',['../class_endereco.html#a29e71a0f650bc0e52ea1a62c604b47a1',1,'Endereco']]],
-  ['setnome_3',['setNome',['../class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930',1,'Pessoa::setNome(const std::strinf &amp;nome)'],['../class_pessoa.html#a626351f5d3af197f875ffec7c06f2047',1,'Pessoa::setNome(const std::strinf &amp;cpf)'],['../class_pessoa.html#af5030d1e6bb61d2df15ef06c338f4167',1,'Pessoa::setNome(const std::strinf &amp;email)'],['../class_pessoa.html#af0cf2deff1e50a19e5458c854c39e043',1,'Pessoa::setNome(const std::strinf &amp;telefone)'],['../class_pessoa.html#a3d598f3a7727ff668ec1ead0a0a0959b',1,'Pessoa::setNome(const std::strinf &amp;senha)'],['../class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930',1,'Pessoa::setNome(const std::strinf &amp;nome)']]]
+  ['pesquisarprodutos_0',['pesquisarProdutos',['../class_comprador.html#abf23ea1df8399a43b07687b21278d040',1,'Comprador']]],
+  ['pessoa_1',['Pessoa',['../class_pessoa.html#a22563fe1f53faa9b1d8d10d28ae0c650',1,'Pessoa::Pessoa()'],['../class_pessoa.html#a88d9b77dd703f4592839fe0b84694e2e',1,'Pessoa::Pessoa(int idPessoa, const std::string &amp;nome, const std::string &amp;cpf, const std::string &amp;email, const std::string &amp;telefone, const std::string &amp;senha)']]],
+  ['pessoarepositorio_2',['PessoaRepositorio',['../class_pessoa_repositorio.html#a56a7cb6dbb527aa874047278126c470d',1,'PessoaRepositorio']]],
+  ['possuiendereco_3',['possuiEndereco',['../class_pessoa.html#a9c9b013b2bb9313ed55e07b0502f48db',1,'Pessoa']]],
+  ['produto_4',['Produto',['../class_produto.html#adcb70f94e23edf68d87fdc560ddc8e72',1,'Produto']]],
+  ['proximoidproduto_5',['proximoIdProduto',['../class_sistema.html#ac0d031135a243027f938d517d3b9c657',1,'Sistema']]],
+  ['proximoidusuario_6',['proximoIdUsuario',['../class_sistema.html#a83a11f317357a371a4e848f770060b81',1,'Sistema']]],
+  ['proximoidvenda_7',['proximoIdVenda',['../class_sistema.html#a9b84116d825732d0a9183bf46b13bac7',1,'Sistema']]]
 ];

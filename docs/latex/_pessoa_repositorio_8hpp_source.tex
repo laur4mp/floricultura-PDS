@@ -1,0 +1,37 @@
+\doxysection{Pessoa\+Repositorio.\+hpp}
+\hypertarget{_pessoa_repositorio_8hpp_source}{}\label{_pessoa_repositorio_8hpp_source}\index{include/PessoaRepositorio.hpp@{include/PessoaRepositorio.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PESSOA\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PESSOA\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_pessoa_8hpp}{Pessoa.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_pessoa_repositorio_a56a7cb6dbb527aa874047278126c470d}{PessoaRepositorio}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }Favorito\ =\ std::pair<int,\ int>;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{ItemCarrinho}}\ \{\ \textcolor{keywordtype}{int}\ idPessoa;\ \textcolor{keywordtype}{int}\ idProduto;\ \textcolor{keywordtype}{int}\ quantidade;\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{class_pessoa_repositorio_a56a7cb6dbb527aa874047278126c470d}{PessoaRepositorio}}(\textcolor{keyword}{const}\ std::string\&\ caminho);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<Pessoa>\ \doxymbox{\hyperlink{class_pessoa_repositorio_a06cd6b2838abdee8cdf7ed3d2c49431e}{carregar}}(std::vector<Favorito>\&\ favoritos,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<ItemCarrinho>\&\ carrinhos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_pessoa_repositorio_a0063f596d2c4b3188a063693d4dd613f}{gravar}}(\textcolor{keyword}{const}\ std::vector<Pessoa>\&\ pessoas,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Favorito>\&\ favoritos,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ItemCarrinho>\&\ carrinhos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ std::string\ \_caminho;\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ limpar(std::string\ s)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

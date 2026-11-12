@@ -12,18 +12,15 @@ Representa um pedido realizado, contendo itens, dados de entrega e pagamento.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_venda_aba8eb9099a83921a3bfc7b2d68ddaf87}\label{class_venda_aba8eb9099a83921a3bfc7b2d68ddaf87} 
-{\bfseries Venda} (int id\+Venda, const std::\+string \&cpf\+Cliente, const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco\+Entrega, const std::\+string \&\+\_\+nome\+Destina)
-\begin{DoxyCompactList}\small\item\em Inicializa uma venda com ID, CPF do cliente, endereço e destinatário. \end{DoxyCompactList}\item 
+\Hypertarget{class_venda_a21828237d012a2d6e515500531342685}\label{class_venda_a21828237d012a2d6e515500531342685} 
+{\bfseries Venda} (int id\+Venda, int id\+Pessoa, int avaliacao, const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco\+Entrega)
+\begin{DoxyCompactList}\small\item\em Inicializa uma venda com ID, ID do cliente, endereço e destinatário. \end{DoxyCompactList}\item 
 \Hypertarget{class_venda_aaccf613bc55bafa77d641c13637ec3a7}\label{class_venda_aaccf613bc55bafa77d641c13637ec3a7} 
 void {\bfseries adicionar\+Item} (const \doxymbox{\hyperlink{class_item_pedido}{Item\+Pedido}} \&item)
 \begin{DoxyCompactList}\small\item\em Adiciona um item ao carrinho/\+pedido da venda. \end{DoxyCompactList}\item 
 \Hypertarget{class_venda_a910a6b3b539d0fbb242e09c822fe6e01}\label{class_venda_a910a6b3b539d0fbb242e09c822fe6e01} 
 bool {\bfseries remover\+Item} (int id\+Item)
 \begin{DoxyCompactList}\small\item\em Remove um item do pedido pelo seu identificador. \end{DoxyCompactList}\item 
-\Hypertarget{class_venda_a75733c8b73553e5b2ce09528a501f5e3}\label{class_venda_a75733c8b73553e5b2ce09528a501f5e3} 
-void {\bfseries calcular\+Valor\+Total} ()
-\begin{DoxyCompactList}\small\item\em Recalcula o valor total da venda considerando os itens e descontos. \end{DoxyCompactList}\item 
 \Hypertarget{class_venda_a52ce02acc4fd753255f5709bc7261156}\label{class_venda_a52ce02acc4fd753255f5709bc7261156} 
 void {\bfseries aplicar\+Cupom} (const \doxymbox{\hyperlink{class_desconto}{Desconto}} \&desconto)
 \begin{DoxyCompactList}\small\item\em Aplica um cupom de desconto sobre o valor do pedido. \end{DoxyCompactList}\item 
@@ -33,44 +30,50 @@ void {\bfseries atualizar\+Svenda} (\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68
 \Hypertarget{class_venda_a6ea27164e49f0aa9e8e01923d3c39fb3}\label{class_venda_a6ea27164e49f0aa9e8e01923d3c39fb3} 
 void {\bfseries atualizar\+Spagamento} (\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}} novo\+Status)
 \item 
-\Hypertarget{class_venda_a8097697baf7e12a7cdacbefdcf33ce59}\label{class_venda_a8097697baf7e12a7cdacbefdcf33ce59} 
-std::\+string {\bfseries get\+Nome\+Destina} ()
+\Hypertarget{class_venda_a0d9e0d0befbed78644115e292665921c}\label{class_venda_a0d9e0d0befbed78644115e292665921c} 
+void {\bfseries avaliar} (int nota)
 \item 
-\Hypertarget{class_venda_abffd89082a5d029b90989a498cf4a86c}\label{class_venda_abffd89082a5d029b90989a498cf4a86c} 
-int {\bfseries get\+Id\+Venda} ()
+\Hypertarget{class_venda_a87474f218f4117b83d4bb6ffd100a88d}\label{class_venda_a87474f218f4117b83d4bb6ffd100a88d} 
+int {\bfseries get\+Id\+Venda} () const
 \item 
-\Hypertarget{class_venda_ad82eae3fb3968caa3d927eaca68968d9}\label{class_venda_ad82eae3fb3968caa3d927eaca68968d9} 
-std::\+string {\bfseries get\+Cpf\+Cliente} ()
+\Hypertarget{class_venda_ad945734ce539cfa28d95c852cf7fbc10}\label{class_venda_ad945734ce539cfa28d95c852cf7fbc10} 
+int {\bfseries get\+Id\+Pessoa} () const
 \item 
-\Hypertarget{class_venda_a2316c1845d0330c2c215dda7dc147fe6}\label{class_venda_a2316c1845d0330c2c215dda7dc147fe6} 
-double {\bfseries get\+Valor\+Total} ()
+\Hypertarget{class_venda_aa86ad98b78f469389814cc7eb48fa3e7}\label{class_venda_aa86ad98b78f469389814cc7eb48fa3e7} 
+double {\bfseries get\+Valor\+Total} () const
 \item 
-\Hypertarget{class_venda_ad0ca739a8fff7036bee22e20a4c35071}\label{class_venda_ad0ca739a8fff7036bee22e20a4c35071} 
-const std::\+vector$<$ \doxymbox{\hyperlink{class_item_pedido}{Item\+Pedido}} $>$ \& {\bfseries get\+Itens} ()
+\Hypertarget{class_venda_ab1c23a916c7b66de3df18fcfa777a159}\label{class_venda_ab1c23a916c7b66de3df18fcfa777a159} 
+const \doxymbox{\hyperlink{class_desconto}{Desconto}} \& {\bfseries get\+Desconto\+Aplicado} () const
+\begin{DoxyCompactList}\small\item\em Retorna o desconto (cupom) aplicado ao pedido. \end{DoxyCompactList}\item 
+\Hypertarget{class_venda_ad61e786a8a63c7e9d2e61d4851223bb2}\label{class_venda_ad61e786a8a63c7e9d2e61d4851223bb2} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_item_pedido}{Item\+Pedido}} $>$ \& {\bfseries get\+Itens} () const
 \begin{DoxyCompactList}\small\item\em Retorna a lista de itens inclusos no pedido. \end{DoxyCompactList}\item 
-\Hypertarget{class_venda_a06426c828219b23305d22512ad446f8d}\label{class_venda_a06426c828219b23305d22512ad446f8d} 
-std::\+string {\bfseries get\+Data\+Entrega} ()
+\Hypertarget{class_venda_a18c09f9813fefe502efdb558bd6be064}\label{class_venda_a18c09f9813fefe502efdb558bd6be064} 
+const std::\+string \& {\bfseries get\+Data\+Entrega} () const
+\item 
+\Hypertarget{class_venda_ae7c3a2128a01ca8d55306c286199b11c}\label{class_venda_ae7c3a2128a01ca8d55306c286199b11c} 
+const std::\+string \& {\bfseries get\+Horario\+Entrega\+Previsao} () const
+\item 
+\Hypertarget{class_venda_aacd500d703a943a71de54bbe9cba0128}\label{class_venda_aacd500d703a943a71de54bbe9cba0128} 
+const \doxymbox{\hyperlink{class_endereco}{Endereco}} \& {\bfseries get\+Endereco\+Entrega} () const
+\item 
+\Hypertarget{class_venda_a71f2cf9c323108a1e38a2931a466b91e}\label{class_venda_a71f2cf9c323108a1e38a2931a466b91e} 
+\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} {\bfseries get\+Status\+Venda} () const
+\item 
+\Hypertarget{class_venda_aee911310bc0bca2a93eb093e47794c3a}\label{class_venda_aee911310bc0bca2a93eb093e47794c3a} 
+\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}} {\bfseries get\+Status\+Pagamento} () const
+\item 
+\Hypertarget{class_venda_ad96189fe067f63b5b50d6ead345d8913}\label{class_venda_ad96189fe067f63b5b50d6ead345d8913} 
+int {\bfseries get\+Avaliacao} () const
 \item 
 \Hypertarget{class_venda_a708b4affd2f0451cb8c2be27c71806a8}\label{class_venda_a708b4affd2f0451cb8c2be27c71806a8} 
 void {\bfseries set\+Data\+Entrega} (const std::\+string \&data\+Entrega)
 \item 
-\Hypertarget{class_venda_acbf95ad7183cf108f7d897ed2f842db3}\label{class_venda_acbf95ad7183cf108f7d897ed2f842db3} 
-std::\+string {\bfseries get\+Horario\+Entrega\+Previsao} ()
-\item 
 \Hypertarget{class_venda_a0358ca7c8fb80841f8da88dac3daa160}\label{class_venda_a0358ca7c8fb80841f8da88dac3daa160} 
 void {\bfseries set\+Horario\+Entrega\+Previsao} (const std::\+string \&horario\+Previsao)
 \item 
-\Hypertarget{class_venda_af88895efd143c9ddc1157655a2838396}\label{class_venda_af88895efd143c9ddc1157655a2838396} 
-\doxymbox{\hyperlink{class_endereco}{Endereco}} {\bfseries get\+Endereco\+Entrega} ()
-\item 
 \Hypertarget{class_venda_a39d60d93c567e1e0f3c6334aabfb7512}\label{class_venda_a39d60d93c567e1e0f3c6334aabfb7512} 
 void {\bfseries set\+Endereco\+Entrega} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco)
-\item 
-\Hypertarget{class_venda_ad64ec6b7f821694f488e65fdd320b81c}\label{class_venda_ad64ec6b7f821694f488e65fdd320b81c} 
-\doxymbox{\hyperlink{_venda_8hpp_a1f4560af68947ad26030162b837acde4}{Status\+Venda}} {\bfseries get\+Status\+Venda} ()
-\item 
-\Hypertarget{class_venda_ac8f7184c25a67bc1cc17a98fe15f12d6}\label{class_venda_ac8f7184c25a67bc1cc17a98fe15f12d6} 
-\doxymbox{\hyperlink{_venda_8hpp_a82afdd458327a16ed52842c46936b2e1}{Status\+Pagamento}} {\bfseries get\+Status\+Pagamento} ()
 \end{DoxyCompactItemize}
 
 
@@ -79,4 +82,4 @@ Representa um pedido realizado, contendo itens, dados de entrega e pagamento.
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-\doxymbox{\hyperlink{_venda_8hpp}{Venda.\+hpp}}\end{DoxyCompactItemize}
+include/\doxymbox{\hyperlink{_venda_8hpp}{Venda.\+hpp}}\end{DoxyCompactItemize}

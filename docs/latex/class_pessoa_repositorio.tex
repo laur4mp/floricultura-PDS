@@ -1,0 +1,96 @@
+\doxysection{Pessoa\+Repositorio Class Reference}
+\hypertarget{class_pessoa_repositorio}{}\label{class_pessoa_repositorio}\index{PessoaRepositorio@{PessoaRepositorio}}
+
+
+Lê e grava a lista de pessoas em um arquivo TXT.  
+
+
+
+
+{\ttfamily \+\#include $<$Pessoa\+Repositorio.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{Item\+Carrinho}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pessoa_repositorio_ad8006365dcee69c4af15730bb370f131}\label{class_pessoa_repositorio_ad8006365dcee69c4af15730bb370f131} 
+using {\bfseries Favorito} = std::\+pair$<$int, int$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_pessoa_repositorio_a56a7cb6dbb527aa874047278126c470d}{Pessoa\+Repositorio}} (const std::\+string \&caminho)
+\begin{DoxyCompactList}\small\item\em Constrói o repositório de pessoas associado a um arquivo de texto. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} $>$ \doxymbox{\hyperlink{class_pessoa_repositorio_a06cd6b2838abdee8cdf7ed3d2c49431e}{carregar}} (std::\+vector$<$ Favorito $>$ \&favoritos, std::\+vector$<$ \doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{Item\+Carrinho}} $>$ \&carrinhos) const
+\begin{DoxyCompactList}\small\item\em Lê todas as pessoas do arquivo (arquivo inexistente = lista vazia). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_pessoa_repositorio_a0063f596d2c4b3188a063693d4dd613f}{gravar}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} $>$ \&pessoas, const std::\+vector$<$ Favorito $>$ \&favoritos, const std::\+vector$<$ \doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{Item\+Carrinho}} $>$ \&carrinhos) const
+\begin{DoxyCompactList}\small\item\em Reescreve o arquivo com a lista recebida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lê e grava a lista de pessoas em um arquivo TXT. 
+
+Campos separados por \textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}.
+
+P\texorpdfstring{$\vert$}{|}id\texorpdfstring{$\vert$}{|}nome\texorpdfstring{$\vert$}{|}cpf\texorpdfstring{$\vert$}{|}email\texorpdfstring{$\vert$}{|}telefone\texorpdfstring{$\vert$}{|}senha E\texorpdfstring{$\vert$}{|}id\+Pessoa\texorpdfstring{$\vert$}{|}nome\+Dest\texorpdfstring{$\vert$}{|}cep\texorpdfstring{$\vert$}{|}rua\texorpdfstring{$\vert$}{|}numero\texorpdfstring{$\vert$}{|}bairro\texorpdfstring{$\vert$}{|}complemento\texorpdfstring{$\vert$}{|}cidade\texorpdfstring{$\vert$}{|}estado 
+
+\label{class_pessoa_repositorio_doc-constructors}
+\Hypertarget{class_pessoa_repositorio_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pessoa_repositorio_a56a7cb6dbb527aa874047278126c470d}\index{PessoaRepositorio@{PessoaRepositorio}!PessoaRepositorio@{PessoaRepositorio}}
+\index{PessoaRepositorio@{PessoaRepositorio}!PessoaRepositorio@{PessoaRepositorio}}
+\doxysubsubsection{\texorpdfstring{PessoaRepositorio()}{PessoaRepositorio()}}
+{\footnotesize\ttfamily \label{class_pessoa_repositorio_a56a7cb6dbb527aa874047278126c470d} 
+Pessoa\+Repositorio::\+\+Pessoa\+Repositorio (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{caminho}{}\end{DoxyParamCaption})}
+
+
+
+Constrói o repositório de pessoas associado a um arquivo de texto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho} & Caminho para o arquivo TXT de armazenamento. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_pessoa_repositorio_doc-func-members}
+\Hypertarget{class_pessoa_repositorio_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pessoa_repositorio_a06cd6b2838abdee8cdf7ed3d2c49431e}\index{PessoaRepositorio@{PessoaRepositorio}!carregar@{carregar}}
+\index{carregar@{carregar}!PessoaRepositorio@{PessoaRepositorio}}
+\doxysubsubsection{\texorpdfstring{carregar()}{carregar()}}
+{\footnotesize\ttfamily \label{class_pessoa_repositorio_a06cd6b2838abdee8cdf7ed3d2c49431e} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} $>$ Pessoa\+Repositorio::\+carregar (\begin{DoxyParamCaption}\item[{std::\+vector$<$ Favorito $>$ \&}]{favoritos}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{Item\+Carrinho}} $>$ \&}]{carrinhos}{}\end{DoxyParamCaption}) const}
+
+
+
+Lê todas as pessoas do arquivo (arquivo inexistente = lista vazia). 
+
+\begin{DoxyReturn}{Returns}
+Vetor contendo as pessoas carregadas, já com seus endereços. 
+\end{DoxyReturn}
+\Hypertarget{class_pessoa_repositorio_a0063f596d2c4b3188a063693d4dd613f}\index{PessoaRepositorio@{PessoaRepositorio}!gravar@{gravar}}
+\index{gravar@{gravar}!PessoaRepositorio@{PessoaRepositorio}}
+\doxysubsubsection{\texorpdfstring{gravar()}{gravar()}}
+{\footnotesize\ttfamily \label{class_pessoa_repositorio_a0063f596d2c4b3188a063693d4dd613f} 
+void Pessoa\+Repositorio::\+gravar (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} $>$ \&}]{pessoas}{, }\item[{const std::\+vector$<$ Favorito $>$ \&}]{favoritos}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_pessoa_repositorio_1_1_item_carrinho}{Item\+Carrinho}} $>$ \&}]{carrinhos}{}\end{DoxyParamCaption}) const}
+
+
+
+Reescreve o arquivo com a lista recebida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pessoas} & Vetor de pessoas a ser gravado. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Pessoa\+Repositorio.\+hpp\end{DoxyCompactItemize}

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['favoritarproduto_0',['favoritarProduto',['../class_comprador.html#a9f8d60e2ffbe9187b82fd9002ce8974a',1,'Comprador']]],
-  ['fazerpedido_1',['fazerPedido',['../class_comprador.html#a5367a8eb6c20fb5ee4c4f93794cd5be4',1,'Comprador']]],
-  ['filtrarprodutos_2',['filtrarProdutos',['../class_comprador.html#aaddabcd3549f236aebfec8bd0ea54696',1,'Comprador']]],
-  ['formatarendereco_3',['formatarEndereco',['../class_endereco.html#aa23fde85e490bd9d4d909f7d0d7f1a80',1,'Endereco']]]
+  ['editarproduto_0',['editarProduto',['../class_gerente.html#a24ed8f5fd25d2005745cb6f9173d8afd',1,'Gerente']]],
+  ['ehfavorito_1',['ehFavorito',['../class_comprador.html#a5720977e3130efff2a664a3852ecc8fc',1,'Comprador']]],
+  ['ehvalido_2',['ehValido',['../class_desconto.html#ac8a0cba0ad910892d7e58eecfd24015f',1,'Desconto']]],
+  ['endereco_3',['Endereco',['../class_endereco.html',1,'Endereco'],['../class_endereco.html#a58c9d01f7ff7dd6ee29e998def91eefa',1,'Endereco::Endereco()']]],
+  ['endereco_2ehpp_4',['Endereco.hpp',['../_endereco_8hpp.html',1,'']]]
 ];

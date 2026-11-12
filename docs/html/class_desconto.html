@@ -119,19 +119,26 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_desconto
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aadf822138e14ad98ad42ac90babd9d09" id="r_aadf822138e14ad98ad42ac90babd9d09"><td class="memItemLeft"><a id="aadf822138e14ad98ad42ac90babd9d09" name="aadf822138e14ad98ad42ac90babd9d09"></a>
-&#160;</td><td class="memItemRight"><b>Desconto</b> (const std::string &amp;cupom, double percentual)</td></tr>
-<tr class="memdesc:aadf822138e14ad98ad42ac90babd9d09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa o desconto com código de cupom e porcentagem (0 a 100). <br /></td></tr>
+<tr class="memitem:a12bdbf93c9e374cce95ea1061153745b" id="r_a12bdbf93c9e374cce95ea1061153745b"><td class="memItemLeft"><a id="a12bdbf93c9e374cce95ea1061153745b" name="a12bdbf93c9e374cce95ea1061153745b"></a>
+&#160;</td><td class="memItemRight"><b>Desconto</b> (const std::string &amp;cupom, double percentual, const std::string &amp;dataValidade)</td></tr>
+<tr class="memdesc:a12bdbf93c9e374cce95ea1061153745b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa o desconto com código de cupom, porcentagem (0 a 100) e validade (AAAA-MM-DD). <br /></td></tr>
 <tr class="memitem:a97b7121ddbddfe032f794e79f1c99ef1" id="r_a97b7121ddbddfe032f794e79f1c99ef1"><td class="memItemLeft"><a id="a97b7121ddbddfe032f794e79f1c99ef1" name="a97b7121ddbddfe032f794e79f1c99ef1"></a>
 std::string&#160;</td><td class="memItemRight"><b>getCupom</b> () const</td></tr>
+<tr class="memitem:a6fd9705c82a7f9d5284ebc38293d2ad2" id="r_a6fd9705c82a7f9d5284ebc38293d2ad2"><td class="memItemLeft"><a id="a6fd9705c82a7f9d5284ebc38293d2ad2" name="a6fd9705c82a7f9d5284ebc38293d2ad2"></a>
+double&#160;</td><td class="memItemRight"><b>getPercentual</b> () const</td></tr>
+<tr class="memitem:ab92afa04b4df8e7ef47c963abf678809" id="r_ab92afa04b4df8e7ef47c963abf678809"><td class="memItemLeft"><a id="ab92afa04b4df8e7ef47c963abf678809" name="ab92afa04b4df8e7ef47c963abf678809"></a>
+std::string&#160;</td><td class="memItemRight"><b>getDataValidade</b> () const</td></tr>
+<tr class="memitem:ac8a0cba0ad910892d7e58eecfd24015f" id="r_ac8a0cba0ad910892d7e58eecfd24015f"><td class="memItemLeft"><a id="ac8a0cba0ad910892d7e58eecfd24015f" name="ac8a0cba0ad910892d7e58eecfd24015f"></a>
+bool&#160;</td><td class="memItemRight"><b>ehValido</b> () const</td></tr>
+<tr class="memdesc:ac8a0cba0ad910892d7e58eecfd24015f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o cupom está dentro da validade e pode ser utilizado. <br /></td></tr>
 <tr class="memitem:a63ea32957b2cb5fe9d2f421f93fb578f" id="r_a63ea32957b2cb5fe9d2f421f93fb578f"><td class="memItemLeft"><a id="a63ea32957b2cb5fe9d2f421f93fb578f" name="a63ea32957b2cb5fe9d2f421f93fb578f"></a>
 double&#160;</td><td class="memItemRight"><b>aplicar</b> (double valorTotal) const</td></tr>
-<tr class="memdesc:a63ea32957b2cb5fe9d2f421f93fb578f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica o desconto sobre o valor e devolve o total final. <br /></td></tr>
+<tr class="memdesc:a63ea32957b2cb5fe9d2f421f93fb578f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica o desconto sobre o valor e devolve o total final se o cupom for válido. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Representa um cupom promocional e seu percentual de abatimento. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_desconto_8hpp_source.html">Desconto.hpp</a></li>
+<li>include/<a class="el" href="_desconto_8hpp_source.html">Desconto.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

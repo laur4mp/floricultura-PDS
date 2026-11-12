@@ -1,0 +1,316 @@
+\doxysection{Sistema Class Reference}
+\hypertarget{class_sistema}{}\label{class_sistema}\index{Sistema@{Sistema}}
+
+
+Central de dados da floricultura.  
+
+
+
+
+{\ttfamily \+\#include $<$Sistema.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_sistema_a6b8b3cad19593e28f2c8d04bbf0b7404}{Sistema}} (const \doxymbox{\hyperlink{class_sistema}{Sistema}} \&)=delete
+\item 
+\Hypertarget{class_sistema_a2eff61793d15cfe69ebb9109b4b23cc5}\label{class_sistema_a2eff61793d15cfe69ebb9109b4b23cc5} 
+\doxymbox{\hyperlink{class_sistema}{Sistema}} \& {\bfseries operator=} (const \doxymbox{\hyperlink{class_sistema}{Sistema}} \&)=delete
+\item 
+void \doxymbox{\hyperlink{class_sistema_a5dcd08d833cd8ad551270da5617123fd}{adicionar\+Usuario}} (\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*}usuario)
+\begin{DoxyCompactList}\small\item\em Cadastra um usuario; o \doxylink{class_sistema}{Sistema} passa a ser o dono do objeto. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_sistema_a15b4bd36596f0d3fb0b3d5ce00e2fb9d}{autenticar}} (const std::\+string \&email, const std::\+string \&senha) const
+\begin{DoxyCompactList}\small\item\em Confere e-\/mail e senha. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} $>$ \& \doxymbox{\hyperlink{class_sistema_a73ccb4ce0a5ed84d43abde993dd60191}{get\+Usuarios}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a lista de usuários cadastrados no sistema. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_sistema_ad1557df450f75705be01bc17e11587e3}{buscar\+Usuario}} (int id\+Pessoa) const
+\begin{DoxyCompactList}\small\item\em acha um usuario pelo id. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_sistema_a10bf1452af0e654d3cd036df4f9ee1e2}{adicionar\+Produto}} (const \doxymbox{\hyperlink{class_produto}{Produto}} \&produto)
+\item 
+\doxymbox{\hyperlink{class_produto}{Produto}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_sistema_a862a2ef2853ef9af0472dcf45cc24adb}{buscar\+Produto}} (int id\+Produto)
+\item 
+\Hypertarget{class_sistema_a6c792976ebf9557ebc407611d911346c}\label{class_sistema_a6c792976ebf9557ebc407611d911346c} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_produto}{Produto}} $>$ \& {\bfseries get\+Produtos} () const
+\item 
+void \doxymbox{\hyperlink{class_sistema_a1a5196101352ebc0a0809d60f4705d96}{adicionar\+Cupom}} (const \doxymbox{\hyperlink{class_desconto}{Desconto}} \&cupom)
+\item 
+const \doxymbox{\hyperlink{class_desconto}{Desconto}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_sistema_abe57769ec56cbe3db6eb6ae46fa67660}{buscar\+Cupom}} (const std::\+string \&codigo) const
+\item 
+\Hypertarget{class_sistema_a175fbbd5e6f9b716db1ba758a9837a88}\label{class_sistema_a175fbbd5e6f9b716db1ba758a9837a88} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_desconto}{Desconto}} $>$ \& {\bfseries get\+Cupons} () const
+\item 
+void \doxymbox{\hyperlink{class_sistema_aac018cc71a6ee11e80c483e2c63ff0f4}{adicionar\+Venda}} (const \doxymbox{\hyperlink{class_venda}{Venda}} \&venda)
+\begin{DoxyCompactList}\small\item\em Adiciona uma nova venda ao histórico do sistema. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_venda}{Venda}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_sistema_a9a5cb000b6f6ce2c29553fba3de58cb9}{buscar\+Venda}} (int id\+Venda)
+\begin{DoxyCompactList}\small\item\em Busca uma venda cadastrada pelo seu ID. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \& \doxymbox{\hyperlink{class_sistema_a370195ad59078f2989fbe6be98a5ca1f}{get\+Vendas}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o histórico de todas as vendas registradas no sistema. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_sistema_a83a11f317357a371a4e848f770060b81}{proximo\+Id\+Usuario}} () const
+\begin{DoxyCompactList}\small\item\em Calcula o próximo ID disponível para um novo usuário. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_sistema_ac0d031135a243027f938d517d3b9c657}{proximo\+Id\+Produto}} () const
+\begin{DoxyCompactList}\small\item\em Calcula o próximo ID disponível para um novo produto. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_sistema_a9b84116d825732d0a9183bf46b13bac7}{proximo\+Id\+Venda}} () const
+\begin{DoxyCompactList}\small\item\em Calcula o próximo ID disponível para uma nova venda. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_venda}{Venda}} \doxymbox{\hyperlink{class_sistema_a2ddad0f419fd8c68f74034dd7fe3178d}{finalizar\+Pedido}} (\doxymbox{\hyperlink{class_comprador}{Comprador}} \&comprador, const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco, const \doxymbox{\hyperlink{class_desconto}{Desconto}} \texorpdfstring{$\ast$}{*}cupom)
+\begin{DoxyCompactList}\small\item\em Processa e finaliza uma compra realizada por um comprador. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_sistema_ab4863f7fc55845a402b04e288567d0c2}{devolver\+Estoque}} (const \doxymbox{\hyperlink{class_venda}{Venda}} \&venda)
+\begin{DoxyCompactList}\small\item\em Devolve ao estoque do sistema os itens de uma venda cancelada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Central de dados da floricultura. 
+
+Os usuarios sao guardados como ponteiros (Pessoa\texorpdfstring{$\ast$}{*}) para preservar o tipo real de cada um (\doxylink{class_gerente}{Gerente} ou \doxylink{class_comprador}{Comprador}). O \doxylink{class_sistema}{Sistema} eh o dono desses objetos e os apaga no destrutor. 
+
+\label{class_sistema_doc-constructors}
+\Hypertarget{class_sistema_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sistema_a6b8b3cad19593e28f2c8d04bbf0b7404}\index{Sistema@{Sistema}!Sistema@{Sistema}}
+\index{Sistema@{Sistema}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{Sistema()}{Sistema()}}
+{\footnotesize\ttfamily \label{class_sistema_a6b8b3cad19593e28f2c8d04bbf0b7404} 
+Sistema::\+\+Sistema (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_sistema}{Sistema}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Um sistema nao pode ser copiado -\/ shallow copy. 
+
+\label{class_sistema_doc-func-members}
+\Hypertarget{class_sistema_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sistema_a1a5196101352ebc0a0809d60f4705d96}\index{Sistema@{Sistema}!adicionarCupom@{adicionarCupom}}
+\index{adicionarCupom@{adicionarCupom}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{adicionarCupom()}{adicionarCupom()}}
+{\footnotesize\ttfamily \label{class_sistema_a1a5196101352ebc0a0809d60f4705d96} 
+void Sistema::\+adicionar\+Cupom (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_desconto}{Desconto}} \&}]{cupom}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & se o codigo for vazio ou ja existir. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_a10bf1452af0e654d3cd036df4f9ee1e2}\index{Sistema@{Sistema}!adicionarProduto@{adicionarProduto}}
+\index{adicionarProduto@{adicionarProduto}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{adicionarProduto()}{adicionarProduto()}}
+{\footnotesize\ttfamily \label{class_sistema_a10bf1452af0e654d3cd036df4f9ee1e2} 
+void Sistema::\+adicionar\+Produto (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_produto}{Produto}} \&}]{produto}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & se ja existir produto com o mesmo id. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_a5dcd08d833cd8ad551270da5617123fd}\index{Sistema@{Sistema}!adicionarUsuario@{adicionarUsuario}}
+\index{adicionarUsuario@{adicionarUsuario}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{adicionarUsuario()}{adicionarUsuario()}}
+{\footnotesize\ttfamily \label{class_sistema_a5dcd08d833cd8ad551270da5617123fd} 
+void Sistema::\+adicionar\+Usuario (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*}}]{usuario}{}\end{DoxyParamCaption})}
+
+
+
+Cadastra um usuario; o \doxylink{class_sistema}{Sistema} passa a ser o dono do objeto. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & se for nulo ou se o e-\/mail ja existir. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_aac018cc71a6ee11e80c483e2c63ff0f4}\index{Sistema@{Sistema}!adicionarVenda@{adicionarVenda}}
+\index{adicionarVenda@{adicionarVenda}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{adicionarVenda()}{adicionarVenda()}}
+{\footnotesize\ttfamily \label{class_sistema_aac018cc71a6ee11e80c483e2c63ff0f4} 
+void Sistema::\+adicionar\+Venda (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{}\end{DoxyParamCaption})}
+
+
+
+Adiciona uma nova venda ao histórico do sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & Objeto \doxylink{class_venda}{Venda} a ser inserido. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & se já existir uma venda cadastrada com o mesmo ID. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_a15b4bd36596f0d3fb0b3d5ce00e2fb9d}\index{Sistema@{Sistema}!autenticar@{autenticar}}
+\index{autenticar@{autenticar}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{autenticar()}{autenticar()}}
+{\footnotesize\ttfamily \label{class_sistema_a15b4bd36596f0d3fb0b3d5ce00e2fb9d} 
+\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} Sistema::\+autenticar (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{email}{, }\item[{const std::\+string \&}]{senha}{}\end{DoxyParamCaption}) const}
+
+
+
+Confere e-\/mail e senha. 
+
+\begin{DoxyReturn}{Returns}
+o usuario, ou nullptr se nao conferir. 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_abe57769ec56cbe3db6eb6ae46fa67660}\index{Sistema@{Sistema}!buscarCupom@{buscarCupom}}
+\index{buscarCupom@{buscarCupom}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{buscarCupom()}{buscarCupom()}}
+{\footnotesize\ttfamily \label{class_sistema_abe57769ec56cbe3db6eb6ae46fa67660} 
+const \doxymbox{\hyperlink{class_desconto}{Desconto}} \texorpdfstring{$\ast$}{*} Sistema::\+buscar\+Cupom (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{codigo}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+o cupom com esse codigo, ou nullptr. 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_a862a2ef2853ef9af0472dcf45cc24adb}\index{Sistema@{Sistema}!buscarProduto@{buscarProduto}}
+\index{buscarProduto@{buscarProduto}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{buscarProduto()}{buscarProduto()}}
+{\footnotesize\ttfamily \label{class_sistema_a862a2ef2853ef9af0472dcf45cc24adb} 
+\doxymbox{\hyperlink{class_produto}{Produto}} \texorpdfstring{$\ast$}{*} Sistema::\+buscar\+Produto (\begin{DoxyParamCaption}\item[{int}]{id\+Produto}{}\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+o produto com esse id, ou nullptr. (Use na hora; nao guarde o ponteiro.) 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_ad1557df450f75705be01bc17e11587e3}\index{Sistema@{Sistema}!buscarUsuario@{buscarUsuario}}
+\index{buscarUsuario@{buscarUsuario}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{buscarUsuario()}{buscarUsuario()}}
+{\footnotesize\ttfamily \label{class_sistema_ad1557df450f75705be01bc17e11587e3} 
+\doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} Sistema::\+buscar\+Usuario (\begin{DoxyParamCaption}\item[{int}]{id\+Pessoa}{}\end{DoxyParamCaption}) const}
+
+
+
+acha um usuario pelo id. 
+
+\begin{DoxyReturn}{Returns}
+o usuario com esse id ou nullptr 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_a9a5cb000b6f6ce2c29553fba3de58cb9}\index{Sistema@{Sistema}!buscarVenda@{buscarVenda}}
+\index{buscarVenda@{buscarVenda}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{buscarVenda()}{buscarVenda()}}
+{\footnotesize\ttfamily \label{class_sistema_a9a5cb000b6f6ce2c29553fba3de58cb9} 
+\doxymbox{\hyperlink{class_venda}{Venda}} \texorpdfstring{$\ast$}{*} Sistema::\+buscar\+Venda (\begin{DoxyParamCaption}\item[{int}]{id\+Venda}{}\end{DoxyParamCaption})}
+
+
+
+Busca uma venda cadastrada pelo seu ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Venda} & Identificador único da venda. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ponteiro para a \doxylink{class_venda}{Venda} correspondente, ou nullptr se não for encontrada. 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_ab4863f7fc55845a402b04e288567d0c2}\index{Sistema@{Sistema}!devolverEstoque@{devolverEstoque}}
+\index{devolverEstoque@{devolverEstoque}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{devolverEstoque()}{devolverEstoque()}}
+{\footnotesize\ttfamily \label{class_sistema_ab4863f7fc55845a402b04e288567d0c2} 
+void Sistema::\+devolver\+Estoque (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_venda}{Venda}} \&}]{venda}{}\end{DoxyParamCaption})}
+
+
+
+Devolve ao estoque do sistema os itens de uma venda cancelada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em venda} & Objeto \doxylink{class_venda}{Venda} que foi cancelado. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & se o status da venda for diferente de Status\+Venda::\+\+CANCELADO. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_a2ddad0f419fd8c68f74034dd7fe3178d}\index{Sistema@{Sistema}!finalizarPedido@{finalizarPedido}}
+\index{finalizarPedido@{finalizarPedido}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{finalizarPedido()}{finalizarPedido()}}
+{\footnotesize\ttfamily \label{class_sistema_a2ddad0f419fd8c68f74034dd7fe3178d} 
+\doxymbox{\hyperlink{class_venda}{Venda}} Sistema::\+finalizar\+Pedido (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_comprador}{Comprador}} \&}]{comprador}{, }\item[{const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&}]{endereco}{, }\item[{const \doxymbox{\hyperlink{class_desconto}{Desconto}} \texorpdfstring{$\ast$}{*}}]{cupom}{}\end{DoxyParamCaption})}
+
+
+
+Processa e finaliza uma compra realizada por um comprador. 
+
+Valida o carrinho e o endereço de entrega, garante a disponibilidade de estoque de cada item, dá baixa no estoque dos produtos, calcula previsões de entrega, aplica o cupom, se válido e registra a venda. 
+\begin{DoxyParams}{Parameters}
+{\em comprador} & Instância do \doxylink{class_comprador}{Comprador} que está realizando o pedido. \\
+\hline
+{\em endereco} & Endereço selecionado para a entrega. \\
+\hline
+{\em cupom} & Cupom de desconto aplicado (se for válido). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{class_venda}{Venda} gerada e registrada no sistema. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & se o carrinho estiver vazio ou o destinatário do endereço não estiver informado. \\
+\hline
+{\em std::\+runtime\+\_\+error} & se algum produto do carrinho não for encontrado ou se houver estoque insuficiente. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_sistema_a73ccb4ce0a5ed84d43abde993dd60191}\index{Sistema@{Sistema}!getUsuarios@{getUsuarios}}
+\index{getUsuarios@{getUsuarios}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{getUsuarios()}{getUsuarios()}}
+{\footnotesize\ttfamily \label{class_sistema_a73ccb4ce0a5ed84d43abde993dd60191} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_pessoa}{Pessoa}} \texorpdfstring{$\ast$}{*} $>$ \& Sistema::\+get\+Usuarios (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retorna a lista de usuários cadastrados no sistema. 
+
+\begin{DoxyReturn}{Returns}
+Referência constante ao vetor de ponteiros para \doxylink{class_pessoa}{Pessoa}. 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_a370195ad59078f2989fbe6be98a5ca1f}\index{Sistema@{Sistema}!getVendas@{getVendas}}
+\index{getVendas@{getVendas}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{getVendas()}{getVendas()}}
+{\footnotesize\ttfamily \label{class_sistema_a370195ad59078f2989fbe6be98a5ca1f} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \& Sistema::\+get\+Vendas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retorna o histórico de todas as vendas registradas no sistema. 
+
+\begin{DoxyReturn}{Returns}
+Referência constante ao vetor de Vendas. 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_ac0d031135a243027f938d517d3b9c657}\index{Sistema@{Sistema}!proximoIdProduto@{proximoIdProduto}}
+\index{proximoIdProduto@{proximoIdProduto}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{proximoIdProduto()}{proximoIdProduto()}}
+{\footnotesize\ttfamily \label{class_sistema_ac0d031135a243027f938d517d3b9c657} 
+int Sistema::\+proximo\+Id\+Produto (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula o próximo ID disponível para um novo produto. 
+
+\begin{DoxyReturn}{Returns}
+O maior ID de produto atual acrescido de 1 (ou 1 se não houver produtos). 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_a83a11f317357a371a4e848f770060b81}\index{Sistema@{Sistema}!proximoIdUsuario@{proximoIdUsuario}}
+\index{proximoIdUsuario@{proximoIdUsuario}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{proximoIdUsuario()}{proximoIdUsuario()}}
+{\footnotesize\ttfamily \label{class_sistema_a83a11f317357a371a4e848f770060b81} 
+int Sistema::\+proximo\+Id\+Usuario (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula o próximo ID disponível para um novo usuário. 
+
+\begin{DoxyReturn}{Returns}
+O maior ID de usuário atual acrescido de 1 (ou 1 se não houver usuários). 
+\end{DoxyReturn}
+\Hypertarget{class_sistema_a9b84116d825732d0a9183bf46b13bac7}\index{Sistema@{Sistema}!proximoIdVenda@{proximoIdVenda}}
+\index{proximoIdVenda@{proximoIdVenda}!Sistema@{Sistema}}
+\doxysubsubsection{\texorpdfstring{proximoIdVenda()}{proximoIdVenda()}}
+{\footnotesize\ttfamily \label{class_sistema_a9b84116d825732d0a9183bf46b13bac7} 
+int Sistema::\+proximo\+Id\+Venda (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula o próximo ID disponível para uma nova venda. 
+
+\begin{DoxyReturn}{Returns}
+O maior ID de venda atual acrescido de 1 (ou 1 se não houver vendas). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/\doxymbox{\hyperlink{_sistema_8hpp}{Sistema.\+hpp}}\end{DoxyCompactItemize}

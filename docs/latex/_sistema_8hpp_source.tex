@@ -1,0 +1,94 @@
+\doxysection{Sistema.\+hpp}
+\hypertarget{_sistema_8hpp_source}{}\label{_sistema_8hpp_source}\index{include/Sistema.hpp@{include/Sistema.hpp}}
+\doxymbox{\hyperlink{_sistema_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SISTEMA\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SISTEMA\_HPP}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_pessoa_8hpp}{Pessoa.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_produto_8hpp}{Produto.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_desconto_8hpp}{Desconto.hpp}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_venda_8hpp}{Venda.hpp}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_comprador_8hpp}{Comprador.hpp}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }Sistema\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<Pessoa*>\ \_usuarios;\ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<Produto>\ \_produtos;}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<Desconto>\ \_cupons;}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<Venda>\ \_vendas;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ Sistema();}
+\DoxyCodeLine{00036\ \ \ \ \ \string~Sistema();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \ \ \ \ \doxymbox{\hyperlink{class_sistema_a6b8b3cad19593e28f2c8d04bbf0b7404}{Sistema}}(\textcolor{keyword}{const}\ Sistema\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00040\ \ \ \ \ Sistema\&\ operator=(\textcolor{keyword}{const}\ Sistema\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ usuarios\ e\ login\ -\/-\/-\/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_sistema_a5dcd08d833cd8ad551270da5617123fd}{adicionarUsuario}}(\doxymbox{\hyperlink{class_pessoa}{Pessoa}}*\ usuario);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ \doxymbox{\hyperlink{class_pessoa}{Pessoa}}*\ \doxymbox{\hyperlink{class_sistema_a15b4bd36596f0d3fb0b3d5ce00e2fb9d}{autenticar}}(\textcolor{keyword}{const}\ std::string\&\ email,\ \textcolor{keyword}{const}\ std::string\&\ senha)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Pessoa*>\&\ \doxymbox{\hyperlink{class_sistema_a73ccb4ce0a5ed84d43abde993dd60191}{getUsuarios}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \doxymbox{\hyperlink{class_pessoa}{Pessoa}}*\ \doxymbox{\hyperlink{class_sistema_ad1557df450f75705be01bc17e11587e3}{buscarUsuario}}(\textcolor{keywordtype}{int}\ idPessoa)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ produtos\ -\/-\/-\/}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_sistema_a10bf1452af0e654d3cd036df4f9ee1e2}{adicionarProduto}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ \doxymbox{\hyperlink{class_produto}{Produto}}*\ \doxymbox{\hyperlink{class_sistema_a862a2ef2853ef9af0472dcf45cc24adb}{buscarProduto}}(\textcolor{keywordtype}{int}\ idProduto);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Produto>\&\ getProdutos()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ cupons\ -\/-\/-\/}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_sistema_a1a5196101352ebc0a0809d60f4705d96}{adicionarCupom}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}\&\ cupom);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}*\ \doxymbox{\hyperlink{class_sistema_abe57769ec56cbe3db6eb6ae46fa67660}{buscarCupom}}(\textcolor{keyword}{const}\ std::string\&\ codigo)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Desconto>\&\ getCupons()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//vendas}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_sistema_aac018cc71a6ee11e80c483e2c63ff0f4}{adicionarVenda}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_venda}{Venda}}\&\ venda);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \doxymbox{\hyperlink{class_venda}{Venda}}*\ \doxymbox{\hyperlink{class_sistema_a9a5cb000b6f6ce2c29553fba3de58cb9}{buscarVenda}}(\textcolor{keywordtype}{int}\ idVenda);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Venda>\&\ \doxymbox{\hyperlink{class_sistema_a370195ad59078f2989fbe6be98a5ca1f}{getVendas}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ geracao\ de\ ids\ -\/-\/-\/}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_sistema_a83a11f317357a371a4e848f770060b81}{proximoIdUsuario}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_sistema_ac0d031135a243027f938d517d3b9c657}{proximoIdProduto}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_sistema_a9b84116d825732d0a9183bf46b13bac7}{proximoIdVenda}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ funcoes\ que\ envolvem\ varias\ classes\ -\/-\/-\/}}
+\DoxyCodeLine{00129\ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \doxymbox{\hyperlink{class_venda}{Venda}}\ \doxymbox{\hyperlink{class_sistema_a2ddad0f419fd8c68f74034dd7fe3178d}{finalizarPedido}}(}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_comprador}{Comprador}}\&\ comprador,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco,}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_desconto}{Desconto}}*\ cupom}
+\DoxyCodeLine{00146\ \ \ \ \ );}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_sistema_ab4863f7fc55845a402b04e288567d0c2}{devolverEstoque}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_venda}{Venda}}\&\ venda);}
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \};}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

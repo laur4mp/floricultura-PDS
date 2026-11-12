@@ -9,28 +9,36 @@
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_produto_8hpp}{Produto.hpp}}"{}}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_endereco_8hpp}{Endereco.hpp}}"{}}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}{ItemPedido}}\ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_produto}{Produto}}\ \_produtoPedido;}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_quantidadePedida;}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00026\ \ \ \ \ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}{ItemPedido}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto,\ \textcolor{keywordtype}{int}\ quantidade)}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \_produtoPedido(produto),\ \_quantidadePedida(quantidade)\ \{\}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}{ItemPedido}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_produto}{Produto}}\ \_produtoPedido;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_quantidadePedida;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_item_pedido_ac3ed8498e53f73ca6d7a283b81c47ad6}{ItemPedido}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ produto,\ \textcolor{keywordtype}{int}\ quantidade);}
 \DoxyCodeLine{00036\ \ }
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_item_pedido_ac3a370851335a54cfcaa2119df41e8f4}{\string~ItemPedido}}();}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_item_pedido_a7d105feea4757c7ebd8bb8dc2e5a3e6f}{calcularPrecoTotal}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_item_pedido_a8c42d31776eda9f97c11da6470c7d09a}{informarDados}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_item_pedido_a17949ef2c1cfce7749c3d3b4be6fb90c}{calcularFrete}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00059\ \};}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//getters}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_produto}{Produto}}\&\ getProduto()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getQuantidade()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_item_pedido_a7d105feea4757c7ebd8bb8dc2e5a3e6f}{calcularPrecoTotal}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_item_pedido_a9cb4060108d3b7a24e01916b4c4f4fc6}{setQuantidade}}(\textcolor{keywordtype}{int}\ q);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_item_pedido_ad667602b655596e634af1808dd8c1739}{informarDados}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_item_pedido_a17949ef2c1cfce7749c3d3b4be6fb90c}{calcularFrete}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_endereco}{Endereco}}\&\ endereco)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }}
 
 \end{DoxyCode}

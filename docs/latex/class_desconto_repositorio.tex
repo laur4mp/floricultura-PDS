@@ -1,0 +1,83 @@
+\doxysection{Desconto\+Repositorio Class Reference}
+\hypertarget{class_desconto_repositorio}{}\label{class_desconto_repositorio}\index{DescontoRepositorio@{DescontoRepositorio}}
+
+
+Lê e grava a lista de cupons de desconto em um arquivo TXT (um cupom por linha).  
+
+
+
+
+{\ttfamily \+\#include $<$Desconto\+Repositorio.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_desconto_repositorio_ab86f9c77e234fc106f2089a154e2379c}{Desconto\+Repositorio}} (const std::\+string \&caminho)
+\begin{DoxyCompactList}\small\item\em Constrói o repositório de cupons associado a um arquivo de texto. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_desconto}{Desconto}} $>$ \doxymbox{\hyperlink{class_desconto_repositorio_a4e1faa7b2240558d1ee14a79dd3090a5}{carregar}} () const
+\begin{DoxyCompactList}\small\item\em Lê todos os cupons do arquivo (arquivo inexistente = lista vazia). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_desconto_repositorio_ab8c7095ddfb47793ac0011e8ed9261ee}{gravar}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_desconto}{Desconto}} $>$ \&descontos) const
+\begin{DoxyCompactList}\small\item\em Reescreve o arquivo com a lista recebida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lê e grava a lista de cupons de desconto em um arquivo TXT (um cupom por linha). 
+
+Formato: cupom\texorpdfstring{$\vert$}{|}percentual\texorpdfstring{$\vert$}{|}data\+Validade 
+
+\label{class_desconto_repositorio_doc-constructors}
+\Hypertarget{class_desconto_repositorio_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_desconto_repositorio_ab86f9c77e234fc106f2089a154e2379c}\index{DescontoRepositorio@{DescontoRepositorio}!DescontoRepositorio@{DescontoRepositorio}}
+\index{DescontoRepositorio@{DescontoRepositorio}!DescontoRepositorio@{DescontoRepositorio}}
+\doxysubsubsection{\texorpdfstring{DescontoRepositorio()}{DescontoRepositorio()}}
+{\footnotesize\ttfamily \label{class_desconto_repositorio_ab86f9c77e234fc106f2089a154e2379c} 
+Desconto\+Repositorio::\+\+Desconto\+Repositorio (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{caminho}{}\end{DoxyParamCaption})}
+
+
+
+Constrói o repositório de cupons associado a um arquivo de texto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho} & Caminho para o arquivo TXT de armazenamento. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_desconto_repositorio_doc-func-members}
+\Hypertarget{class_desconto_repositorio_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_desconto_repositorio_a4e1faa7b2240558d1ee14a79dd3090a5}\index{DescontoRepositorio@{DescontoRepositorio}!carregar@{carregar}}
+\index{carregar@{carregar}!DescontoRepositorio@{DescontoRepositorio}}
+\doxysubsubsection{\texorpdfstring{carregar()}{carregar()}}
+{\footnotesize\ttfamily \label{class_desconto_repositorio_a4e1faa7b2240558d1ee14a79dd3090a5} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_desconto}{Desconto}} $>$ Desconto\+Repositorio::\+carregar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Lê todos os cupons do arquivo (arquivo inexistente = lista vazia). 
+
+\begin{DoxyReturn}{Returns}
+Vetor contendo os cupons carregados. 
+\end{DoxyReturn}
+\Hypertarget{class_desconto_repositorio_ab8c7095ddfb47793ac0011e8ed9261ee}\index{DescontoRepositorio@{DescontoRepositorio}!gravar@{gravar}}
+\index{gravar@{gravar}!DescontoRepositorio@{DescontoRepositorio}}
+\doxysubsubsection{\texorpdfstring{gravar()}{gravar()}}
+{\footnotesize\ttfamily \label{class_desconto_repositorio_ab8c7095ddfb47793ac0011e8ed9261ee} 
+void Desconto\+Repositorio::\+gravar (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_desconto}{Desconto}} $>$ \&}]{descontos}{}\end{DoxyParamCaption}) const}
+
+
+
+Reescreve o arquivo com a lista recebida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em descontos} & Vetor de cupons a ser gravado. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Desconto\+Repositorio.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\doxysection{Venda\+Repositorio Class Reference}
+\hypertarget{class_venda_repositorio}{}\label{class_venda_repositorio}\index{VendaRepositorio@{VendaRepositorio}}
+
+
+Lê e grava a lista de vendas em um arquivo TXT.  
+
+
+
+
+{\ttfamily \+\#include $<$Venda\+Repositorio.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_venda_repositorio_a3e208ca914050dc092e3330d2ab63e02}{Venda\+Repositorio}} (const std::\+string \&caminho)
+\begin{DoxyCompactList}\small\item\em Constrói o repositório de vendas associado a um arquivo de texto. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \doxymbox{\hyperlink{class_venda_repositorio_a221fcaad8ab58c60183c040e6c3d6357}{carregar}} () const
+\begin{DoxyCompactList}\small\item\em Lê todas as vendas do arquivo (arquivo inexistente = lista vazia). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_venda_repositorio_ad46bd7b47b9524ec088fe018fdf99e64}{gravar}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \&vendas) const
+\begin{DoxyCompactList}\small\item\em Reescreve o arquivo com a lista recebida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lê e grava a lista de vendas em um arquivo TXT. 
+
+Campos separados por \textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}. Cada item de uma venda ocupa uma linha "{}\+I"{} e vem ANTES da linha "{}\+V"{} da própria venda:
+
+I\texorpdfstring{$\vert$}{|}id\+Prod\texorpdfstring{$\vert$}{|}nome\texorpdfstring{$\vert$}{|}descricao\texorpdfstring{$\vert$}{|}categoria\texorpdfstring{$\vert$}{|}preco\texorpdfstring{$\vert$}{|}imagem\texorpdfstring{$\vert$}{|}estoque\texorpdfstring{$\vert$}{|}minimo\texorpdfstring{$\vert$}{|}qtd V\texorpdfstring{$\vert$}{|}id\texorpdfstring{$\vert$}{|}id\+Pessoa\texorpdfstring{$\vert$}{|}destinatario\texorpdfstring{$\vert$}{|}status\+Venda\texorpdfstring{$\vert$}{|}status\+Pagamento\texorpdfstring{$\vert$}{|}data\texorpdfstring{$\vert$}{|}horario 
+
+\label{class_venda_repositorio_doc-constructors}
+\Hypertarget{class_venda_repositorio_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_venda_repositorio_a3e208ca914050dc092e3330d2ab63e02}\index{VendaRepositorio@{VendaRepositorio}!VendaRepositorio@{VendaRepositorio}}
+\index{VendaRepositorio@{VendaRepositorio}!VendaRepositorio@{VendaRepositorio}}
+\doxysubsubsection{\texorpdfstring{VendaRepositorio()}{VendaRepositorio()}}
+{\footnotesize\ttfamily \label{class_venda_repositorio_a3e208ca914050dc092e3330d2ab63e02} 
+Venda\+Repositorio::\+\+Venda\+Repositorio (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{caminho}{}\end{DoxyParamCaption})}
+
+
+
+Constrói o repositório de vendas associado a um arquivo de texto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho} & Caminho para o arquivo TXT de armazenamento. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_venda_repositorio_doc-func-members}
+\Hypertarget{class_venda_repositorio_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_venda_repositorio_a221fcaad8ab58c60183c040e6c3d6357}\index{VendaRepositorio@{VendaRepositorio}!carregar@{carregar}}
+\index{carregar@{carregar}!VendaRepositorio@{VendaRepositorio}}
+\doxysubsubsection{\texorpdfstring{carregar()}{carregar()}}
+{\footnotesize\ttfamily \label{class_venda_repositorio_a221fcaad8ab58c60183c040e6c3d6357} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ Venda\+Repositorio::\+carregar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Lê todas as vendas do arquivo (arquivo inexistente = lista vazia). 
+
+\begin{DoxyReturn}{Returns}
+Vetor contendo as vendas carregadas. 
+\end{DoxyReturn}
+\Hypertarget{class_venda_repositorio_ad46bd7b47b9524ec088fe018fdf99e64}\index{VendaRepositorio@{VendaRepositorio}!gravar@{gravar}}
+\index{gravar@{gravar}!VendaRepositorio@{VendaRepositorio}}
+\doxysubsubsection{\texorpdfstring{gravar()}{gravar()}}
+{\footnotesize\ttfamily \label{class_venda_repositorio_ad46bd7b47b9524ec088fe018fdf99e64} 
+void Venda\+Repositorio::\+gravar (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_venda}{Venda}} $>$ \&}]{vendas}{}\end{DoxyParamCaption}) const}
+
+
+
+Reescreve o arquivo com a lista recebida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vendas} & Vetor de vendas a ser gravado. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+include/Venda\+Repositorio.\+hpp\end{DoxyCompactItemize}

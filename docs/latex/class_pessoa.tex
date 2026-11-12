@@ -28,34 +28,32 @@ int \doxymbox{\hyperlink{class_pessoa_af7a51cc7abbb9562d8b811c084920265}{get\+Id
 \begin{DoxyCompactList}\small\item\em Retorna o identificador da pessoa. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
 \begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
+void \doxymbox{\hyperlink{class_pessoa_ae98c4c602cdcdd692cee7afedb8a42cd}{set\+Nome}} (const std::\+string \&nome)
 \begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{class_pessoa_ac539a6b2f010d5fd0d0f1330049fe1a4}{get\+Cpf}} () const
 \begin{DoxyCompactList}\small\item\em Retorna o CPF da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_a626351f5d3af197f875ffec7c06f2047}{set\+Nome}} (const std::\+strinf \&cpf)
+void \doxymbox{\hyperlink{class_pessoa_ab6557dcd09a46204458fadc8de79a83c}{set\+Cpf}} (const std::\+string \&cpf)
 \begin{DoxyCompactList}\small\item\em Define o CPF da pessoa. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{class_pessoa_aa1870ca4f33348dcdc1cd05476e66905}{get\+Email}} () const
 \begin{DoxyCompactList}\small\item\em Retorna o e-\/mail da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167}{set\+Nome}} (const std::\+strinf \&email)
+void \doxymbox{\hyperlink{class_pessoa_ade6c7ecf339f07b33019cfcf79424623}{set\+Email}} (const std::\+string \&email)
 \begin{DoxyCompactList}\small\item\em Define o e-\/mail da pessoa. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{class_pessoa_ad3cd925510223717abbd3582a59cc7f8}{get\+Telefone}} () const
 \begin{DoxyCompactList}\small\item\em Retorna o telefone da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_af0cf2deff1e50a19e5458c854c39e043}{set\+Nome}} (const std::\+strinf \&telefone)
+void \doxymbox{\hyperlink{class_pessoa_a0652e28df182647652012c42fc603c57}{set\+Telefone}} (const std::\+string \&telefone)
 \begin{DoxyCompactList}\small\item\em Define o telefone da pessoa. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{class_pessoa_a714a3939ba5eb36c28a27678245c1d39}{get\+Senha}} () const
 \begin{DoxyCompactList}\small\item\em Retorna a senha da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b}{set\+Nome}} (const std::\+strinf \&senha)
+void \doxymbox{\hyperlink{class_pessoa_a253c84395494e27a8796696b3fb8497b}{set\+Senha}} (const std::\+string \&senha)
 \begin{DoxyCompactList}\small\item\em Define a senha da pessoa. \end{DoxyCompactList}\item 
-std::\+string \doxymbox{\hyperlink{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}{get\+Nome}} () const
-\begin{DoxyCompactList}\small\item\em Retorna o nome da pessoa. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}{set\+Nome}} (const std::\+strinf \&nome)
-\begin{DoxyCompactList}\small\item\em Define o nome da pessoa. \end{DoxyCompactList}\item 
 const std::\+vector$<$ \doxymbox{\hyperlink{class_endereco}{Endereco}} $>$ \& \doxymbox{\hyperlink{class_pessoa_a719684df5976b05c2898ae4fb22b7716}{get\+Enderecos}} () const
 \begin{DoxyCompactList}\small\item\em Retorna os endereços cadastrados. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{class_pessoa_a24aad9be3159558a681e64a524b773bb}{adicionar\+Endereco}} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco)
 \begin{DoxyCompactList}\small\item\em Adiciona um endereço à lista da pessoa. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{class_pessoa_a9a5fad5f7f4daf89a9405ae446b8c860}{remover\+Endereco}} (std::\+size\+\_\+t indice)
-\begin{DoxyCompactList}\small\item\em Remove um endereço da lista da pessoa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Remove um endereço da lista da pessoa. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_pessoa_a9c9b013b2bb9313ed55e07b0502f48db}{possui\+Endereco}} (const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&endereco) const
+\begin{DoxyCompactList}\small\item\em Verifica se a pessoa já possui um determinado endereço cadastrado. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -192,20 +190,7 @@ Identificador único.
 \end{DoxyReturn}
 \Hypertarget{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}\index{Pessoa@{Pessoa}!getNome@{getNome}}
 \index{getNome@{getNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53} 
-std::\+string Pessoa::\+get\+Nome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
-
-
-
-Retorna o nome da pessoa. 
-
-\begin{DoxyReturn}{Returns}
-Nome completo. 
-\end{DoxyReturn}
-\Hypertarget{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53}\index{Pessoa@{Pessoa}!getNome@{getNome}}
-\index{getNome@{getNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
 {\footnotesize\ttfamily \label{class_pessoa_a309bd1dada952c5c9b6aa27c163d1e53} 
 std::\+string Pessoa::\+get\+Nome (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
@@ -242,6 +227,24 @@ Retorna o telefone da pessoa.
 \begin{DoxyReturn}{Returns}
 Telefone cadastrado. 
 \end{DoxyReturn}
+\Hypertarget{class_pessoa_a9c9b013b2bb9313ed55e07b0502f48db}\index{Pessoa@{Pessoa}!possuiEndereco@{possuiEndereco}}
+\index{possuiEndereco@{possuiEndereco}!Pessoa@{Pessoa}}
+\doxysubsubsection{\texorpdfstring{possuiEndereco()}{possuiEndereco()}}
+{\footnotesize\ttfamily \label{class_pessoa_a9c9b013b2bb9313ed55e07b0502f48db} 
+bool Pessoa::\+possui\+Endereco (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_endereco}{Endereco}} \&}]{endereco}{}\end{DoxyParamCaption}) const}
+
+
+
+Verifica se a pessoa já possui um determinado endereço cadastrado. 
+
+Compara o CEP, número e complemento do endereço fornecido com os endereços contidos no vetor de endereços da pessoa. 
+\begin{DoxyParams}{Parameters}
+{\em endereco} & Objeto \doxylink{class_endereco}{Endereco} a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o endereço já existir na lista da pessoa; false caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_pessoa_a9a5fad5f7f4daf89a9405ae446b8c860}\index{Pessoa@{Pessoa}!removerEndereco@{removerEndereco}}
 \index{removerEndereco@{removerEndereco}!Pessoa@{Pessoa}}
 \doxysubsubsection{\texorpdfstring{removerEndereco()}{removerEndereco()}}
@@ -260,11 +263,11 @@ Remove um endereço da lista da pessoa.
 \begin{DoxyPrecond}{Precondition}
 indice deve ser menor que a quantidade de endereços cadastrados. 
 \end{DoxyPrecond}
-\Hypertarget{class_pessoa_a626351f5d3af197f875ffec7c06f2047}\index{Pessoa@{Pessoa}!setNome@{setNome}}
-\index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_a626351f5d3af197f875ffec7c06f2047} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{cpf}{}\end{DoxyParamCaption})}
+\Hypertarget{class_pessoa_ab6557dcd09a46204458fadc8de79a83c}\index{Pessoa@{Pessoa}!setCpf@{setCpf}}
+\index{setCpf@{setCpf}!Pessoa@{Pessoa}}
+\doxysubsubsection{\texorpdfstring{setCpf()}{setCpf()}}
+{\footnotesize\ttfamily \label{class_pessoa_ab6557dcd09a46204458fadc8de79a83c} 
+void Pessoa::\+set\+Cpf (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{cpf}{}\end{DoxyParamCaption})}
 
 
 
@@ -275,11 +278,11 @@ Define o CPF da pessoa.
 {\em cpf} & Novo CPF. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167}\index{Pessoa@{Pessoa}!setNome@{setNome}}
-\index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_af5030d1e6bb61d2df15ef06c338f4167} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{email}{}\end{DoxyParamCaption})}
+\Hypertarget{class_pessoa_ade6c7ecf339f07b33019cfcf79424623}\index{Pessoa@{Pessoa}!setEmail@{setEmail}}
+\index{setEmail@{setEmail}!Pessoa@{Pessoa}}
+\doxysubsubsection{\texorpdfstring{setEmail()}{setEmail()}}
+{\footnotesize\ttfamily \label{class_pessoa_ade6c7ecf339f07b33019cfcf79424623} 
+void Pessoa::\+set\+Email (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{email}{}\end{DoxyParamCaption})}
 
 
 
@@ -290,11 +293,11 @@ Define o e-\/mail da pessoa.
 {\em email} & Novo e-\/mail. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}\index{Pessoa@{Pessoa}!setNome@{setNome}}
+\Hypertarget{class_pessoa_ae98c4c602cdcdd692cee7afedb8a42cd}\index{Pessoa@{Pessoa}!setNome@{setNome}}
 \index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{nome}{}\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily \label{class_pessoa_ae98c4c602cdcdd692cee7afedb8a42cd} 
+void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{nome}{}\end{DoxyParamCaption})}
 
 
 
@@ -305,26 +308,11 @@ Define o nome da pessoa.
 {\em nome} & Novo nome completo. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930}\index{Pessoa@{Pessoa}!setNome@{setNome}}
-\index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_aa9b4c2150b5ce9ac8a82f0e51606e930} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{nome}{}\end{DoxyParamCaption})}
-
-
-
-Define o nome da pessoa. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em nome} & Novo nome completo. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b}\index{Pessoa@{Pessoa}!setNome@{setNome}}
-\index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_a3d598f3a7727ff668ec1ead0a0a0959b} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{senha}{}\end{DoxyParamCaption})}
+\Hypertarget{class_pessoa_a253c84395494e27a8796696b3fb8497b}\index{Pessoa@{Pessoa}!setSenha@{setSenha}}
+\index{setSenha@{setSenha}!Pessoa@{Pessoa}}
+\doxysubsubsection{\texorpdfstring{setSenha()}{setSenha()}}
+{\footnotesize\ttfamily \label{class_pessoa_a253c84395494e27a8796696b3fb8497b} 
+void Pessoa::\+set\+Senha (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{senha}{}\end{DoxyParamCaption})}
 
 
 
@@ -335,11 +323,11 @@ Define a senha da pessoa.
 {\em senha} & Nova senha. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_pessoa_af0cf2deff1e50a19e5458c854c39e043}\index{Pessoa@{Pessoa}!setNome@{setNome}}
-\index{setNome@{setNome}!Pessoa@{Pessoa}}
-\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
-{\footnotesize\ttfamily \label{class_pessoa_af0cf2deff1e50a19e5458c854c39e043} 
-void Pessoa::\+set\+Nome (\begin{DoxyParamCaption}\item[{const std::\+strinf \&}]{telefone}{}\end{DoxyParamCaption})}
+\Hypertarget{class_pessoa_a0652e28df182647652012c42fc603c57}\index{Pessoa@{Pessoa}!setTelefone@{setTelefone}}
+\index{setTelefone@{setTelefone}!Pessoa@{Pessoa}}
+\doxysubsubsection{\texorpdfstring{setTelefone()}{setTelefone()}}
+{\footnotesize\ttfamily \label{class_pessoa_a0652e28df182647652012c42fc603c57} 
+void Pessoa::\+set\+Telefone (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{telefone}{}\end{DoxyParamCaption})}
 
 
 
@@ -354,4 +342,4 @@ Define o telefone da pessoa.
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-\doxymbox{\hyperlink{_pessoa_8hpp}{Pessoa.\+hpp}}\end{DoxyCompactItemize}
+include/\doxymbox{\hyperlink{_pessoa_8hpp}{Pessoa.\+hpp}}\end{DoxyCompactItemize}

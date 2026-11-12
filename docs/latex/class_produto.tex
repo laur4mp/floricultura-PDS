@@ -14,7 +14,58 @@ Gerencia os dados de um item do catálogo e suas movimentações de estoque.
 \item 
 \Hypertarget{class_produto_adcb70f94e23edf68d87fdc560ddc8e72}\label{class_produto_adcb70f94e23edf68d87fdc560ddc8e72} 
 {\bfseries Produto} (int id, const std::\+string \&nome, const std::\+string \&descricao, const std::\+string \&categoria, double preco, const std::\+string \&endereco\+Imagem, int estoque\+Inicial, int estoque\+Minimo)
-\begin{DoxyCompactList}\small\item\em Inicializa um produto com todas as suas informações e limites de estoque. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Inicializa um produto com todas as suas informações e limites de estoque. \end{DoxyCompactList}\item 
+\Hypertarget{class_produto_adcdc1be7c4f2e52c901a06679621c345}\label{class_produto_adcdc1be7c4f2e52c901a06679621c345} 
+int {\bfseries get\+Id\+Produto} () const
+\item 
+\Hypertarget{class_produto_a06fd2e1692e2f33add6519620ebf6440}\label{class_produto_a06fd2e1692e2f33add6519620ebf6440} 
+const std::\+string \& {\bfseries get\+Nome} () const
+\item 
+\Hypertarget{class_produto_a439376bf4567e3414ea789520a978115}\label{class_produto_a439376bf4567e3414ea789520a978115} 
+const std::\+string \& {\bfseries get\+Descricao} () const
+\item 
+\Hypertarget{class_produto_ab20d6e1306db03d72affa7c406a4ca28}\label{class_produto_ab20d6e1306db03d72affa7c406a4ca28} 
+const std::\+string \& {\bfseries get\+Categoria} () const
+\item 
+\Hypertarget{class_produto_ace1d384192a7f2cfc7768afa6b7fcbf5}\label{class_produto_ace1d384192a7f2cfc7768afa6b7fcbf5} 
+double {\bfseries get\+Preco} () const
+\item 
+\Hypertarget{class_produto_afc84ad349e4c6c9b12197914302fa633}\label{class_produto_afc84ad349e4c6c9b12197914302fa633} 
+const std::\+string \& {\bfseries get\+Endereco\+Imagem} () const
+\item 
+\Hypertarget{class_produto_adc210965b7e6f68a358442cf83c9c6f3}\label{class_produto_adc210965b7e6f68a358442cf83c9c6f3} 
+int {\bfseries get\+Quantidade\+Estoque} () const
+\item 
+\Hypertarget{class_produto_aadc2e25302b18adb54651267680d098d}\label{class_produto_aadc2e25302b18adb54651267680d098d} 
+int {\bfseries get\+Quantidade\+Minima} () const
+\item 
+\Hypertarget{class_produto_afa69237aaf251db4b838bd942bd80bdc}\label{class_produto_afa69237aaf251db4b838bd942bd80bdc} 
+void {\bfseries set\+Nome} (const std::\+string \&nome)
+\item 
+\Hypertarget{class_produto_a8b0b833f77c13058b863cc2ca2cd5159}\label{class_produto_a8b0b833f77c13058b863cc2ca2cd5159} 
+void {\bfseries set\+Descricao} (const std::\+string \&descricao)
+\item 
+\Hypertarget{class_produto_a27995511a8604489659a31318297c87e}\label{class_produto_a27995511a8604489659a31318297c87e} 
+void {\bfseries set\+Categoria} (const std::\+string \&categoria)
+\item 
+\Hypertarget{class_produto_aba1d39de900f61e612219a42781f7f7e}\label{class_produto_aba1d39de900f61e612219a42781f7f7e} 
+void {\bfseries set\+Preco} (double preco)
+\item 
+\Hypertarget{class_produto_a0174cb4292a705363b8ada290eaf05cb}\label{class_produto_a0174cb4292a705363b8ada290eaf05cb} 
+void {\bfseries set\+Endereco\+Imagem} (const std::\+string \&endereco\+Imagem)
+\item 
+\Hypertarget{class_produto_ad4249e8736fff9a02f7af0bfb92b3506}\label{class_produto_ad4249e8736fff9a02f7af0bfb92b3506} 
+void {\bfseries set\+Quantidade\+Minima} (int quantidade)
+\item 
+\Hypertarget{class_produto_a249aa06f855c0c3950d8aa88eaf9e954}\label{class_produto_a249aa06f855c0c3950d8aa88eaf9e954} 
+void {\bfseries adicionar\+Estoque} (int quantidade)
+\begin{DoxyCompactList}\small\item\em Incrementa a quantidade atual de itens no estoque. \end{DoxyCompactList}\item 
+\Hypertarget{class_produto_af14eefc078da6e092b4464ecf683f5bd}\label{class_produto_af14eefc078da6e092b4464ecf683f5bd} 
+bool {\bfseries remover\+Estoque} (int quantidade)
+\begin{DoxyCompactList}\small\item\em Remove unidades do estoque se houver quantidade suficiente disponível. \end{DoxyCompactList}\item 
+\Hypertarget{class_produto_ae985edc2b3ef178c86540d173140b309}\label{class_produto_ae985edc2b3ef178c86540d173140b309} 
+bool {\bfseries verificar\+Estoque\+Minimo} () const
+\begin{DoxyCompactList}\small\item\em Checa se o estoque atual está abaixo ou igual ao nível mínimo configurado. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -22,4 +73,4 @@ Gerencia os dados de um item do catálogo e suas movimentações de estoque.
 
 The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
 \item 
-\doxymbox{\hyperlink{_produto_8hpp}{Produto.\+hpp}}\end{DoxyCompactItemize}
+include/\doxymbox{\hyperlink{_produto_8hpp}{Produto.\+hpp}}\end{DoxyCompactItemize}

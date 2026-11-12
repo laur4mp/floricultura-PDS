@@ -124,11 +124,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac3a370851335a54cfcaa2119df41e8f4" id="r_ac3a370851335a54cfcaa2119df41e8f4"><td class="memItemLeft"><a id="ac3a370851335a54cfcaa2119df41e8f4" name="ac3a370851335a54cfcaa2119df41e8f4"></a>
 &#160;</td><td class="memItemRight"><b>~ItemPedido</b> ()</td></tr>
 <tr class="memdesc:ac3a370851335a54cfcaa2119df41e8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor da classe <a class="el" href="class_item_pedido.html" title="Representa um produto e sua quantidade dentro de um pedido.">ItemPedido</a>. <br /></td></tr>
+<tr class="memitem:af4edff3bb136ddc82f78476ccebc9d14" id="r_af4edff3bb136ddc82f78476ccebc9d14"><td class="memItemLeft"><a id="af4edff3bb136ddc82f78476ccebc9d14" name="af4edff3bb136ddc82f78476ccebc9d14"></a>
+const <a class="el" href="class_produto.html">Produto</a> &amp;&#160;</td><td class="memItemRight"><b>getProduto</b> () const</td></tr>
+<tr class="memitem:acadd8480e1e3c60e49233649df6598c0" id="r_acadd8480e1e3c60e49233649df6598c0"><td class="memItemLeft"><a id="acadd8480e1e3c60e49233649df6598c0" name="acadd8480e1e3c60e49233649df6598c0"></a>
+int&#160;</td><td class="memItemRight"><b>getQuantidade</b> () const</td></tr>
 <tr class="memitem:a7d105feea4757c7ebd8bb8dc2e5a3e6f" id="r_a7d105feea4757c7ebd8bb8dc2e5a3e6f"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a7d105feea4757c7ebd8bb8dc2e5a3e6f">calcularPrecoTotal</a> () const</td></tr>
 <tr class="memdesc:a7d105feea4757c7ebd8bb8dc2e5a3e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o preço total dos items pedidos.  <br /></td></tr>
-<tr class="memitem:a8c42d31776eda9f97c11da6470c7d09a" id="r_a8c42d31776eda9f97c11da6470c7d09a"><td class="memItemLeft"><a id="a8c42d31776eda9f97c11da6470c7d09a" name="a8c42d31776eda9f97c11da6470c7d09a"></a>
-void&#160;</td><td class="memItemRight"><b>informarDados</b> () const</td></tr>
-<tr class="memdesc:a8c42d31776eda9f97c11da6470c7d09a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informa os dados do item do pedido. <br /></td></tr>
+<tr class="memitem:a9cb4060108d3b7a24e01916b4c4f4fc6" id="r_a9cb4060108d3b7a24e01916b4c4f4fc6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9cb4060108d3b7a24e01916b4c4f4fc6">setQuantidade</a> (int q)</td></tr>
+<tr class="memdesc:a9cb4060108d3b7a24e01916b4c4f4fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Soma e retira itens pelo carrinho.  <br /></td></tr>
+<tr class="memitem:ad667602b655596e634af1808dd8c1739" id="r_ad667602b655596e634af1808dd8c1739"><td class="memItemLeft"><a id="ad667602b655596e634af1808dd8c1739" name="ad667602b655596e634af1808dd8c1739"></a>
+std::string&#160;</td><td class="memItemRight"><b>informarDados</b> () const</td></tr>
+<tr class="memdesc:ad667602b655596e634af1808dd8c1739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informa os dados do item do pedido. <br /></td></tr>
 <tr class="memitem:a17949ef2c1cfce7749c3d3b4be6fb90c" id="r_a17949ef2c1cfce7749c3d3b4be6fb90c"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a17949ef2c1cfce7749c3d3b4be6fb90c">calcularFrete</a> (const <a class="el" href="class_endereco.html">Endereco</a> &amp;endereco) const</td></tr>
 <tr class="memdesc:a17949ef2c1cfce7749c3d3b4be6fb90c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o valor do frete dos itens. O valor do frete depende da região do Brasil correspondente ao endereço de entrega.  <br /></td></tr>
 </table>
@@ -141,9 +147,6 @@ void&#160;</td><td class="memItemRight"><b>informarDados</b> () const</td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">ItemPedido::ItemPedido </td>
@@ -156,11 +159,6 @@ void&#160;</td><td class="memItemRight"><b>informarDados</b> () const</td></tr>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>quantidade</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Construtor de um item de pedido. </p>
@@ -212,6 +210,31 @@ void&#160;</td><td class="memItemRight"><b>informarDados</b> () const</td></tr>
 
 <p>Calcula o preço total dos items pedidos. </p>
 <dl class="section return"><dt>Returns</dt><dd>Preço total do item. </dd></dl>
+
+</div>
+</div>
+<a id="a9cb4060108d3b7a24e01916b4c4f4fc6" name="a9cb4060108d3b7a24e01916b4c4f4fc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cb4060108d3b7a24e01916b4c4f4fc6">&#9670;&#160;</a></span>setQuantidade()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ItemPedido::setQuantidade </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>q</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Soma e retira itens pelo carrinho. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>nova quantidade de itens </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

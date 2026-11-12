@@ -119,18 +119,15 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('class_venda.ht
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aba8eb9099a83921a3bfc7b2d68ddaf87" id="r_aba8eb9099a83921a3bfc7b2d68ddaf87"><td class="memItemLeft"><a id="aba8eb9099a83921a3bfc7b2d68ddaf87" name="aba8eb9099a83921a3bfc7b2d68ddaf87"></a>
-&#160;</td><td class="memItemRight"><b>Venda</b> (int idVenda, const std::string &amp;cpfCliente, const <a class="el" href="class_endereco.html">Endereco</a> &amp;enderecoEntrega, const std::string &amp;_nomeDestina)</td></tr>
-<tr class="memdesc:aba8eb9099a83921a3bfc7b2d68ddaf87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa uma venda com ID, CPF do cliente, endereço e destinatário. <br /></td></tr>
+<tr class="memitem:a21828237d012a2d6e515500531342685" id="r_a21828237d012a2d6e515500531342685"><td class="memItemLeft"><a id="a21828237d012a2d6e515500531342685" name="a21828237d012a2d6e515500531342685"></a>
+&#160;</td><td class="memItemRight"><b>Venda</b> (int idVenda, int idPessoa, int avaliacao, const <a class="el" href="class_endereco.html">Endereco</a> &amp;enderecoEntrega)</td></tr>
+<tr class="memdesc:a21828237d012a2d6e515500531342685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa uma venda com ID, ID do cliente, endereço e destinatário. <br /></td></tr>
 <tr class="memitem:aaccf613bc55bafa77d641c13637ec3a7" id="r_aaccf613bc55bafa77d641c13637ec3a7"><td class="memItemLeft"><a id="aaccf613bc55bafa77d641c13637ec3a7" name="aaccf613bc55bafa77d641c13637ec3a7"></a>
 void&#160;</td><td class="memItemRight"><b>adicionarItem</b> (const <a class="el" href="class_item_pedido.html">ItemPedido</a> &amp;item)</td></tr>
 <tr class="memdesc:aaccf613bc55bafa77d641c13637ec3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona um item ao carrinho/pedido da venda. <br /></td></tr>
 <tr class="memitem:a910a6b3b539d0fbb242e09c822fe6e01" id="r_a910a6b3b539d0fbb242e09c822fe6e01"><td class="memItemLeft"><a id="a910a6b3b539d0fbb242e09c822fe6e01" name="a910a6b3b539d0fbb242e09c822fe6e01"></a>
 bool&#160;</td><td class="memItemRight"><b>removerItem</b> (int idItem)</td></tr>
 <tr class="memdesc:a910a6b3b539d0fbb242e09c822fe6e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove um item do pedido pelo seu identificador. <br /></td></tr>
-<tr class="memitem:a75733c8b73553e5b2ce09528a501f5e3" id="r_a75733c8b73553e5b2ce09528a501f5e3"><td class="memItemLeft"><a id="a75733c8b73553e5b2ce09528a501f5e3" name="a75733c8b73553e5b2ce09528a501f5e3"></a>
-void&#160;</td><td class="memItemRight"><b>calcularValorTotal</b> ()</td></tr>
-<tr class="memdesc:a75733c8b73553e5b2ce09528a501f5e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalcula o valor total da venda considerando os itens e descontos. <br /></td></tr>
 <tr class="memitem:a52ce02acc4fd753255f5709bc7261156" id="r_a52ce02acc4fd753255f5709bc7261156"><td class="memItemLeft"><a id="a52ce02acc4fd753255f5709bc7261156" name="a52ce02acc4fd753255f5709bc7261156"></a>
 void&#160;</td><td class="memItemRight"><b>aplicarCupom</b> (const <a class="el" href="class_desconto.html">Desconto</a> &amp;desconto)</td></tr>
 <tr class="memdesc:a52ce02acc4fd753255f5709bc7261156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica um cupom de desconto sobre o valor do pedido. <br /></td></tr>
@@ -138,38 +135,43 @@ void&#160;</td><td class="memItemRight"><b>aplicarCupom</b> (const <a class="el"
 void&#160;</td><td class="memItemRight"><b>atualizarSvenda</b> (<a class="el" href="_venda_8hpp.html#a1f4560af68947ad26030162b837acde4">StatusVenda</a> novoStatus)</td></tr>
 <tr class="memitem:a6ea27164e49f0aa9e8e01923d3c39fb3" id="r_a6ea27164e49f0aa9e8e01923d3c39fb3"><td class="memItemLeft"><a id="a6ea27164e49f0aa9e8e01923d3c39fb3" name="a6ea27164e49f0aa9e8e01923d3c39fb3"></a>
 void&#160;</td><td class="memItemRight"><b>atualizarSpagamento</b> (<a class="el" href="_venda_8hpp.html#a82afdd458327a16ed52842c46936b2e1">StatusPagamento</a> novoStatus)</td></tr>
-<tr class="memitem:a8097697baf7e12a7cdacbefdcf33ce59" id="r_a8097697baf7e12a7cdacbefdcf33ce59"><td class="memItemLeft"><a id="a8097697baf7e12a7cdacbefdcf33ce59" name="a8097697baf7e12a7cdacbefdcf33ce59"></a>
-std::string&#160;</td><td class="memItemRight"><b>getNomeDestina</b> ()</td></tr>
-<tr class="memitem:abffd89082a5d029b90989a498cf4a86c" id="r_abffd89082a5d029b90989a498cf4a86c"><td class="memItemLeft"><a id="abffd89082a5d029b90989a498cf4a86c" name="abffd89082a5d029b90989a498cf4a86c"></a>
-int&#160;</td><td class="memItemRight"><b>getIdVenda</b> ()</td></tr>
-<tr class="memitem:ad82eae3fb3968caa3d927eaca68968d9" id="r_ad82eae3fb3968caa3d927eaca68968d9"><td class="memItemLeft"><a id="ad82eae3fb3968caa3d927eaca68968d9" name="ad82eae3fb3968caa3d927eaca68968d9"></a>
-std::string&#160;</td><td class="memItemRight"><b>getCpfCliente</b> ()</td></tr>
-<tr class="memitem:a2316c1845d0330c2c215dda7dc147fe6" id="r_a2316c1845d0330c2c215dda7dc147fe6"><td class="memItemLeft"><a id="a2316c1845d0330c2c215dda7dc147fe6" name="a2316c1845d0330c2c215dda7dc147fe6"></a>
-double&#160;</td><td class="memItemRight"><b>getValorTotal</b> ()</td></tr>
-<tr class="memitem:ad0ca739a8fff7036bee22e20a4c35071" id="r_ad0ca739a8fff7036bee22e20a4c35071"><td class="memItemLeft"><a id="ad0ca739a8fff7036bee22e20a4c35071" name="ad0ca739a8fff7036bee22e20a4c35071"></a>
-const std::vector&lt; <a class="el" href="class_item_pedido.html">ItemPedido</a> &gt; &amp;&#160;</td><td class="memItemRight"><b>getItens</b> ()</td></tr>
-<tr class="memdesc:ad0ca739a8fff7036bee22e20a4c35071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna a lista de itens inclusos no pedido. <br /></td></tr>
-<tr class="memitem:a06426c828219b23305d22512ad446f8d" id="r_a06426c828219b23305d22512ad446f8d"><td class="memItemLeft"><a id="a06426c828219b23305d22512ad446f8d" name="a06426c828219b23305d22512ad446f8d"></a>
-std::string&#160;</td><td class="memItemRight"><b>getDataEntrega</b> ()</td></tr>
+<tr class="memitem:a0d9e0d0befbed78644115e292665921c" id="r_a0d9e0d0befbed78644115e292665921c"><td class="memItemLeft"><a id="a0d9e0d0befbed78644115e292665921c" name="a0d9e0d0befbed78644115e292665921c"></a>
+void&#160;</td><td class="memItemRight"><b>avaliar</b> (int nota)</td></tr>
+<tr class="memitem:a87474f218f4117b83d4bb6ffd100a88d" id="r_a87474f218f4117b83d4bb6ffd100a88d"><td class="memItemLeft"><a id="a87474f218f4117b83d4bb6ffd100a88d" name="a87474f218f4117b83d4bb6ffd100a88d"></a>
+int&#160;</td><td class="memItemRight"><b>getIdVenda</b> () const</td></tr>
+<tr class="memitem:ad945734ce539cfa28d95c852cf7fbc10" id="r_ad945734ce539cfa28d95c852cf7fbc10"><td class="memItemLeft"><a id="ad945734ce539cfa28d95c852cf7fbc10" name="ad945734ce539cfa28d95c852cf7fbc10"></a>
+int&#160;</td><td class="memItemRight"><b>getIdPessoa</b> () const</td></tr>
+<tr class="memitem:aa86ad98b78f469389814cc7eb48fa3e7" id="r_aa86ad98b78f469389814cc7eb48fa3e7"><td class="memItemLeft"><a id="aa86ad98b78f469389814cc7eb48fa3e7" name="aa86ad98b78f469389814cc7eb48fa3e7"></a>
+double&#160;</td><td class="memItemRight"><b>getValorTotal</b> () const</td></tr>
+<tr class="memitem:ab1c23a916c7b66de3df18fcfa777a159" id="r_ab1c23a916c7b66de3df18fcfa777a159"><td class="memItemLeft"><a id="ab1c23a916c7b66de3df18fcfa777a159" name="ab1c23a916c7b66de3df18fcfa777a159"></a>
+const <a class="el" href="class_desconto.html">Desconto</a> &amp;&#160;</td><td class="memItemRight"><b>getDescontoAplicado</b> () const</td></tr>
+<tr class="memdesc:ab1c23a916c7b66de3df18fcfa777a159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o desconto (cupom) aplicado ao pedido. <br /></td></tr>
+<tr class="memitem:ad61e786a8a63c7e9d2e61d4851223bb2" id="r_ad61e786a8a63c7e9d2e61d4851223bb2"><td class="memItemLeft"><a id="ad61e786a8a63c7e9d2e61d4851223bb2" name="ad61e786a8a63c7e9d2e61d4851223bb2"></a>
+const std::vector&lt; <a class="el" href="class_item_pedido.html">ItemPedido</a> &gt; &amp;&#160;</td><td class="memItemRight"><b>getItens</b> () const</td></tr>
+<tr class="memdesc:ad61e786a8a63c7e9d2e61d4851223bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna a lista de itens inclusos no pedido. <br /></td></tr>
+<tr class="memitem:a18c09f9813fefe502efdb558bd6be064" id="r_a18c09f9813fefe502efdb558bd6be064"><td class="memItemLeft"><a id="a18c09f9813fefe502efdb558bd6be064" name="a18c09f9813fefe502efdb558bd6be064"></a>
+const std::string &amp;&#160;</td><td class="memItemRight"><b>getDataEntrega</b> () const</td></tr>
+<tr class="memitem:ae7c3a2128a01ca8d55306c286199b11c" id="r_ae7c3a2128a01ca8d55306c286199b11c"><td class="memItemLeft"><a id="ae7c3a2128a01ca8d55306c286199b11c" name="ae7c3a2128a01ca8d55306c286199b11c"></a>
+const std::string &amp;&#160;</td><td class="memItemRight"><b>getHorarioEntregaPrevisao</b> () const</td></tr>
+<tr class="memitem:aacd500d703a943a71de54bbe9cba0128" id="r_aacd500d703a943a71de54bbe9cba0128"><td class="memItemLeft"><a id="aacd500d703a943a71de54bbe9cba0128" name="aacd500d703a943a71de54bbe9cba0128"></a>
+const <a class="el" href="class_endereco.html">Endereco</a> &amp;&#160;</td><td class="memItemRight"><b>getEnderecoEntrega</b> () const</td></tr>
+<tr class="memitem:a71f2cf9c323108a1e38a2931a466b91e" id="r_a71f2cf9c323108a1e38a2931a466b91e"><td class="memItemLeft"><a id="a71f2cf9c323108a1e38a2931a466b91e" name="a71f2cf9c323108a1e38a2931a466b91e"></a>
+<a class="el" href="_venda_8hpp.html#a1f4560af68947ad26030162b837acde4">StatusVenda</a>&#160;</td><td class="memItemRight"><b>getStatusVenda</b> () const</td></tr>
+<tr class="memitem:aee911310bc0bca2a93eb093e47794c3a" id="r_aee911310bc0bca2a93eb093e47794c3a"><td class="memItemLeft"><a id="aee911310bc0bca2a93eb093e47794c3a" name="aee911310bc0bca2a93eb093e47794c3a"></a>
+<a class="el" href="_venda_8hpp.html#a82afdd458327a16ed52842c46936b2e1">StatusPagamento</a>&#160;</td><td class="memItemRight"><b>getStatusPagamento</b> () const</td></tr>
+<tr class="memitem:ad96189fe067f63b5b50d6ead345d8913" id="r_ad96189fe067f63b5b50d6ead345d8913"><td class="memItemLeft"><a id="ad96189fe067f63b5b50d6ead345d8913" name="ad96189fe067f63b5b50d6ead345d8913"></a>
+int&#160;</td><td class="memItemRight"><b>getAvaliacao</b> () const</td></tr>
 <tr class="memitem:a708b4affd2f0451cb8c2be27c71806a8" id="r_a708b4affd2f0451cb8c2be27c71806a8"><td class="memItemLeft"><a id="a708b4affd2f0451cb8c2be27c71806a8" name="a708b4affd2f0451cb8c2be27c71806a8"></a>
 void&#160;</td><td class="memItemRight"><b>setDataEntrega</b> (const std::string &amp;dataEntrega)</td></tr>
-<tr class="memitem:acbf95ad7183cf108f7d897ed2f842db3" id="r_acbf95ad7183cf108f7d897ed2f842db3"><td class="memItemLeft"><a id="acbf95ad7183cf108f7d897ed2f842db3" name="acbf95ad7183cf108f7d897ed2f842db3"></a>
-std::string&#160;</td><td class="memItemRight"><b>getHorarioEntregaPrevisao</b> ()</td></tr>
 <tr class="memitem:a0358ca7c8fb80841f8da88dac3daa160" id="r_a0358ca7c8fb80841f8da88dac3daa160"><td class="memItemLeft"><a id="a0358ca7c8fb80841f8da88dac3daa160" name="a0358ca7c8fb80841f8da88dac3daa160"></a>
 void&#160;</td><td class="memItemRight"><b>setHorarioEntregaPrevisao</b> (const std::string &amp;horarioPrevisao)</td></tr>
-<tr class="memitem:af88895efd143c9ddc1157655a2838396" id="r_af88895efd143c9ddc1157655a2838396"><td class="memItemLeft"><a id="af88895efd143c9ddc1157655a2838396" name="af88895efd143c9ddc1157655a2838396"></a>
-<a class="el" href="class_endereco.html">Endereco</a>&#160;</td><td class="memItemRight"><b>getEnderecoEntrega</b> ()</td></tr>
 <tr class="memitem:a39d60d93c567e1e0f3c6334aabfb7512" id="r_a39d60d93c567e1e0f3c6334aabfb7512"><td class="memItemLeft"><a id="a39d60d93c567e1e0f3c6334aabfb7512" name="a39d60d93c567e1e0f3c6334aabfb7512"></a>
 void&#160;</td><td class="memItemRight"><b>setEnderecoEntrega</b> (const <a class="el" href="class_endereco.html">Endereco</a> &amp;endereco)</td></tr>
-<tr class="memitem:ad64ec6b7f821694f488e65fdd320b81c" id="r_ad64ec6b7f821694f488e65fdd320b81c"><td class="memItemLeft"><a id="ad64ec6b7f821694f488e65fdd320b81c" name="ad64ec6b7f821694f488e65fdd320b81c"></a>
-<a class="el" href="_venda_8hpp.html#a1f4560af68947ad26030162b837acde4">StatusVenda</a>&#160;</td><td class="memItemRight"><b>getStatusVenda</b> ()</td></tr>
-<tr class="memitem:ac8f7184c25a67bc1cc17a98fe15f12d6" id="r_ac8f7184c25a67bc1cc17a98fe15f12d6"><td class="memItemLeft"><a id="ac8f7184c25a67bc1cc17a98fe15f12d6" name="ac8f7184c25a67bc1cc17a98fe15f12d6"></a>
-<a class="el" href="_venda_8hpp.html#a82afdd458327a16ed52842c46936b2e1">StatusPagamento</a>&#160;</td><td class="memItemRight"><b>getStatusPagamento</b> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Representa um pedido realizado, contendo itens, dados de entrega e pagamento. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_venda_8hpp_source.html">Venda.hpp</a></li>
+<li>include/<a class="el" href="_venda_8hpp_source.html">Venda.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

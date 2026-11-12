@@ -1,0 +1,28 @@
+\doxysection{Venda\+Repositorio.\+hpp}
+\hypertarget{_venda_repositorio_8hpp_source}{}\label{_venda_repositorio_8hpp_source}\index{include/VendaRepositorio.hpp@{include/VendaRepositorio.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VENDA\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VENDA\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_venda_8hpp}{Venda.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_venda_repositorio_a3e208ca914050dc092e3330d2ab63e02}{VendaRepositorio}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{class_venda_repositorio_a3e208ca914050dc092e3330d2ab63e02}{VendaRepositorio}}(\textcolor{keyword}{const}\ std::string\&\ caminho);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<Venda>\ \doxymbox{\hyperlink{class_venda_repositorio_a221fcaad8ab58c60183c040e6c3d6357}{carregar}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_venda_repositorio_ad46bd7b47b9524ec088fe018fdf99e64}{gravar}}(\textcolor{keyword}{const}\ std::vector<Venda>\&\ vendas)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \_caminho;\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ limpar(std::string\ s)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -130,14 +130,14 @@ Inheritance diagram for Gerente:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a02847f6297c4571cd954005d5dace25b" id="r_a02847f6297c4571cd954005d5dace25b"><td class="memItemLeft"><a id="a02847f6297c4571cd954005d5dace25b" name="a02847f6297c4571cd954005d5dace25b"></a>
 &#160;</td><td class="memItemRight"><b>Gerente</b> ()</td></tr>
-<tr class="memdesc:a02847f6297c4571cd954005d5dace25b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor padrão. <br /></td></tr>
+<tr class="memdesc:a02847f6297c4571cd954005d5dace25b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cria o gerente padrão do sistema (login fixo: <a href="mai'+'lto:+'adm'+'in'+'@te'+'ll'+'.co'+'m'">admin<span class="obfuscator">.nosp@m.</span>@tel<span class="obfuscator">.nosp@m.</span>l.com</a> - admin). <br /></td></tr>
 <tr class="memitem:ac047e7a84a7a373bb78072939e96a6d3" id="r_ac047e7a84a7a373bb78072939e96a6d3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ac047e7a84a7a373bb78072939e96a6d3">Gerente</a> (int idPessoa, const std::string &amp;nome, const std::string &amp;cpf, const std::string &amp;email, const std::string &amp;telefone, const std::string &amp;senha)</td></tr>
 <tr class="memdesc:ac047e7a84a7a373bb78072939e96a6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constrói um <a class="el" href="class_gerente.html" title="Pessoa com permissão para administrar produtos, estoque, vendas e cupons.">Gerente</a> com seus dados básicos.  <br /></td></tr>
 <tr class="memitem:a25fd11471ce4338dea0bfacd1908fb83" id="r_a25fd11471ce4338dea0bfacd1908fb83"><td class="memItemLeft"><a id="a25fd11471ce4338dea0bfacd1908fb83" name="a25fd11471ce4338dea0bfacd1908fb83"></a>
 &#160;</td><td class="memItemRight"><b>~Gerente</b> () override</td></tr>
 <tr class="memdesc:a25fd11471ce4338dea0bfacd1908fb83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor. <br /></td></tr>
-<tr class="memitem:adcae5427271ba532f97398a35af30ed2" id="r_adcae5427271ba532f97398a35af30ed2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adcae5427271ba532f97398a35af30ed2">cadastrarProduto</a> (<a class="el" href="class_produto.html">Produto</a> &amp;produto)</td></tr>
-<tr class="memdesc:adcae5427271ba532f97398a35af30ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cadastra um produto no sistema.  <br /></td></tr>
+<tr class="memitem:a21496d3316f071b61aecfbfda99248cb" id="r_a21496d3316f071b61aecfbfda99248cb"><td class="memItemLeft"><a class="el" href="class_produto.html">Produto</a>&#160;</td><td class="memItemRight"><a class="el" href="#a21496d3316f071b61aecfbfda99248cb">cadastrarProduto</a> (int IdProduto, const std::string &amp;nome, const std::string &amp;descricao, const std::string &amp;categoria, double preco, const std::string &amp;imagem, int estoqueInicial, int estoqueMinino)</td></tr>
+<tr class="memdesc:a21496d3316f071b61aecfbfda99248cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instancia e cadastra um novo produto com os dados fornecidos.  <br /></td></tr>
 <tr class="memitem:a24ed8f5fd25d2005745cb6f9173d8afd" id="r_a24ed8f5fd25d2005745cb6f9173d8afd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a24ed8f5fd25d2005745cb6f9173d8afd">editarProduto</a> (<a class="el" href="class_produto.html">Produto</a> &amp;produto, const std::string &amp;nome, const std::string &amp;descricao, double preco, const std::string &amp;categoria)</td></tr>
 <tr class="memdesc:a24ed8f5fd25d2005745cb6f9173d8afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edita os dados de um produto existente.  <br /></td></tr>
 <tr class="memitem:a8672b1b9d554e10f545d3c0241f37583" id="r_a8672b1b9d554e10f545d3c0241f37583"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8672b1b9d554e10f545d3c0241f37583">adicionarEstoqueProduto</a> (<a class="el" href="class_produto.html">Produto</a> &amp;produto, int quantidade)</td></tr>
@@ -146,6 +146,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a15132547ffa9d8faa120187bff5aa729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove unidades do estoque de um produto.  <br /></td></tr>
 <tr class="memitem:a578fb52bd9c2ece0f99b7f7baefe8850" id="r_a578fb52bd9c2ece0f99b7f7baefe8850"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a578fb52bd9c2ece0f99b7f7baefe8850">definirEstoqueMinimoProduto</a> (<a class="el" href="class_produto.html">Produto</a> &amp;produto, int quantidadeMinima)</td></tr>
 <tr class="memdesc:a578fb52bd9c2ece0f99b7f7baefe8850"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o estoque mínimo de um produto.  <br /></td></tr>
+<tr class="memitem:a10e437a42bf4325ee6d75998dd4d6c58" id="r_a10e437a42bf4325ee6d75998dd4d6c58"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a10e437a42bf4325ee6d75998dd4d6c58">ajustarEstoqueProduto</a> (<a class="el" href="class_produto.html">Produto</a> &amp;produto, int novaQuantidade)</td></tr>
+<tr class="memdesc:a10e437a42bf4325ee6d75998dd4d6c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajusta o estoque de um produto para um novo valor absoluto.  <br /></td></tr>
 <tr class="memitem:a3d782906cbab98e3d816b5657df9105d" id="r_a3d782906cbab98e3d816b5657df9105d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3d782906cbab98e3d816b5657df9105d">atualizarStatusVenda</a> (<a class="el" href="class_venda.html">Venda</a> &amp;venda, <a class="el" href="_venda_8hpp.html#a1f4560af68947ad26030162b837acde4">StatusVenda</a> novoStatus)</td></tr>
 <tr class="memdesc:a3d782906cbab98e3d816b5657df9105d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atualiza o status de uma venda.  <br /></td></tr>
 <tr class="memitem:ac88b64c353a03942ba22d5e6f6331469" id="r_ac88b64c353a03942ba22d5e6f6331469"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac88b64c353a03942ba22d5e6f6331469">atualizarStatusPagamento</a> (<a class="el" href="class_venda.html">Venda</a> &amp;venda, <a class="el" href="_venda_8hpp.html#a82afdd458327a16ed52842c46936b2e1">StatusPagamento</a> novoStatus)</td></tr>
@@ -165,34 +167,32 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af7a51cc7abbb9562d8b811c084920265 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o identificador da pessoa.  <br /></td></tr>
 <tr class="memitem:a309bd1dada952c5c9b6aa27c163d1e53 pub_methods_class_pessoa" id="r_a309bd1dada952c5c9b6aa27c163d1e53"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a309bd1dada952c5c9b6aa27c163d1e53">getNome</a> () const</td></tr>
 <tr class="memdesc:a309bd1dada952c5c9b6aa27c163d1e53 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o nome da pessoa.  <br /></td></tr>
-<tr class="memitem:aa9b4c2150b5ce9ac8a82f0e51606e930 pub_methods_class_pessoa" id="r_aa9b4c2150b5ce9ac8a82f0e51606e930"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930">setNome</a> (const std::strinf &amp;nome)</td></tr>
-<tr class="memdesc:aa9b4c2150b5ce9ac8a82f0e51606e930 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o nome da pessoa.  <br /></td></tr>
+<tr class="memitem:ae98c4c602cdcdd692cee7afedb8a42cd pub_methods_class_pessoa" id="r_ae98c4c602cdcdd692cee7afedb8a42cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#ae98c4c602cdcdd692cee7afedb8a42cd">setNome</a> (const std::string &amp;nome)</td></tr>
+<tr class="memdesc:ae98c4c602cdcdd692cee7afedb8a42cd pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o nome da pessoa.  <br /></td></tr>
 <tr class="memitem:ac539a6b2f010d5fd0d0f1330049fe1a4 pub_methods_class_pessoa" id="r_ac539a6b2f010d5fd0d0f1330049fe1a4"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#ac539a6b2f010d5fd0d0f1330049fe1a4">getCpf</a> () const</td></tr>
 <tr class="memdesc:ac539a6b2f010d5fd0d0f1330049fe1a4 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o CPF da pessoa.  <br /></td></tr>
-<tr class="memitem:a626351f5d3af197f875ffec7c06f2047 pub_methods_class_pessoa" id="r_a626351f5d3af197f875ffec7c06f2047"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a626351f5d3af197f875ffec7c06f2047">setNome</a> (const std::strinf &amp;cpf)</td></tr>
-<tr class="memdesc:a626351f5d3af197f875ffec7c06f2047 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o CPF da pessoa.  <br /></td></tr>
+<tr class="memitem:ab6557dcd09a46204458fadc8de79a83c pub_methods_class_pessoa" id="r_ab6557dcd09a46204458fadc8de79a83c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#ab6557dcd09a46204458fadc8de79a83c">setCpf</a> (const std::string &amp;cpf)</td></tr>
+<tr class="memdesc:ab6557dcd09a46204458fadc8de79a83c pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o CPF da pessoa.  <br /></td></tr>
 <tr class="memitem:aa1870ca4f33348dcdc1cd05476e66905 pub_methods_class_pessoa" id="r_aa1870ca4f33348dcdc1cd05476e66905"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#aa1870ca4f33348dcdc1cd05476e66905">getEmail</a> () const</td></tr>
 <tr class="memdesc:aa1870ca4f33348dcdc1cd05476e66905 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o e-mail da pessoa.  <br /></td></tr>
-<tr class="memitem:af5030d1e6bb61d2df15ef06c338f4167 pub_methods_class_pessoa" id="r_af5030d1e6bb61d2df15ef06c338f4167"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#af5030d1e6bb61d2df15ef06c338f4167">setNome</a> (const std::strinf &amp;email)</td></tr>
-<tr class="memdesc:af5030d1e6bb61d2df15ef06c338f4167 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o e-mail da pessoa.  <br /></td></tr>
+<tr class="memitem:ade6c7ecf339f07b33019cfcf79424623 pub_methods_class_pessoa" id="r_ade6c7ecf339f07b33019cfcf79424623"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#ade6c7ecf339f07b33019cfcf79424623">setEmail</a> (const std::string &amp;email)</td></tr>
+<tr class="memdesc:ade6c7ecf339f07b33019cfcf79424623 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o e-mail da pessoa.  <br /></td></tr>
 <tr class="memitem:ad3cd925510223717abbd3582a59cc7f8 pub_methods_class_pessoa" id="r_ad3cd925510223717abbd3582a59cc7f8"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#ad3cd925510223717abbd3582a59cc7f8">getTelefone</a> () const</td></tr>
 <tr class="memdesc:ad3cd925510223717abbd3582a59cc7f8 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o telefone da pessoa.  <br /></td></tr>
-<tr class="memitem:af0cf2deff1e50a19e5458c854c39e043 pub_methods_class_pessoa" id="r_af0cf2deff1e50a19e5458c854c39e043"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#af0cf2deff1e50a19e5458c854c39e043">setNome</a> (const std::strinf &amp;telefone)</td></tr>
-<tr class="memdesc:af0cf2deff1e50a19e5458c854c39e043 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o telefone da pessoa.  <br /></td></tr>
+<tr class="memitem:a0652e28df182647652012c42fc603c57 pub_methods_class_pessoa" id="r_a0652e28df182647652012c42fc603c57"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a0652e28df182647652012c42fc603c57">setTelefone</a> (const std::string &amp;telefone)</td></tr>
+<tr class="memdesc:a0652e28df182647652012c42fc603c57 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o telefone da pessoa.  <br /></td></tr>
 <tr class="memitem:a714a3939ba5eb36c28a27678245c1d39 pub_methods_class_pessoa" id="r_a714a3939ba5eb36c28a27678245c1d39"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a714a3939ba5eb36c28a27678245c1d39">getSenha</a> () const</td></tr>
 <tr class="memdesc:a714a3939ba5eb36c28a27678245c1d39 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna a senha da pessoa.  <br /></td></tr>
-<tr class="memitem:a3d598f3a7727ff668ec1ead0a0a0959b pub_methods_class_pessoa" id="r_a3d598f3a7727ff668ec1ead0a0a0959b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a3d598f3a7727ff668ec1ead0a0a0959b">setNome</a> (const std::strinf &amp;senha)</td></tr>
-<tr class="memdesc:a3d598f3a7727ff668ec1ead0a0a0959b pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define a senha da pessoa.  <br /></td></tr>
-<tr class="memitem:a309bd1dada952c5c9b6aa27c163d1e53 pub_methods_class_pessoa" id="r_a309bd1dada952c5c9b6aa27c163d1e53"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a309bd1dada952c5c9b6aa27c163d1e53">getNome</a> () const</td></tr>
-<tr class="memdesc:a309bd1dada952c5c9b6aa27c163d1e53 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o nome da pessoa.  <br /></td></tr>
-<tr class="memitem:aa9b4c2150b5ce9ac8a82f0e51606e930 pub_methods_class_pessoa" id="r_aa9b4c2150b5ce9ac8a82f0e51606e930"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930">setNome</a> (const std::strinf &amp;nome)</td></tr>
-<tr class="memdesc:aa9b4c2150b5ce9ac8a82f0e51606e930 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o nome da pessoa.  <br /></td></tr>
+<tr class="memitem:a253c84395494e27a8796696b3fb8497b pub_methods_class_pessoa" id="r_a253c84395494e27a8796696b3fb8497b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a253c84395494e27a8796696b3fb8497b">setSenha</a> (const std::string &amp;senha)</td></tr>
+<tr class="memdesc:a253c84395494e27a8796696b3fb8497b pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define a senha da pessoa.  <br /></td></tr>
 <tr class="memitem:a719684df5976b05c2898ae4fb22b7716 pub_methods_class_pessoa" id="r_a719684df5976b05c2898ae4fb22b7716"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_endereco.html">Endereco</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a719684df5976b05c2898ae4fb22b7716">getEnderecos</a> () const</td></tr>
 <tr class="memdesc:a719684df5976b05c2898ae4fb22b7716 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna os endereços cadastrados.  <br /></td></tr>
 <tr class="memitem:a24aad9be3159558a681e64a524b773bb pub_methods_class_pessoa" id="r_a24aad9be3159558a681e64a524b773bb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a24aad9be3159558a681e64a524b773bb">adicionarEndereco</a> (const <a class="el" href="class_endereco.html">Endereco</a> &amp;endereco)</td></tr>
 <tr class="memdesc:a24aad9be3159558a681e64a524b773bb pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona um endereço à lista da pessoa.  <br /></td></tr>
 <tr class="memitem:a9a5fad5f7f4daf89a9405ae446b8c860 pub_methods_class_pessoa" id="r_a9a5fad5f7f4daf89a9405ae446b8c860"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a9a5fad5f7f4daf89a9405ae446b8c860">removerEndereco</a> (std::size_t indice)</td></tr>
 <tr class="memdesc:a9a5fad5f7f4daf89a9405ae446b8c860 pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove um endereço da lista da pessoa.  <br /></td></tr>
+<tr class="memitem:a9c9b013b2bb9313ed55e07b0502f48db pub_methods_class_pessoa" id="r_a9c9b013b2bb9313ed55e07b0502f48db"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_pessoa.html#a9c9b013b2bb9313ed55e07b0502f48db">possuiEndereco</a> (const <a class="el" href="class_endereco.html">Endereco</a> &amp;endereco) const</td></tr>
+<tr class="memdesc:a9c9b013b2bb9313ed55e07b0502f48db pub_methods_class_pessoa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se a pessoa já possui um determinado endereço cadastrado.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_pessoa.html" title="Representa uma pessoa genérica do sistema.">Pessoa</a> com permissão para administrar produtos, estoque, vendas e cupons. </p>
@@ -288,6 +288,42 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>quantidade &gt; 0 </dd></dl>
+
+</div>
+</div>
+<a id="a10e437a42bf4325ee6d75998dd4d6c58" name="a10e437a42bf4325ee6d75998dd4d6c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10e437a42bf4325ee6d75998dd4d6c58">&#9670;&#160;</a></span>ajustarEstoqueProduto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Gerente::ajustarEstoqueProduto </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_produto.html">Produto</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>produto</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>novaQuantidade</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajusta o estoque de um produto para um novo valor absoluto. </p>
+<p>Calcula a diferença entre a nova quantidade e o estoque atual, chamando adicionarEstoqueProduto ou removerEstoqueProduto conforme necessário. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">produto</td><td><a class="el" href="class_produto.html" title="Gerencia os dados de um item do catálogo e suas movimentações de estoque.">Produto</a> que terá o estoque ajustado. </td></tr>
+    <tr><td class="paramname">novaQuantidade</td><td>Nova quantidade total desejada para o estoque. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>se novaQuantidade for menor que zero. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -420,28 +456,70 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adcae5427271ba532f97398a35af30ed2" name="adcae5427271ba532f97398a35af30ed2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcae5427271ba532f97398a35af30ed2">&#9670;&#160;</a></span>cadastrarProduto()</h2>
+<a id="a21496d3316f071b61aecfbfda99248cb" name="a21496d3316f071b61aecfbfda99248cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21496d3316f071b61aecfbfda99248cb">&#9670;&#160;</a></span>cadastrarProduto()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Gerente::cadastrarProduto </td>
+          <td class="memname"><a class="el" href="class_produto.html">Produto</a> Gerente::cadastrarProduto </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_produto.html">Produto</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>produto</em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>IdProduto</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>nome</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>descricao</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>categoria</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>preco</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>imagem</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>estoqueInicial</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>estoqueMinino</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Cadastra um produto no sistema. </p>
+<p>Instancia e cadastra um novo produto com os dados fornecidos. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">produto</td><td><a class="el" href="class_produto.html" title="Gerencia os dados de um item do catálogo e suas movimentações de estoque.">Produto</a> a ser cadastrado. </td></tr>
+    <tr><td class="paramname">IdProduto</td><td>Identificador único do produto. </td></tr>
+    <tr><td class="paramname">nome</td><td>Nome do produto. </td></tr>
+    <tr><td class="paramname">descricao</td><td>Descrição detalhada. </td></tr>
+    <tr><td class="paramname">categoria</td><td>Categoria do produto. </td></tr>
+    <tr><td class="paramname">preco</td><td>Preço unitário. </td></tr>
+    <tr><td class="paramname">imagem</td><td>Caminho para a imagem do produto. </td></tr>
+    <tr><td class="paramname">estoqueInicial</td><td>Quantidade inicial em estoque. </td></tr>
+    <tr><td class="paramname">estoqueMinimo</td><td>Quantidade mínima para controle de alerta de estoque. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Objeto <a class="el" href="class_produto.html" title="Gerencia os dados de um item do catálogo e suas movimentações de estoque.">Produto</a> instanciado com os dados passados. </dd></dl>
 
 </div>
 </div>
@@ -555,7 +633,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_gerente_8hpp_source.html">Gerente.hpp</a></li>
+<li>include/<a class="el" href="_gerente_8hpp_source.html">Gerente.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

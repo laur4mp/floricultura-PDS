@@ -1,5 +1,6 @@
 \doxysection{Desconto.\+hpp}
-\hypertarget{_desconto_8hpp_source}{}\label{_desconto_8hpp_source}\doxymbox{\hyperlink{_desconto_8hpp}{Go to the documentation of this file.}}
+\hypertarget{_desconto_8hpp_source}{}\label{_desconto_8hpp_source}\index{include/Desconto.hpp@{include/Desconto.hpp}}
+\doxymbox{\hyperlink{_desconto_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
 \DoxyCodeLine{00005\ }
@@ -12,19 +13,24 @@
 \DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00017\ \ \ \ \ std::string\ cupom;}
 \DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ percentual;\ \ \ \textcolor{comment}{//\ de\ 0\ a\ 100}}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00021\ \ \ \ \ Desconto();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sem\ desconto}}
-\DoxyCodeLine{00022\ \ \ \ \ }
-\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{class_desconto_aadf822138e14ad98ad42ac90babd9d09}{Desconto}}(\textcolor{keyword}{const}\ std::string\&\ cupom,\ \textcolor{keywordtype}{double}\ percentual);}
-\DoxyCodeLine{00025\ \ \ \ \ }
-\DoxyCodeLine{00026\ \ \ \ \ \string~Desconto();}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ std::string\ getCupom()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_desconto_a63ea32957b2cb5fe9d2f421f93fb578f}{aplicar}}(\textcolor{keywordtype}{double}\ valorTotal)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00032\ \};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ dataValidade;\ \ \ \ \textcolor{comment}{//\ formato\ AAAA-\/MM-\/DD}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ Desconto();\ \ \ \ \textcolor{comment}{//\ compra\ sem\ desconto}}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{class_desconto_a12bdbf93c9e374cce95ea1061153745b}{Desconto}}(\textcolor{keyword}{const}\ std::string\&\ cupom,\ \textcolor{keywordtype}{double}\ percentual,\ \textcolor{keyword}{const}\ std::string\&\ dataValidade);}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \string~Desconto();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ getCupom()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ getPercentual()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ getDataValidade()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_desconto_ac8a0cba0ad910892d7e58eecfd24015f}{ehValido}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_desconto_a63ea32957b2cb5fe9d2f421f93fb578f}{aplicar}}(\textcolor{keywordtype}{double}\ valorTotal)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

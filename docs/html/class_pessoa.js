@@ -9,14 +9,13 @@ var class_pessoa =
     [ "getEnderecos", "class_pessoa.html#a719684df5976b05c2898ae4fb22b7716", null ],
     [ "getIdPessoa", "class_pessoa.html#af7a51cc7abbb9562d8b811c084920265", null ],
     [ "getNome", "class_pessoa.html#a309bd1dada952c5c9b6aa27c163d1e53", null ],
-    [ "getNome", "class_pessoa.html#a309bd1dada952c5c9b6aa27c163d1e53", null ],
     [ "getSenha", "class_pessoa.html#a714a3939ba5eb36c28a27678245c1d39", null ],
     [ "getTelefone", "class_pessoa.html#ad3cd925510223717abbd3582a59cc7f8", null ],
+    [ "possuiEndereco", "class_pessoa.html#a9c9b013b2bb9313ed55e07b0502f48db", null ],
     [ "removerEndereco", "class_pessoa.html#a9a5fad5f7f4daf89a9405ae446b8c860", null ],
-    [ "setNome", "class_pessoa.html#a626351f5d3af197f875ffec7c06f2047", null ],
-    [ "setNome", "class_pessoa.html#af5030d1e6bb61d2df15ef06c338f4167", null ],
-    [ "setNome", "class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930", null ],
-    [ "setNome", "class_pessoa.html#aa9b4c2150b5ce9ac8a82f0e51606e930", null ],
-    [ "setNome", "class_pessoa.html#a3d598f3a7727ff668ec1ead0a0a0959b", null ],
-    [ "setNome", "class_pessoa.html#af0cf2deff1e50a19e5458c854c39e043", null ]
+    [ "setCpf", "class_pessoa.html#ab6557dcd09a46204458fadc8de79a83c", null ],
+    [ "setEmail", "class_pessoa.html#ade6c7ecf339f07b33019cfcf79424623", null ],
+    [ "setNome", "class_pessoa.html#ae98c4c602cdcdd692cee7afedb8a42cd", null ],
+    [ "setSenha", "class_pessoa.html#a253c84395494e27a8796696b3fb8497b", null ],
+    [ "setTelefone", "class_pessoa.html#a0652e28df182647652012c42fc603c57", null ]
 ];

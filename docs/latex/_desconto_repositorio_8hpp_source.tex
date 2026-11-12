@@ -1,0 +1,28 @@
+\doxysection{Desconto\+Repositorio.\+hpp}
+\hypertarget{_desconto_repositorio_8hpp_source}{}\label{_desconto_repositorio_8hpp_source}\index{include/DescontoRepositorio.hpp@{include/DescontoRepositorio.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DESCONTO\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DESCONTO\_REPOSITORIO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_desconto_8hpp}{Desconto.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_desconto_repositorio_ab86f9c77e234fc106f2089a154e2379c}{DescontoRepositorio}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \doxymbox{\hyperlink{class_desconto_repositorio_ab86f9c77e234fc106f2089a154e2379c}{DescontoRepositorio}}(\textcolor{keyword}{const}\ std::string\&\ caminho);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<Desconto>\ \doxymbox{\hyperlink{class_desconto_repositorio_a4e1faa7b2240558d1ee14a79dd3090a5}{carregar}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_desconto_repositorio_ab8c7095ddfb47793ac0011e8ed9261ee}{gravar}}(\textcolor{keyword}{const}\ std::vector<Desconto>\&\ descontos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ \_caminho;\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ limpar(std::string\ s)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
