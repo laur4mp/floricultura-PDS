@@ -4,6 +4,7 @@
 
 #include <QLocale>
 #include <QPixmap>
+#include <QStringList>
 
 CardHistorico::CardHistorico(const Venda& v, QWidget *parent)
     : QWidget(parent)
@@ -71,7 +72,14 @@ CardHistorico::CardHistorico(const Venda& v, QWidget *parent)
     int idVenda = v.getIdVenda();
 
     for (int i = 0; i < estrelas.size(); i++) {
+
         estrelas[i]->setEnabled(podeAvaliar);
+
+        aplicarEstiloBotaoTransparente(estrelas[i]);
+        estrelas[i]->setCursor(podeAvaliar ? Qt::PointingHandCursor : Qt::ArrowCursor);
+        estrelas[i]->setToolTip(podeAvaliar ? QString("Dar nota %1").arg(i + 1)
+                                            : "Disponível depois da entrega");
+
         connect(estrelas[i], &QPushButton::clicked, this, [this, mudar, idVenda, i] {
             mudar(i + 1);
             emit avaliado(idVenda, i + 1);

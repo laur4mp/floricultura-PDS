@@ -20,6 +20,7 @@ class PessoaRepositorio {
 public:
 
     using Favorito = std::pair<int, int>;
+    struct ItemCarrinho { int idPessoa; int idProduto; int quantidade; };
 
     /**
      * @brief Constrói o repositório de pessoas associado a um arquivo de texto.
@@ -31,13 +32,16 @@ public:
      * @brief Lê todas as pessoas do arquivo (arquivo inexistente = lista vazia).
      * @return Vetor contendo as pessoas carregadas, já com seus endereços.
      */
-    std::vector<Pessoa> carregar(std::vector<Favorito>& favoritos) const;
+    std::vector<Pessoa> carregar(std::vector<Favorito>& favoritos,
+                                 std::vector<ItemCarrinho>& carrinhos) const;
 
     /**
      * @brief Reescreve o arquivo com a lista recebida.
      * @param pessoas Vetor de pessoas a ser gravado.
      */
-    void gravar(const std::vector<Pessoa>& pessoas, const std::vector<Favorito>& favoritos) const;
+    void gravar(const std::vector<Pessoa>& pessoas,
+                const std::vector<Favorito>& favoritos,
+                const std::vector<ItemCarrinho>& carrinhos) const;
 
 private:
     std::string _caminho; ///< Caminho do arquivo de dados.

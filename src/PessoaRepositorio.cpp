@@ -14,7 +14,8 @@ std::string PessoaRepositorio::limpar(std::string s) const {
 }
 
 void PessoaRepositorio::gravar (const std::vector<Pessoa>& pessoas,
-                                const std::vector<Favorito>& favoritos) const {
+                                const std::vector<Favorito>& favoritos,
+                                const std::vector<ItemCarrinho>& carrinhos) const {
     std::ofstream out(_caminho, std::ios::trunc); //logica de apagar arquivo e escrever de novo
     if (!out.is_open()) {
         throw std::runtime_error("Não foi possível gravar o arquivo " + _caminho);
@@ -38,9 +39,15 @@ void PessoaRepositorio::gravar (const std::vector<Pessoa>& pessoas,
     for(const Favorito& f : favoritos)
         out << "F|" << f.first << "|" << f.second << '\n';
 
+    for (const ItemCarrinho& item : carrinhos)
+        out << "C|" << item.idPessoa << '|' << item.idProduto << '|' << item.quantidade << '\n';
+
+    
+
 }
 
-std::vector<Pessoa> PessoaRepositorio::carregar(std::vector<Favorito>& favoritos) const {
+std::vector<Pessoa> PessoaRepositorio::carregar(std::vector<Favorito>& favoritos,
+                                                std::vector<ItemCarrinho>& carrinhos) const {
     std::vector<Pessoa> pessoas;
     std::vector<Endereco> enderecos; // endereços já lidos, esperando a linha da sua pessoa
     std::vector<int> idsPessoas;  //para associar o endereço à pessoa correta, armazenamos os ids das pessoas já lidas
@@ -66,7 +73,9 @@ std::vector<Pessoa> PessoaRepositorio::carregar(std::vector<Favorito>& favoritos
             pessoas.push_back(Pessoa(std::stoi(c[1]), c[2], c[3], c[4], c[5], c[6]));
         } else if(c[0] == "F" && c.size() == 3) {
             favoritos.push_back({ std::stoi(c[1]), std::stoi(c[2]) });
-
+        } else if (c[0] == "C" && c.size() == 4) {
+            carrinhos.push_back({ std::stoi(c[1]), std::stoi(c[2]), std::stoi(c[3]) });
+            
         }else{
                 throw std::runtime_error("PessoaRepositorio: linha corrompida: " + linha);
             }

@@ -1,4 +1,5 @@
 #include "interface.h"
+#include <algorithm>
 #include "./ui_interface.h"
 #include "Estilos.hpp"
 #include <QMessageBox>
@@ -403,6 +404,7 @@ void Interface::carregarProdutos() {
             }
 
                 comprador()->adicionarAoCarrinho(ItemPedido(*prod, 1));
+                salvarComAviso();
                 atualizarCarrinho();
 
                 QMessageBox mensagem(this);
@@ -475,10 +477,12 @@ void Interface::atualizarCarrinho() {
                     return;
                 }
                 comprador()->alterarQuantidadeCarrinho(id, qtd + 1);
+                salvarComAviso();
                 atualizarCarrinho();
             });
             connect(card, &cardCarrinho::quantidadeDiminuida, this, [this, id, qtd] {
-                comprador()->alterarQuantidadeCarrinho(id, qtd - 1);   // em 0, o item sai
+                comprador()->alterarQuantidadeCarrinho(id, qtd - 1);   // em 0 o item sai
+                salvarComAviso();
                 atualizarCarrinho();
             });
             lista->addWidget(card);
@@ -500,11 +504,15 @@ void Interface::irParaEntrega() {
 void Interface::irParaPagamento() {
     try {
         enderecoAtual = Endereco(
-            comprador()->getNome(),                  ui->inputCEP->text().toStdString(),
+            ui->inputNomeDest->text().trimmed().isEmpty()
+                ? comprador()->getNome()
+                : ui->inputNomeDest->text().trimmed().toStdString(),
+            ui->inputCEP->text().toStdString(),
             ui->inputRua->text().toStdString(),      ui->inputNumero->text().toStdString(),
             ui->inputBairro->text().toStdString(),   ui->inputComplemento->text().toStdString(),
             ui->inputCidade->text().toStdString(),
             ui->inputEstado->text().trimmed().toUpper().toStdString());
+
     } catch (const std::exception& e) {
         QMessageBox::warning(this, "Endereco", e.what());
         return;
@@ -556,23 +564,37 @@ void Interface::aplicarCupom() {
 }
 
 void Interface::fazerPedido() {
-    if (!comprador()) return;
+
+     if (!comprador()) return;
 
     const Desconto* cupom = cupomAtual.isEmpty() ? nullptr
                           : sistema.buscarCupom(cupomAtual.toStdString());
     try {
-        sistema.finalizarPedido(*comprador(), enderecoAtual, cupom);
+        Venda venda = sistema.finalizarPedido(*comprador(), enderecoAtual, cupom);
+
+        ui->descricaoFinal->setText(
+            QString("Pedido #%1 confirmado!\nEntrega prevista para %2, %3.\n%4\nTotal: %5 (pagamento na entrega)")
+                .arg(venda.getIdVenda())
+                .arg(QDate::fromString(QString::fromStdString(venda.getDataEntrega()), "yyyy-MM-dd").toString("dd/MM/yyyy"))
+                .arg(QString::fromStdString(venda.getHorarioEntregaPrevisao()))
+                .arg(QString::fromStdString(venda.getEnderecoEntrega().formatarEndereco()))
+                .arg(localeBR().toCurrencyString(venda.getValorTotal())));
     } catch (const std::exception& e) {
         QMessageBox::warning(this, "Pedido", e.what());
         return;
     }
 
     salvarComAviso();
+
     cupomAtual.clear();
+
     ui->inputCupom->clear();
-    carregarProdutos();      // o estoque mudou: um produto pode ter esgotado
+
+    carregarProdutos();      // o estoque mudou
     atualizarCarrinho();     // o carrinho foi esvaziado
+
     ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
+
 }
 
 void Interface::atualizarHistorico() {
@@ -636,7 +658,8 @@ void Interface::carregarDados() {
     }
 
     std::vector<PessoaRepositorio::Favorito> favs;
-    for (const Pessoa& p : pessoaRepositorio.carregar(favs)) {
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinhos;
+    for (const Pessoa& p : pessoaRepositorio.carregar(favs, carrinhos)) {
         Comprador* c = new Comprador(p.getIdPessoa(), p.getNome(), p.getCpf(),
                                      p.getEmail(), p.getTelefone(), p.getSenha());
         for (const Endereco& e : p.getEnderecos()) c->adicionarEndereco(e);
@@ -647,6 +670,15 @@ void Interface::carregarDados() {
         Comprador* c = dynamic_cast<Comprador*>(sistema.buscarUsuario(f.first));
         Produto* prod = sistema.buscarProduto(f.second);
         if (c && prod) c->favoritarProduto(*prod);
+    }
+
+    for (const auto& item : carrinhos) {
+        Comprador* c = dynamic_cast<Comprador*>(sistema.buscarUsuario(item.idPessoa));
+        Produto* prod = sistema.buscarProduto(item.idProduto);
+        if (!c || !prod || prod->getQuantidadeEstoque() <= 0) continue;   
+
+        int qtd = std::min(item.quantidade, prod->getQuantidadeEstoque());  
+        c->adicionarAoCarrinho(ItemPedido(*prod, qtd));
     }
 
     for (const Venda& v : vendaRepositorio.carregar())
@@ -664,19 +696,24 @@ void Interface::salvarTudo() {
 
     std::vector<Pessoa> pessoas;
     std::vector<PessoaRepositorio::Favorito> favs;
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinhos;
     for (Pessoa* p : sistema.getUsuarios()) {
         if (auto* c = dynamic_cast<Comprador*>(p)) {
             pessoas.push_back(*c);
             for (const Produto& prod : c->getProdutosFavoritos())
                 favs.push_back({ c->getIdPessoa(), prod.getIdProduto() });
+            for (const ItemPedido& item : c->consultarCarrinho())
+                carrinhos.push_back({ c->getIdPessoa(), item.getProduto().getIdProduto(), item.getQuantidade() });
         }
     }
-    pessoaRepositorio.gravar(pessoas, favs);
+    pessoaRepositorio.gravar(pessoas, favs, carrinhos);
 
     vendaRepositorio.gravar(sistema.getVendas());
     descontoRepositorio.gravar(sistema.getCupons());
 }
+
 //salvar tudo e erro se der erro
+
 bool Interface::salvarComAviso(){
     try {
         salvarTudo();
@@ -861,6 +898,10 @@ Interface::Interface(QWidget *parent)
     connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
         fazerLogin();
     });
+
+    connect(ui->inputSenha, &QLineEdit::returnPressed, this, [this]() { fazerLogin(); });
+
+    connect(ui->inputEmail, &QLineEdit::returnPressed, this, [this]() { fazerLogin(); });
 
     connect(ui->btnPagPagamento, &QPushButton::clicked, this, [this]() {
         irParaPagamento();
