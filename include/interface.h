@@ -1,6 +1,5 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
-
 #include <QMainWindow>
 #include <QWidget>
 #include <vector>
@@ -35,14 +34,38 @@ private:
     VendaRepositorio vendaRepositorio;         
     DescontoRepositorio descontoRepositorio;
 
+    Pessoa* usuarioLogado = nullptr;
+    int idProdutoSelecionado = 0;
+
     void carregarProdutos();
     void configurarTabelaProdutos();
     void configurarTabelaPedidos();
     void configurarTabelaCupons();
     void carregarDados();
     void salvarTudo();
+    boll salvarComAviso();
+
 
     QWidget* criarCardProduto(const Produto& p);
+
+    void fazerLogin();
+    void sair();
+
+    Gerente* gerenteLogado() const;
+    void configurarAdministrador();
+
+    void atualizarTabelaProdutos();
+    void preencherFormularioProduto(int idProduto);
+    void limparFormularioProduto();
+    void salvarProduto();
+
+    void atualizarTabelaPedidos(int idParaSelecionar = 0);
+    int idPedidoSelecionado() const;
+    void atualizarTabelaCupons();
+    void atualizarStatusPedido();
+    void criarCupom();
+
+    static QString textoStatus(StatusVenda s); //função que pertence a classe
 };
 
 #endif // INTERFACE_H
