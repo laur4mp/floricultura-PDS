@@ -24,6 +24,13 @@ void Gerente::editarProduto(Produto& produto, const std::string& nome, const std
     if (preco < 0.0) { 
         throw std::invalid_argument("O preco nao pode ser negativo."); 
     } 
+    if (nome.empty()){
+        throw std::invalid_argument("O nome nao pode ser vazio.");
+    }
+    if (categoria.empty()){
+         throw std::invalid_argument("A categoria nao pode ser vazia.");
+    }
+    
     produto.setNome(nome); 
     produto.setDescricao(descricao); 
     produto.setPreco(preco); 

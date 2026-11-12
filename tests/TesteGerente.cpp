@@ -63,6 +63,8 @@ TEST_CASE("Gerente - construtor padrao cria o administrador fixo") {
     CHECK(g.getEmail() == "admin@tell.com");
     CHECK(g.getSenha() == "admin");
     CHECK(g.getEnderecos().empty());
+    CHECK(g.getCpf().empty());
+    CHECK(g.getTelefone().empty());
 }
 
 TEST_CASE("Gerente - e uma Pessoa via ponteiro da base") {
@@ -123,6 +125,17 @@ TEST_CASE("Gerente - editarProduto atualiza nome, descricao, preco e categoria")
                         std::invalid_argument);
         CHECK(produto.getNome() == "Rosa Vermelha");
         CHECK(produto.getPreco() == doctest::Approx(50.0));
+    }
+    SUBCASE("nome vazio lanca invalid_argument e nao altera o produto") {
+        CHECK_THROWS_AS(g.editarProduto(produto, "", "Buque", 35.5, "Presentes"), std::invalid_argument);
+        CHECK(produto.getDescricao() == "Buque com 12 rosas");
+        CHECK(produto.getPreco() == doctest::Approx(50.0));
+    }
+    SUBCASE("categoria vazia lanca invalid_argument e nao altera o produto") {
+        CHECK_THROWS_AS(g.editarProduto(produto, "Rosa Branca", "Buque", 35.5, ""), std::invalid_argument);
+        CHECK(produto.getNome() == "Rosa Vermelha");
+        CHECK(produto.getPreco() == doctest::Approx(50.0));
+        CHECK(produto.getCategoria() == "Buques");
     }
 }
 
@@ -330,6 +343,20 @@ TEST_CASE("Gerente - atualizarStatusPagamento rejeita pedido cancelado ou sem it
         Venda vazia = criarVenda();
         CHECK_THROWS_AS(g.atualizarStatusPagamento(vazia, StatusPagamento::PAGO), std::logic_error);
     }
+}
+
+TEST_CASE("Gerente - cadastrarCupom com data invalida lanca invalid_argument") {
+    Gerente g = criarGerente();
+
+    CHECK_THROWS_AS(g.cadastrarCupom("DATA", 10.0, "31-12-2099"), std::invalid_argument);
+    CHECK_THROWS_AS(g.cadastrarCupom("DATA", 10.0, "2099-13-01"), std::invalid_argument);
+    CHECK_THROWS_AS(g.cadastrarCupom("DATA", 10.0, ""), std::invalid_argument);
+}
+
+TEST_CASE("Gerente - construtor rejeita nome, e-mail ou senha vazios") {
+    CHECK_THROWS_AS(Gerente(1, "", "cpf", "g@tell.com", "tel", "senha"), std::invalid_argument);
+    CHECK_THROWS_AS(Gerente(1, "Carlos", "cpf", "", "tel", "senha"), std::invalid_argument);
+    CHECK_THROWS_AS(Gerente(1, "Carlos", "cpf", "g@tell.com", "tel", ""), std::invalid_argument);
 }
 
 TEST_CASE("Gerente - cadastrarCupom cria o cupom com codigo, percentual e validade") {
