@@ -59,18 +59,6 @@ class Comprador : public Pessoa{
         ) const;
 
         /** 
-         * @brief Filtra produtos por categoria. 
-         * 
-         * @param produtos Catálogo de produtos a ser filtrado. 
-         * @param categoria Categoria utilizada como filtro. 
-         * @return Vetor contendo os produtos pertencentes à categoria. 
-         */
-        std::vector<Produto> filtrarProdutos(
-            const std::vector<Produto>& produtos,
-            const std::string& categoria
-        ) const;
-
-        /** 
          * @brief Adiciona um produto à lista de favoritos. 
          * 
          * @param produto Produto que será favoritado. 
@@ -95,8 +83,7 @@ class Comprador : public Pessoa{
          */
         Venda fazerPedido(
             int idVenda,
-            const Endereco& enderecoEntrega,
-            MetodoPagamento metodo
+            const Endereco& enderecoEntrega
         );
 
         /** 

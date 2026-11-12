@@ -2,23 +2,21 @@
 #include <stdexcept>
 
 Venda::Venda()
-    : _idVenda(0), _avaliacao(0),_idPessoa(0), _valorTotal(0.0),
+    : _idVenda(0), _valorTotal(0.0), _avaliacao(0), _idPessoa(0),
       _statusVenda(StatusVenda::PROCESSAMENTO),
-      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
-      _metodoPagamento(MetodoPagamento::DINHEIRO) {}
+      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO)
+     {}
 
 Venda::Venda(int idVenda, int idPessoa, int avaliacao, const Endereco& enderecoEntrega,
              const std::string& nomeDestina)
-
-       : _idVenda(idVenda), _avaliacao(0), _nomeDestina(nomeDestina), _idPessoa(idPessoa), _valorTotal(0.0),
+    : _idVenda(idVenda), _idPessoa(idPessoa), _nomeDestina(nomeDestina), _valorTotal(0.0), _avaliacao(0),
       _enderecoEntrega(enderecoEntrega),
       _statusVenda(StatusVenda::PROCESSAMENTO),
-      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO),
-      _metodoPagamento(MetodoPagamento::DINHEIRO) {
+      _statusPagamento(StatusPagamento::AGUARDANDO_PAGAMENTO)
+      {
     if (idVenda <= 0)          throw std::invalid_argument("Venda: id deve ser positivo.");
     if (idPessoa <= 0)         throw std::invalid_argument("Venda: id do cliente deve ser positivo.");
     if (nomeDestina.empty())    throw std::invalid_argument("Venda: nome do destinatario nao pode ser vazio.");
-    if (avaliacao != 0) throw std::logic_error("Venda: a avaliacao so pode ser dada com avaliar(), apos a entrega.");
 }
 
 Venda::~Venda() {}
@@ -46,13 +44,13 @@ bool Venda::removerItem(int idItem) {
 }
 
 void Venda::calcularValorTotal() {
-    
+
     double subtotal = 0.0;
     for (const auto& item : _itens) subtotal += item.calcularPrecoTotal();
 
     double frete = _itens.empty() ? 0.0 : _itens.front().calcularFrete(_enderecoEntrega);
 
-    _valorTotal = _descontoAplicado.aplicar(subtotal) + frete;
+    _valorTotal = _descontoAplicado.aplicar(subtotal) + frete; 
 }
 
 void Venda::aplicarCupom(const Desconto& desconto) {
@@ -121,19 +119,12 @@ const Endereco& Venda::getEnderecoEntrega() const { return _enderecoEntrega; }
 
 void Venda::setEnderecoEntrega(const Endereco& endereco) {
     _enderecoEntrega = endereco;
-    calcularValorTotal();  // recalcula o frete com o novo endereço
 }
 const Desconto& Venda::getDescontoAplicado() const { return _descontoAplicado; }
 StatusVenda Venda::getStatusVenda() const { return _statusVenda; }
 StatusPagamento Venda::getStatusPagamento() const { return _statusPagamento; }
 
-void Venda::setMetodoPagamento(MetodoPagamento m){
-    _metodoPagamento = m;
-}
 
-MetodoPagamento Venda::getMetodoPagamento() const {
-    return _metodoPagamento;
-}
 
 void Venda::avaliar(int nota){
     if(_statusVenda != StatusVenda::ENTREGUE)

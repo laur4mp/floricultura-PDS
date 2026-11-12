@@ -108,64 +108,6 @@ TEST_CASE("Comprador filtra categoria com um unico produto") {
 
     Produto vaso(2, "Vaso", "Vaso de ceramica", "Decoracao",
                  30.0, "vaso.jpg", 10, 2);
-
-    std::vector<Produto> catalogo = {rosa, vaso};
-
-    std::vector<Produto> resultado =
-        comprador.filtrarProdutos(catalogo, "Flores");
-
-    REQUIRE(resultado.size() == 1);
-    CHECK(resultado[0].getNome() == "Rosa");
-} 
-
-TEST_CASE("Comprador filtra varios produtos por categoria") {
-    Comprador comprador(1, "Chappell Roan", "12345678900",
-                        "lesbica@email.com", "11999999999", "senha");
-
-    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
-                 10.0, "rosa.jpg", 20, 5);
-
-    Produto tulipa(2, "Tulipa", "Tulipa amarela", "Flores",
-                   15.0, "tulipa.jpg", 10, 3);
-
-    Produto buque(3, "Buque", "Buque de Rosas", "Buque",
-                  25.0, "buque.jpg", 8, 2);
-
-    std::vector<Produto> catalogo = {rosa, tulipa, buque};
-
-    std::vector<Produto> resultado =
-        comprador.filtrarProdutos(catalogo, "Flores");
-
-    REQUIRE(resultado.size() == 2);
-    CHECK(resultado[0].getNome() == "Rosa");
-    CHECK(resultado[1].getNome() == "Tulipa");
-}
-
-TEST_CASE("Comprador nao encontra produtos na categoria filtrada") {
-    Comprador comprador(1, "Taylor Swift", "12345678900",
-                        "tswift@email.com", "11999999999", "senha");
-
-    Produto rosa(1, "Rosa", "Rosa vermelha", "Flores",
-                 10.0, "rosa.jpg", 20, 5);
-
-    std::vector<Produto> catalogo = {rosa};
-
-    std::vector<Produto> resultado =
-        comprador.filtrarProdutos(catalogo, "Albuns");
-
-    CHECK(resultado.empty());
-}
-
-TEST_CASE("Comprador filtra catalogo vazio") {
-    Comprador comprador(1, "Lorde", "12345678900",
-                        "lorde@email.com", "11999999999", "senha");
-
-    std::vector<Produto> catalogo;
-
-    std::vector<Produto> resultado =
-        comprador.filtrarProdutos(catalogo, "Flores");
-
-    CHECK(resultado.empty());
 }
 
 //favoritarProduto
@@ -309,7 +251,7 @@ TEST_CASE("Historico registra uma compra realizada") {
 
     std::vector<Venda> vendas;
     comprador.adicionarAoCarrinho(ItemPedido(rosa, 2));
-    vendas.push_back(comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO));
+    vendas.push_back(comprador.fazerPedido(1, endereco));
 
     auto historico = comprador.consultarHistoricoCompras(vendas);
 
@@ -326,9 +268,9 @@ TEST_CASE("Historico registra varias compras realizadas") {
 
     std::vector<Venda> vendas;
     comprador.adicionarAoCarrinho(ItemPedido(rosa, 2));
-    vendas.push_back(comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO));
+    vendas.push_back(comprador.fazerPedido(1, endereco));
     comprador.adicionarAoCarrinho(ItemPedido(rosa, 2));
-    vendas.push_back(comprador.fazerPedido(2, endereco, MetodoPagamento::DINHEIRO));
+    vendas.push_back(comprador.fazerPedido(2, endereco));
 
     auto historico = comprador.consultarHistoricoCompras(vendas);
 
@@ -346,7 +288,7 @@ TEST_CASE("Historico nao mostra compras de outro comprador") {
 
     std::vector<Venda> vendas;
     ana.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    vendas.push_back(ana.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO));
+    vendas.push_back(ana.fazerPedido(1, endereco));
 
     CHECK(tomas.consultarHistoricoCompras(vendas).empty());
 }
@@ -368,7 +310,7 @@ TEST_CASE("Comprador acompanha pedido enviado") {
 
     comprador.adicionarAoCarrinho(item);
 
-    Venda venda = comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO);
+    Venda venda = comprador.fazerPedido(1, endereco);
     venda.atualizarSvenda(StatusVenda::ENVIADO);
 
     CHECK(comprador.acompanharPedido(venda) == StatusVenda::ENVIADO);
@@ -389,7 +331,7 @@ TEST_CASE("Comprador acompanha pedido em processamento") {
 
     comprador.adicionarAoCarrinho(item);
 
-    Venda venda = comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO);
+    Venda venda = comprador.fazerPedido(1, endereco);
     venda.atualizarSvenda(StatusVenda::PROCESSAMENTO);
 
     CHECK(comprador.acompanharPedido(venda) == StatusVenda::PROCESSAMENTO);
@@ -410,7 +352,7 @@ TEST_CASE("Comprador acompanha pedido entregue") {
 
     comprador.adicionarAoCarrinho(item);
 
-    Venda venda = comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO);
+    Venda venda = comprador.fazerPedido(1, endereco);
 
     venda.atualizarSvenda(StatusVenda::ENVIADO);
     venda.atualizarSvenda(StatusVenda::ENTREGUE);
@@ -434,7 +376,7 @@ TEST_CASE("Comprador faz pedido com itens validos") {
 
     comprador.adicionarAoCarrinho(item);
 
-    Venda venda = comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO);
+    Venda venda = comprador.fazerPedido(1, endereco);
 
     CHECK(venda.getIdVenda() == 1);
     CHECK(venda.getItens().size() == 1);
@@ -448,7 +390,7 @@ TEST_CASE("Fazer pedido sem itens") {
                       "123", "aaaaaaa", "Apt 666",
                       "Governador Valadares", "MG");
 
-    CHECK_THROWS(comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO));
+    CHECK_THROWS(comprador.fazerPedido(1, endereco));
 }
 
 
@@ -467,7 +409,7 @@ TEST_CASE("Fazer pedido limpa o carrinho apos a compra") {
     ItemPedido item(rosa, 2);
 
     comprador.adicionarAoCarrinho(item);
-    comprador.fazerPedido(1, endereco, MetodoPagamento::DINHEIRO);
+    comprador.fazerPedido(1, endereco);
 
     CHECK(comprador.consultarCarrinho().empty());
 }
@@ -545,7 +487,7 @@ TEST_CASE("Comprador cancela pedido em processamento") {
     Produto rosa(1, "Rosa", "Rosa vermelha", "Flores", 5.0, "rosa.jpg", 100, 10);
 
     c.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    Venda v = c.fazerPedido(1, e, MetodoPagamento::DINHEIRO);
+    Venda v = c.fazerPedido(1, e);
     c.cancelarPedido(v);
 
     CHECK(v.getStatusVenda() == StatusVenda::CANCELADO);
@@ -557,7 +499,7 @@ TEST_CASE("Comprador nao cancela pedido ja enviado") {
     Produto rosa(1, "Rosa", "Rosa vermelha", "Flores", 5.0, "rosa.jpg", 100, 10);
 
     c.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    Venda v = c.fazerPedido(1, e, MetodoPagamento::DINHEIRO);
+    Venda v = c.fazerPedido(1, e);
     v.atualizarSvenda(StatusVenda::ENVIADO);
 
     CHECK_THROWS(c.cancelarPedido(v));
@@ -570,7 +512,7 @@ TEST_CASE("Comprador nao cancela pedido de outra pessoa") {
     Produto rosa(1, "Rosa", "Rosa vermelha", "Flores", 5.0, "rosa.jpg", 100, 10);
 
     ana.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    Venda v = ana.fazerPedido(1, e, MetodoPagamento::DINHEIRO);
+    Venda v = ana.fazerPedido(1, e );
 
     CHECK_THROWS(tomas.cancelarPedido(v));
 }
@@ -582,7 +524,7 @@ TEST_CASE("Comprador avalia pedido entregue") {
     Produto rosa(1, "Rosa", "Rosa vermelha", "Flores", 5.0, "rosa.jpg", 100, 10);
 
     c.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    Venda v = c.fazerPedido(1, e, MetodoPagamento::DINHEIRO);
+    Venda v = c.fazerPedido(1, e );
     v.atualizarSvenda(StatusVenda::ENVIADO);
     v.atualizarSvenda(StatusVenda::ENTREGUE);
     c.avaliarPedido(v, 5);
@@ -596,7 +538,7 @@ TEST_CASE("Comprador nao avalia pedido que nao foi entregue") {
     Produto rosa(1, "Rosa", "Rosa vermelha", "Flores", 5.0, "rosa.jpg", 100, 10);
 
     c.adicionarAoCarrinho(ItemPedido(rosa, 1));
-    Venda v = c.fazerPedido(1, e, MetodoPagamento::DINHEIRO);
+    Venda v = c.fazerPedido(1, e );
 
     CHECK_THROWS(c.avaliarPedido(v, 5));
 }

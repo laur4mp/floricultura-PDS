@@ -31,7 +31,6 @@ enum class StatusPagamento {
     PAGO
 };
 
-enum class MetodoPagamento { DINHEIRO, CARTAO, PIX };
 
 /**
  * @class Venda
@@ -40,7 +39,6 @@ enum class MetodoPagamento { DINHEIRO, CARTAO, PIX };
 class Venda {
 private:
     int _idVenda;
-    int _avaliacao;
     std::string _nomeDestina;
     int _idPessoa;
     double _valorTotal;
@@ -51,7 +49,7 @@ private:
     Desconto _descontoAplicado;
     std::string _dataEntrega;
     std::string _horarioEntregaPrevisao;
-    MetodoPagamento _metodoPagamento;
+    int _avaliacao;
 
     /** @brief Recalcula o valor total da venda considerando os itens e descontos. */
     void calcularValorTotal();
@@ -78,8 +76,8 @@ public:
     // Gestão de Estados
     void atualizarSvenda(StatusVenda novoStatus);
     void atualizarSpagamento(StatusPagamento novoStatus);
-    void avaliar(int nota);
     
+    void avaliar(int nota);
 
     // Getters
     int getIdVenda() const;
@@ -92,20 +90,19 @@ public:
     /** @brief Retorna a lista de itens inclusos no pedido. */
     const std::vector<ItemPedido>& getItens() const;
 
-    int getAvaliacao() const;
     const std::string& getDataEntrega() const;
     const std::string& getHorarioEntregaPrevisao() const;
     const Endereco& getEnderecoEntrega() const;
 
     StatusVenda getStatusVenda() const;
     StatusPagamento getStatusPagamento() const;
-    MetodoPagamento getMetodoPagamento() const;
+    int getAvaliacao() const;
 
     // Setters
     void setDataEntrega(const std::string& dataEntrega);
     void setHorarioEntregaPrevisao(const std::string& horarioPrevisao);
     void setEnderecoEntrega(const Endereco& endereco);
-    void setMetodoPagamento(MetodoPagamento m);
+
 };
 
 
