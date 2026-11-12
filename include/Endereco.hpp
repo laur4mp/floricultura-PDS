@@ -46,6 +46,9 @@ public:
     /** @brief Define o CEP (retorna true se o formato for válido). */
     bool setCep(const std::string& cep);
 
+    /** @brief Define o número (retorna true se o formato for válido). */
+    bool setNumero(const std::string& numero);
+
     /** @brief Define o estado (retorna true se for válido). */
     bool setEstado(const std::string& estado);
 };

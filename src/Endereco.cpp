@@ -1,5 +1,6 @@
 #include "Endereco.hpp"
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -14,6 +15,10 @@ Endereco::Endereco(const string& nomeDest, const string& cep, const string& rua,
 
     if(!setCep(cep)){
         throw invalid_argument("CEP invalido!");
+    }
+
+    if(!setNumero(numero)){
+        throw invalid_argument("Numero invalido!");
     }
 
     if(!setEstado(estado)){
@@ -95,6 +100,18 @@ bool Endereco::setCep(const string& cep){
     }
 
     this->cep = cep;
+    return true;
+}
+
+bool Endereco::setNumero(const string& numero){
+    for(char c : numero){
+        if (c != '0' && c != '1' && c != '2' && c != '3' && c != '4' && c != '5' && c != '6' && c != '7' && c != '8' && c != '9'){
+            cout << c << endl;
+            return false;
+        }
+    }
+
+    this->numero = numero;
     return true;
 }
 

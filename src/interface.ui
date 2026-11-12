@@ -1644,7 +1644,7 @@ QScrollBar::sub-page:vertical {
                    <property name="bottomMargin">
                     <number>60</number>
                    </property>
-                   <item>
+                   <item alignment="Qt::AlignmentFlag::AlignTop">
                     <widget class="QWidget" name="listaProdutos" native="true">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">

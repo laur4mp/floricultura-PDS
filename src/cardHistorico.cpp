@@ -20,8 +20,6 @@ CardHistorico::CardHistorico(const Venda& v, QWidget *parent)
 
     aplicarEstiloCardHistorico(this);
 
-        ui->nomeProdutoHistorico->setText(QString("Pedido #%1").arg(v.getIdVenda()));
-
     QStringList itens;
     for (const ItemPedido& item : v.getItens())
         itens << QString::fromStdString(item.informarDados());
