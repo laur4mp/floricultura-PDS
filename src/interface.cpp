@@ -8,6 +8,31 @@
 #include <QFont>
 #include <QApplication>
 
+#include <QDir> //manipula diretorios 
+#include <QDate> //vai usar na data de validade 
+#include <QLocale> // numero padrao br 
+#include <QColor> // cor no status da table 
+#include <QStringList> //  texto em listas
+#include <QSignalBlocker> //sem sinal ao atualizar coisa nababela
+#include <QTableWidgetItem> //mexer na tabela
+#include <stdexcept> //exeções
+
+//função para ler um número do qt, pega vigula ou . como decimal
+static bool lerNumero(const QString& texto, double& valor){
+    QString t = texto.trimmed();
+    t.replace(',', '.');
+    bool ok = false;
+    valor = t.toDouble(&ok);
+    return ok;
+}
+
+
+// formatação brasileira para a tela
+static const QLocale& localeBR(){
+    static const QLocale br(QLocale::Portuguese, QLocale::Brazil);
+    return br;
+}
+
 void Interface::configurarTabelaProdutos(){
     ui->tableProdutos->setWordWrap(true);
 
@@ -110,7 +135,16 @@ void Interface::salvarTudo() {
     vendaRepositorio.gravar(sistema.getVendas());
     descontoRepositorio.gravar(sistema.getCupons());
 }
-
+//salvar tudo e erro se der erro
+bool Interface::salvarComAviso(){
+    try {
+        salvarTudo();
+        return true;
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Erro ao salvar", e.what());
+        return false;
+    }
+}
 Interface::Interface(QWidget *parent)
     : QMainWindow(parent),
     produtoRepositorio("data/produtos.txt"),
