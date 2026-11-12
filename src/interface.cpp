@@ -145,6 +145,13 @@ bool Interface::salvarComAviso(){
         return false;
     }
 }
+
+Gerente* Interface::gerenteLogado() const {
+
+    return dynamic_cast<Gerente*>(usuarioLogado);
+   
+}
+
 Interface::Interface(QWidget *parent)
     : QMainWindow(parent),
     produtoRepositorio("data/produtos.txt"),
@@ -153,6 +160,9 @@ Interface::Interface(QWidget *parent)
     descontoRepositorio("data/cupons.txt"),
     ui(new Ui::Interface)
 {
+
+
+
     ui->setupUi(this);
 
     try{
@@ -291,12 +301,14 @@ Interface::Interface(QWidget *parent)
     });
 
     connect(ui->btnCriarConta, &QPushButton::clicked, this, [this]() {
-        ui->stackDivisao->setCurrentWidget(ui->paginaLoja);
-        ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
-    });
 
-    connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
-        ui->stackDivisao->setCurrentWidget(ui->paginaAdministrador);
+    criarConta();
+
+});
+
+    connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() { 
+        
+        fazerLogin();
 
     });
 
@@ -310,7 +322,82 @@ Interface::Interface(QWidget *parent)
     });
 }
 
+
+
+void Interface::fazerLogin() {
+
+    Pessoa* usuario = sistema.autenticar(ui->inputEmail->text().trimmed().toStdString(),
+                                         ui->inputSenha->text().toStdString());
+    if (usuario == nullptr) {
+
+        QMessageBox::warning(this, "Login", "E-mail ou senha incorretos.");
+        
+        return;
+
+    }
+
+    ui->inputEmail->clear();
+
+    ui->inputSenha->clear();
+
+
+    usuarioLogado = usuario; 
+
+
+    if (gerenteLogado() != nullptr) {
+
+        ui->tabWidget->setCurrentWidget(ui->tabProdutos);
+        
+        ui->stackDivisao->setCurrentWidget(ui->paginaAdministrador);
+    
+    }
+
+    else {
+        
+        ui->stackDivisao->setCurrentWidget(ui->paginaLoja);
+        
+        ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
+    
+    }
+
+}
+
+
+
+void Interface::criarConta() {
+
+    try {
+
+        Comprador* novo = new Comprador(sistema.proximoIdUsusario(),
+            ui->inputNome->text().trimmed().toStdString(),
+            ui->inputCPF->text().trimmed().toStdString(),
+            ui->inputAdicionarEmail->text().trimmed().toStdString(),
+            ui->inputTelefone->text().trimmed().toStdString(),
+            ui->inputCriarSenha->text().toStdString());
+
+        sistema.adicionarUsuario(novo);   // e-mail repetido: o Sistema apaga o objeto e lança
+        
+        salvarTudo();
+        
+        usuarioLogado = novo;
+        
+        ui->stackDivisao->setCurrentWidget(ui->paginaLoja);
+        
+        ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
+    
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Cadastro", e.what());
+    
+    }
+
+}
+
+
+
+
+
 Interface::~Interface()
 {
     delete ui;
 }
+

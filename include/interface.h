@@ -34,6 +34,8 @@ private:
     VendaRepositorio vendaRepositorio;         
     DescontoRepositorio descontoRepositorio;
 
+    QString imagemEscolhida;       // imagem escolhida e ainda não salva
+
     Pessoa* usuarioLogado = nullptr;
     int idProdutoSelecionado = 0;
 
@@ -49,7 +51,7 @@ private:
     QWidget* criarCardProduto(const Produto& p);
 
     void fazerLogin();
-    void sair();
+    
 
     Gerente* gerenteLogado() const;
     void configurarAdministrador();
@@ -64,6 +66,17 @@ private:
     void atualizarTabelaCupons();
     void atualizarStatusPedido();
     void criarCupom();
+
+
+    //void fazerLogin(); //ja tem
+    void criarConta();
+    //void sair(); //ja tem
+    // void atualizarTabelaProdutos();
+    // void preencherFormularioProduto(int linha);
+    // void limparFormularioProduto();
+    // void salvarProduto();
+    void escolherImagemProduto();
+
 
     static QString textoStatus(StatusVenda s); //função que pertence a classe
 };
