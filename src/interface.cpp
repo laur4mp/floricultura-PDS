@@ -62,6 +62,9 @@ void Interface::carregarProdutos(){
 
 void Interface::carregarDados() {
 
+    sistema.adicionarUsuario(new Gerente(0, "Administrador", "00000000000",
+                                         "admin@tell.com", "00000000000", "admin"));
+
     for(const Produto& p : produtoRepositorio.carregar()){
         sistema.adicionarProduto(p);
     }
@@ -85,8 +88,8 @@ void Interface::carregarDados() {
     for (const Desconto& d : descontoRepositorio.carregar())
         sistema.adicionarCupom(d);
 
-    sistema.adicionarUsuario(new Gerente(0, "Administrador", "00000000000",
-                                         "admin@tell.com", "00000000000", "admin"));
+   
+
 
 }
 

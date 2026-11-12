@@ -1,3 +1,3 @@
 1|Vaso de Girassóis|Arranjo com 8 girassóis|Flores|189.90|:/images/girassol.jpg|50|5
 2|Buquê de Rosas Brancas|Buquê de papel contendo 8 rosas |Flores|169.90|:/images/rosasBrancas.jpg|25|10
-3|Jiboia-prata em Cachepot|Planta caseira em Cachepot|180.00|:/images/jiboia-prata.jpg|10|2 
+3|Jiboia-prata em Cachepot|Planta caseira em Cachepot|Plantas|180.00|:/images/jiboia-prata.jpg|10|2
