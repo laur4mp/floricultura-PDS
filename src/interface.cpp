@@ -82,8 +82,8 @@ void Interface::atualizarTabelaPedidos(int idParaSelecionar){ //serve para atual
             Pessoa* cliente = sistema.buscarUsuario(v.getIdPessoa());
 
             QString textoCliente = cliente ? QString::fromStdString(cliente->getNome()) : QString("Cliente #%1").arg(v.getIdPessoa()); // se n achar o id exibe um padrão "Cliente #id"
-            textoCliente += "\n" + QString::fromStdString(v.getEnderecoEntrega().getCidade() + " - " + v.getEnderecoEntrega().getBairro());
-
+                        if (!v.getEnderecoEntrega().getCep().empty())
+                textoCliente += "\n" + QString::fromStdString(v.getEnderecoEntrega().getCidade() + " - " + v.getEnderecoEntrega().getBairro());
             // Itens
             QStringList itens;
 
@@ -229,12 +229,7 @@ void Interface::atualizarStatusPedido(){
     );
 }
 
-Gerente* Interface::gerenteLogado() const {
-    for (Pessoa* p : sistema.getUsuarios()) {
-        if (auto* g = dynamic_cast<Gerente*>(p)) return g;
-    }
-    return nullptr;
-}
+
 //tabela de cupons
 void Interface::atualizarTabelaCupons(){
 
@@ -473,7 +468,7 @@ void Interface::irParaEntrega() {
 void Interface::irParaPagamento() {
     try {
         enderecoAtual = Endereco(
-            ui->inputNomeDest->text().toStdString(), ui->inputCEP->text().toStdString(),
+            comprador()->getNome(),                  ui->inputCEP->text().toStdString(),
             ui->inputRua->text().toStdString(),      ui->inputNumero->text().toStdString(),
             ui->inputBairro->text().toStdString(),   ui->inputComplemento->text().toStdString(),
             ui->inputCidade->text().toStdString(),
@@ -713,21 +708,12 @@ Interface::Interface(QWidget *parent)
         irParaEntrega();
     });
 
-    connect(ui->btnCriarConta, &QPushButton::clicked, this, [this]() {
+   connect(ui->btnCriarConta, &QPushButton::clicked, this, [this]() {
+        criarConta();
+    });
 
-  connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
-        atualizarTabelaPedidos();
-        atualizarTabelaCupons();
-        ui->tabWidget->setCurrentWidget(ui->tabPedidos);
-        ui->stackDivisao->setCurrentWidget(ui->paginaAdministrador);
-    criarConta();
-
-});
-
-    connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() { 
-        
+    connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
         fazerLogin();
-
     });
 
     connect(ui->btnPagPagamento, &QPushButton::clicked, this, [this]() {
@@ -779,11 +765,10 @@ void Interface::fazerLogin() {
 
 
     if (gerenteLogado() != nullptr) {
-
-        ui->tabWidget->setCurrentWidget(ui->tabProdutos);
-        
+        atualizarTabelaPedidos();
+        atualizarTabelaCupons();
+        ui->tabWidget->setCurrentWidget(ui->tabPedidos);
         ui->stackDivisao->setCurrentWidget(ui->paginaAdministrador);
-    
     }
 
     else {
