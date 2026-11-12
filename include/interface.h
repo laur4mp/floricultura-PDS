@@ -43,7 +43,7 @@ private:
     void configurarTabelaCupons();
     void carregarDados();
     void salvarTudo();
-    boll salvarComAviso();
+    bool salvarComAviso();
 
 
     QWidget* criarCardProduto(const Produto& p);
