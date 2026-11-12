@@ -33,9 +33,10 @@ void VendaRepositorio::gravar(const std::vector<Venda>& vendas) const {
         const Endereco& e = v.getEnderecoEntrega();
         const Desconto& d = v.getDescontoAplicado();
         out << "V|" << v.getIdVenda() << '|' << v.getIdPessoa() << '|'
-            << limpar(v.getNomeDestina()) << '|' << static_cast<int>(v.getStatusVenda()) << '|'  //converte o enum para int 
-            << static_cast<int>(v.getStatusPagamento()) << '|' << limpar(v.getDataEntrega()) << '|' //converte o enum para int também
-            << limpar(v.getHorarioEntregaPrevisao()) << '|' << limpar(e.getNomeDest()) << '|'
+            << static_cast<int>(v.getStatusVenda()) << '|'          // enum -> int
+            << static_cast<int>(v.getStatusPagamento()) << '|'      // enum -> int
+                        << limpar(v.getDataEntrega()) << '|' << limpar(v.getHorarioEntregaPrevisao()) << '|'
+            << limpar(e.getNomeDest()) << '|'
             << limpar(e.getCep()) << '|' << limpar(e.getRua()) << '|' << limpar(e.getNumero()) << '|'
             << limpar(e.getBairro()) << '|' << limpar(e.getComplemento()) << '|'
             << limpar(e.getCidade()) << '|' << limpar(e.getEstado()) << '|'
@@ -68,34 +69,33 @@ std::vector<Venda> VendaRepositorio::carregar() const {
             Produto p(std::stoi(c[1]), c[2], c[3], c[4], std::stod(c[5]), c[6], std::stoi(c[7]), std::stoi(c[8]));
             itens.push_back(ItemPedido(p, std::stoi(c[9])));
 
-        } else if (c[0] == "V" && (c.size() == 18 || c.size() == 19)) {
+         } else if (c[0] == "V" && c.size() == 18) {
             Endereco endereco; // fica vazio se a venda não tinha endereço
-            if (!c[8].empty()) endereco = Endereco(c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]);
+            if (!c[8].empty())
+                endereco = Endereco(c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14]);
 
-            int nota = (c.size() == 19) ? std::stoi(c[18]) : 0;
-
-           Venda v(std::stoi(c[1]), std::stoi(c[2]), 0, endereco, c[3]);
-            if (!c[6].empty()) v.setDataEntrega(c[6]);
-            if (!c[7].empty()) v.setHorarioEntregaPrevisao(c[7]);
+            Venda v(std::stoi(c[1]), std::stoi(c[2]), 0, endereco);
+            if (!c[5].empty()) v.setDataEntrega(c[5]);
+            if (!c[6].empty()) v.setHorarioEntregaPrevisao(c[6]);
 
             for (const auto& item : itens) v.adicionarItem(item);
             itens.clear();
 
-         
-            if (!c[16].empty()) v.aplicarCupom(Desconto(c[16], std::stod(c[17]), "9999-12-31"));
+            // cupom antigo volta com validade longa para o desconto não "vencer" na venda já feita
+            if (!c[15].empty()) v.aplicarCupom(Desconto(c[15], std::stod(c[16]), "9999-12-31"));
 
             // restaura o estado seguindo as transições normais de Venda
-            StatusVenda sv = static_cast<StatusVenda>(std::stoi(c[4]));
-            StatusPagamento sp = static_cast<StatusPagamento>(std::stoi(c[5]));
+            StatusVenda sv = static_cast<StatusVenda>(std::stoi(c[3]));
+            StatusPagamento sp = static_cast<StatusPagamento>(std::stoi(c[4]));
             if (sp == StatusPagamento::PAGO) v.atualizarSpagamento(StatusPagamento::PAGO);
             if (sv == StatusVenda::ENVIADO || sv == StatusVenda::ENTREGUE) v.atualizarSvenda(StatusVenda::ENVIADO);
             if (sv == StatusVenda::ENTREGUE) v.atualizarSvenda(StatusVenda::ENTREGUE);
             if (sv == StatusVenda::CANCELADO) v.atualizarSvenda(StatusVenda::CANCELADO);
 
-          if (nota > 0) v.avaliar(nota);
+            int nota = std::stoi(c[17]);
+            if (nota > 0) v.avaliar(nota);
 
             vendas.push_back(v);
-
         } else {
             throw std::runtime_error("VendaRepositorio: linha corrompida: " + linha);
         }

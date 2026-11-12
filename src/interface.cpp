@@ -33,6 +33,292 @@ static const QLocale& localeBR(){
     return br;
 }
 
+
+QString Interface::textoStatus(StatusVenda s){ //so converte o enum pra ficar mais bonitin
+    switch (s) {
+    case StatusVenda::PROCESSAMENTO: return "Em Processamento";
+    case StatusVenda::ENVIADO:       return "Enviado";
+    case StatusVenda::ENTREGUE:      return "Entregue";
+    case StatusVenda::CANCELADO:     return "Cancelado";
+    }
+    return "";
+}
+
+int Interface::idPedidoSelecionado() const { //retornar id do produto selecionado na tabela de pedidos
+    const QList<QTableWidgetItem*> sel = ui->tablePedidos->selectedItems();
+
+    if (sel.isEmpty())
+        return 0;
+
+    QTableWidgetItem* itemId =
+        ui->tablePedidos->item(sel.first()->row(), 0);
+
+    return itemId ? itemId->data(Qt::UserRole).toInt() : 0;
+}
+
+void Interface::atualizarTabelaPedidos(int idParaSelecionar){ //serve para atualizar a tabela de pedidos
+    QTableWidget* t = ui->tablePedidos;
+
+    {
+        QSignalBlocker bloqueio(t);
+        t->setSortingEnabled(false);
+        t->clearContents();
+
+        const std::vector<Venda>& vendas = sistema.getVendas();
+        t->setRowCount(static_cast<int>(vendas.size()));
+
+        for (int i = 0; i < static_cast<int>(vendas.size()); i++) {
+
+            // Mais recente no topo
+            const Venda& v =vendas[vendas.size() - 1 - static_cast<std::size_t>(i)];
+
+            // idVenda
+            auto* itemId = new QTableWidgetItem(QString::number(v.getIdVenda()));
+
+            itemId->setData(Qt::UserRole, v.getIdVenda());
+            itemId->setTextAlignment(Qt::AlignCenter);
+
+            // cliente e destinatário
+            Pessoa* cliente = sistema.buscarUsuario(v.getIdPessoa());
+
+            QString textoCliente = cliente ? QString::fromStdString(cliente->getNome()) : QString("Cliente #%1").arg(v.getIdPessoa()); // se n achar o id exibe um padrão "Cliente #id"
+            textoCliente += "\n" + QString::fromStdString(v.getEnderecoEntrega().getCidade() + " - " + v.getEnderecoEntrega().getBairro());
+
+            // Itens
+            QStringList itens;
+
+            for (const ItemPedido& item : v.getItens()) {
+                itens << QString::fromStdString(item.informarDados());
+            }
+            // Total e cupom
+            QString textoTotal = localeBR().toString(v.getValorTotal(), 'f', 2);
+
+            const Desconto& d = v.getDescontoAplicado();
+
+            if (!d.getCupom().empty()) { //ve se venda tem cumpom associado
+                textoTotal += QString("\n(cupom %1 - %2%)")
+                    .arg(QString::fromStdString(d.getCupom()))
+                    .arg(localeBR().toString(d.getPercentual(), 'g', 4));
+            }
+
+            auto* itemTotal = new QTableWidgetItem(textoTotal);
+            itemTotal->setTextAlignment(Qt::AlignCenter);
+
+            // Status e pagamento
+            QString textoSt = textoStatus(v.getStatusVenda());
+
+            if (v.getStatusVenda() != StatusVenda::CANCELADO) { // se venda n for cancelada, mostra o status do pagamento
+                textoSt += (v.getStatusPagamento() == StatusPagamento::PAGO)
+                    ? "\nPago"
+                    : "\nAguardando pagamento";
+            }
+
+            auto* itemStatus = new QTableWidgetItem(textoSt);
+            itemStatus->setTextAlignment(Qt::AlignCenter);
+
+            //cor de acordo com o status da venda
+            switch (v.getStatusVenda()) {
+            case StatusVenda::PROCESSAMENTO:
+                itemStatus->setBackground(QColor("#FFF4D6"));
+                itemStatus->setForeground(QColor("#8A6100"));
+                break;
+
+            case StatusVenda::ENVIADO:
+                itemStatus->setBackground(QColor("#E3EEF9"));
+                itemStatus->setForeground(QColor("#2B5C8A"));
+                break;
+
+            case StatusVenda::ENTREGUE:
+                itemStatus->setBackground(QColor("#E2EFE6"));
+                itemStatus->setForeground(QColor("#24352C"));
+                break;
+
+            case StatusVenda::CANCELADO:
+                itemStatus->setBackground(QColor("#F6E1E1"));
+                itemStatus->setForeground(QColor("#9B5252"));
+                break;
+            }
+
+            // Preenche a tabela
+            t->setItem(i, 0, itemId);
+            t->setItem(i, 1, new QTableWidgetItem(textoCliente));
+            t->setItem(i, 2, new QTableWidgetItem(itens.join("\n")));
+            t->setItem(i, 3, itemTotal);
+            t->setItem(i, 4, itemStatus);
+        }
+
+        t->resizeRowsToContents(); //ajusta tudo automatico
+    }
+    
+    // mantém selecionado o pedido anterior q o adm selecionou, se ainda existir depois de atualizar a tabela
+    if (idParaSelecionar != 0) {
+        for (int i = 0; i < t->rowCount(); i++) {
+            if (t->item(i, 0)->data(Qt::UserRole).toInt()
+                == idParaSelecionar) {
+
+                t->selectRow(i);
+                break;
+            }
+        }
+    }
+}
+//adm controla o status pedido
+void Interface::atualizarStatusPedido(){
+    Gerente* g = gerenteLogado();
+
+    if (g == nullptr) {
+        QMessageBox::warning(this, "Pedidos", "Nenhum gerente cadastrado no sistema.");
+        return;
+    }
+    const int idVenda = idPedidoSelecionado(); //ve pedido selecionado na tabela
+    Venda* v = sistema.buscarVenda(idVenda);
+
+    if (v == nullptr) { //sem venda ou sem pedido selecionado, sai
+        QMessageBox::warning(this, "Pedidos", "Selecione um pedido na tabela.");
+        return;
+    }
+
+    // A ordem do comboBox é a mesma do enum StatusVenda
+    const StatusVenda novo = static_cast<StatusVenda>(ui->comboBoxStatus->currentIndex());
+    //verificações a depender do novo estado
+    if (novo == v->getStatusVenda()) {
+        QMessageBox::information(this, "Pedidos",
+                                 "O pedido já está com esse status.");
+        return;
+    }
+
+    if (novo == StatusVenda::CANCELADO) {
+        auto resp = QMessageBox::question(
+            this,
+            "Cancelar pedido",
+            QString("Cancelar o pedido #%1? Os itens voltam para o estoque.")
+                .arg(idVenda)
+        );
+
+        if (resp != QMessageBox::Yes)
+            return;
+    }
+
+    try {
+        g->atualizarStatusVenda(*v, novo);
+
+        if (novo == StatusVenda::CANCELADO)
+            sistema.devolverEstoque(*v); //volta pro estoque os itens do pedido cancelado
+
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Pedidos", e.what());
+
+        ui->comboBoxStatus->setCurrentIndex(
+            static_cast<int>(v->getStatusVenda())
+        );
+
+        return;
+    }
+
+    if (!salvarComAviso())
+        return;
+
+    atualizarTabelaPedidos(idVenda);
+
+    QMessageBox::information(
+        this,
+        "Pedidos",
+        QString("Pedido #%1 agora está: %2")
+            .arg(idVenda)
+            .arg(textoStatus(novo))
+    );
+}
+
+Gerente* Interface::gerenteLogado() const {
+    for (Pessoa* p : sistema.getUsuarios()) {
+        if (auto* g = dynamic_cast<Gerente*>(p)) return g;
+    }
+    return nullptr;
+}
+//tabela de cupons
+void Interface::atualizarTabelaCupons(){
+
+    QTableWidget* t = ui->tableCupons;
+    t->setSortingEnabled(false);
+    t->clearContents();
+
+    const std::vector<Desconto>& cupons = sistema.getCupons();
+    t->setRowCount(static_cast<int>(cupons.size()));
+
+    for (int i = 0; i < static_cast<int>(cupons.size()); i++) {
+        const Desconto& d = cupons[i];
+
+        QDate validade = QDate::fromString(
+            QString::fromStdString(d.getDataValidade()),
+            "yyyy-MM-dd"
+        );
+
+        QString texto = QString("%1% - válido até %2")
+            .arg(localeBR().toString(d.getPercentual(), 'g', 4))
+            .arg(validade.toString("dd/MM/yyyy"));
+
+        auto* itemCodigo =
+            new QTableWidgetItem(QString::fromStdString(d.getCupom()));
+
+        auto* itemDesconto = new QTableWidgetItem(texto);
+
+        itemCodigo->setTextAlignment(Qt::AlignCenter);
+        itemDesconto->setTextAlignment(Qt::AlignCenter);
+
+        if (!d.ehValido()) {
+            itemDesconto->setText(texto + " (expirado)");
+
+            itemCodigo->setForeground(QColor("#999999"));
+            itemDesconto->setForeground(QColor("#999999"));
+        }
+
+        t->setItem(i, 0, itemCodigo);
+        t->setItem(i, 1, itemDesconto);
+    }
+}
+
+void Interface::criarCupom(){
+    Gerente* g = gerenteLogado();
+    if (g == nullptr) {
+        QMessageBox::warning(this, "Cupons", "Nenhum gerente cadastrado no sistema.");
+        return;
+    }
+
+    const std::string codigo = ui->boxCodigoCupom->text().trimmed().toUpper().toStdString();
+    if (codigo.empty()) {
+        QMessageBox::warning(this, "Cupons", "Informe o código do cupom.");
+        return;
+    }
+    if (codigo.find_first_of(" |") != std::string::npos) {
+        QMessageBox::warning(this, "Cupons", "O código do cupom não pode ter espaços nem '|'.");
+        return;
+    }
+
+    double porcentagem = 0.0;
+    if (!lerNumero(ui->boxPorcentagem->text(), porcentagem) || porcentagem <= 0.0 || porcentagem > 100.0) {
+        QMessageBox::warning(this, "Cupons", "A porcentagem deve ser maior que 0 e no máximo 100.");
+        return;
+    }
+
+    const std::string validade = ui->dataValidade->date().toString("yyyy-MM-dd").toStdString();
+
+    try {
+        Desconto cupom = g->cadastrarCupom(codigo, porcentagem, validade);
+        sistema.adicionarCupom(cupom);
+    } catch (const std::exception& e) {
+        QMessageBox::warning(this, "Cupons", e.what());
+        return;
+    }
+
+    if (!salvarComAviso()) return;
+
+    atualizarTabelaCupons();
+    ui->boxCodigoCupom->clear();
+    ui->boxPorcentagem->clear();
+    ui->dataValidade->setDate(QDate::currentDate().addMonths(1));
+    QMessageBox::information(this, "Cupons", "Cupom criado com sucesso!");
+}
+
 void Interface::configurarTabelaProdutos(){
     ui->tableProdutos->setWordWrap(true);
 
@@ -154,6 +440,7 @@ Interface::Interface(QWidget *parent)
     ui(new Ui::Interface)
 {
     ui->setupUi(this);
+    QDir().mkpath("data"); //para garantir que a pasta exista, caso não exista, cria
 
     try{
         carregarDados();
@@ -164,6 +451,7 @@ Interface::Interface(QWidget *parent)
     configurarTabelaProdutos();
     configurarTabelaPedidos();
     configurarTabelaCupons();
+
 
     QFontDatabase::addApplicationFont(":/fonts/Montserrat-VariableFont_wght.ttf");
     QFont fonte("Montserrat");
@@ -295,9 +583,11 @@ Interface::Interface(QWidget *parent)
         ui->mainContent->setCurrentWidget(ui->paginaPrincipal);
     });
 
-    connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
+  connect(ui->btnEntrar, &QPushButton::clicked, this, [this]() {
+        atualizarTabelaPedidos();
+        atualizarTabelaCupons();
+        ui->tabWidget->setCurrentWidget(ui->tabPedidos);
         ui->stackDivisao->setCurrentWidget(ui->paginaAdministrador);
-
     });
 
     connect(ui->btnPagPagamento, &QPushButton::clicked, this, [this]() {
@@ -308,6 +598,19 @@ Interface::Interface(QWidget *parent)
     connect(ui->btnFazerPedido, &QPushButton::clicked, this, [this]() {
         ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
     });
+    connect(ui->btnAtualizarStatus, &QPushButton::clicked, this, &Interface::atualizarStatusPedido);
+    connect(ui->btnCriarCupom, &QPushButton::clicked, this, &Interface::criarCupom);
+
+    // combo mostra o status do pedido selecionado
+connect(ui->tablePedidos, &QTableWidget::itemSelectionChanged, this, [this]() {
+    Venda* v = sistema.buscarVenda(idPedidoSelecionado());
+    if (v) ui->comboBoxStatus->setCurrentIndex(static_cast<int>(v->getStatusVenda()));
+});
+
+// campo de validade do cupom
+ui->dataValidade->setDisplayFormat("dd/MM/yyyy");
+ui->dataValidade->setMinimumDate(QDate::currentDate());
+ui->dataValidade->setDate(QDate::currentDate().addMonths(1));
 }
 
 Interface::~Interface()

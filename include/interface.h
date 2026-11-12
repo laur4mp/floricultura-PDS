@@ -52,7 +52,7 @@ private:
     void sair();
 
     Gerente* gerenteLogado() const;
-    void configurarAdministrador();
+
 
     void atualizarTabelaProdutos();
     void preencherFormularioProduto(int idProduto);
