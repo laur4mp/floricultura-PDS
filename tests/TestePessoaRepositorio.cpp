@@ -15,27 +15,28 @@ Pessoa ana()   { return Pessoa(1, "Ana Souza",  "123.456.789-00", "ana@email.com
 Pessoa bruno() { return Pessoa(2, "Bruno Lima", "987.654.321-00", "bruno@email.com", "31988880000", "abc456"); }
 Pessoa carla() { return Pessoa(3, "Carla Dias", "",               "carla@email.com", "",            "xyz789"); }
 
-Endereco casaAna()    { return Endereco("Ana Souza", "30130-000", "Rua Sergipe", "1000", "Savassi", "Apt 2", "Belo Horizonte", "MG"); }
-Endereco trabalhoAna(){ return Endereco("Ana Souza", "30160-010", "Rua da Bahia", "500", "Centro", "", "Belo Horizonte", "MG"); }
-Endereco casaBruno()  { return Endereco("Bruno Lima", "01310-100", "Av. Paulista", "900", "Bela Vista", "", "Sao Paulo", "SP"); }
+Endereco casaAna()    { return Endereco("Ana Souza", "30130000", "Rua Sergipe", "1000", "Savassi", "Apt 2", "Belo Horizonte", "MG"); }
+Endereco trabalhoAna(){ return Endereco("Ana Souza", "30160010", "Rua da Bahia", "500", "Centro", "", "Belo Horizonte", "MG"); }
+Endereco casaBruno()  { return Endereco("Bruno Lima", "01310100", "Av. Paulista", "900", "Bela Vista", "", "Sao Paulo", "SP"); }
 }
 
 TEST_CASE("PessoaRepositorio: arquivo inexistente devolve listas vazias") {
     ArquivoTemp arq("teste_pessoas_inexistente.txt");
     PessoaRepositorio repo(arq.caminho);
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    CHECK(repo.carregar(favoritos).empty());
-    CHECK(favoritos.empty());
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;                   
+    CHECK(repo.carregar(favoritos, carrinho).empty());       
+    CHECK(carrinho.empty());
 }
 
 TEST_CASE("PessoaRepositorio: gravar e carregar mantem os dados da pessoa") {
     ArquivoTemp arq("teste_pessoas.txt");
     PessoaRepositorio repo(arq.caminho);
-
-    repo.gravar({ ana(), carla() }, {});
+repo.gravar({ ana(), carla() }, {}, {});                 
 
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    std::vector<Pessoa> lidas = repo.carregar(favoritos);
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;                     
+    std::vector<Pessoa> lidas = repo.carregar(favoritos, carrinho); 
     REQUIRE(lidas.size() == 2);
 
     CHECK(lidas[0].getIdPessoa() == 1);
@@ -59,16 +60,17 @@ TEST_CASE("PessoaRepositorio: cada endereco volta para a pessoa certa") {
     a.adicionarEndereco(trabalhoAna());
     Pessoa b = bruno();
     b.adicionarEndereco(casaBruno());
-    Pessoa c = carla();                    
+    Pessoa c = carla();    
 
-    repo.gravar({ a, b, c }, {});
-
+    repo.gravar({ a, b, c }, {}, {});                   
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    std::vector<Pessoa> lidas = repo.carregar(favoritos);
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;                    
+    std::vector<Pessoa> lidas = repo.carregar(favoritos, carrinho);  
+   
     REQUIRE(lidas.size() == 3);
 
     REQUIRE(lidas[0].getEnderecos().size() == 2);
-    CHECK(lidas[0].getEnderecos()[0].getCep() == "30130-000");
+    CHECK(lidas[0].getEnderecos()[0].getCep() == "30130000");
     CHECK(lidas[0].getEnderecos()[0].getComplemento() == "Apt 2");
     CHECK(lidas[0].getEnderecos()[1].getRua() == "Rua da Bahia");
 
@@ -83,14 +85,15 @@ TEST_CASE("PessoaRepositorio: endereco gravado depois da pessoa tambem e associa
     // simula o fluxo do app: a pessoa e cadastrada e o endereco chega numa tela posterior
     ArquivoTemp arq("teste_pessoas_end_depois.txt");
     PessoaRepositorio repo(arq.caminho);
-    repo.gravar({ ana(), bruno() }, {});
+    repo.gravar({ ana(), bruno() }, {}, {});
     {
         std::ofstream out(arq.caminho, std::ios::app);
-        out << "E|1|Ana Souza|30130-000|Rua Sergipe|1000|Savassi|Apt 2|Belo Horizonte|MG\n";
+        out << "E|1|Ana Souza|30130000|Rua Sergipe|1000|Savassi|Apt 2|Belo Horizonte|MG\n";
     }
 
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    std::vector<Pessoa> lidas = repo.carregar(favoritos);
+     std::vector<PessoaRepositorio::ItemCarrinho> carrinho;  
+     std::vector<Pessoa> lidas = repo.carregar(favoritos, carrinho);
     REQUIRE(lidas.size() == 2);
     CHECK(lidas[0].getEnderecos().size() == 1);
     CHECK(lidas[1].getEnderecos().empty());
@@ -101,10 +104,11 @@ TEST_CASE("PessoaRepositorio: favoritos sao gravados e carregados") {
     PessoaRepositorio repo(arq.caminho);
 
     std::vector<PessoaRepositorio::Favorito> originais = { {1, 10}, {1, 12}, {2, 10} };
-    repo.gravar({ ana(), bruno() }, originais);
+     repo.gravar({ ana(), bruno() }, originais, {});
 
     std::vector<PessoaRepositorio::Favorito> lidos;
-    repo.carregar(lidos);
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;
+    repo.carregar(lidos, carrinho);
     REQUIRE(lidos.size() == 3);
     CHECK(lidos[0] == PessoaRepositorio::Favorito(1, 10));
     CHECK(lidos[1] == PessoaRepositorio::Favorito(1, 12));
@@ -115,10 +119,11 @@ TEST_CASE("PessoaRepositorio: '|' digitado pelo usuario nao quebra o arquivo") {
     ArquivoTemp arq("teste_pessoas_pipe.txt");
     PessoaRepositorio repo(arq.caminho);
 
-    repo.gravar({ Pessoa(1, "Ana|Souza", "", "ana@email.com", "", "se|nha") }, {});
+    repo.gravar({ Pessoa(1, "Ana|Souza", "", "ana@email.com", "", "se|nha") }, {}, {});
 
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    std::vector<Pessoa> lidas = repo.carregar(favoritos);
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;
+    std::vector<Pessoa> lidas = repo.carregar(favoritos, carrinho);
     REQUIRE(lidas.size() == 1);
     CHECK(lidas[0].getNome() == "Ana/Souza");
     CHECK(lidas[0].getSenha() == "se/nha");
@@ -132,5 +137,6 @@ TEST_CASE("PessoaRepositorio: linha corrompida lanca excecao") {
     }
     PessoaRepositorio repo(arq.caminho);
     std::vector<PessoaRepositorio::Favorito> favoritos;
-    CHECK_THROWS_AS(repo.carregar(favoritos), std::runtime_error);
+    std::vector<PessoaRepositorio::ItemCarrinho> carrinho;
+    CHECK_THROWS_AS(repo.carregar(favoritos, carrinho), std::runtime_error);
 }
