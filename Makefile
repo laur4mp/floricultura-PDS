@@ -2,9 +2,9 @@
 #
 # make test      -> compila as classes e os testes e executa os testes
 # make coverage  -> roda os testes e gera o relatorio de cobertura (minimo de 60%)
-# make clean     -> apaga os arquivos gerados
-#
-# O executavel do sistema (interface Qt) e gerado pelo CMakeLists.txt, nao por este Makefile.
+# make clean   	 -> apaga os arquivos gerados
+# make run 	     -> compila e executa a interface grafica do sistema
+# make           -> executa os testes e compila a interface grafica
  
 
 # Compilação
@@ -20,14 +20,23 @@ INCLUDE_DIR = ./include
 # Executável dos testes 
 TARGET_TEST = ./build/executavel_testes
 
-# Executável do sistema
-TARGET_APP = ${BUILD_DIR}/floricultura
+# Interface Qt (compilada pelo CMake)
+QT_BUILD_DIR = ./build/qt
+APP = TELL_FloresFinal
+
+# No Windows o CMake precisa ser avisado para usar o MinGW
+ifeq ($(OS),Windows_NT)
+	CMAKE_GERADOR = -G "MinGW Makefiles"
+endif
 
 # Objetos das classes
 OBJS_CLASSES = ${BUILD_DIR}/Pessoa.o ${BUILD_DIR}/Gerente.o ${BUILD_DIR}/Comprador.o ${BUILD_DIR}/Endereco.o ${BUILD_DIR}/Desconto.o ${BUILD_DIR}/Produto.o ${BUILD_DIR}/Venda.o ${BUILD_DIR}/ItemPedido.o ${BUILD_DIR}/Sistema.o ${BUILD_DIR}/PessoaRepositorio.o ${BUILD_DIR}/ProdutoRepositorio.o ${BUILD_DIR}/VendaRepositorio.o ${BUILD_DIR}/DescontoRepositorio.o
 
 # Objetos dos testes
 OBJS_TEST = ${BUILD_DIR}/TestePessoa.o ${BUILD_DIR}/TesteGerente.o ${BUILD_DIR}/TesteComprador.o ${BUILD_DIR}/TesteEndereco.o ${BUILD_DIR}/TesteDesconto.o ${BUILD_DIR}/TesteProduto.o ${BUILD_DIR}/TesteVenda.o ${BUILD_DIR}/TesteItemPedido.o ${BUILD_DIR}/TesteSistema.o ${BUILD_DIR}/TestePessoaRepositorio.o ${BUILD_DIR}/TesteProdutoRepositorio.o ${BUILD_DIR}/TesteVendaRepositorio.o ${BUILD_DIR}/TesteDescontoRepositorio.o ${BUILD_DIR}/main_test.o
+
+# make - roda os testes e compila a interface
+all: test app
 
 # Comando make test
 test: ${TARGET_TEST}
@@ -38,12 +47,17 @@ ${TARGET_TEST}: ${OBJS_CLASSES} ${OBJS_TEST}
 	@mkdir -p ${BUILD_DIR}
 	${CC} ${CFLAGS} -o ${TARGET_TEST} ${OBJS_CLASSES} ${OBJS_TEST}
 
-# Executável do sistema (para a C10 quando existir src/main.cpp)
-floricultura: ${TARGET_APP}
 
-${TARGET_APP}: ${OBJS_CLASSES} ${BUILD_DIR}/main.o
-	${CC} ${CFLAGS} -o ${TARGET_APP} ${OBJS_CLASSES} ${BUILD_DIR}/main.o
+# ============= interface Qt =============
 
+# Compila o sistema completo
+app:
+	cmake -S . -B ${QT_BUILD_DIR} ${CMAKE_GERADOR}
+	cmake --build ${QT_BUILD_DIR}
+
+# Compila e abre o sistema
+run: app
+	${QT_BUILD_DIR}/${APP}
 
 # ============= compilação dos testes =============
  
@@ -166,6 +180,6 @@ coverage: test
 	gcovr -r . --object-directory ${BUILD_DIR} --exclude tests/ --print-summary --fail-under-line 60
 
 clean:
-	rm -rf ${BUILD_DIR}/*.o ${BUILD_DIR}/*.gcda ${BUILD_DIR}/*.gcno ${TARGET_TEST} ${TARGET_TEST} coverage
+	rm -rf ${BUILD_DIR}/*.o ${BUILD_DIR}/*.gcda ${BUILD_DIR}/*.gcno ${TARGET_TEST} ${TARGET_TEST}.exe ${QT_BUILD_DIR} coverage
 
-.PHONY: test coverage clean
+.PHONY: all test app run coverage clean
