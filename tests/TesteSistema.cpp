@@ -151,12 +151,12 @@ TEST_CASE("Sistema - finalizarPedido valida tudo antes de mexer em algo") {
     Comprador c(2, "Ana", "", "ana@email.com", "", "senha123");
  
     SUBCASE("carrinho vazio lanca invalid_argument") {
-        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX),
+        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr),
                         std::invalid_argument);
     }
     SUBCASE("endereco sem destinatario lanca invalid_argument") {
         c.adicionarAoCarrinho(ItemPedido(*s.buscarProduto(1), 3));
-        CHECK_THROWS_AS(s.finalizarPedido(c, Endereco(), nullptr, MetodoPagamento::PIX),
+        CHECK_THROWS_AS(s.finalizarPedido(c, Endereco(), nullptr),
                         std::invalid_argument);
         CHECK(s.buscarProduto(1)->getQuantidadeEstoque() == 10);
         CHECK(c.consultarCarrinho().size() == 1);  // carrinho preservado
@@ -164,7 +164,7 @@ TEST_CASE("Sistema - finalizarPedido valida tudo antes de mexer em algo") {
     SUBCASE("estoque insuficiente lanca runtime_error e nao altera nada") {
         c.adicionarAoCarrinho(ItemPedido(*s.buscarProduto(1), 3));
         s.buscarProduto(1)->removerEstoque(8);  // sobram 2
-        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX),
+        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr),
                         std::runtime_error);
         CHECK(s.buscarProduto(1)->getQuantidadeEstoque() == 2);
         CHECK(s.getVendas().empty());
@@ -172,7 +172,7 @@ TEST_CASE("Sistema - finalizarPedido valida tudo antes de mexer em algo") {
     }
     SUBCASE("produto que nao esta no sistema lanca runtime_error") {
         c.adicionarAoCarrinho(ItemPedido(criarProduto(99), 1));
-        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX),
+        CHECK_THROWS_AS(s.finalizarPedido(c, criarEndereco(), nullptr),
                         std::runtime_error);
         CHECK(s.getVendas().empty());
     }
@@ -189,7 +189,7 @@ TEST_CASE("Sistema - finalizarPedido registra a venda e da baixa no estoque") {
     referencia.adicionarItem(ItemPedido(*s.buscarProduto(1), 2));
  
     SUBCASE("sem cupom") {
-        Venda v = s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX);
+        Venda v = s.finalizarPedido(c, criarEndereco(), nullptr);
  
         CHECK(v.getIdVenda() == 1);
         CHECK(v.getIdPessoa() == 2);
@@ -205,16 +205,16 @@ TEST_CASE("Sistema - finalizarPedido registra a venda e da baixa no estoque") {
     SUBCASE("com cupom valido de 10%") {
         Desconto cupom("DEZ", 10.0, "2099-12-31");
         Venda v = s.finalizarPedido(c, criarEndereco(), &cupom,
-                                    MetodoPagamento::CARTAO);
+                                    );
  
         CHECK(v.getDescontoAplicado().getCupom() == "DEZ");
         CHECK(v.getValorTotal() == doctest::Approx(referencia.getValorTotal() - 10.0));
         CHECK(s.buscarVenda(1)->getValorTotal() == doctest::Approx(v.getValorTotal()));
     }
     SUBCASE("o segundo pedido recebe o id seguinte") {
-        s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX);
+        s.finalizarPedido(c, criarEndereco(), nullptr);
         c.adicionarAoCarrinho(ItemPedido(*s.buscarProduto(1), 1));
-        Venda v2 = s.finalizarPedido(c, criarEndereco(), nullptr, MetodoPagamento::PIX);
+        Venda v2 = s.finalizarPedido(c, criarEndereco(), nullptr);
  
         CHECK(v2.getIdVenda() == 2);
         CHECK(s.buscarProduto(1)->getQuantidadeEstoque() == 7);

@@ -17,6 +17,12 @@
 #include <QTableWidgetItem> //mexer na tabela
 #include <stdexcept> //exeções
 
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QFile>
+#include <QDir>
+#include <QPixmap>
+
 //função para ler um número do qt, pega vigula ou . como decimal
 static bool lerNumero(const QString& texto, double& valor){
     QString t = texto.trimmed();
@@ -320,6 +326,23 @@ Interface::Interface(QWidget *parent)
     connect(ui->btnFazerPedido, &QPushButton::clicked, this, [this]() {
         ui->stackPagamento->setCurrentWidget(ui->paginaFinal);
     });
+
+    connect(ui->tableProdutos, &QTableWidget::cellClicked, this, [this](int linha, int) { 
+        preencherFormularioProduto(linha); 
+    });
+
+    connect(ui->btnNovo, &QPushButton::clicked, this, [this]() { 
+        limparFormularioProduto(); 
+    });
+
+    connect(ui->btnSalvar, &QPushButton::clicked, this, [this]() { 
+        salvarProduto(); 
+    });
+
+    connect(ui->btnImagemProduto, &QPushButton::clicked, this, [this]() { 
+        escolherImagemProduto(); 
+    });
+
 }
 
 
@@ -345,6 +368,10 @@ void Interface::fazerLogin() {
 
 
     if (gerenteLogado() != nullptr) {
+
+        atualizarTabelaProdutos();
+        
+        limparFormularioProduto();
 
         ui->tabWidget->setCurrentWidget(ui->tabProdutos);
         
@@ -388,6 +415,163 @@ void Interface::criarConta() {
     } catch (const std::exception& e) {
         QMessageBox::warning(this, "Cadastro", e.what());
     
+    }
+
+}
+
+void Interface::atualizarTabelaProdutos() { 
+
+    const std::vector<Produto>& produtos = sistema.getProdutos();
+
+    ui->tableProdutos->setRowCount(static_cast<int>(produtos.size()));
+
+    for (int i = 0; i < static_cast<int>(produtos.size()); i++) {
+
+        const Produto& p = produtos[i];
+
+        QStringList colunas = {
+            QString::number(p.getIdProduto()),
+            QString::fromStdString(p.getNome()),
+            QString::fromStdString(p.getDescricao()),
+            QString::number(p.getPreco(), 'f', 2),
+            QString::fromStdString(p.getCategoria()),
+            QString::number(p.getQuantidadeEstoque())
+        };
+
+        for (int c = 0; c < colunas.size(); c++) {
+
+            QTableWidgetItem* item = new QTableWidgetItem(colunas[c]);
+
+            if (p.verificarEstoqueMinimo()){
+
+                item->setForeground(Qt::red);   // alerta de estoque baixo
+            
+            } 
+            ui->tableProdutos->setItem(i, c, item);
+
+        }
+    }
+}
+
+
+void Interface::preencherFormularioProduto(int linha) {
+
+    int id = ui->tableProdutos->item(linha, 0)->text().toInt();
+
+    const Produto* p = sistema.buscarProduto(id);
+
+    if (p == nullptr) return;
+
+    idProdutoSelecionado = id;
+    imagemEscolhida.clear();
+    ui->boxNomeDoProduto->setText(QString::fromStdString(p->getNome()));
+    ui->boxDescricaoProduto->setText(QString::fromStdString(p->getDescricao()));
+    ui->boxPrecoProduto->setText(QString::number(p->getPreco(), 'f', 2));
+    ui->boxCategoriaProduto->setText(QString::fromStdString(p->getCategoria()));
+    ui->spinBoxEstoqueMinimo->setValue(p->getQuantidadeMinima());
+    ui->spinBoxEstoque->setValue(p->getQuantidadeEstoque());
+    ui->labelImagemProduto->setPixmap(
+        QPixmap(QString::fromStdString(p->getEnderecoImagem())).scaled(120, 120, Qt::KeepAspectRatio));
+}
+
+
+void Interface::limparFormularioProduto() {
+    idProdutoSelecionado = 0;
+    imagemEscolhida.clear();
+    ui->tableProdutos->clearSelection();
+    ui->boxNomeDoProduto->clear();
+    ui->boxDescricaoProduto->clear();
+    ui->boxPrecoProduto->clear();
+    ui->boxCategoriaProduto->clear();
+    ui->spinBoxEstoqueMinimo->setValue(0);
+    ui->spinBoxEstoque->setValue(0);
+    ui->labelImagemProduto->clear();
+}
+
+
+void Interface::escolherImagemProduto() {
+
+    QString arquivo = QFileDialog::getOpenFileName(this, "Escolher imagem do produto",
+                                                   QString(), "Imagens (*.png *.jpg *.jpeg)");
+    if (arquivo.isEmpty()){
+
+        return;
+
+    }
+    imagemEscolhida = arquivo;
+
+    ui->labelImagemProduto->setPixmap(QPixmap(arquivo).scaled(120, 120, Qt::KeepAspectRatio));
+}
+
+
+void Interface::salvarProduto() {
+
+    if (gerenteLogado() == nullptr){
+
+        return;
+
+    }
+
+    QString textoPreco = ui->boxPrecoProduto->text().trimmed();
+    textoPreco.replace(',', '.');
+    bool precoOk = false;
+    double preco = textoPreco.toDouble(&precoOk);
+
+    if (!precoOk) {
+
+        QMessageBox::warning(this, "Produto", "Preço inválido.");
+        return;
+
+    }
+
+
+    std::string nome = ui->boxNomeDoProduto->text().trimmed().toStdString();
+    std::string descricao = ui->boxDescricaoProduto->text().trimmed().toStdString();
+    std::string categoria = ui->boxCategoriaProduto->text().trimmed().toStdString();
+    int estoque = ui->spinBoxEstoque->value();
+    int minimo = ui->spinBoxEstoqueMinimo->value();
+
+    try {
+
+        bool novo = (idProdutoSelecionado == 0);
+        int id = novo ? sistema.proximoIdProduto() : idProdutoSelecionado;
+
+        if (novo) {
+            sistema.adicionarProduto(gerenteLogado()->cadastrarProduto(
+                id, nome, descricao, categoria, preco, "", estoque, minimo));
+        
+            } else {
+            Produto* p = sistema.buscarProduto(id);
+            gerenteLogado()->editarProduto(*p, nome, descricao, preco, categoria);
+            gerenteLogado()->definirEstoqueMinimoProduto(*p, minimo);
+            gerenteLogado()->ajustarEstoqueProduto(*p, estoque);
+        
+        }
+
+        if (!imagemEscolhida.isEmpty()) {
+
+            QDir().mkpath("data/imagens");
+            QString destino = QString("data/imagens/produto_%1.%2")
+                                  .arg(id).arg(QFileInfo(imagemEscolhida).suffix().toLower());
+            if (QFileInfo(imagemEscolhida) != QFileInfo(destino)) {
+                QFile::remove(destino);
+                if (!QFile::copy(imagemEscolhida, destino))
+                    throw std::runtime_error("Nao foi possivel copiar a imagem.");
+            
+                }
+            sistema.buscarProduto(id)->setEnderecoImagem(destino.toStdString());
+        }
+
+        salvarTudo();
+
+        atualizarTabelaProdutos();
+
+        limparFormularioProduto();
+
+    } catch (const std::exception& e) {
+
+        QMessageBox::warning(this, "Produto", e.what());
+
     }
 
 }

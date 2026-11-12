@@ -1051,7 +1051,7 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1430</width>
+                 <width>1400</width>
                  <height>2280</height>
                 </rect>
                </property>
@@ -1499,8 +1499,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1438</width>
-                 <height>1165</height>
+                 <width>514</width>
+                 <height>442</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -1854,8 +1854,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1438</width>
-                 <height>1165</height>
+                 <width>494</width>
+                 <height>218</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -2883,7 +2883,7 @@ background-color: #ebcdae</string>
            <enum>QTabWidget::TabShape::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="elideMode">
            <enum>Qt::TextElideMode::ElideNone</enum>
@@ -3264,6 +3264,26 @@ border: 1px solid #24352C;
                       </widget>
                      </item>
                     </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnImagemProduto">
+                    <property name="text">
+                     <string>Escolher imagem</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelImagemProduto">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>120</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
                    </widget>
                   </item>
                   <item>
