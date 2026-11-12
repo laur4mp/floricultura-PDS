@@ -12,7 +12,7 @@ struct ArquivoTemp {
 };
 
 Endereco enderecoAna() {
-    return Endereco("Ana Clara", "30130-000", "Rua Sergipe", "1000", "Savassi", "Apt 2", "Belo Horizonte", "MG");
+    return Endereco("Ana Clara", "30130000", "Rua Sergipe", "1000", "Savassi", "Apt 2", "Belo Horizonte", "MG");
 }
 
 Produto rosa()    { return Produto(1, "Rosas", "Rosa vermelha", "Flores", 15.0, "img/rosa.png", 50, 10); }
@@ -20,7 +20,7 @@ Produto orquidea(){ return Produto(2, "Orquidea", "Orquidea roxa", "Exoticas", 4
 
 // Venda com dois itens, ainda em processamento
 Venda vendaBase(int id) {
-    Venda v(id, 7, 0, enderecoAna(), "Ana Clara");
+    Venda v(id, 7, 0, enderecoAna());
     v.adicionarItem(ItemPedido(rosa(), 3));
     v.adicionarItem(ItemPedido(orquidea(), 1));
     return v;
@@ -48,7 +48,7 @@ TEST_CASE("VendaRepositorio: gravar e carregar reconstroi itens, endereco e data
 
     CHECK(v.getIdVenda() == 1);
     CHECK(v.getIdPessoa() == 7);
-    CHECK(v.getNomeDestina() == "Ana Clara");
+    CHECK(v.getEnderecoEntrega().getNomeDest() == "Ana Clara");
     CHECK(v.getDataEntrega() == "2026-11-20");
     CHECK(v.getHorarioEntregaPrevisao() == "Entre 08:00 e 18:00");
 
@@ -61,7 +61,7 @@ TEST_CASE("VendaRepositorio: gravar e carregar reconstroi itens, endereco e data
 
     // endereco
     const Endereco& e = v.getEnderecoEntrega();
-    CHECK(e.getCep() == "30130-000");
+    CHECK(e.getCep() == "30130000");
     CHECK(e.getRua() == "Rua Sergipe");
     CHECK(e.getNumero() == "1000");
     CHECK(e.getComplemento() == "Apt 2");
@@ -77,7 +77,7 @@ TEST_CASE("VendaRepositorio: item guarda o preco da epoca da venda") {
     VendaRepositorio repo(arq.caminho);
 
     Produto p = rosa();                       // preco 15
-    Venda v(1, 7, 0, enderecoAna(), "Ana Clara");
+    Venda v(1, 7, 0, enderecoAna());
     v.adicionarItem(ItemPedido(p, 2));
     repo.gravar({ v });
 
@@ -148,7 +148,7 @@ TEST_CASE("VendaRepositorio: itens de uma venda nao vazam para a proxima") {
     VendaRepositorio repo(arq.caminho);
 
     Venda v1 = vendaBase(1);                               // 2 itens
-    Venda v2(2, 8, 0, enderecoAna(), "Bruno");
+    Venda v2(2, 8, 0, enderecoAna());
     v2.adicionarItem(ItemPedido(orquidea(), 5));           // 1 item
     repo.gravar({ v1, v2 });
 
@@ -175,7 +175,7 @@ TEST_CASE("VendaRepositorio: avaliacao em venda nao entregue e recusada ao carre
         std::ofstream out(arq.caminho);
         out << "I|1|Rosas|desc|Flores|15.000000|img.png|50|10|2\n";
         // statusVenda 0 (PROCESSAMENTO) com nota 5
-        out << "V|1|7|Ana Clara|0|0|||Ana Clara|30130-000|Rua Sergipe|1000|Savassi||Belo Horizonte|MG||0.000000|5\n";
+      out << "V|1|7|0|0|||Ana Clara|30130000|Rua Sergipe|1000|Savassi||Belo Horizonte|MG||0.000000|5\n";
     }
     VendaRepositorio repo(arq.caminho);
     CHECK_THROWS(repo.carregar());

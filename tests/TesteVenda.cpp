@@ -18,17 +18,17 @@ Produto rosa()     { return Produto(1, "Rosas", "Rosa vermelha", "Flores", 15.0,
 Produto orquidea() { return Produto(2, "Orquidea", "Orquidea roxa", "Exoticas", 40.0, "img/orq.png", 20, 5); }
 
 Venda vendaComItens(int id = 1) {
-    Venda v(id, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda v(id, 7, 0, enderecoMaria());
     v.adicionarItem(ItemPedido(rosa(), 2));
     return v;
 }
 }
 
 TEST_CASE("Venda: construtor e getters") {
-    Venda venda(1, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda venda(1, 7, 0, enderecoMaria());
     CHECK(venda.getIdVenda() == 1);
     CHECK(venda.getIdPessoa() == 7);
-    CHECK(venda.getNomeDestina() == "Maria Silva");
+    CHECK(venda.getEnderecoEntrega().getNomeDest() == "Maria Silva");
     CHECK(venda.getAvaliacao() == 0);
     CHECK(venda.getValorTotal() == 0.0);
     CHECK(venda.getItens().empty());
@@ -46,18 +46,16 @@ TEST_CASE("Venda: construtor padrao inicializa tudo") {
 }
 
 TEST_CASE("Venda: construtor recusa dados invalidos") {
-    CHECK_THROWS_AS(Venda(0, 7, 0, enderecoMaria(), "Maria"), std::invalid_argument);
-    CHECK_THROWS_AS(Venda(1, 0, 0, enderecoMaria(), "Maria"), std::invalid_argument);
-    CHECK_THROWS_AS(Venda(1, 7, 0, enderecoMaria(), ""),      std::invalid_argument);
+    CHECK_THROWS_AS(Venda(0, 7, 0, enderecoMaria()), std::invalid_argument);
+    CHECK_THROWS_AS(Venda(1, 0, 0, enderecoMaria()),std::invalid_argument);
     // venda nova nao pode nascer avaliada
-    CHECK_THROWS_AS(Venda(1, 7, 5, enderecoMaria(), "Maria"), std::logic_error);
-    CHECK(Venda(1, 7, 5, enderecoMaria(), "Maria").getAvaliacao() == 0);
+    CHECK_THROWS_AS(Venda(1, 7, 5, enderecoMaria()), std::logic_error);
+ 
 }
 
 TEST_CASE("Venda: data e horario") {
-    Venda venda(2, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda venda(2, 7, 0, enderecoMaria());
     venda.setDataEntrega("2026-10-25");
-
     venda.setHorarioEntregaPrevisao("14:00 - 18:00");
     CHECK(venda.getDataEntrega() == "2026-10-25");
     CHECK(venda.getHorarioEntregaPrevisao() == "14:00 - 18:00");
@@ -67,7 +65,7 @@ TEST_CASE("Venda: data e horario") {
 }
 
 TEST_CASE("Venda: adicionar e remover itens atualiza o total") {
-    Venda venda(3, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda venda(3, 7, 0, enderecoMaria());
 
     venda.adicionarItem(ItemPedido(rosa(), 2));
     double comUmItem = venda.getValorTotal();
@@ -91,7 +89,7 @@ TEST_CASE("Venda: trocar o endereco recalcula o total") {
     venda.setEnderecoEntrega(enderecoSP());
 
     // mesma venda criada direto com o endereco de SP deve ter o mesmo total
-    Venda referencia(9, 7, 0, enderecoSP(), "Maria Silva");
+    Venda referencia(9, 7, 0, enderecoSP());
     referencia.adicionarItem(ItemPedido(rosa(), 2));
 
     CHECK(venda.getEnderecoEntrega().getEstado() == "SP");
@@ -120,7 +118,7 @@ TEST_CASE("Venda: fluxo normal de status") {
 }
 
 TEST_CASE("Venda: transicoes de status invalidas") {
-    Venda vazia(1, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda vazia(1, 7, 0, enderecoMaria());
     CHECK_THROWS_AS(vazia.atualizarSvenda(StatusVenda::ENVIADO), std::logic_error);   // sem itens
 
     Venda venda = vendaComItens();
@@ -135,7 +133,7 @@ TEST_CASE("Venda: transicoes de status invalidas") {
 }
 
 TEST_CASE("Venda: regras do pagamento") {
-    Venda vazia(1, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda vazia(1, 7, 0, enderecoMaria());
     CHECK_THROWS_AS(vazia.atualizarSpagamento(StatusPagamento::PAGO), std::logic_error);
 
     Venda venda = vendaComItens();
@@ -173,7 +171,7 @@ TEST_CASE("Venda: remover todos os itens zera o total") {
 
 TEST_CASE("Venda: cupom aplicado antes dos itens vale para os itens seguintes") {
     Venda semCupom = vendaComItens(1);
-    Venda comCupom(2, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda comCupom(2, 7, 0, enderecoMaria());
     comCupom.aplicarCupom(Desconto("FLOR10", 10.0, "2099-12-31"));
     CHECK(comCupom.getValorTotal() == doctest::Approx(0.0));
     comCupom.adicionarItem(ItemPedido(rosa(), 2));
@@ -201,7 +199,7 @@ TEST_CASE("Venda: repetir o status atual nao faz nada") {
     venda.atualizarSvenda(StatusVenda::CANCELADO);
     CHECK_NOTHROW(venda.atualizarSvenda(StatusVenda::CANCELADO)); 
 
-    Venda vazia(3, 7, 0, enderecoMaria(), "Maria Silva");
+    Venda vazia(3, 7, 0, enderecoMaria());
     CHECK_NOTHROW(vazia.atualizarSpagamento(StatusPagamento::AGUARDANDO_PAGAMENTO));
 }
 
