@@ -9,6 +9,13 @@ TEST_CASE("Endereco com CEP invalido gera excecao"){
     );
 }
 
+TEST_CASE("Endereco com numero invalido gera excecao"){
+    CHECK_THROWS_AS(
+        Endereco("Ana", "31250000", "Rua das Flores", "a1", "Planalto", "", "Belo Horizonte", "MG"),
+        std::invalid_argument
+    );
+}
+
 TEST_CASE("Endereco com estado invalido gera excecao"){
     CHECK_THROWS_AS(
         Endereco("Ana", "31250000", "Rua das Flores", "10", "Planalto", "", "Belo Horizonte", "XX"),
