@@ -130,7 +130,7 @@ void Sistema::devolverEstoque(const Venda& venda) {
     }
 }
 
-int Sistema::proximoIdUsusario() const {
+int Sistema::proximoIdUsuario() const {
 
     int maior = 0;
     for (const Pessoa* p : _usuarios){

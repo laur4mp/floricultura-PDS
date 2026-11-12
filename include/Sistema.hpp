@@ -110,7 +110,7 @@ public:
      * @brief Calcula o próximo ID disponível para um novo usuário.
      * @return O maior ID de usuário atual acrescido de 1 (ou 1 se não houver usuários).
      */
-    int proximoIdUsusario() const;
+    int proximoIdUsuario() const;
 
     /**
      * @brief Calcula o próximo ID disponível para um novo produto.

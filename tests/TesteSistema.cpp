@@ -103,7 +103,7 @@ TEST_CASE("Sistema - adicionarCupom rejeita codigo repetido ou vazio") {
 TEST_CASE("Sistema - proximoId devolve o maior id + 1") {
     Sistema s;
     CHECK(s.proximoIdProduto() == 1);
-    CHECK(s.proximoIdUsusario() == 1);
+    CHECK(s.proximoIdUsuario() == 1);
     CHECK(s.proximoIdVenda() == 1);
  
     s.adicionarProduto(criarProduto(1));
@@ -111,7 +111,7 @@ TEST_CASE("Sistema - proximoId devolve o maior id + 1") {
     CHECK(s.proximoIdProduto() == 6);
  
     s.adicionarUsuario(criarGerente("ana@email.com"));  // id 1
-    CHECK(s.proximoIdUsusario() == 2);
+    CHECK(s.proximoIdUsuario() == 2);
 }
  
 TEST_CASE("Sistema - vendas: adicionar, buscar e rejeitar id repetido") {
