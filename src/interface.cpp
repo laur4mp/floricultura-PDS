@@ -481,6 +481,10 @@ void Interface::fazerLogin() {
     }
 
     else {
+
+        carregarProdutos();     
+        atualizarCarrinho();
+        ui->inputBusca->clear();
         
         ui->stackDivisao->setCurrentWidget(ui->paginaLoja);
         
@@ -508,6 +512,8 @@ void Interface::criarConta() {
         salvarTudo();
         
         usuarioLogado = novo;
+        carregarProdutos();
+        atualizarCarrinho();
         
         ui->stackDivisao->setCurrentWidget(ui->paginaLoja);
         
