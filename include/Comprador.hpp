@@ -122,11 +122,11 @@ class Comprador : public Pessoa{
         std::vector<Venda> consultarHistoricoCompras(const std::vector<Venda>& vendas) const;
 
         /**
-        * @brief Consulta os produtos favoritos do comprador.
+        * @brief retorna os produtos favoritos do comprador.
         *
         * @return Referência constante ao vetor de produtos favoritos.
         */
-        const std::vector<Produto>& consultarProdutosFavoritos() const;
+        const std::vector<Produto>& getProdutosFavoritos() const;
 
         /**
         * @brief Aplica um cupom de desconto a uma venda.
@@ -151,14 +151,31 @@ class Comprador : public Pessoa{
          */
         void limparCarrinho();
 
+        /**
+         * @brief altera a quantidade de um produto no carrinho de compras do comprador.
+         * @param idProduto id do produto a ser removido/adicionado.
+         * @param novaQuantidade nova quantidade de itens do produto.
+         */
         void alterarQuantidadeCarrinho(int idProduto, int novaQuantidade);
 
+        /**
+         * @brief calcula o subtotal do preco do carrinho.
+         * @return subtotal do carrinho.
+         */
         double subtotalCarrinho() const;
 
+        /**
+         * @brief avalia uma venda.
+         * @param venda venda a ser avaliada.
+         * @param nota nota dada à venda.
+         */
         void avaliarPedido(Venda& venda, int nota);
         
-        const std::vector<Produto>& getFavoritos() const;
-        const std::vector<Produto>& getProdutosFavoritos() const;
-    bool ehFavorito(int idProduto) const;
+        /**
+         * @brief informa se um produto é favorito ou nao, para o botao.
+         * @param idProduto id do produto.
+         * @return bool de favorito ou nao.
+         */
+        bool ehFavorito(int idProduto) const;
 };
 #endif 
