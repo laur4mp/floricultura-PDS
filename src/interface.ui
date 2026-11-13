@@ -474,7 +474,7 @@ QScrollBar::sub-page:vertical {
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-300</y>
+                 <y>-65</y>
                  <width>1108</width>
                  <height>922</height>
                 </rect>
@@ -549,7 +549,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Nome Completo</string>
+                      <string>Nome Completo*</string>
                      </property>
                     </widget>
                    </item>
@@ -581,7 +581,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>CPF</string>
+                      <string>CPF* (apenas números)</string>
                      </property>
                     </widget>
                    </item>
@@ -610,7 +610,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>E-mail</string>
+                      <string>E-mail*</string>
                      </property>
                     </widget>
                    </item>
@@ -626,7 +626,7 @@ border-radius: 8px;</string>
                       <string/>
                      </property>
                      <property name="placeholderText">
-                      <string>Digite seu e-mail</string>
+                      <string>seu@email</string>
                      </property>
                     </widget>
                    </item>
@@ -642,7 +642,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Telefone</string>
+                      <string>Telefone* (apenas números)</string>
                      </property>
                     </widget>
                    </item>
@@ -658,7 +658,7 @@ border-radius: 8px;</string>
                       <string/>
                      </property>
                      <property name="placeholderText">
-                      <string>(99) 99999-9999</string>
+                      <string>99999999999</string>
                      </property>
                     </widget>
                    </item>
@@ -674,7 +674,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Senha</string>
+                      <string>Senha*</string>
                      </property>
                     </widget>
                    </item>
@@ -1060,7 +1060,7 @@ QScrollBar::sub-page:vertical {
                <enum>QFrame::Shape::NoFrame</enum>
               </property>
               <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -2152,7 +2152,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Nome</string>
+                      <string>Nome*</string>
                      </property>
                     </widget>
                    </item>
@@ -2181,7 +2181,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>CEP</string>
+                      <string>CEP* (apenas números)</string>
                      </property>
                     </widget>
                    </item>
@@ -2213,7 +2213,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Rua</string>
+                      <string>Rua*</string>
                      </property>
                     </widget>
                    </item>
@@ -2242,7 +2242,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Número</string>
+                      <string>Número*</string>
                      </property>
                     </widget>
                    </item>
@@ -2271,7 +2271,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Bairro</string>
+                      <string>Bairro*</string>
                      </property>
                     </widget>
                    </item>
@@ -2332,7 +2332,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Cidade</string>
+                      <string>Cidade*</string>
                      </property>
                     </widget>
                    </item>
@@ -2364,7 +2364,7 @@ border-radius: 8px;</string>
                       <string notr="true">color: #24352C</string>
                      </property>
                      <property name="text">
-                      <string>Estado</string>
+                      <string>Estado*</string>
                      </property>
                     </widget>
                    </item>
@@ -2417,7 +2417,7 @@ border-radius: 8px;</string>
             <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
              <widget class="QStackedWidget" name="stackPagamento">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="paginaResumoFinal">
                <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -2759,15 +2759,21 @@ border-radius: 8px;
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>400</width>
+                    <height>250</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>500</width>
-                    <height>320</height>
+                    <height>280</height>
                    </size>
                   </property>
                   <property name="layoutDirection">
@@ -2838,33 +2844,8 @@ border-radius: 8px;
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="imgCoracao">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>500</width>
-                    <height>200</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="../Resources/resources.qrc">:/images/coracaofinal.jpg</pixmap>
-                  </property>
-                  <property name="scaledContents">
+                  <property name="wordWrap">
                    <bool>true</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
