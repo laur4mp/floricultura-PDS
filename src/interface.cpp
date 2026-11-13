@@ -642,8 +642,9 @@ void Interface::atualizarHistorico() {
     }
 
     if (minhas.empty()) {
-        QLabel* vazio = new QLabel("Voce ainda nao fez nenhum pedido.", ui->listaHistorico);
+        QLabel* vazio = new QLabel("Você ainda não fez nenhum pedido.", ui->listaHistorico);
         aplicarFonteDescricao(vazio);
+        vazio->setStyleSheet("color: #24352C; background-color: transparent;");
         lista->addWidget(vazio);
     }
 }
