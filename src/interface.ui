@@ -474,7 +474,7 @@ QScrollBar::sub-page:vertical {
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>-65</y>
+                 <y>0</y>
                  <width>1108</width>
                  <height>922</height>
                 </rect>
@@ -626,7 +626,7 @@ border-radius: 8px;</string>
                       <string/>
                      </property>
                      <property name="placeholderText">
-                      <string>seu@email</string>
+                      <string>seu@email.com</string>
                      </property>
                     </widget>
                    </item>
@@ -1070,7 +1070,7 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1430</width>
+                 <width>1400</width>
                  <height>2280</height>
                 </rect>
                </property>
@@ -1521,8 +1521,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1428</width>
-                 <height>1165</height>
+                 <width>514</width>
+                 <height>442</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -1879,8 +1879,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1428</width>
-                 <height>1165</height>
+                 <width>494</width>
+                 <height>218</height>
                 </rect>
                </property>
                <property name="cursor">
@@ -2078,8 +2078,8 @@ QScrollBar::sub-page:vertical {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1240</width>
-                 <height>1087</height>
+                 <width>484</width>
+                 <height>922</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_26">
