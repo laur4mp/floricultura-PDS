@@ -8,7 +8,7 @@ Endereco::Endereco() {}
 
 Endereco::Endereco(const string& nomeDest, const string& cep, const string& rua, const string& numero, const string& bairro, const string& complemento,
                    const string& cidade, const string& estado)
-    : nomeDest(nomeDest), cep(""), rua(rua), numero(numero), bairro(bairro), complemento(complemento), cidade(cidade), estado(""){
+    : _nomeDest(nomeDest), _cep(""), _rua(rua), _numero(numero), _bairro(bairro), _complemento(complemento), _cidade(cidade), _estado(""){
     if(nomeDest.empty() || rua.empty() || numero.empty() || bairro.empty() || cidade.empty()){
         throw invalid_argument("Preencha todos os dados obrigatorios");
     }
@@ -29,10 +29,10 @@ Endereco::Endereco(const string& nomeDest, const string& cep, const string& rua,
 Endereco::~Endereco() {}
 
 string Endereco::formatarEndereco() const{
-    string semComplemento = rua + ", " + numero + " - " + bairro + ", " + cidade + " - " + estado + ", " + "CEP " + cep;
-    string comComplemento = rua + ", " + numero + " - " + complemento + " - " + bairro + ", " + cidade + " - " + estado + ", " + "CEP " + cep;
+    string semComplemento = _rua + ", " + _numero + " - " + _bairro + ", " + _cidade + " - " + _estado + ", " + "CEP " + _cep;
+    string comComplemento = _rua + ", " + _numero + " - " + _complemento + " - " + _bairro + ", " + _cidade + " - " + _estado + ", " + "CEP " + _cep;
 
-    if(complemento == ""){
+    if(_complemento == ""){
         return semComplemento;
     } else {
         return comComplemento;
@@ -40,16 +40,16 @@ string Endereco::formatarEndereco() const{
 }
 
 string Endereco::regiao() const{
-    if(estado == "AC" || estado == "AP" || estado == "AM" || estado == "PA" || estado == "RO" || estado == "RR" || estado == "TO"){
+    if(_estado == "AC" || _estado == "AP" || _estado == "AM" || _estado == "PA" || _estado == "RO" || _estado == "RR" || _estado == "TO"){
         return "Norte";
-    } else if(estado == "AL" || estado == "BA" || estado == "CE" || estado == "MA" || estado == "PB" || estado == "PE"
-            || estado == "PI" || estado == "RN" || estado == "SE") {
+    } else if(_estado == "AL" || _estado == "BA" || _estado == "CE" || _estado == "MA" || _estado == "PB" || _estado == "PE"
+            || _estado == "PI" || _estado == "RN" || _estado == "SE") {
         return "Nordeste";
-    } else if(estado == "MT" || estado == "MS" || estado == "GO" || estado == "DF"){
+    } else if(_estado == "MT" || _estado == "MS" || _estado == "GO" || _estado == "DF"){
         return "Centro-Oeste";
-    } else if(estado == "MG" || estado == "ES" || estado == "SP" || estado == "RJ"){
+    } else if(_estado == "MG" || _estado == "ES" || _estado == "SP" || _estado == "RJ"){
         return "Sudeste";
-    } else if(estado == "PR" || estado == "SC" || estado == "RS"){
+    } else if(_estado == "PR" || _estado == "SC" || _estado == "RS"){
         return "Sul";
     } else {
     return "Estado invalido";
@@ -57,35 +57,35 @@ string Endereco::regiao() const{
 }
 
 const string& Endereco::getNomeDest() const {
-    return nomeDest;
+    return _nomeDest;
 }
 
 const string& Endereco::getCep() const {
-    return cep;
+    return _cep;
 }
 
 const string& Endereco::getRua() const {
-    return rua;
+    return _rua;
 }
 
 const string& Endereco::getNumero() const {
-    return numero;
+    return _numero;
 }
 
 const string& Endereco::getComplemento() const {
-    return complemento;
+    return _complemento;
 }
 
 const string& Endereco::getBairro() const {
-    return bairro;
+    return _bairro;
 }
 
 const string& Endereco::getCidade() const {
-    return cidade;
+    return _cidade;
 }
 
 const string& Endereco::getEstado() const {
-    return estado;
+    return _estado;
 }
 
 bool Endereco::setCep(const string& cep){
@@ -99,7 +99,7 @@ bool Endereco::setCep(const string& cep){
         }
     }
 
-    this->cep = cep;
+    this->_cep = cep;
     return true;
 }
 
@@ -111,7 +111,7 @@ bool Endereco::setNumero(const string& numero){
         }
     }
 
-    this->numero = numero;
+    this->_numero = numero;
     return true;
 }
 
@@ -120,7 +120,7 @@ bool Endereco::setEstado(const string& estado){
        estado == "BA" || estado == "CE" || estado == "MA" || estado == "PB" || estado == "PE" || estado == "PI" || estado == "RN" || estado == "SE" ||
        estado == "MT" || estado == "MS" || estado == "GO" || estado == "DF" || estado == "MG" || estado == "ES" || estado == "SP" || estado == "RJ" ||
        estado == "PR" || estado == "SC" || estado == "RS"){
-        this->estado = estado;
+        this->_estado = estado;
         return true;
     }
     return false;
