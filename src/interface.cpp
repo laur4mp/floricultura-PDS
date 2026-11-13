@@ -573,8 +573,7 @@ void Interface::fazerPedido() {
         Venda venda = sistema.finalizarPedido(*comprador(), enderecoAtual, cupom);
 
         ui->descricaoFinal->setText(
-            QString("Pedido confirmado!\nEntrega prevista para %2, %3.\n%4\nTotal: %5 (pagamento na entrega)")
-                .arg(venda.getIdVenda())
+            QString("Pedido confirmado!\nEntrega prevista para %1, %2.\n%3\nTotal: %4 (pagamento na entrega)")
                 .arg(QDate::fromString(QString::fromStdString(venda.getDataEntrega()), "yyyy-MM-dd").toString("dd/MM/yyyy"))
                 .arg(QString::fromStdString(venda.getHorarioEntregaPrevisao()))
                 .arg(QString::fromStdString(venda.getEnderecoEntrega().formatarEndereco()))
