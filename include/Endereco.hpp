@@ -14,7 +14,7 @@
  */
 class Endereco {
 private:
-    std::string nomeDest, cep, rua, numero, complemento, bairro, cidade, estado;
+    std::string _nomeDest, _cep, _rua, _numero, _complemento, _bairro, _cidade, _estado;
 
 public:
     Endereco();
