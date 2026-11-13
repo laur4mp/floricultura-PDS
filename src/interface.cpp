@@ -1020,19 +1020,44 @@ void Interface::fazerLogin() {
 
 }
 
+static QString somenteDigitos(const QString& texto) {
+    QString digitos;
+    for (const QChar c : texto)
+        if (c.isDigit()) digitos += c;
+    return digitos;
+}
 
+static bool emailValido(const QString& email) {
+    if (email.contains(' ') || email.count('@') != 1) return false;
+    const int arroba = email.indexOf('@');
+    const QString dominio = email.mid(arroba + 1);
+    const int ponto = dominio.lastIndexOf('.');
+    return arroba > 0 && ponto > 0 && ponto < dominio.size() - 1;
+}
 
 void Interface::criarConta() {
 
     try {
 
-        Comprador* novo = new Comprador(sistema.proximoIdUsuario(),
+        const QString email = ui->inputAdicionarEmail->text().trimmed();
+        const QString cpf = somenteDigitos(ui->inputCPF->text());
+        const QString telefone = somenteDigitos(ui->inputTelefone->text());
+
+        if (!emailValido(email))
+            throw std::invalid_argument("Informe um e-mail válido (ex.: nome@email.com).");
+        if (cpf.size() != 11)
+            throw std::invalid_argument("O CPF deve ter 11 dígitos.");
+        if (telefone.size() < 10 || telefone.size() > 11)
+            throw std::invalid_argument("Informe o telefone com DDD (10 ou 11 dígitos).");
+
+         Comprador* novo = new Comprador(sistema.proximoIdUsuario(),
             ui->inputNome->text().trimmed().toStdString(),
-            ui->inputCPF->text().trimmed().toStdString(),
-            ui->inputAdicionarEmail->text().trimmed().toStdString(),
-            ui->inputTelefone->text().trimmed().toStdString(),
+            cpf.toStdString(),
+            email.toStdString(),
+            telefone.toStdString(),
             ui->inputCriarSenha->text().toStdString());
 
+            
         sistema.adicionarUsuario(novo);   // e-mail repetido: o Sistema apaga o objeto e lança
         
         salvarTudo();
